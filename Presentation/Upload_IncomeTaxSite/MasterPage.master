@@ -1,0 +1,264 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="Presentation_MasterPage" %>
+<%@ Register Src="../../menu_header.ascx" TagName="mainmenu" TagPrefix="main" %>
+<%@ Register Src="../../Menu2.ascx" TagName="mainmenu2" TagPrefix="main2" %>
+<%@ Register Src="../MediumSubUserMenu.ascx" TagName="mediummenu" TagPrefix="mob3" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+         <script src="../Scripts/JScript.js" type="text/javascript"></script>
+        <script src="../../js/ajax-libs-jquery-1.11.1-jquery.min.js" type="text/javascript"></script>
+<%--    <link href="../../style_folder/ItrSoftwareStyleSheet.css" rel="stylesheet" type="text/css" />  --%> 
+  <link href="../../foundation-5.5.0/css/foundation.css" rel="stylesheet" type="text/css" />
+    <script src="../../foundation-5.5.0/js/foundation/foundation.js" type="text/javascript"></script>
+    <link href="../../styles/StyleSheet.css" rel="stylesheet" type="text/css" />
+    <link href="../../css/new_button.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#dny_Grd_ITRInfo_Dynamic_Gridview_ctl01_txt_Name_hdr").bind("keypress", function (e) {
+                if (e.keyCode == 13) {
+                    return e.keyCode = 9;
+                }
+            });
+            $("#dny_Grd_ITRInfo_Dynamic_Gridview_ctl01_txt_Name_hdr").bind("keypress", function (e) {
+                if (e.keyCode == 13) {
+                    return e.keyCode = 9;
+                }
+            });
+        });
+    </script>
+
+    <%--For Menu Header--%>
+
+<link href="../../Stylesheet/buttonstyle.css" rel="stylesheet" type="text/css" />
+<script src="../../js/modernizr.custom.34978.js" type="text/javascript"></script>
+ <script type="text/javascript">
+     $(function () {
+         modalPosition();
+         $(window).resize(function () {
+             modalPosition();
+         });
+         $('#btn_open').click(function (e) {
+             $('.modal').addClass('.modal-backdrop').fadeIn('fast');
+             e.preventDefault();
+         });
+         $('.close-modal').click(function (e) {
+             $('.modal').removeClass('.modal-backdrop').fadeOut('fast');
+         });
+     });
+     function modalPosition() {
+         var width = $('.modal').width();
+         var pageWidth = $(window).width();
+         var x = (pageWidth / 2) - (width / 2);
+         $('.modal').css({ left: x + "px" });
+     }
+
+     function redirectMain() {
+         //nishu 8/3/2015 show on itr salary page only
+         // alert('logout');
+         if ((window.location.href.indexOf("IncomeTax") > -1) || window.location.href.indexOf("Profile") > -1) {
+             //             alert("your url contains the name salary");
+             //            }
+             var hdnValue = document.getElementById('<%= hdnProject.ClientID%>').value;
+             if (hdnValue == "vt") {
+                 //                      $.noConflict(true);
+                 $("#popupdiv").dialog({
+                     title: "Error Message",
+                     width: '450px',
+                     height: 'auto',
+                     minHeight: '0',
+                     modal: true,
+                     buttons: { Yes: function () {
+                         window.location = "saveAssessee.aspx?wx=1&lg=1"
+
+                     },
+                         No: function () {
+                             //$(this).dialog('close');
+                             window.location = "saveAssessee.aspx?lg=1"
+                         },
+                         Cancel: function () {
+                             $(this).dialog('close');
+                         }
+                     }
+                 });
+                 //            if (confirm('All Your Data will be lost for the current Assessee. Do you want to save it anyway before leaving?')) {
+                 //                window.location = 'saveAssessee.aspx?wx=1&lg=1';
+                 //            }
+                 //            else {
+                 //                window.location = 'saveAssessee.aspx?lg=1';
+                 //            }
+             }
+             else {
+                 window.location = "saveAssessee.aspx?lg=1";
+             }
+         }
+
+         else {
+             window.location = "saveAssessee.aspx?lg=1";
+         }
+     }
+    </script>
+     <style type="text/css">
+    .modal-backdrop {
+           
+           display: none;
+       }
+       .modal {
+           width: 350px;
+           top: 10%;
+           left:25%;
+           z-index: 1020;
+           background-color: #FFF;
+           border-radius: 6px;
+           display: none;
+       }
+       .modal-header {
+           background-color:rgba(60, 63, 83, 0.62);
+           color: #FFF;
+           border-top-right-radius: 5px;
+           border-top-left-radius: 5px;
+       }
+       .modal-header h3 
+       {
+           color:White;
+           margin: 0;
+           text-align:Left;
+             font-size: 20px;
+           line-height: 10px;
+           
+       }
+       .modal-header h2 .close-modal {
+           float: right;
+           text-decoration: none;
+           color: #FFF;
+           margin-top:-15px;
+       }
+       .modal-footer 
+       {
+           
+           background-color: #F1F1F1;
+           padding: 0 10px 0 10px;
+           line-height: 40px;
+           text-align: right;
+           border-bottom-right-radius: 5px;
+           border-bottom-left-radius: 5px;
+           border-top: solid 1px #CCC;
+       }
+       .modal-body {
+           
+           border-style: solid;
+           border-top: none;
+           border-color: rgba(60, 63, 83, 0.62);
+           
+       }
+       .top-barheader {
+  overflow: hidden;
+  height: 83px;
+  line-height: 83px;
+
+  background: #e6e9f0;
+  margin-bottom: 0;
+  width:100%;background: -webkit-linear-gradient(left, rgba(255,0,0,0), #1F1D1D); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, rgba(255,0,0,0), #1F1D1D); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, rgba(255,0,0,0), #1F1D1D); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, rgba(255,0,0,0), #1F1D1D); /* Standard syntax (must be last) */ }
+  .logo
+  {
+      width:20%;
+      float:left;
+      height:83px;
+  }
+  .top-barrgt
+  {width:80%;
+   float:left;
+
+   height:83px;
+  
+  }
+    </style>
+
+<link href="css/colorbox.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true">
+    </asp:ScriptManager>
+    <asp:HiddenField ID="hdnID" runat="server" />
+    <asp:HiddenField ID="hdnAY" runat="server" />
+    
+    <%-------------header ----------------%>
+    
+     <%-------------show header on mobile screen --------------------------------------------------------%>
+    <br class="clearit" />
+    <div class="row" style="height:60px;margin-top: -18px;">
+    <div class="large-4 columns" style="background-color: white; color: black; height: 80px;
+        vertical-align: top;">
+          <a href="../Default.aspx">
+        <img  src="../../images/logo2.PNG" style="width:240px; height:auto" alt="eCA" />
+        </a>
+    </div>
+      <div class="large-5 columns text-right">
+      <img src="../../images/toll5.jpg" style="width: 136px;
+    height: 64px;
+    padding-left: 7px; padding-right:7px; padding-top:17px" /></div>
+    <div class="large-3 columns text-right">
+   
+    <img src="../male3.jpg"  height="25px" />
+    <br />
+        Welcome
+        <asp:Label ID="lblUser" runat="server" Font-Bold="true" style="color:rgba(25, 185, 154, 0.97);  text-transform:capitalize; font-size:18px"></asp:Label>
+        <p>
+        
+       <%-- <img src="female3.png" height="25px" />--%>
+        
+            <%--<a href="../Presentation/logout.aspx">[Logout] </a>--%>
+            <a href="../logout.aspx" style="color:rgba(25, 185, 154, 0.97); font-size:12px">[Logout] </a>
+            <a id="btn_open" href="#" style="color:rgba(25, 185, 154, 0.97); font-size:12px">[Change Password]</a>
+                   
+        </p>
+       <div class="modal" style="position:fixed"> 
+       <div class="modal-header" style="padding: 15px;">
+       <h2><a class="close-modal" href="#">&times;</a></h2>
+        <h3>Change Password </h3> 
+    </div>
+       
+       <div class="modal-body">
+       
+          <iframe style=" width:100%; height: 350px; border-style: none;overflow:hidden" id="ifrm" src="../../Presentation/ChangePwd.aspx" runat="server"></iframe>
+        </div>
+                
+        </div>
+    </div>
+</div>
+    <%----------------show username on mobile menu --------------------%>
+     <div class="row show-for-small-only">     
+     <div class="large-12 columns text-right">
+      Welcome <span style="color:Black;font-family:'Open Sans','sans-serif';font-size:15px;font-weight:bold;color:#008CBA;  text-transform:capitalize"><asp:Literal ID="ltUser" runat="server" /></span>
+         
+      <a href="../logout.aspx">
+ [Logout]
+ </a>
+     </div>
+     </div>
+     <%--show breadcrumps in all views nishu 8/4/2015--%>
+     <br /><br />
+    <div class="row">
+    <div class="large-12 columns">
+    <asp:Button ID="btnList" runat="server" Text="List of Returns Pending Upload" PostBackUrl="~/Presentation/Upload_IncomeTaxSite/Default.aspx" class="radius button" Font-Bold="true" style="height:38px;padding-top:0;padding-bottom:0; margin:0px;width:320px;"  />
+    <%--<asp:Button ID="btnProcess" runat="server" Text="Processing Assessees" PostBackUrl="~/Presentation/Reception/processReturn.aspx" class="radius button" Font-Bold="true" style="height:38px;padding-top:0;padding-bottom:0; margin:0px;width:260px;" />--%>
+    <asp:Button ID="btnReporting" runat="server" Text="List of Uploaded Returns" class="radius button" PostBackUrl="~/Presentation/Upload_IncomeTaxSite/lstUploaded.aspx"  Font-Bold="true" style=" height:38px;padding-top:0;padding-bottom:0; margin:0px; width:260px;" />    
+    </div>
+    </div>
+    <br />
+    <div style="width:100%;">
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+    </div>
+    <asp:HiddenField ID="hdnProject" runat="server" value="vt" />
+    </form>
+</body>
+</html>

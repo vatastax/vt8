@@ -1,0 +1,11 @@
+﻿body 
+{
+   	font-size: 15pt;
+	color: #000000;
+	background-color: Red;
+}
+.tablecss
+{ 
+    border: solid 12px black;    
+    background-color:#ffffff;
+}

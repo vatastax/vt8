@@ -1,0 +1,46 @@
+<?xml version="1.0" standalone="yes"?>
+<xs:schema id="ITR" targetNamespace="http://incometaxindiaefiling.gov.in/main" xmlns:mstns="http://incometaxindiaefiling.gov.in/main" xmlns="http://incometaxindiaefiling.gov.in/main" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" attributeFormDefault="qualified" elementFormDefault="qualified" xmlns:app1="http://incometaxindiaefiling.gov.in/master" xmlns:app2="http://incometaxindiaefiling.gov.in/ITR4">
+  <xs:import namespace="http://incometaxindiaefiling.gov.in/master" schemaLocation="ITR4_app1.xsd" />
+  <xs:import namespace="http://incometaxindiaefiling.gov.in/ITR4" schemaLocation="ITR4_app2.xsd" />
+  <xs:element name="ITR" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="app1:ExciseCustomsVAT" />
+        <xs:element ref="app1:AmtUs43B" />
+        <xs:element ref="app1:QuantitDet" />
+        <xs:element ref="app1:AddressDetail" />
+        <xs:element ref="app1:SpeculativeInc" />
+        <xs:element ref="app1:IncCYLA" />
+        <xs:element ref="app1:IncBFLA" />
+        <xs:element ref="app1:SpecifiedInc" />
+        <xs:element ref="app1:DepreciationDetail" />
+        <xs:element ref="app1:Rate100" />
+        <xs:element ref="app1:Rate10" />
+        <xs:element ref="app1:DeductUs35" />
+        <xs:element ref="app1:SaleofLandBuild" />
+        <xs:element ref="app1:DeductSec48" />
+        <xs:element ref="app1:ExemptionOrDednUs54" />
+        <xs:element ref="app1:UnutilizedCg" />
+        <xs:element ref="app1:UnutilizedCgConst" />
+        <xs:element ref="app1:NRICgDTAA" />
+        <xs:element ref="app1:DateRange" />
+        <xs:element ref="app1:HP" />
+        <xs:element ref="app1:BusProfExclSpecProf" />
+        <xs:element ref="app1:STCG15Per" />
+        <xs:element ref="app1:STCG30Per" />
+        <xs:element ref="app1:STCGAppRate" />
+        <xs:element ref="app1:LTCG10Per" />
+        <xs:element ref="app1:LTCG20Per" />
+        <xs:element ref="app1:OthSrcExclRaceHorse" />
+        <xs:element ref="app1:OthSrcRaceHorse" />
+        <xs:element ref="app1:CarryFwdLossDetail" />
+        <xs:element ref="app1:LossSummaryDetail" />
+        <xs:element ref="app1:DeductSEZ" />
+        <xs:element ref="app1:DoneeWithPan" />
+        <xs:element ref="app1:Sch80DeductAmtDtls" />
+        <xs:element ref="app1:EmployerOrDeductorOrCollectDetl" />
+        <xs:element ref="app2:ITR4" />
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

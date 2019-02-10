@@ -1,0 +1,835 @@
+http://localhost:1224/tfs_vatas/Presentation/TDS_Staff.aspx
+
+
+) 3025 = 111 (done)
+) 3026 = procedure tax calc output (done)
+) Date not correct on 3041
+
+) 3027 = 1524016 + 1524017 (formulae)
+) 3028 = 1524019 - 3027 (formulae)
+) Hide OK button for constantID = 3026 detailing T4 page conditionally (done)
+) Disable T4 fields with a new construct for constantID = 3026
+
+
+) Tabbing not working as showing all dropdowns on screen page
+)Cross Domain Configuration:
+to make the 202 work from within 129 through via iframe
+) Same table in use while using any of 3 button
+
+
+
+http://192.168.1.202:94/rpt_FileRecords.aspx
+
+To implement formulae on VType = 3003:
+3020 = 3018 - 3019
+3022 = 3020 + 3021
+
+getting issue in Details Click to make use of its outer constantID formula for constantID : 3024
+
+
+Error Messages: 
+For every form 
+
+Form AIR:
+Need to make a separate button for it as it needs to save data in the table but no need to show the View button there
+
+) FileUpload Control -> Not showing listing
+) Hide Button Layout during partial postback too
+
+) Saving of Assessee/Deductee while changing (from left side) throwing error
+) Buttons Settings and alignments (TDS): Not Proper
+) ankushpanel (default dynamic button for all non-main Savings)
+
+19125
+
+
+) Exports (Excel/Doc/PDF) goes to specific types within project.
+) SendEmail -> Servie Method
+
+
+Save|Export To Excel| Export To Word| Export To PDF|Email PDF/Email Excel/Email DOC/
+Path - JobID - for automatic saving
+
+
+TDS:
+
+) VGrid is implemented as required and now need to use common.cs and ProcessHistoryogJob_Completed.aspx to make the "ReportTesting.aspx" page working on tfs_vatas
+
+
+) Web Service2 -> Service 
+) Web Service for all Reporting Pages from GridInterface those will provide the initial connectionstring for VGrid1.CustomConnection.
+) Textbox Properties
+) ETDS Returns -> Show tooltip for Remarks column (in jquery)
+) Billing will be based upon UPD Process Status
+) PRN No can't be empty and should be 15 numeric digits (done)
+) Returns at reception, once submitted, will get upd status and same will be used within billing
+) Reassign listing, should have the messaging and need to have something to show that within listing
+) show additional columns in Completed List too
+
+
+Main.aspx:
+ShowMessage on Main.aspx:
+
+
+tbl_Errors
+
+Message to show in Re-Assign List
+
+
+FVU Validation - > 
+ETDS Returns -> Open -> Select Record from Grid - > Press [No] -> [FVU Validation] (TDSForms.aspx)
+
+TDS:
+JobNo | Date| TAN | Name | --- Deductee Records
+
+1)Firm Name, Job Date, SerialNo_By_Job_Firm, Accountant­FY
+FormNo + Quarter + FY + RC = (24Q3 201314 R) - > Show in one column
+
+Returns_Copy to replace on all processes
+
+-----------------------------------------------------------------------------
+
+
+
+EKEPP3232D
+
+http://192.168.1.129:82/Process_TDS_Regular/ProcessHistoryogJob_Completed.aspx?RoleID=20&UserID=148
+
+
+MasterID: 6157
+
+
+Admin Panel 
+1) To add screen navigation while creating forms
+
+VatasSolution DB:
+queryID = 504
+Update tbl_ProcessesHistoryofjob set Next_UserID=# where ID=#
+
+queryID = 456
+SELECT DISTINCT Returns_Copy.SerialNo_By_Job_Firm AS [Job No],[db_Admin].[dbo].[tbl_UserGroup_Registration].Name As [Operator],tbl_ProcessesHistoryofjob.ID as [JobID],Accounts.AccName As Name, Returns_Copy.TAN, Returns_Copy.Quarter, Returns_Copy.FY, Returns_Copy.RetType AS FormNumber, Returns_Copy.OC AS ReturnType FROM [db_Admin].[dbo].[tbl_UserGroup_Registration],Returns_Copy INNER JOIN Accounts ON Returns_Copy.CusID = Accounts.AccID INNER JOIN tbl_ProcessesHistoryofjob ON Returns_Copy.Job_ID = tbl_ProcessesHistoryofjob.MasterID WHERE (tbl_ProcessesHistoryofjob.Job_Status = '#') AND (tbl_ProcessesHistoryofjob.Next_UserID =#) AND (tbl_ProcessesHistoryofjob.Next_UserID = db_Admin.dbo.tbl_UserGroup_Registration.Super_User_Id)AND(tbl_ProcessesHistoryofjob.Is_Sent = '') ORDER BY Returns_Copy.SerialNo_By_Job_Firm
+
+
+
+------------------------
+
+) Need to add a condition for the cases within a project where to clearly indicate whether a project is having VTypes based on XML or are they simply based on third party tables in order to properly fetch back all their data from main page.
+
+
+) Issue in VGrid during paging link click as it shows the Input screen. (done)
+) User Prompts after any kind of form submission
+) VGrids(1&2): on main page not working
+
+) New Project to be run without going to main.aspx page so all main page things would come to the Salary Page.
+) Menu Page - > Service Based (like download file after generation)
+) Reverse
+
+Changes/Additions on Local:
+GridInterface Page (Admin)
+
+Main:
+1) Redirect Policies from Salary Page
+2) Redirect Policies from Main Page (done)
+3) Sometimes it do not show buttons on the Forms (Salary) Page and then show those when we specifically type vtype at url and press enter.
+4) Quarter not to add for all new ITRs
+
+Admin:(83)
+1) Buttons Second Tab, need to show only corresponding buttons or to show panel name along with button there in listing. (done)
+
+Admin: (93):
+1) Issue while button selection some where as it changes the control_PageID value from 100 to form name. (done)
+2) No Provision to make any editing in the page being created already.
+
+Button Management - > Navigation Buttons along with Dynamic Button Control
+
+SendTransData not working when tried within TDS2 for a form
+
+------------------------------------------------------------
+
+Job_ID 
+
+All buttons within one line at bottom
+slider based grids
+Order of buttons: Back - Save - Continue
+
+after uploading 202:
+
+Forms based button implementation
+
+Main Points (Next Phase):
+1) Don't save on every text change but all together saving
+2) Dynamic Buttons Role Wise
+3) 
+
+Error on TDS:
+http://192.168.1.129:85/TDSForms.aspx?Type=Import&menu=Regular&TAN=JLDG02145D&FY=201617&Quarter=Q1&FormNo=Form24Q&AY=201718&AName=GOVT+HIGH+SCHOOL+JHANDER+KALAN&PAN=PANNOTREQD&RoleID=20&UserID=148
+
+Deductee -> Import Excel (24Q)
+
+Method: Insert_Deductee_Excel
+
+
+26-09-16:
+1) Issue while adding new ITR Type in Admin and that further results issues at various places. (done)
+2) Issue while creating new screen as it allows a screen title that is already exists and that later creates problem
+3) Menu to add for T00 Screens with Role Maangement
+4) Listing Page - > Dynamic Button Re-writing (say when someone wants to change a button for any listing page)
+5) Listing Page - > Default Buttons need to write to add forms for corresponding listing (T00)
+
+
+
+jldp00663f
+Q1
+27Q
+
+1) Creation of new methods within Service as need to make new ones for general SendTrans with return value to make sure no duplicacy
+
+
+
+Need to implement new way of coding of buttons on all pages. So need to create new dynamic buttons and to place those or associate those with the vtypes again.
+
+
+
+Points Left:
+1) Menu for T00 Forms from Admin where no listing is there
+2) Service of Saving not working on 202
+3) Redirection Policy: TDSUploading Project + Directory Creation for temp user for further usage
+
+We can create a centralized service for the development purpose in order to combine all projects and get rid of their own personal dlls
+
+Pages to do internal coding like File Creation/Downloading after clicking to menu directly needs to have some option in the project too.
+
+
+1) Dynamic Button Generic Implementation over Salary Page
+2) Main to Salary Page to generically allot the first VType to open
+
+
+
+All Actions on all pages will be worked out using Dynamic Buttons instead of page types. (i.e. IsMaster=1,2,0). Action on that specific page will be decided by the Dynamic buttons.
+
+Admin - Too -> Working now for creating a form with Saving using sendtrans by using extra features.
+
+Dropdown inside Gridview problem: dropdown index change causes all the dropdowns to lost the values.
+
+---------------------------------------------------------
+Session Collection for Inputs
+
+Import Controls in VT5 (Text file import in TDS)
+
+
+Additional:
+) Integration of Softwares like Grid Interface into Admin
+) Data Issues like in Menu Page
+
+
+1) 
+
+to create directory number wise like 1,2,3.. within userdocs/userid like : userdocs/userid/1
+) Formulaes to make work in TDS as for cases like amount in first screen
+----------------------------------------------------
+
+129:83:
+"NAVJEEVAN CHARITABLE SOCIETY FOR INTEGRAL DEVELOPMENT"
+
+
+get the complete URL for the payment gateway to use on "pay" button click
+
+
+Points:
+Buttons on Listing Pages and managed listing pages accordingly
+Resolved a point on Procedure "fetchtrans" where it was throwing error as was not calling well as needed to pass the ID value along with the call.
+SendTransData -> get this procedure done without any bit basis where we needed to always send a bit during procedure call to say whether we want to Add/Update the data.
+
+
+05-09-16:
+To work on listings now. Means to manage listing selections and their functionality by Dynamic button clicks
+------
+
+
+Could not find default endpoint element that references contract 'CommonSvc.IService' in the ServiceModel client configuration section. This might be because no configuration file was found for your application, or because no endpoint element matching this contract could be found in the client element.
+
+          /\
+         /  \
+           |
+last error |
+
+
+tfs_vatas
+DynamicButtons
+DML
+localhost:82
+
+Categorization of Services:
+1) Generic Service like Export/Import from Excel, PDF Conversion etc
+2) Account Services 
+3) Table 
+
+Web Service Reference (ws) to use within Dynamic Buttons Control Project that will be used directly without DML from the vt2 and other projects to call new methods for (tbl_DynamicButton, tbl_DynamicButtonsProperties)
+DML.ServiceReference1.TDS objTDS = new DML.ServiceReference1.TDS();
+
+
+
+http://localhost:8732/Design_Time_Addresses/DML/Service/
+
+pts:
+()Request.RawUrl
+()dt.DefaultView.RowFilter = "EntryID=3";
+dt2=dt.DefaultView.ToTable();
+()
+
+----------------------------------------------------------
+
+Dynamic Buttons - >
+To use in place of all buttons except the Next/Previous buttons. For example, Add Return, Pay on listing page and Save, Add More Returns on salary page. These all buttons will be working from dynamic button control.
+--Also need to check where these dynamic controls are already in use.
+Tables:
+tbl_DynamicButton, tbl_DynamicButtonsProperties
+Find a page where dynamicbuttons is using to check how it uses it for functionality
+------------------------------------------------------
+
+
+
+Main Page Listing - > Upload Control
+
+15068 -> vtype for Uploading Process
+	
+
+
+Procedure to do the following
+
+Accounts with accountgroupid 4,21,23 will not have voucher_details entry with V_Type = 0 and rest all accounts will have
+-------------------------------------------
+
+21-11-15
+
+JLDB00338C
+
+1014996
+
+
+Works:
+1)
+TDS_ID and Amount_WO_ID to get acc to Groups with new queries in BALDAL:
+
+select AccID from accounts where accountgroupid = 20 and NameofFirm='#'
+select AccID from accounts where accountgroupid = 21 and NameofFirm='#'
+
+2) 
+Line:739:
+string Name_Of_Bank = txt_DrawnAt.Text;        
+Name_Of_Bank = txt_ByCash.Text;
+
+3) Refresh of all controls while moving back and forth.
+Also better flow of submissions like don't show the old screen/form and show the successfull message panels instead.
+(i) Bills: Closing of Screen
+(ii) Bill: Intellisense still remains now even after going to new panel and after it get back here.
+(iii) Intellisense in Receipts and Ledger
+(iv) Ledger -> Proper flow where it shows same basic screen after getting the list and forth.
+(v) Ledger - Default Dates
+(vi) Bills-> Search Feature works with betterment as it still allows it after no job left to create the bill.
+
+
+TDS: 2163 -> 2452
+W/O: 2165 -> 2391
+
+965
+224
+
+BALDAL:
+1) bltbl_AccountsGroup.Insert_Data(tbl_AccountsGroup objtbl_AccountsGroup) -> changed
+
+Line:739:
+string Name_Of_Bank = txt_DrawnAt.Text;        
+Name_Of_Bank = txt_ByCash.Text;
+
+----
+TDS: 20
+Amount W/O: 21
+
+
+Admin Section:
+To connect Screening (T00) with GridInterface and Add up to Menu
+
+
+--------------------------------------------------
+192.168.1.129:
+BalDal Change done on 23-08-16 for "Get The Bill_No By Customer ID" where before it was w.r.t. CustID only but now its also w.r.t. JobNumber
+----------------------------------------------------
+
+Control Grid and Forms:
+
+Form: Salary Form
+Listings and new Class Library for Listing Pages only. Listing Pages: For every grid, there will be a new page with some default code written on it
+
+1754
+
+
+20-08:
+
+1) Ledger To Bill Listing (Edit Not working):
+grd_Ledger_RowCommand -> all possible reqd values are passing to bills page but not working for update function. need to workoult on bills page to make it work for both flows(Billing and Ledger) for Editing
+2) Receipts to make work
+3) Export functionality to take from Bikash grids(PrcoessGrids)
+4) Other Testing
+
+
+
+File Records Report from 21/11/15 till date
+
+New Project:
+1) Make NameMast Entry along with registration and take that NameID with you during Login Process.
+
+Session["AssesseeUser"] = "1" - for E-File yourself
+Session["AssesseeUser"] = "2" - for E-FileCA
+Session["AssesseeUser"] = "3" - for TDS New Project
+
+
+
+check following procedure to see the issue in Receipts:
+sp_BalanceDue_Bill
+
+
+
+JLDA01600E
+SR  XEN STORE PSEB JALANDHAR
+
+16-08-16:
+1) Float Grid Issue of showing textbox in place of dropdown some times
+2) Detailed Disucssion with Sir regarding the new TDS Project
+3) ECA Details worked out to manage for both User and NameID as per the case.
+
+
+Clear Billing:
+1) Clear 2 Bill Tables
+2) Set BillID = 0 for returns_copy
+
+-------------------------------------------
+
+1) Salart Listing Issue (TDS)
+
+Deductee TDS Can Not Exceed Challan TDS
+-----------------------------------------------
+
+01-apr-16
+
+------------------------------------------------------------
+Before 11-08-16 (202 uploaded)------
+
+C:\VatasSolution_Directories\2014-2015\VatasInfotech-Online\TDS\27605
+
+JLDT00384G
+tHE nEW INDIA ASSURANCE COMPANY LTD
+
+Uploading to Server:
+baldal:
+ss of dal project: change its drive E:\
+-------------
+
+
+To get the Jquery settings done on Payment Gateway page for CA Assisted
+
+
+we can't have multiple dropdowns in the new grid
+need a working TAN to check something else
+
+
+08-06-16
+3 tasks:
+txt, csi and fvu should process in one flow in C# and not to use timer as it take extra time
+---------------------------------------------------
+
+aappn2136d
+
+
+06-08-16:
+Zip for ITR
+No Zip for TDS
+Implementation of TXT, CSI and FVU on File Generation Page of TDS
+
+----------------------
+
+
+JLDA02813G
+
+Salary Page: 3002 (check for challan dd change as concluded amount not coming)
+MasterID or Job_ID
+------------------------------------
+
+
+On Submission, Employer Category should be prompted on main page.
+
+
+Need to have specific Account for every new User who created from software.
+Because everyone is given the same AccID = 2408
+So our query do not distinguish between that.
+--------------------------
+
+TDS:
+ 
+
+TDS (Screen when selecting a deductee)
+New Return -> New Job
+New Screen in between like ITR(tbl_ITRXML), but in TDS, listing will be from returns_copy as returns_copy will be automatically managed.
+-----------------------------------------------------------
+TDS-Grid: New Grid To show in place of where currently showing tbl_ITRXML Grid on the basis of Returns_Copy:
+
+Select | Correction | Form Name(ITRType) | Name | TAN | FY | Quarter | Return Type(Orig/Correction) | Status (Completed)
+
+Second Screen:
+Add Return Type (Regular/Correction):
+Currently going 'Regular' for all case by default
+
+To make the Control-Links (AY/Change Deductee/My Files) working
+
+aFiles2 (Popup Control):
+TDS 
+------------------------------------------------------------
+
+MyFiles
+Other Controls as per 
+
+
+------------------------------------------------------------
+
+JnK:31/08
+
+TDS Query:
+select rc.SerialNo_By_Firm,rc.TAN,ac.AccName,rc.FY,rc.RetType,rc.Quarter,rc.OC,rc.Job_Date from returns_copy rc
+inner join
+accounts ac on
+ac.AccID=rc.CusID
+ where rc.job_ID>16104 order by rc.job_ID
+
+-----------------------------------
+
+
+showSpinner to put on all records in TDS in order 
+
+TDS:
+1) Deductee Details Page should opened from menu only if there is already some challan existing
+2) Salary Page to show on TDS for Quarter 4 only
+ (i) Salary Page to make work
+3) To test deductee page for both data saving and listing
+4) Deletion function in listings (lstGrids)
+5) 6 Major parts in TDS:
+File Header
+Batch HEader
+Challan Transfer Voucher
+Deductee Details
+Salary Details
+Section VIA
++
+Their Corrections
+6) Deletion on Listing of Challans/Deductee/Salary
+
+-------------------------------------------
+
+
+
+Tan Master
+Challan Details
+Deductee Details
+Salary Details
+
+
+DB Changes:
+tbl_ITRXML (IsSubmitUploaded int)
+mydatabase1.[procGetFloatingHeaders]
+VatasTax_dev.dbo.proc_check_required
+dbAdmin.dbo.tbl_Menu
+dbAdmin.dbo.tbl_UserMenu
+dbMain.dbo.T4
+dbMain.dbo.T30
+[Proc_Check_Requird] again
+
+Nishu
+min height for gridview when no textbox present
+calculation of TDS Floats and take those to outside textbox 
+
+Admin Panel:
+1) Every New Screen as we create it, should automatically add a corresponding menu option in the menu tables.
+2) New Control Grid CSS Class to add while creating a new Control Grid (Query)
+
+
+Control Grid Issues:
+1) When switch on the search in the control grid, new labels are showing above the search textboxes.
+
+
+Zipped Approach:
+C:\Users\harnek\Desktop\DotNetZipLib-DevKit-v1.9\Examples\ASPNET
+
+--------------------------------------------------------
+
+IsCompleted : there is should be a separate bit for it in the table "tbl_itrxml"
+
+
+26/07/16:
+Static Variable Issue along with Session (Common.cs and FileUploadCtrl File)
+
+
+search_tabvalue_from_xml procedure
+
+----LivePerson-------------------------
+User ID/email info@eharteredaccountants.com
+Account number 3687452
+pwd: Save1234
+----------------------------------------------------
+
+AMNPG0596N
+
+Supervisor
+
+Job_ID = 1
+Next_UserID = 12
+
+select distinct tx.ID as ITRXML_ID, rc.Job_ID,tx.ITRType,tx.NameID, CONVERT(varchar(20),AddedOn,103) as Date, rc.SerialNo_By_Job_Firm as JobNo,(isnull(nm.FirstName,'') + ' ' + isnull(nm.MiddleName,'') + ' ' + nm.LastName) as Name, nm.PANNo, (case when tx.ReturnType = 'O' then 'Original' else 'Revised' end) as ReturnType,tx.AY,(case when tx.IsValidated = 1 then 'Completed' else 'Pending' end) as 'Status', 
+pp.Reason_for_Delay as 'Error Msg' from NameMast nm
+inner join
+Tbl_ITRXML tx on
+tx.NameID = nm.NameID
+left outer join
+VatasSolution.dbo.Returns_Copy rc on
+rc.Job_ID = tx.Job_ID
+left outer join
+VatasSolution.dbo.tbl_ProcessesHistoryofjob pp on
+pp.MasterID = rc.Job_ID
+where nm.username in(select EmailID from db_Admin.dbo.tbl_UserGroup_Registration where OrganizationName=#) and rc.Job_ID in(select MasterID from VatasSolution.dbo.tbl_ProcessesHistoryofjob where Next_UserID=# and Is_Sent = 'N')
+
+
+
+Pan with Issue:
+
+"ALPPM3112R"
+
+Supervisor_Verif
+ page
+
+19-07-16:
+Uploading
+
+)Create another page for Main Page Second Grid:
+
+) This will be called when selecting one Assessee from Reception default page.
+
+) No Select, Revise buttons this time
+) "New Return" below button will be used only to put initial inputs (i.e. on Main page right now) and it will create a new return and a new job.
+) New/Revised (Buttons)
+
+
+
+BACK OFFICE
+ASSIGNED
+DATA ENTRY COMPLETED
+UPLOADED
+
+_DummyData
+
+
+CssClass
+AlternatingRowStyle-CssClass
+HeaderStyle-CssClass
+
+
+For Reception User:
+when adding an assessee and press Save button, in addition to adding a new assessee, record in tbl_itrxml, it will also add a record in the job table here.
+---------------------------------------------
+
+
+Gurdev:
+Manjit Singh (Issue in Return)
+"BXLPS1026F"
+-------------------------------------
+
+GridControl(controllllllll):
+VGrid.cs:
+Line: 1330 start with it
+
+------------
+
+User Types:
+U S BMC A E US D
+
+Organization: 3
+Account_Type: U
+tbl_User_Info.Role = 'Reception'
+Session["Role"]
+
+
+
+javascript:SetPage("TANMaster","#","#","#")
+
+HUF Calculation: proccalcITax updated on 202
+Test and then will do on 103
+--------------------------------------------------
+
+13/07/16:
+) User Locked and Verification Link PRocess
+) Price Guide Point
+) Float Grid Add Button Validation
+
+
+update calcisal:
+202
+
+
+Position of alert_custom popup (main page)
+also 2 lines of css should be within it globally
+
+
+https://192.168.1.150/itr-faq
+
+
+Save Issue in 106 as its not binding at continue click everyime
+
+instamojo.com
+
+07-07-16:
+1) User Creation of Assessee via Import Return
+2) 
+
+
+
+421: NIL to Int
+
+
+
+Format of the initialization string does not conform to specification starting at index 0.
+
+
+Pop to run on main page as its going there but no showing
+
+
+User Mgmt:
+FO/SU/BO/M/user/
+
+tbl_ScreenNavigation
+
+Presentation/salary page
+usercontrols/header.ascx 
+Presentation/income_statement.aspx.cs
+Presentation/main page
+Presentation/scripts/jquery_scripts.js
+Presentation/ECA_Details
+Presentation/AssesseeSelect
+
+
+Type 
+
+(
+
+)dalXML
+
+
+print challan
+itr preview
+
+
+Completed - > both O and R get completed (need to see in sweeta proc)
+
+captcha wrong: no message (Registration Page)
+
+308 procs
+
+System.Web.Routing
+
+IIS Server  Session Points:
+
+
+Zipping and Saving to Server (New Directory :
+
+C:\Directories\Job_ID
+
+C:\Users\harnek\AppData\Local\Temp\Temporary ASP.NET Files
+
+pdf,jpg,gif,png,doc,docx,xls,xlsx,xml,csv,txt,zip,rar
+
+Required -> Invalid Value
+
+30-06-16:
+
+Error:
+Error Log
+---------------
+MyFiles: 
+Upload Files Concept: 82:
+JobWork.aspx (gvDetails)
+----------------
+URL Masking
+
+
+return validateDate(this,'01/04/2016')
+
+29-06-16:
+validateAY_DOB()
+
+28-06-16: 
+
+) 10+ records to import in TDS other than Sal: Done
+
+
+
+581
+
+[Generic_Ref_XMLTableConstID_Bulk]
+ function to check for no of records (<10) Float using Harshit ji xML
+
+382
+363634
+
+getSum_Col(9,9072,this)
+
+27-06-16:
+Issues:
+) XML Import : Not coming complete list of records (Tax Details: Income Other Than Sal) (done)
+) Donation not coming out (done)
+) Tax Details : TDS On Salary not coming out (done)
+) Speed issues worked out with nishu  (done)(echarteredaccountants.com)
+
+
+grdView_SelectedIndexChanged
+GetDatabaseDetails
+
+
+Revised Return - new return (tbl_itrxml)
+Dir_Path (Returns_Copy) -> 
+
+
+no more record for same AY-ITR-NameID within tbl_itr_xml unless its revised
+
+Ay/ITR/NameID/ReturnType
+
+Single User:
+ADD NEW ASSESSEE - > Remove
+
+AssesseeSelect:
+Also allow S in the 4 th PAN charater
+
+
+Invoice to be made for every record at our side
+
+
+dbMainT00
+tbl_xml_tag
+tbl_screennavigation
+procedure: proc_xml_reverse_bulk (pending)
+----------------------------------------
+
+Country Code Table to Set
+
+tbl_OnlinePaymentRecd
+
+
+CA Assisted:
+Save Assessee -> ProcSendTransData -> 
+
+AssesseeSelect.aspx:
+Create Job there conditionally
+
+After 106 - > Wizard of Payment gate way and then payment - > on successfull transaction, add a record in VatasSolution.tbl_OnlinePaymentRecd and get data from excel file named "5538265SettlementList20160622201326" on desktop.
+
+with following fields:
+1) TransactionID 2) Date of Transaction 3) Amount 4) CustomerName 5) CustomerEmail
+
+note: while sending to transaction to paymoney, send super_user_id as customername
+
+Payment Successfully done.

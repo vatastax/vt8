@@ -1,0 +1,466 @@
+CREATE PROCEDURE [dbo].[procCalcTax]
+(
+	@AYear Varchar(100),
+	@vtype Decimal,
+	@gioNameID nvarchar(500),
+	@duedate nvarchar(100),
+	@AssesseType Int,
+	@gInTaxCalc Int,
+	@CalculateCess bit,
+	@Method1 bit,
+	@gComboYr Varchar(100)='', 
+	@gComboStatus int=-1,
+	@gRelief Decimal,
+	@gIFS Decimal Output,  --Income From Salary
+	@gIFHP Decimal Output,  --Income From House property
+	@gIFBUS Decimal Output, --Income From Bussiness
+	@gIFSTCG Decimal Output,
+	@gIFLTCG Decimal Output,
+	@gIFOS Decimal Output,
+	@gDED Decimal Output,
+	@gDED1 Decimal Output,--
+	@gICE Decimal Output,
+	@gAI Decimal Output,--
+	@gTDS Decimal Output,--
+	@gTCS Decimal Output,--
+	@gSelfAss Decimal Output,--
+	@gATP Decimal Output,--
+	@gClub Decimal Output,
+	@gCasuInc Decimal Output,
+	@gGIT Decimal Output,
+	@gTI Decimal Output,
+	@gNIT Decimal Output,
+	@gSum_234 Decimal Output,
+	@gEducationCess Decimal Output,
+	@gSURCHARGE Decimal Output,
+	@Rebate87A Decimal Output
+)
+As
+Begin
+	--Declare @gTI Decimal
+	Declare @tmpTotal Decimal
+	Declare @tmpVal Decimal
+	Declare @TotBeforeLTCG Decimal
+	Declare @TotalIncome Decimal
+	Declare @AgriIncome Decimal
+	Declare @gAgriRebate Decimal
+	Declare @groRep0 Decimal
+	Declare @groRep1 Decimal
+	Declare @groRep2 Decimal
+	Declare @X Decimal
+	--Declare @gNIT Decimal
+
+	Declare @dob DateTime
+	Declare @salute int
+	Declare @gForAgriInc int
+	Declare @GIT1 Decimal
+	Declare @GIT2 Decimal
+	Declare @gTaxPayableOnAggrigateIncome Decimal
+	Declare @param1 Decimal
+	Declare @Row28 Decimal
+	Declare @Row29 Decimal
+	Declare @StatAmt Float
+	Declare @NIT Decimal
+	Declare @gMATIncome Decimal
+	Declare @gMATGIT Decimal
+	Declare @gIsMATCalc bit
+	Declare @gMATSur Decimal
+	Declare @gMATTaxCr Decimal
+	Declare @gMATCess Decimal
+	Declare @gMATTax Decimal
+	Declare @gEduCess Decimal
+	Declare @gSCHARGE Decimal
+
+	Set @groRep1 = 0
+	Set @groRep2 = 0
+	Set @tmpTotal = 0
+	Set @tmpVal = 0
+	
+	Set dateformat dmy
+
+	if @gIFOS is null
+		Set @gIFOS = 0
+
+	if @gCLUB is null 
+		Set @gCLUB = 0
+
+	if @gICE is null 
+		Set @gICE = 0
+
+	-- Fetching PAN No into 
+--	Print 'ss'
+--	Print @AYear + ' , 40,' + @gioNameID + ', ' +  @duedate + ' , 1,1, 1, 1, ' + @AYear + ' ,  1, ' +  @gRelief + ' , ' +  @gIFS + ', ' + @gIFHP + ' , ' +   @gIFBUS + ', ' +  @gIFSTCG  + ' , ' +  @gIFLTCG + ' , ' +  @gIFOS + ' , ' +  @gDED + ' , ' +  @gDED1  + ' , ' + @gICE + ' , ' + @gAI + ' , ' + @gTDS + ', ' +  @gTCS + ' , ' +  @gSelfAss + ' , ' +  @gATP + ' , ' + @gClub + ' , ' +  @gCasuInc + ', ' +  @gGIT + ' , ' +  @gTI + ' , ' + @gNIT + ' , ' +  @gSum_234
+--	Print @gioNameID
+
+
+	Declare @gITDet1 as Decimal
+	Declare @gITDet2 as Decimal
+	Declare @gTFLTCG as Decimal
+
+
+
+	Select @vtype = VType from namemast where NameID = @gioNameID
+	Select @gioNameID = PANNo from namemast where NameID = @gioNameID
+	Declare @NameID as nvarchar(50)
+	  Select @NameID = NameID from namemast where PANNo=cast(@gioNameID as nvarchar(50))
+	If(Cast(Left(@AYear, 4) As Decimal)>2005)
+	  Begin
+		Set  @tmpVal = (@gIFS + @gIFHP + @gIFBUS + @gIFOS + @gCLUB) - @gICE
+
+		  If @tmpVal >= @gDED 
+		    Begin
+		          Set @tmpVal = @tmpVal - @gDED - @gDED1 
+		          Set @TotBeforeLTCG = @tmpVal + @gIFSTCG
+		          Set @tmpVal = @tmpVal + @gIFLTCG + @gIFSTCG
+		          --Set @gDED = 0
+		     End
+		  Else
+		     Begin
+		           Set @gDED = @tmpVal
+		           Set @TotBeforeLTCG = @gIFSTCG
+		           Set @tmpVal = @gIFLTCG + @gIFSTCG
+		     End 
+
+		Set @tmpTotal = @tmpVal
+        	Set @gTI = @tmpTotal
+	  End
+	Else
+	  Begin
+		Set @gTI = @gIFS + @gIFHP + @gIFBUS + @gIFSTCG + @gIFLTCG + @gIFOS + @gCLUB - (@gDED + @gICE)
+	  End	
+	
+	If(@tmpTotal + @TotBeforeLTCG) > 0
+	  Begin
+		Set @tmpTotal = @tmpTotal + @TotBeforeLTCG
+	  End
+	Else
+	  Begin
+		Set @tmpTotal = 0
+	  End
+
+	If Cast(Left(@AYear, 4) As Decimal) > 2005
+	  Begin
+		--Select @salute=Salute, @dob=Cast(DateOfBirth As DateTime) From NameMast Where PanNo=@gioNameID And VType=@vtype
+	  	Declare @temp_var nvarchar(500)
+Select @temp_var = DateOfBirth From NameMast Where PanNo=cast(@gioNameID as nvarchar) And VType=@vtype
+print '@temp_var : '
+print @temp_var
+		Select @salute=Salute, @dob=Convert(nvarchar(50),DateOfBirth,10) From NameMast Where PanNo=cast(@gioNameID as nvarchar) And VType=@vtype	--changed by Ankush because of datetime error
+	  		print 'well here too -1 '
+
+		If (DateDiff(Year,@dob,getdate())>65)
+		  Begin
+			Set @TotalIncome=180000
+		  End
+		
+		If(DateDiff(Year,@dob,getdate())<65 And @salute=0)
+		  Begin
+			Set @TotalIncome=100000
+		  End
+		Else
+		  Begin
+			Set @TotalIncome=135000
+		  End
+		Set @AgriIncome = 5000  	
+	  End
+	Else
+	  Begin
+		Set @TotalIncome = 50000
+		Set @AgriIncome = 600
+	  End
+
+	Set @gAgriRebate = 0
+	IF(@tmpTotal >= @TotalIncome And @gAI >= @AgriIncome)
+	  Begin
+		Set @groRep0 = @gAI
+	
+		--Getting Rebate on Agricultural Income
+		If(@gInTaxCalc = 0)
+		  Begin
+			Set @gForAgriInc = 1
+			Set @param1 = @gAI + @TotalIncome
+			--Exec procCalcITax @param1, @AYear, @AssesseType, @gCasuInc, @gIFLTCG, 1, @gioNameID, @vtype, @Method1, @groRep2, @paramOutput=@X Output
+			Exec procCalcITax @param1, @AYear, @AssesseType, @gCasuInc, @gIFLTCG, 1, @gioNameID, @vtype, @Method1, @groRep2, @paramOutput=@X Output,@gITDet1 = @gITDet1 Output, @gITDet2 = @gITDet2 Output, @gTFLTCG = @gTFLTCG Output, @gSURCHARGE = @gSURCHARGE Output, @gEducationCess=@gEducationCess Output, @gGIT = @gGIT Output, @Rebate87A =@Rebate87A Output 
+			Set @gAgriRebate = @X
+		  End	
+		Else
+		  Begin
+			Set @gForAgriInc = 1
+			Set @param1 = @gAI + @TotalIncome
+         		--Exec procCalcITax @param1, @gComboYr, @gComboStatus, 0, @gIFLTCG, 1, @gioNameID, @vtype, @Method1, @groRep2, @paramOutput=@gNIT Output
+				Exec procCalcITax @param1, @gComboYr, @gComboStatus, 0, @gIFLTCG, 1, @gioNameID, @vtype, @Method1, @groRep2, @paramOutput=@gNIT Output,@gITDet1 = @gITDet1 Output, @gITDet2 = @gITDet2 Output, @gTFLTCG = @gTFLTCG Output, @gSURCHARGE = @gSURCHARGE Output, @gEducationCess=@gEducationCess Output, @gGIT = @gGIT Output, @Rebate87A =@Rebate87A Output
+		  End
+		Set @GIT2 = @gGIT
+      		Set @groRep2 = @GIT2
+      		Set @gGIT = 0
+
+		If @gInTaxCalc = 0
+		  Begin
+			Set @gForAgriInc = 1
+         		Set @param1 = (@gIFS + @gIFHP + @gIFBUS + @gIFSTCG + @gIFOS + @gCLUB + @gAI - @gCasuInc) - (@gDED1 + @gICE)
+			--Exec procCalcITax @param1, @AYear,@AssesseType, @gCasuInc, @gIFLTCG, 1, @gioNameID, @vtype, @Method1, @groRep2, @paramOutput=@gNIT Output
+			Exec procCalcITax @param1, @AYear,@AssesseType, @gCasuInc, @gIFLTCG, 1, @gioNameID, @vtype, @Method1, @groRep2, @paramOutput=@gNIT Output,@gITDet1 = @gITDet1 Output, @gITDet2 = @gITDet2 Output, @gTFLTCG = @gTFLTCG Output, @gSURCHARGE = @gSURCHARGE Output, @gEducationCess=@gEducationCess Output, @gGIT = @gGIT Output, @Rebate87A =@Rebate87A Output
+		  End
+      		Else
+		  Begin
+			Set @gForAgriInc = 1
+			Set @param1 = (@gIFS + @gIFHP + @gIFBUS + @gIFSTCG + @gIFOS + @gCLUB + @gAI) - (@gDED1 + @gICE)
+			--Exec procCalcITax @param1, @gComboYr, @gComboStatus, @gCasuInc, @gIFLTCG, 1, @gioNameID, @vtype, @Method1, @groRep2, @paramOutput=@gNIT Output
+			Exec procCalcITax @param1, @gComboYr, @gComboStatus, @gCasuInc, @gIFLTCG, 1, @gioNameID, @vtype, @Method1, @groRep2, @paramOutput=@gNIT Output,@gITDet1 = @gITDet1 Output, @gITDet2 = @gITDet2 Output, @gTFLTCG = @gTFLTCG Output, @gSURCHARGE = @gSURCHARGE Output, @gEducationCess=@gEducationCess Output, @gGIT = @gGIT Output, @Rebate87A =@Rebate87A Output
+      		  End
+		Set @GIT1 = @gGIT
+      		Set @gTaxPayableOnAggrigateIncome = @gNIT
+      		Set @groRep1 = @GIT1
+      		Set @gGIT = @GIT1 - @GIT2
+	  End	
+	Else
+	  Begin
+
+		If Cast(Left(@AYear, 4) As Decimal) < 2005
+	  	  Begin
+			If @gInTaxCalc = 0
+			  Begin 
+				Set @param1 = (@gIFS + @gIFHP + @gIFBUS + @gIFSTCG + @gIFOS + @gCLUB) - (@gCasuInc + @gDED1 + @gICE)
+				--Exec procCalcITax @param1,  @AYear,@AssesseType, @gCasuInc, @gIFLTCG, 1, @gioNameID, @vtype, @Method1, @groRep2, @paramOutput=@gNIT Output
+				Exec procCalcITax @param1,  @AYear,@AssesseType, @gCasuInc, @gIFLTCG, 1, @gioNameID, @vtype, @Method1, @groRep2, @paramOutput=@gNIT Output,@gITDet1 = @gITDet1 Output, @gITDet2 = @gITDet2 Output, @gTFLTCG = @gTFLTCG Output, @gSURCHARGE = @gSURCHARGE Output, @gEducationCess=@gEducationCess Output, @gGIT = @gGIT Output, @Rebate87A =@Rebate87A Output
+			  End
+		        Else
+			  Begin
+				Set @param1 = (@gIFS + @gIFHP + @gIFBUS + @gIFSTCG + @gIFOS + @gCLUB) - (@gDED1 + @gICE)
+				--Exec procCalcITax @param1,  gComboYr, gComboStatus, 0, gIFLTCG, 1, @gioNameID, @vtype, @Method1, @groRep2, @paramOutput=@gNIT Output
+				Exec procCalcITax @param1,  gComboYr, gComboStatus, 0, gIFLTCG, 1, @gioNameID, @vtype, @Method1, @groRep2, @paramOutput=@gNIT Output,@gITDet1 = @gITDet1 Output, @gITDet2 = @gITDet2 Output, @gTFLTCG = @gTFLTCG Output, @gSURCHARGE = @gSURCHARGE Output, @gEducationCess=@gEducationCess Output, @gGIT = @gGIT Output, @Rebate87A =@Rebate87A Output
+		          End
+		  End
+		Else
+		  Begin
+		 
+		  --Declare @gSURCHARGE as Decimal
+		  --Declare @gEducationCess as Decimal
+		  
+		  
+		  --Set @gITDet1 = 0
+
+		  -- Following Code is for special case when Net Income is less than or equal to 500,0000 then 2000 rs (max) will be reduced from 
+print 'well here too'
+
+		  
+			Exec procCalcITax @TotBeforeLTCG, @AYear, @AssesseType, 0, @gIFLTCG, 1, @gioNameID, @vtype, @Method1, @groRep2, @paramOutput=@gNIT Output,@gITDet1 = @gITDet1 Output, @gITDet2 = @gITDet2 Output, @gTFLTCG = @gTFLTCG Output, @gSURCHARGE = @gSURCHARGE Output, @gEducationCess=@gEducationCess Output, @gGIT = @gGIT Output, @Rebate87A =@Rebate87A Output
+print 'not sure here'
+		  End
+		Set @gTaxPayableOnAggrigateIncome = @gNIT
+	  End
+	Set @gNIT = @gNIT - @gRelief
+   	If(@tmpTotal > 0)
+	  Begin
+		Set @tmpTotal = @tmpTotal
+	  End
+	Else
+	  Begin
+		Set @tmpTotal = 0
+	  End
+
+	If(@gGIT > 0)
+	  Begin
+		Set @gGIT = @gGIT
+	  End
+	Else
+	  Begin
+		Set @gGIT = 0
+	  End
+
+   	If(@gNIT > 0)
+	  Begin
+		Set @gNIT = @gNIT
+	  End
+	Else
+	  Begin
+		Set @gNIT = 0
+	  End
+	--For Getting the Amount of Book Profit
+	If Exists (SELECT * FROM StoreTrans WHERE NameID = @NameID AND ConstantID=532 and AY=@AYear)
+	  Begin
+		Declare curStoreTrans Cursor For
+			SELECT Cast(Col3 As Decimal) FROM StoreTrans WHERE NameID = @NameID AND ConstantID=532 and AY=@AYear
+
+		Open curStoreTrans
+		Fetch curStoreTrans into @Row28
+		Close curStoreTrans
+		Deallocate curStoreTrans
+	  End
+
+	--For Getting Tax Credit of Minimum Alternative Tax u/s 115 JAA
+	If Exists (SELECT * FROM StoreTrans WHERE NameID = @NameID AND ConstantID=533 and AY=@AYear)
+	  Begin
+		Declare curStoreTrans Cursor For
+			SELECT Cast(Col3 As Decimal) FROM StoreTrans WHERE NameID = @NameID AND ConstantID=533 and AY=@AYear
+
+		Open curStoreTrans
+		Fetch curStoreTrans into @Row29
+		Close curStoreTrans
+		Deallocate curStoreTrans
+	  End
+
+	--For Getting Tax Credit of Minimum Alternative Tax u/s 115 JAA
+	If Exists (SELECT * FROM dbMain.dbo.T00 WHERE C1 = 532 AND C21 = @AYear)
+	  Begin
+		Declare curT00_1 Cursor For
+			SELECT Cast(C15 As float) FROM dbMain.dbo.T00 WHERE C1 = 532 AND C21 = @AYear
+			
+		Open curT00_1 
+		--Fetch First From curT00_1 into @StatAmt
+		Fetch curT00_1 into @StatAmt	-- changed by Ankush on 24-10-14
+		Close curT00_1 
+		Deallocate curT00_1 
+		--Following is to resolve an issue where it was showing 8 as value but should have 7.5 rather (ankush)
+		if @StatAmt = 8
+			Select @StatAmt = Cast(C15 As float) FROM dbMain.dbo.T00 WHERE C1 = 532 AND C21 = @AYear
+	  End
+
+	Set @NIT = @gNIT
+	If @Row28 <> 0
+	  Begin
+		Set @gMATIncome = @Row28
+      		Set @gMATGIT = Round(@gMATIncome * (@StatAmt / 100), 0)
+		If @gMATGIT < 0
+		  Begin
+         		Set @gMATGIT = 0
+		  End
+      		Set @gIsMATCalc = 1
+		If @NIT >= @gMATGIT 
+		  Begin
+         		Set @gIsMATCalc = 0 --Do Nothing
+		  End
+		Else
+		  Begin
+         		Set @gIsMATCalc = 1
+         		Set @gMATIncome = Round(@Row28, 0)
+         		Set @gMATGIT = Round(@gMATIncome * (@StatAmt / 100), 0)
+
+         		If @gMATGIT < 0 
+			  Begin
+		            Set @gMATGIT = 0
+         		  End
+
+			If Cast(Left(@AYear, 4) As Decimal) > 2005
+	  	  	  Begin
+				Set @gMATSur = @gMATGIT * 0.1
+			  End
+			Else
+			  Begin
+				Set @gMATSur = @gMATGIT * 0.2
+			  End
+
+			Set @gMATTaxCr = @Row29
+
+			If Cast(Left(@AYear, 4) As Decimal) > 2005
+	  	  	  Begin
+				Set @gMATCess = @gMATGIT * 0.02
+			  End
+			
+			If @gMATTaxCr > (@gMATGIT + @gMATSur)
+			  Begin
+            			Set @gMATTaxCr = @gMATGIT + @gMATSur + @gMATCess
+			  End
+         		Else
+			  Begin
+            			Set @gMATTaxCr = @gMATTaxCr
+         		  End
+
+			If Cast(Left(@AYear, 4) As Decimal) > 2005
+	  	  	  Begin
+				Set @gMATTax = (@gMATGIT + @gMATSur + @gMATCess) - @gMATTaxCr
+			  End
+			Else
+			  Begin
+				Set @gMATTax = @gMATGIT + @gMATSur - @gMATTaxCr
+			  End
+			If(@gMATTax < 0)
+			  Begin
+				Set @gMATTax = 0
+			  End
+			Else
+			  Begin
+				Set @gMATTax = Round(@gMATTax, 0)
+			  End
+		  End
+	  End
+	Else
+	  Begin
+		 Set @gTI = Round((@gIFS + @gIFHP + @gIFBUS + @gIFLTCG + @gIFSTCG + @gIFOS + @gCLUB - (@gDED1 + @gICE + @gDED)), 0)
+	  End
+
+	  print 'well here ---'
+
+	--Save Surcharge and Education Cess in StoreTrans
+	-- First Tax function named fnCalcTax() ends here (as in vb6)
+
+--						IF Exists (Select * FROM StoreTrans WHERE ConstantID IN (199001,199002,199003,199004))
+--						  Begin
+							--Saving of Education Cess
+--							Exec procUpdateStoreTransAll @NameID, 998, @AYear, @gioNameID, @gEduCess, 199001, 0, 'EducationCess', 0, -1, 'Education Cess', 0, 0, 1001 
+							--Saving of Surcharge Amount
+--							Exec procUpdateStoreTransAll @NameID, 998, @AYear, @gioNameID, @gSCHARGE, 199002, 0, 'SurchargeOnTaxPayable', 0, -1, 'Surcharge', 0, 0, 1001 
+							--Saving Aggregate Income
+--							Exec procUpdateStoreTransAll @NameID, 998, @AYear, @gioNameID, @groRep1, 199003, 0, '', 0, -1, 'Net Aggregate Income', 0, 0, 1001 
+							--Saving Non-Aggregate Income
+--							Exec procUpdateStoreTransAll @NameID, 998, @AYear, @gioNameID, @gEduCess, 199004, 0, '', 0, -1, 'Rebate in respect of agriculrtural income', 0, 0, 1001 
+--						  End
+--						Else
+--						  Begin
+--							Exec procUpdateStoreTransAll @NameID, 998, @AYear, @gioNameID, @gEduCess, 199001, 0, 'EducationCess', 0, -1, 'Education Cess', 0, 0, 1001 
+	
+--							Exec procUpdateStoreTransAll @NameID, 998, @AYear, @gioNameID, @gSCHARGE, 199002, 0, 'SurchargeOnTaxPayable', 0, -1, 'Surcharge', 0, 0, 1001 
+
+--							Exec procUpdateStoreTransAll @NameID, 998, @AYear, @gioNameID, @groRep1, 199003, 0, '', 0, -1, 'Net Aggregate Income', 0, 0, 1001 
+
+--							Exec procUpdateStoreTransAll @NameID, 998, @AYear, @gioNameID, @gEduCess, 199004, 0, '', 0, -1, 'Rebate in respect of agriculrtural income', 0, 0, 1001 
+--						  End
+
+
+--if @gTI <= 500000
+--Begin
+
+--End
+
+
+print 'yes here'
+Set @gNIT = @gNIT - @Rebate87A
+Exec procCalc234 0,	@NameID,	998, @AYear, 0, 0, @gNIT, @gEducationCess, @gSURCHARGE, @duedate, @gATP, @gSum_234 output, @gNIT output
+print 'last well'
+ --@paramOutput=@gNIT Output,@gITDet1 = @gITDet1 Output, @gITDet2 = @gITDet2 Output, @gTFLTCG = @gTFLTCG Output, @gSURCHARGE = @gSURCHARGE Output, 
+ --@gEducationCess=@gEducationCess Output, @gGIT = @gGIT Output, @Rebate87A =@Rebate87A Output
+
+ --Following lines of code are to add up the values for the Total Tax, Total Tax Due and Tax Payable/Refund:
+
+ Declare @tax_payable decimal
+Set @tax_payable = @gGIT - @Rebate87A + @gSURCHARGE + @gEducationCess
+print @tax_payable
+if exists(select * from StoreTrans where NameID = @NameID and AY = @AYear and ConstantID = 918)
+	update StoreTrans set col3 = @tax_payable where NameID = @NameID and AY = @AYear and ConstantID = 918
+else
+	Exec procInsertStoreTransAll @NameID, 49, @AYear, @NameID, @tax_payable, 918, 0, '', 0,0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, '', 0, 0, 0	--Total Tax (918)
+
+Set @tax_payable = @tax_payable - @gRelief + @gSum_234 
+if exists(select * from StoreTrans where NameID = @NameID and AY = @AYear and ConstantID = 1118)
+	update StoreTrans set col3 = @tax_payable where NameID = @NameID and AY = @AYear and ConstantID = 1118
+else
+	Exec procInsertStoreTransAll @NameID, 49, @AYear, @NameID, @tax_payable, 1118, 0, '', 0,0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, '', 0, 0, 0		--Total Tax Due(1118)
+
+
+Declare @amtPaid as decimal
+Select @amtPaid = sum(cast(col3 as decimal)) from StoreTrans where VType=104 and NameID = @NameID
+Set @tax_payable = @tax_payable - @amtPaid
+print 'last well - 2'
+if exists(select * from StoreTrans where NameID = @NameID and AY = @AYear and ConstantID = 1120)
+	update StoreTrans set col3 = @tax_payable where NameID = @NameID and AY = @AYear and ConstantID = 1120
+else
+begin
+	Exec procInsertStoreTransAll @NameID, 49, @AYear, @NameID, @tax_payable, 1120, 0, '', 0,0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, '', 0, 0, 0 	--Payable/Refund(1120)
+	print 'else'
+end
+	
+	print '@tax_payable'
+	print @tax_payable
+
+	Return
+End

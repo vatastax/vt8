@@ -1,0 +1,322 @@
+﻿/*********** BUTTON *************/
+.cbdb-menu li {
+	display: block;
+	float: left;
+	line-height: 35px;
+	list-style:none;
+	margin: 0 5px;
+	
+	
+}
+.cbdb-menu li a {
+	/* This generators the gradient on top of the solid color */
+	color: #000000;
+	background-color:#E7E1E1;
+
+	/*background:transparent;*/
+	display: block;	
+	font: bold 16px "Myriad Pro","Lucida Grande",Helvetica,Arial,sans-serif;		
+	outline:none;
+	padding: 5px 10px;
+	text-decoration: none;
+	/*text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);*/
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px; 
+	box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.65);
+	-moz-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.65);
+	-webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.65);
+/*	margin-bottom:10px;*/
+
+	
+
+	
+
+	
+}
+
+.cbdb-menu li a:hover
+{
+    color: #ef5845; 
+    
+    
+ }
+ .cbdb-menu li a:active
+{
+    color: #ef5845;   
+ }
+	/*.cbdb-menu li a:active {
+		background-image: -webkit-gradient(
+			linear,
+			left bottom,
+			left top,
+			color-stop(0,rgba(255,255,255,.5)),
+			color-stop(.1,rgba(255,255,255,.2)),
+			color-stop(.85, rgba(0,0,0,.2)),
+			color-stop(100, rgba(0,0,0,.4))
+		);
+		background-image: -moz-linear-gradient(
+			center bottom,
+			rgba(255,255,255,.5) 0%,
+			rgba(255,255,255,.2) 10%,
+			rgba(0,0,0,.2) 85%,
+			rgba(0,0,0,.4) 100%
+		);
+	}*/
+	
+	
+.cbdb-menu li ul, .cbdb-menu ul li  {
+	width: auto;
+	
+}
+		/*for displaying submenu*/
+	.cbdb-menu li ul
+	{
+	    display:none;
+	
+	}
+	.cbdb-menu li ul
+	{
+	    
+	   margin-left:-10px;
+	    
+	    
+	}
+	/*
+	.cbdb-menu li ul {
+	display: block;
+	padding:0px;
+	position:absolute;
+	left:0px;
+	z-index:2001;
+	
+	
+
+	
+}*/
+.cbdb-menu li ul a {
+	
+	padding-bottom:5px;
+	color: #F7EFEF!important;
+	background-color:#646060 !important;
+	opacity:0.9;
+	float:left;
+/*	margin-top:5px;*/
+	margin-left:0px;
+	text-shadow:none;
+	font:18px;
+	font-weight:normal;
+	border-radius:0;
+	z-index:1;
+/*	margin-top:10px;*/
+	
+	
+	
+	
+}
+.cbdb-menu li ul a:hover
+{
+    
+    
+    text-decoration:underline;
+}
+
+/*.cbdb-menu ul a:hover {
+	background-color: #5c92fa!important;
+	color: #FFFFFF !important;
+*/
+	
+	
+	
+
+/*}*/
+.submenu
+{
+    float:left;
+}
+.mainmenu
+{ 
+}
+/* Dark Text */
+.cbdb-menu li a.dark {
+	color: #333; /* IE */
+	color: rgba(0, 0, 0, 0.8);
+	text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.4);
+}
+/*********** COLORS *************/
+/* Create your own class for your own colors */
+.red {
+	background: #B80202;
+	border: #B80202 1px solid
+}
+	.red:hover, .red:focus{
+		background-color:#e30606
+	}
+.green {
+	background: #46c431;
+	border: #46c431 1px solid
+}
+	.green:hover,.green:focus {
+		background-color:#44e329
+	}
+.yellow {
+	background: #D9CE1C;
+	border: #D9CE1C 1px solid
+}
+	.yellow:hover,.yellow:focus {
+		background-color:#eee117
+	}
+.cyan {
+	background: #23c6de;
+	border: #23c6de 1px solid
+}
+	.cyan:hover,.cyan:focus {
+		background-color:#18d8f4
+	}
+.blue {
+	background: #3271d9;
+	border: #3271d9 1px solid;
+
+
+}
+.blue:active
+{background-color:#377ef2;
+}
+	/*.blue:hover,.blue:focus {
+		background-color:#377ef2
+	}*/
+/*container for submenu nishu6/4/2015*/
+.dropdown {
+width: auto;
+left: 0;
+color: #333;
+padding: 0;
+margin: 0;
+display: none;
+position: absolute;
+top: 100%;
+border: 1px solid #bbb;
+border-top: none;
+border-radius: 0 0 3px 3px;
+box-shadow: 0 6px 6px rgba(0,0,0,.175);
+}
+inner {
+text-align: center;
+padding: 20px;
+margin: 0;
+background-color: #e4e7ea;
+white-space: nowrap;
+font-size: 13px;
+line-height: 1.35;
+}
+.active
+{
+   
+    background-color:#cccccc;
+    
+    outline:none;
+    height:35px;
+    
+	color:Red;
+	
+
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px; 
+	box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.65);
+	-moz-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.65);
+	-webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.65);
+
+}
+/*****************************************************
+ * generic styling for ALS elements: outer container
+ ******************************************************/
+
+.als-container {
+	position: relative;
+	width: 100%;
+	margin: 0px auto;
+	z-index: 0;
+}
+
+/****************************************
+ * viewport styling
+ ***************************************/
+
+.als-viewport {
+	position: relative;
+	overflow: hidden;
+	margin: 0px auto;
+}
+
+/***************************************************
+ * wrapper styling
+ **************************************************/
+
+.als-wrapper {
+	position: relative;
+	/* if you are using a list with <ul> <li> */
+	list-style: none;
+}
+
+/*************************************
+ * item: single list element
+ ************************************/
+
+.als-item {
+	position: relative;
+	display: block;
+	text-align: center;
+	cursor: pointer;
+	float: left;
+}
+
+/***********************************************
+ * prev, next: buttons styling
+ **********************************************/
+ 
+.als-prev{
+	position: absolute;
+	cursor: pointer;
+	clear: both;
+	margin-left:140px;
+}
+.als-next {
+	position: absolute;
+	cursor: pointer;
+	clear: both;
+	margin-left:1150px;
+	margin-top:-50px;
+}
+
+/*submenu of submenu*/
+.cbdb-menu li:hover ul ul {display:none;} /* hides sub-sublists */
+
+.cbdb-menu li:hover ul {display:block;} /* shows sublist on hover */
+
+.cbdb-menu li li:hover ul {
+    display:block; /* shows sub-sublist on hover */
+
+
+    }
+   
+  
+   .cbdb-menu li li a {font-size:80%;
+                     
+                     
+                        } /* smaller font size for sub menu items */
+                        
+ .cbdb-menu li ul li ul li { display: block; float: none;
+                         position:relative;
+                         z-index:999;
+                         padding:0;
+                         margin:0;
+                              }   
+                              .cbdb-menu li ul li ul li a
+                              {
+                                  width:200px;
+                                  position:relative;
+                                  z-index:1005;
+                                  
+                              }
+                                                 

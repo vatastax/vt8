@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+    <siteMapNode url="Default.aspx" title="Home"  description="Home">
+		<siteMapNode url="Presentation/itr1.aspx" title="Income Tax Returns"  description="Income Tax Returns" >
+			<siteMapNode url="Presentation/Assesseeselect.aspx" title="Prepare Return Yourself" description="Prepare Return Yourself"/>
+		</siteMapNode>
+        <siteMapNode url="Presentation/UploadForm16.aspx" title="UploadForm 16A"  description="UploadForm 16A" />
+		<siteMapNode url="Presentation/UploadForm16B.aspx" title="UploadForm 16B"  description="UploadForm 16B" />
+		
+    </siteMapNode>
+</siteMap>

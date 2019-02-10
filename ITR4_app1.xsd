@@ -1,0 +1,3421 @@
+<?xml version="1.0" standalone="yes"?>
+<xs:schema targetNamespace="http://incometaxindiaefiling.gov.in/master" xmlns:mstns="http://incometaxindiaefiling.gov.in/main" xmlns="http://incometaxindiaefiling.gov.in/master" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" attributeFormDefault="qualified" elementFormDefault="qualified" xmlns:app1="http://incometaxindiaefiling.gov.in/master" xmlns:app2="http://incometaxindiaefiling.gov.in/ITR4">
+  <xs:import namespace="http://incometaxindiaefiling.gov.in/main" schemaLocation="ITR4.xsd" />
+  <xs:import namespace="http://incometaxindiaefiling.gov.in/ITR4" schemaLocation="ITR4_app2.xsd" />
+  <xs:element name="ExciseCustomsVAT">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="UnionExciseDuty" type="xs:string" minOccurs="0" />
+        <xs:element name="ServiceTax" type="xs:string" minOccurs="0" />
+        <xs:element name="VATorSaleTax" type="xs:string" minOccurs="0" />
+        <xs:element name="Cess" type="xs:string" minOccurs="0" />
+        <xs:element name="OthDutyTaxCess" type="xs:string" minOccurs="0" />
+        <xs:element name="TotExciseCustomsVAT" type="xs:string" minOccurs="0" />
+        <xs:element name="CustomDuty" type="xs:string" minOccurs="0" />
+        <xs:element name="CounterVailDuty" type="xs:string" minOccurs="0" />
+        <xs:element name="SplAddDuty" type="xs:string" minOccurs="0" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AmtUs43B">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="TaxDutyCesAmt" type="xs:string" minOccurs="0" />
+        <xs:element name="ContToEmpPFSFGF" type="xs:string" minOccurs="0" />
+        <xs:element name="EmpBonusComm" type="xs:string" minOccurs="0" />
+        <xs:element name="IntPayaleToFI" type="xs:string" minOccurs="0" />
+        <xs:element name="IntPayaleToFISchBank" type="xs:string" minOccurs="0" />
+        <xs:element name="LeaveEncashPayable" type="xs:string" minOccurs="0" />
+        <xs:element name="TotAmtUs43b" type="xs:string" minOccurs="0" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QuantitDet">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="ItemName" type="xs:string" minOccurs="0" />
+        <xs:element name="UnitOfMeasure" type="xs:string" minOccurs="0" />
+        <xs:element name="OpeningStock" type="xs:string" minOccurs="0" />
+        <xs:element name="PurchaseQty" type="xs:string" minOccurs="0" />
+        <xs:element name="PrevYrConsum" type="xs:string" minOccurs="0" />
+        <xs:element name="PrevyrManfact" type="xs:string" minOccurs="0" />
+        <xs:element name="SaleQty" type="xs:string" minOccurs="0" />
+        <xs:element name="ClgStock" type="xs:string" minOccurs="0" />
+        <xs:element name="yldFinisProd" type="xs:string" minOccurs="0" />
+        <xs:element name="PercentYld" type="xs:string" minOccurs="0" />
+        <xs:element name="AnyShortExces" type="xs:string" minOccurs="0" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddressDetail">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="AddrDetail" type="xs:string" minOccurs="0" />
+        <xs:element name="CityOrTownOrDistrict" type="xs:string" minOccurs="0" />
+        <xs:element name="StateCode" type="xs:string" minOccurs="0" />
+        <xs:element name="PinCode" type="xs:string" minOccurs="0" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SpeculativeInc">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="IncOfCurYrUnderThatHead" type="xs:string" minOccurs="0" />
+        <xs:element name="BusLossSetoff" type="xs:string" minOccurs="0" />
+        <xs:element name="IncOfCurYrAfterSetOff" type="xs:string" minOccurs="0" />
+        <xs:element ref="IncCYLA" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element ref="IncBFLA" minOccurs="0" maxOccurs="unbounded" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IncCYLA">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="IncOfCurYrUnderThatHead" type="xs:string" minOccurs="0" />
+        <xs:element name="HPlossCurYrSetoff" type="xs:string" minOccurs="0" />
+        <xs:element name="BusLossSetoff" type="xs:string" minOccurs="0" />
+        <xs:element name="OthSrcLossNoRaceHorseSetoff" type="xs:string" minOccurs="0" />
+        <xs:element name="IncOfCurYrAfterSetOff" type="xs:string" minOccurs="0" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IncBFLA">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="IncOfCurYrUndHeadFromCYLA" type="xs:string" minOccurs="0" />
+        <xs:element name="BFlossPrevYrUndSameHeadSetoff" type="xs:string" minOccurs="0" />
+        <xs:element name="BFUnabsorbedDeprSetoff" type="xs:string" minOccurs="0" />
+        <xs:element name="BFAllUs35Cl4Setoff" type="xs:string" minOccurs="0" />
+        <xs:element name="IncOfCurYrAfterSetOffBFLosses" type="xs:string" minOccurs="0" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SpecifiedInc">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="IncOfCurYrUnderThatHead" type="xs:string" minOccurs="0" />
+        <xs:element name="BusLossSetoff" type="xs:string" minOccurs="0" />
+        <xs:element name="IncOfCurYrAfterSetOff" type="xs:string" minOccurs="0" />
+        <xs:element ref="IncCYLA" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element ref="IncBFLA" minOccurs="0" maxOccurs="unbounded" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DepreciationDetail">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="WDVFirstDay" type="xs:string" minOccurs="0" />
+        <xs:element name="AdditionsGrThan180Days" type="xs:string" minOccurs="0" />
+        <xs:element name="RealizationTotalPeriod" type="xs:string" minOccurs="0" />
+        <xs:element name="FullRateDeprAmt" type="xs:string" minOccurs="0" />
+        <xs:element name="AdditionsLessThan180Days" type="xs:string" minOccurs="0" />
+        <xs:element name="RealizationPeriodLessThan180days" type="xs:string" minOccurs="0" />
+        <xs:element name="HalfRateDeprAmt" type="xs:string" minOccurs="0" />
+        <xs:element name="DepreciationAtFullRate" type="xs:string" minOccurs="0" />
+        <xs:element name="DepreciationAtHalfRate" type="xs:string" minOccurs="0" />
+        <xs:element name="AddlnDeprOnGT180DayAdditions" type="xs:string" minOccurs="0" />
+        <xs:element name="AddlnDeprOnLessThan180DayAdditions" type="xs:string" minOccurs="0" />
+        <xs:element name="TotalDepreciation" type="xs:string" minOccurs="0" />
+        <xs:element name="ExpdrOnTrforSaleAsset" type="xs:string" minOccurs="0" />
+        <xs:element name="CapGainUs50" type="xs:string" minOccurs="0" />
+        <xs:element name="WDVLastDay" type="xs:string" minOccurs="0" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Rate100">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="DepreciationDetail" minOccurs="0" maxOccurs="unbounded" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Rate10">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="DepreciationDetail" minOccurs="0" maxOccurs="unbounded" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeductUs35">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="AmtDebPL" type="xs:string" minOccurs="0" />
+        <xs:element name="AmtUs35Allowable" type="xs:string" minOccurs="0" />
+        <xs:element name="ExcessAmtOverDebPL" type="xs:string" minOccurs="0" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaleofLandBuild">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="FullConsideration" type="xs:string" minOccurs="0" />
+        <xs:element name="PropertyValuation" type="xs:string" minOccurs="0" />
+        <xs:element name="FullConsideration50C" type="xs:string" minOccurs="0" />
+        <xs:element name="BalanceCG" type="xs:string" minOccurs="0" />
+        <xs:element name="CapgainonAssets" type="xs:string" minOccurs="0" />
+        <xs:element ref="DeductSec48" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element ref="ExemptionOrDednUs54" minOccurs="0" maxOccurs="unbounded" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeductSec48">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="AquisitCost" type="xs:string" minOccurs="0" />
+        <xs:element name="ImproveCost" type="xs:string" minOccurs="0" />
+        <xs:element name="ExpOnTrans" type="xs:string" minOccurs="0" />
+        <xs:element name="TotalDedn" type="xs:string" minOccurs="0" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExemptionOrDednUs54">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="ExemptionGrandTotal" type="xs:string" minOccurs="0" />
+        <xs:element name="ExemptionOrDednUs54Dtls" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ExemptionSecCode" type="xs:string" minOccurs="0" />
+              <xs:element name="ExemptionAmount" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UnutilizedCg">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="UnutilizedCgPrvYrDtls" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="PrvYrInWhichAsstTrnsfrd" type="xs:string" minOccurs="0" />
+              <xs:element name="SectionClmd" type="xs:string" minOccurs="0" />
+              <xs:element name="YrInWhichAssetAcq" type="xs:string" minOccurs="0" />
+              <xs:element name="AmtUtilized" type="xs:string" minOccurs="0" />
+              <xs:element name="AmtUnutilized" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UnutilizedCgConst">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="UnutilizedCgPrvYrDtlsConst" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="PrvYrInWhichAsstTrnsfrd" type="xs:string" minOccurs="0" />
+              <xs:element name="SectionClmd" type="xs:string" minOccurs="0" />
+              <xs:element name="YrInWhichAssetAcq" type="xs:string" minOccurs="0" />
+              <xs:element name="AmtUtilized" type="xs:string" minOccurs="0" />
+              <xs:element name="AmtUnutilized" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NRICgDTAA">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="NRIDTAADtls" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CountryName" type="xs:string" minOccurs="0" />
+              <xs:element name="CountryCode" type="xs:string" minOccurs="0" />
+              <xs:element name="DTAAarticle" type="xs:string" minOccurs="0" />
+              <xs:element name="TaxRescertifiedFlag" type="xs:string" minOccurs="0" />
+              <xs:element name="ItemNoincl" type="xs:string" minOccurs="0" />
+              <xs:element name="DTAAamt" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DateRange">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Upto15Of9" type="xs:string" minOccurs="0" />
+        <xs:element name="Up16Of9To15Of12" type="xs:string" minOccurs="0" />
+        <xs:element name="Up16Of12To15Of3" type="xs:string" minOccurs="0" />
+        <xs:element name="Up16Of3To31Of3" type="xs:string" minOccurs="0" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="HP">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="IncCYLA" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element ref="IncBFLA" minOccurs="0" maxOccurs="unbounded" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BusProfExclSpecProf">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="IncCYLA" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element ref="IncBFLA" minOccurs="0" maxOccurs="unbounded" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="STCG15Per">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="IncCYLA" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element ref="IncBFLA" minOccurs="0" maxOccurs="unbounded" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="STCG30Per">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="IncCYLA" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element ref="IncBFLA" minOccurs="0" maxOccurs="unbounded" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="STCGAppRate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="IncCYLA" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element ref="IncBFLA" minOccurs="0" maxOccurs="unbounded" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LTCG10Per">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="IncCYLA" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element ref="IncBFLA" minOccurs="0" maxOccurs="unbounded" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LTCG20Per">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="IncCYLA" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element ref="IncBFLA" minOccurs="0" maxOccurs="unbounded" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OthSrcExclRaceHorse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="IncCYLA" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element ref="IncBFLA" minOccurs="0" maxOccurs="unbounded" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OthSrcRaceHorse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="IncCYLA" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element ref="IncBFLA" minOccurs="0" maxOccurs="unbounded" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CarryFwdLossDetail">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="DateOfFiling" type="xs:string" minOccurs="0" />
+        <xs:element name="HPLossCF" type="xs:string" minOccurs="0" />
+        <xs:element name="BusLossOthThanSpecLossCF" type="xs:string" minOccurs="0" />
+        <xs:element name="LossFrmSpecBusCF" type="xs:string" minOccurs="0" />
+        <xs:element name="LossFrmSpecifiedBusCF" type="xs:string" minOccurs="0" />
+        <xs:element name="STCGLossCF" type="xs:string" minOccurs="0" />
+        <xs:element name="LTCGLossCF" type="xs:string" minOccurs="0" />
+        <xs:element name="OthSrcLossRaceHorseCF" type="xs:string" minOccurs="0" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LossSummaryDetail">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="HPLossCF" type="xs:string" minOccurs="0" />
+        <xs:element name="BusLossOthThanSpecLossCF" type="xs:string" minOccurs="0" />
+        <xs:element name="LossFrmSpecBusCF" type="xs:string" minOccurs="0" />
+        <xs:element name="LossFrmSpecifiedBusCF" type="xs:string" minOccurs="0" />
+        <xs:element name="STCGLossCF" type="xs:string" minOccurs="0" />
+        <xs:element name="LTCGLossCF" type="xs:string" minOccurs="0" />
+        <xs:element name="OthSrcLossRaceHorseCF" type="xs:string" minOccurs="0" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeductSEZ">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="DedUs10Detail" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TotalDedUs10Sub" type="xs:string" minOccurs="0" />
+              <xs:element name="Undertaking" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="DedFromUndertakingWithAy" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="AssmtYrUnit" type="xs:string" minOccurs="0" />
+                          <xs:element name="DedUs10Sub" type="xs:string" minOccurs="0" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DoneeWithPan">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="DoneeWithPanName" type="xs:string" minOccurs="0" />
+        <xs:element name="DoneePAN" type="xs:string" minOccurs="0" />
+        <xs:element name="DonationAmt" type="xs:string" minOccurs="0" />
+        <xs:element name="EligibleDonationAmt" type="xs:string" minOccurs="0" />
+        <xs:element ref="AddressDetail" minOccurs="0" maxOccurs="unbounded" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Sch80DeductAmtDtls">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="DeductAmountSec80" type="xs:string" minOccurs="0" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EmployerOrDeductorOrCollectDetl">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="TAN" type="xs:string" minOccurs="0" />
+        <xs:element name="EmployerOrDeductorOrCollecterName" type="xs:string" minOccurs="0" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreationInfo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="SWVersionNo" type="xs:string" minOccurs="0" />
+        <xs:element name="SWCreatedBy" type="xs:string" minOccurs="0" />
+        <xs:element name="XMLCreatedBy" type="xs:string" minOccurs="0" />
+        <xs:element name="XMLCreationDate" type="xs:string" minOccurs="0" />
+        <xs:element name="IntermediaryCity" type="xs:string" minOccurs="0" />
+        <xs:element name="Digest" type="xs:string" minOccurs="0" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Form_ITR4">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="FormName" type="xs:string" minOccurs="0" />
+        <xs:element name="Description" type="xs:string" minOccurs="0" />
+        <xs:element name="AssessmentYear" type="xs:string" minOccurs="0" />
+        <xs:element name="SchemaVer" type="xs:string" minOccurs="0" />
+        <xs:element name="FormVer" type="xs:string" minOccurs="0" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PartA_GEN1">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="PersonalInfo" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="PAN" type="xs:string" minOccurs="0" />
+              <xs:element name="DOB" type="xs:string" minOccurs="0" />
+              <xs:element name="EmployerCategory" type="xs:string" minOccurs="0" />
+              <xs:element name="Gender" type="xs:string" minOccurs="0" />
+              <xs:element name="Status" type="xs:string" minOccurs="0" />
+              <xs:element name="AadhaarCardFlg" type="xs:string" minOccurs="0" />
+              <xs:element name="AadhaarCardNo" type="xs:string" minOccurs="0" />
+              <xs:element name="PassportNo" type="xs:string" minOccurs="0" />
+              <xs:element name="AssesseeName" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="FirstName" type="xs:string" minOccurs="0" />
+                    <xs:element name="MiddleName" type="xs:string" minOccurs="0" />
+                    <xs:element name="SurNameOrOrgName" type="xs:string" minOccurs="0" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Address" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="ResidenceNo" type="xs:string" minOccurs="0" />
+                    <xs:element name="ResidenceName" type="xs:string" minOccurs="0" />
+                    <xs:element name="RoadOrStreet" type="xs:string" minOccurs="0" />
+                    <xs:element name="LocalityOrArea" type="xs:string" minOccurs="0" />
+                    <xs:element name="CityOrTownOrDistrict" type="xs:string" minOccurs="0" />
+                    <xs:element name="StateCode" type="xs:string" minOccurs="0" />
+                    <xs:element name="CountryCode" type="xs:string" minOccurs="0" />
+                    <xs:element name="PinCode" type="xs:string" minOccurs="0" />
+                    <xs:element name="MobileNo" type="xs:string" minOccurs="0" />
+                    <xs:element name="MobileNoSec" type="xs:string" minOccurs="0" />
+                    <xs:element name="EmailAddress" type="xs:string" minOccurs="0" />
+                    <xs:element name="EmailAddressSec" type="xs:string" minOccurs="0" />
+                    <xs:element name="Phone" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="STDcode" type="xs:string" minOccurs="0" />
+                          <xs:element name="PhoneNo" type="xs:string" minOccurs="0" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="FilingStatus" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="DesigOfficerWardorCircle" type="xs:string" minOccurs="0" />
+              <xs:element name="ReturnFileSec" type="xs:string" minOccurs="0" />
+              <xs:element name="NoticeNo" type="xs:string" minOccurs="0" />
+              <xs:element name="NoticeDate" type="xs:string" minOccurs="0" />
+              <xs:element name="ReturnType" type="xs:string" minOccurs="0" />
+              <xs:element name="ReceiptNo" type="xs:string" minOccurs="0" />
+              <xs:element name="OrigRetFiledDate" type="xs:string" minOccurs="0" />
+              <xs:element name="NoticeDateUnderSec" type="xs:string" minOccurs="0" />
+              <xs:element name="ResidentialStatus" type="xs:string" minOccurs="0" />
+              <xs:element name="NotifiedUs94AFlg" type="xs:string" minOccurs="0" />
+              <xs:element name="TaxStatus" type="xs:string" minOccurs="0" />
+              <xs:element name="AsseseeRepFlg" type="xs:string" minOccurs="0" />
+              <xs:element name="PortugeseCC5A" type="xs:string" minOccurs="0" />
+              <xs:element name="NriPEinIndia" type="xs:string" minOccurs="0" />
+              <xs:element name="AssesseeRep" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="RepName" type="xs:string" minOccurs="0" />
+                    <xs:element name="RepAddress" type="xs:string" minOccurs="0" />
+                    <xs:element name="RepPAN" type="xs:string" minOccurs="0" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PartA_GEN2">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="AuditInfo" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="LiableSec44AAflg" type="xs:string" minOccurs="0" />
+              <xs:element name="LiableSec44ABflg" type="xs:string" minOccurs="0" />
+              <xs:element name="AuditAccountantFlg" type="xs:string" minOccurs="0" />
+              <xs:element name="AuditReportFurnishDate" type="xs:string" minOccurs="0" />
+              <xs:element name="AuditorName" type="xs:string" minOccurs="0" />
+              <xs:element name="AuditorMemNo" type="xs:string" minOccurs="0" />
+              <xs:element name="AudFrmName" type="xs:string" minOccurs="0" />
+              <xs:element name="AudFrmPAN" type="xs:string" minOccurs="0" />
+              <xs:element name="AuditDate" type="xs:string" minOccurs="0" />
+              <xs:element name="AuditDetails" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="AuditedSection" type="xs:string" minOccurs="0" />
+                    <xs:element name="DateOfAudit" type="xs:string" minOccurs="0" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="NatOfBus" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Business" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Code" type="xs:string" minOccurs="0" />
+                    <xs:element name="Trade" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="TradeName" nillable="true" minOccurs="0" maxOccurs="unbounded">
+                            <xs:complexType>
+                              <xs:simpleContent msdata:ColumnName="TradeName_Text" msdata:Ordinal="0">
+                                <xs:extension base="xs:string">
+                                </xs:extension>
+                              </xs:simpleContent>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PARTA_BS">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="FundSrc" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="DeferredTax" type="xs:string" minOccurs="0" />
+              <xs:element name="TotFundSrc" type="xs:string" minOccurs="0" />
+              <xs:element name="PropFund" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="PropCap" type="xs:string" minOccurs="0" />
+                    <xs:element name="TotPropFund" type="xs:string" minOccurs="0" />
+                    <xs:element name="ResrNSurp" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="RevResr" type="xs:string" minOccurs="0" />
+                          <xs:element name="CapResr" type="xs:string" minOccurs="0" />
+                          <xs:element name="StatResr" type="xs:string" minOccurs="0" />
+                          <xs:element name="OthResr" type="xs:string" minOccurs="0" />
+                          <xs:element name="TotResrNSurp" type="xs:string" minOccurs="0" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="LoanFunds" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="TotLoanFund" type="xs:string" minOccurs="0" />
+                    <xs:element name="SecrLoan" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="ForeignCurrLoan" type="xs:string" minOccurs="0" />
+                          <xs:element name="TotSecrLoan" type="xs:string" minOccurs="0" />
+                          <xs:element name="RupeeLoan" minOccurs="0" maxOccurs="unbounded">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="FrmBank" type="xs:string" minOccurs="0" />
+                                <xs:element name="FrmOthrs" type="xs:string" minOccurs="0" />
+                                <xs:element name="TotRupeeLoan" type="xs:string" minOccurs="0" />
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="UnsecrLoan" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="FrmBank" type="xs:string" minOccurs="0" />
+                          <xs:element name="FrmOthrs" type="xs:string" minOccurs="0" />
+                          <xs:element name="TotUnSecrLoan" type="xs:string" minOccurs="0" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="FundApply" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TotFundApply" type="xs:string" minOccurs="0" />
+              <xs:element name="FixedAsset" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="GrossBlock" type="xs:string" minOccurs="0" />
+                    <xs:element name="Depreciation" type="xs:string" minOccurs="0" />
+                    <xs:element name="NetBlock" type="xs:string" minOccurs="0" />
+                    <xs:element name="CapWrkProg" type="xs:string" minOccurs="0" />
+                    <xs:element name="TotFixedAsset" type="xs:string" minOccurs="0" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Investments" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="TotInvestments" type="xs:string" minOccurs="0" />
+                    <xs:element name="LongTermInv" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="GovtOthSecQuoted" type="xs:string" minOccurs="0" />
+                          <xs:element name="GovOthSecUnQoted" type="xs:string" minOccurs="0" />
+                          <xs:element name="TotLongTermInv" type="xs:string" minOccurs="0" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="TradeInv" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="EquityShares" type="xs:string" minOccurs="0" />
+                          <xs:element name="PreferShares" type="xs:string" minOccurs="0" />
+                          <xs:element name="Debenture" type="xs:string" minOccurs="0" />
+                          <xs:element name="TotTradeInv" type="xs:string" minOccurs="0" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="CurrAssetLoanAdv" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="TotCurrAssetLoanAdv" type="xs:string" minOccurs="0" />
+                    <xs:element name="NetCurrAsset" type="xs:string" minOccurs="0" />
+                    <xs:element name="CurrAsset" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="SndryDebtors" type="xs:string" minOccurs="0" />
+                          <xs:element name="OthCurrAsset" type="xs:string" minOccurs="0" />
+                          <xs:element name="TotCurrAsset" type="xs:string" minOccurs="0" />
+                          <xs:element name="Inventories" minOccurs="0" maxOccurs="unbounded">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="StoresConsumables" type="xs:string" minOccurs="0" />
+                                <xs:element name="RawMatl" type="xs:string" minOccurs="0" />
+                                <xs:element name="StkInProcess" type="xs:string" minOccurs="0" />
+                                <xs:element name="FinOrTradGood" type="xs:string" minOccurs="0" />
+                                <xs:element name="TotInventries" type="xs:string" minOccurs="0" />
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="CashOrBankBal" minOccurs="0" maxOccurs="unbounded">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="CashinHand" type="xs:string" minOccurs="0" />
+                                <xs:element name="BankBal" type="xs:string" minOccurs="0" />
+                                <xs:element name="TotCashOrBankBal" type="xs:string" minOccurs="0" />
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="LoanAdv" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="AdvRecoverable" type="xs:string" minOccurs="0" />
+                          <xs:element name="Deposits" type="xs:string" minOccurs="0" />
+                          <xs:element name="BalWithRevAuth" type="xs:string" minOccurs="0" />
+                          <xs:element name="TotLoanAdv" type="xs:string" minOccurs="0" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="CurrLiabilitiesProv" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="TotCurrLiabilitiesProvision" type="xs:string" minOccurs="0" />
+                          <xs:element name="CurrLiabilities" minOccurs="0" maxOccurs="unbounded">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="SundryCred" type="xs:string" minOccurs="0" />
+                                <xs:element name="LiabForLeasedAsset" type="xs:string" minOccurs="0" />
+                                <xs:element name="AccrIntonLeasedAsset" type="xs:string" minOccurs="0" />
+                                <xs:element name="AccrIntNotDue" type="xs:string" minOccurs="0" />
+                                <xs:element name="TotCurrLiabilities" type="xs:string" minOccurs="0" />
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="Provisions" minOccurs="0" maxOccurs="unbounded">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="ITProvision" type="xs:string" minOccurs="0" />
+                                <xs:element name="WTProvision" type="xs:string" minOccurs="0" />
+                                <xs:element name="ELSuperAnnGratProvision" type="xs:string" minOccurs="0" />
+                                <xs:element name="OthProvision" type="xs:string" minOccurs="0" />
+                                <xs:element name="TotProvisions" type="xs:string" minOccurs="0" />
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="MiscAdjust" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="MiscExpndr" type="xs:string" minOccurs="0" />
+                    <xs:element name="DefTaxAsset" type="xs:string" minOccurs="0" />
+                    <xs:element name="AccumaltedLosses" type="xs:string" minOccurs="0" />
+                    <xs:element name="TotMiscAdjust" type="xs:string" minOccurs="0" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="NoBooksOfAccBS" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TotSundryDbtAmt" type="xs:string" minOccurs="0" />
+              <xs:element name="TotSundryCrdAmt" type="xs:string" minOccurs="0" />
+              <xs:element name="TotStkInTradAmt" type="xs:string" minOccurs="0" />
+              <xs:element name="CashBalAmt" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PARTA_PL">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="CreditsToPL" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="SaleOfGoods" type="xs:string" minOccurs="0" />
+              <xs:element name="SaleOfServices" type="xs:string" minOccurs="0" />
+              <xs:element name="OperatingRevenueTotAmt" type="xs:string" minOccurs="0" />
+              <xs:element name="BusinessReceipts" type="xs:string" minOccurs="0" />
+              <xs:element name="TotRevenueFrmOperations" type="xs:string" minOccurs="0" />
+              <xs:element name="TotCreditsToPL" type="xs:string" minOccurs="0" />
+              <xs:element name="OtherOperatingRevenueDtls" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="OperatingRevenueName" type="xs:string" minOccurs="0" />
+                    <xs:element name="OperatingRevenueAmt" type="xs:string" minOccurs="0" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element ref="ExciseCustomsVAT" minOccurs="0" maxOccurs="unbounded" />
+              <xs:element name="OthIncome" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="RentInc" type="xs:string" minOccurs="0" />
+                    <xs:element name="Comissions" type="xs:string" minOccurs="0" />
+                    <xs:element name="Dividends" type="xs:string" minOccurs="0" />
+                    <xs:element name="InterestInc" type="xs:string" minOccurs="0" />
+                    <xs:element name="ProfitOnSaleFixedAsset" type="xs:string" minOccurs="0" />
+                    <xs:element name="ProfitOnInvChrSTT" type="xs:string" minOccurs="0" />
+                    <xs:element name="ProfitOnOthInv" type="xs:string" minOccurs="0" />
+                    <xs:element name="ProfitOnCurrFluct" type="xs:string" minOccurs="0" />
+                    <xs:element name="ProfitOnAgriIncome" type="xs:string" minOccurs="0" />
+                    <xs:element name="MiscOthIncome" type="xs:string" minOccurs="0" />
+                    <xs:element name="TotOthIncome" type="xs:string" minOccurs="0" />
+                    <xs:element name="OtherIncDtls" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="NatureOfIncome" type="xs:string" minOccurs="0" />
+                          <xs:element name="Amount" type="xs:string" minOccurs="0" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="ClosingStockDtls" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="RawMaterial" type="xs:string" minOccurs="0" />
+                    <xs:element name="WorkInProgress" type="xs:string" minOccurs="0" />
+                    <xs:element name="FinishedGoods" type="xs:string" minOccurs="0" />
+                    <xs:element name="ClosingStock" type="xs:string" minOccurs="0" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DebitsToPL" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Purchases" type="xs:string" minOccurs="0" />
+              <xs:element name="Freight" type="xs:string" minOccurs="0" />
+              <xs:element name="ConsumptionOfStores" type="xs:string" minOccurs="0" />
+              <xs:element name="PowerFuel" type="xs:string" minOccurs="0" />
+              <xs:element name="RentExpdr" type="xs:string" minOccurs="0" />
+              <xs:element name="RepairsBldg" type="xs:string" minOccurs="0" />
+              <xs:element name="RepairMach" type="xs:string" minOccurs="0" />
+              <xs:element name="StaffWelfareExp" type="xs:string" minOccurs="0" />
+              <xs:element name="Entertainment" type="xs:string" minOccurs="0" />
+              <xs:element name="Hospitality" type="xs:string" minOccurs="0" />
+              <xs:element name="Conference" type="xs:string" minOccurs="0" />
+              <xs:element name="SalePromoExp" type="xs:string" minOccurs="0" />
+              <xs:element name="Advertisement" type="xs:string" minOccurs="0" />
+              <xs:element name="HotelBoardLodge" type="xs:string" minOccurs="0" />
+              <xs:element name="TravelExp" type="xs:string" minOccurs="0" />
+              <xs:element name="ForeignTravelExp" type="xs:string" minOccurs="0" />
+              <xs:element name="ConveyanceExp" type="xs:string" minOccurs="0" />
+              <xs:element name="TelephoneExp" type="xs:string" minOccurs="0" />
+              <xs:element name="GuestHouseExp" type="xs:string" minOccurs="0" />
+              <xs:element name="ClubExp" type="xs:string" minOccurs="0" />
+              <xs:element name="FestivalCelebExp" type="xs:string" minOccurs="0" />
+              <xs:element name="Scholarship" type="xs:string" minOccurs="0" />
+              <xs:element name="Gift" type="xs:string" minOccurs="0" />
+              <xs:element name="Donation" type="xs:string" minOccurs="0" />
+              <xs:element name="AuditFee" type="xs:string" minOccurs="0" />
+              <xs:element name="OtherExpenses" type="xs:string" minOccurs="0" />
+              <xs:element name="ProvForBadDoubtDebt" type="xs:string" minOccurs="0" />
+              <xs:element name="OthProvisionsExpdr" type="xs:string" minOccurs="0" />
+              <xs:element name="PBIDTA" type="xs:string" minOccurs="0" />
+              <xs:element name="DepreciationAmort" type="xs:string" minOccurs="0" />
+              <xs:element name="PBT" type="xs:string" minOccurs="0" />
+              <xs:element name="OpeningStockDtls" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="RawMaterial" type="xs:string" minOccurs="0" />
+                    <xs:element name="WorkInProgress" type="xs:string" minOccurs="0" />
+                    <xs:element name="FinishedGoods" type="xs:string" minOccurs="0" />
+                    <xs:element name="OpeningStock" type="xs:string" minOccurs="0" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="DutyTaxPay" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element ref="ExciseCustomsVAT" minOccurs="0" maxOccurs="unbounded" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="EmployeeComp" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="SalsWages" type="xs:string" minOccurs="0" />
+                    <xs:element name="Bonus" type="xs:string" minOccurs="0" />
+                    <xs:element name="MedExpReimb" type="xs:string" minOccurs="0" />
+                    <xs:element name="LeaveEncash" type="xs:string" minOccurs="0" />
+                    <xs:element name="LeaveTravelBenft" type="xs:string" minOccurs="0" />
+                    <xs:element name="ContToSuperAnnFund" type="xs:string" minOccurs="0" />
+                    <xs:element name="ContToPF" type="xs:string" minOccurs="0" />
+                    <xs:element name="ContToGratFund" type="xs:string" minOccurs="0" />
+                    <xs:element name="ContToOthFund" type="xs:string" minOccurs="0" />
+                    <xs:element name="OthEmpBenftExpdr" type="xs:string" minOccurs="0" />
+                    <xs:element name="TotEmployeeComp" type="xs:string" minOccurs="0" />
+                    <xs:element name="AnyCompPaidToNonRes" type="xs:string" minOccurs="0" />
+                    <xs:element name="AmtPaidToNonRes" type="xs:string" minOccurs="0" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Insurances" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="MedInsur" type="xs:string" minOccurs="0" />
+                    <xs:element name="LifeInsur" type="xs:string" minOccurs="0" />
+                    <xs:element name="KeyManInsur" type="xs:string" minOccurs="0" />
+                    <xs:element name="OthInsur" type="xs:string" minOccurs="0" />
+                    <xs:element name="TotInsurances" type="xs:string" minOccurs="0" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="CommissionExpdrDtls" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="NonResOtherCompany" type="xs:string" minOccurs="0" />
+                    <xs:element name="Others" type="xs:string" minOccurs="0" />
+                    <xs:element name="Total" type="xs:string" minOccurs="0" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="RoyalityDtls" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="NonResOtherCompany" type="xs:string" minOccurs="0" />
+                    <xs:element name="Others" type="xs:string" minOccurs="0" />
+                    <xs:element name="Total" type="xs:string" minOccurs="0" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="ProfessionalConstDtls" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="NonResOtherCompany" type="xs:string" minOccurs="0" />
+                    <xs:element name="Others" type="xs:string" minOccurs="0" />
+                    <xs:element name="Total" type="xs:string" minOccurs="0" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="RatesTaxesPays" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element ref="ExciseCustomsVAT" minOccurs="0" maxOccurs="unbounded" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="OtherExpensesDtls" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="ExpenseNature" type="xs:string" minOccurs="0" />
+                    <xs:element name="Amount" type="xs:string" minOccurs="0" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="BadDebtDtls" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="OthersWherePANNotAvlble" type="xs:string" minOccurs="0" />
+                    <xs:element name="OthersAmtLt1Lakh" type="xs:string" minOccurs="0" />
+                    <xs:element name="BadDebt" type="xs:string" minOccurs="0" />
+                    <xs:element name="BadDebtAmtDtls" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="PAN" type="xs:string" minOccurs="0" />
+                          <xs:element name="Amount" type="xs:string" minOccurs="0" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="InterestExpdrtDtls" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="NonResOtherCompany" type="xs:string" minOccurs="0" />
+                    <xs:element name="Others" type="xs:string" minOccurs="0" />
+                    <xs:element name="InterestExpdr" type="xs:string" minOccurs="0" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="TaxProvAppr" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ProvForCurrTax" type="xs:string" minOccurs="0" />
+              <xs:element name="ProvDefTax" type="xs:string" minOccurs="0" />
+              <xs:element name="ProfitAfterTax" type="xs:string" minOccurs="0" />
+              <xs:element name="BalBFPrevYr" type="xs:string" minOccurs="0" />
+              <xs:element name="AmtAvlAppr" type="xs:string" minOccurs="0" />
+              <xs:element name="TrfToReserves" type="xs:string" minOccurs="0" />
+              <xs:element name="ProprietorAccBalTrf" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="NoBooksOfAccPL" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="GrossReceipt" type="xs:string" minOccurs="0" />
+              <xs:element name="GrossProfit" type="xs:string" minOccurs="0" />
+              <xs:element name="Expenses" type="xs:string" minOccurs="0" />
+              <xs:element name="NetProfit" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PARTA_OI">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="MethodOfAcct" type="xs:string" minOccurs="0" />
+        <xs:element name="ChangeInAcctMethFlg" type="xs:string" minOccurs="0" />
+        <xs:element name="ProfDeviatDueAcctMeth" type="xs:string" minOccurs="0" />
+        <xs:element name="DeemedProfUs33ABs" type="xs:string" minOccurs="0" />
+        <xs:element name="ProfTaxAmtUs41" type="xs:string" minOccurs="0" />
+        <xs:element name="PriorAmtIncCrDrPL" type="xs:string" minOccurs="0" />
+        <xs:element name="MethodOfValClgStk" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ValRawMaterial" type="xs:string" minOccurs="0" />
+              <xs:element name="ValFinishedGoods" type="xs:string" minOccurs="0" />
+              <xs:element name="ChngStockValMetFlg" type="xs:string" minOccurs="0" />
+              <xs:element name="EffectOnPL" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="NoCredToPLAmt" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Section28Items" type="xs:string" minOccurs="0" />
+              <xs:element name="ProformaCreditsDue" type="xs:string" minOccurs="0" />
+              <xs:element name="PrevYrEscalClaim" type="xs:string" minOccurs="0" />
+              <xs:element name="OthItemInc" type="xs:string" minOccurs="0" />
+              <xs:element name="CapReceipt" type="xs:string" minOccurs="0" />
+              <xs:element name="TotNoCredToPLAmt" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="AmtDisallUs36" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="StkInsurPrem" type="xs:string" minOccurs="0" />
+              <xs:element name="EmpHealthInsurPrem" type="xs:string" minOccurs="0" />
+              <xs:element name="EmpBonusCommSum" type="xs:string" minOccurs="0" />
+              <xs:element name="IntOnBorrCap" type="xs:string" minOccurs="0" />
+              <xs:element name="ZeroCoupBondDisc" type="xs:string" minOccurs="0" />
+              <xs:element name="RecogPFContribAmt" type="xs:string" minOccurs="0" />
+              <xs:element name="AppSuperAnnFundAmt" type="xs:string" minOccurs="0" />
+              <xs:element name="PensionSchemeSec80CCD" type="xs:string" minOccurs="0" />
+              <xs:element name="AppGratFundAmt" type="xs:string" minOccurs="0" />
+              <xs:element name="OthFundAmt" type="xs:string" minOccurs="0" />
+              <xs:element name="BadDebtDoubtAmt" type="xs:string" minOccurs="0" />
+              <xs:element name="BadDebtDoubtProvn" type="xs:string" minOccurs="0" />
+              <xs:element name="SpecResrvTranfr" type="xs:string" minOccurs="0" />
+              <xs:element name="FamPlanPromoExp" type="xs:string" minOccurs="0" />
+              <xs:element name="EmpContributionCredits" type="xs:string" minOccurs="0" />
+              <xs:element name="SecuritiesPaidAmt" type="xs:string" minOccurs="0" />
+              <xs:element name="OthDisallowances" type="xs:string" minOccurs="0" />
+              <xs:element name="TotAmtDisallUs36" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="AmtDisallUs37" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CapitalNatureExp" type="xs:string" minOccurs="0" />
+              <xs:element name="PersonalExp" type="xs:string" minOccurs="0" />
+              <xs:element name="BusOrProfessnExp" type="xs:string" minOccurs="0" />
+              <xs:element name="PoliticPartyExp" type="xs:string" minOccurs="0" />
+              <xs:element name="LawVoilatPenalExp" type="xs:string" minOccurs="0" />
+              <xs:element name="OthPenalFineExp" type="xs:string" minOccurs="0" />
+              <xs:element name="OffenceExp" type="xs:string" minOccurs="0" />
+              <xs:element name="ContigentLiability" type="xs:string" minOccurs="0" />
+              <xs:element name="OthAmtNotAllowUs37" type="xs:string" minOccurs="0" />
+              <xs:element name="TotAmtDisallUs37" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="AmtDisallUs40" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="NonCompChapXVIIBAmt" type="xs:string" minOccurs="0" />
+              <xs:element name="NonComp40aiiChapXVIIBAmt" type="xs:string" minOccurs="0" />
+              <xs:element name="NonComp40aiiiChapXVIIBAmt" type="xs:string" minOccurs="0" />
+              <xs:element name="TaxAmtOnProfits" type="xs:string" minOccurs="0" />
+              <xs:element name="WTAmt" type="xs:string" minOccurs="0" />
+              <xs:element name="RolyatyOrServiceFee" type="xs:string" minOccurs="0" />
+              <xs:element name="IntSalBonPartner" type="xs:string" minOccurs="0" />
+              <xs:element name="OthDisallow" type="xs:string" minOccurs="0" />
+              <xs:element name="TotAmtDisallUs40" type="xs:string" minOccurs="0" />
+              <xs:element name="AmtDisallUs40PyNowAll" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="AmtDisallUs40A" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="AmtPaidUs40A2b" type="xs:string" minOccurs="0" />
+              <xs:element name="AmtGT20kCash" type="xs:string" minOccurs="0" />
+              <xs:element name="ProvPmtGrat" type="xs:string" minOccurs="0" />
+              <xs:element name="ContToSetupTrust" type="xs:string" minOccurs="0" />
+              <xs:element name="OthDisallow" type="xs:string" minOccurs="0" />
+              <xs:element name="TotAmtDisallUs40A" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="AmtDisallUs43BPyNowAll" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element ref="AmtUs43B" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="AmtDisall43B" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element ref="AmtUs43B" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="AmtExciseCustomsVATOutstanding" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element ref="ExciseCustomsVAT" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PARTA_QD">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="TradingConcern" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element ref="QuantitDet" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ManfactrConcern" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="RawMaterial" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element ref="QuantitDet" minOccurs="0" maxOccurs="unbounded" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="FinishrByProd" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element ref="QuantitDet" minOccurs="0" maxOccurs="unbounded" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PartB-TI">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Salaries" type="xs:string" minOccurs="0" />
+        <xs:element name="IncomeFromHP" type="xs:string" minOccurs="0" />
+        <xs:element name="TotalTI" type="xs:string" minOccurs="0" />
+        <xs:element name="CurrentYearLoss" type="xs:string" minOccurs="0" />
+        <xs:element name="BalanceAfterSetoffLosses" type="xs:string" minOccurs="0" />
+        <xs:element name="BroughtFwdLossesSetoff" type="xs:string" minOccurs="0" />
+        <xs:element name="GrossTotalIncome" type="xs:string" minOccurs="0" />
+        <xs:element name="IncChargeTaxSplRate111A112" type="xs:string" minOccurs="0" />
+        <xs:element name="DeductionsUnder10Aor10AA" type="xs:string" minOccurs="0" />
+        <xs:element name="TotalIncome" type="xs:string" minOccurs="0" />
+        <xs:element name="IncChargeableTaxSplRates" type="xs:string" minOccurs="0" />
+        <xs:element name="NetAgricultureIncomeOrOtherIncomeForRate" type="xs:string" minOccurs="0" />
+        <xs:element name="AggregateIncome" type="xs:string" minOccurs="0" />
+        <xs:element name="LossesOfCurrentYearCarriedFwd" type="xs:string" minOccurs="0" />
+        <xs:element name="ProfBusGain" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ProfGainNoSpecBus" type="xs:string" minOccurs="0" />
+              <xs:element name="ProfGainSpecBus" type="xs:string" minOccurs="0" />
+              <xs:element name="ProfGainSpecifiedBus" type="xs:string" minOccurs="0" />
+              <xs:element name="TotProfBusGain" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="CapGain" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TotalCapGains" type="xs:string" minOccurs="0" />
+              <xs:element name="ShortTerm" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="ShortTerm15Per" type="xs:string" minOccurs="0" />
+                    <xs:element name="ShortTerm30Per" type="xs:string" minOccurs="0" />
+                    <xs:element name="ShortTermAppRate" type="xs:string" minOccurs="0" />
+                    <xs:element name="TotalShortTerm" type="xs:string" minOccurs="0" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="LongTerm" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="LongTerm10Per" type="xs:string" minOccurs="0" />
+                    <xs:element name="LongTerm20Per" type="xs:string" minOccurs="0" />
+                    <xs:element name="TotalLongTerm" type="xs:string" minOccurs="0" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="IncFromOS" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="OtherSrcThanOwnRaceHorse" type="xs:string" minOccurs="0" />
+              <xs:element name="IncChargblSplRate" type="xs:string" minOccurs="0" />
+              <xs:element name="FromOwnRaceHorse" type="xs:string" minOccurs="0" />
+              <xs:element name="TotIncFromOS" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DeductionsUndSchVIADtl" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="PartBchapterVIA" type="xs:string" minOccurs="0" />
+              <xs:element name="PartCchapterVIA" type="xs:string" minOccurs="0" />
+              <xs:element name="TotDeductUndSchVIA" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PartB_TTI">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="AssetOutIndiaFlag" type="xs:string" minOccurs="0" />
+        <xs:element name="ComputationOfTaxLiability" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="GrossTaxPayable" type="xs:string" minOccurs="0" />
+              <xs:element name="CreditUS115JD" type="xs:string" minOccurs="0" />
+              <xs:element name="TaxPayAfterCreditUs115JD" type="xs:string" minOccurs="0" />
+              <xs:element name="NetTaxLiability" type="xs:string" minOccurs="0" />
+              <xs:element name="AggregateTaxInterestLiability" type="xs:string" minOccurs="0" />
+              <xs:element name="TaxPayableOnDeemedTI" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="TaxDeemedTISec115JC" type="xs:string" minOccurs="0" />
+                    <xs:element name="SurchargeOnAboveCrore" type="xs:string" minOccurs="0" />
+                    <xs:element name="EducationCess" type="xs:string" minOccurs="0" />
+                    <xs:element name="TotalTax" type="xs:string" minOccurs="0" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="TaxPayableOnTI" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="TaxAtNormalRatesOnAggrInc" type="xs:string" minOccurs="0" />
+                    <xs:element name="TaxAtSpecialRates" type="xs:string" minOccurs="0" />
+                    <xs:element name="RebateOnAgriInc" type="xs:string" minOccurs="0" />
+                    <xs:element name="TaxPayableOnTotInc" type="xs:string" minOccurs="0" />
+                    <xs:element name="Rebate87A" type="xs:string" minOccurs="0" />
+                    <xs:element name="TaxPayableOnRebate" type="xs:string" minOccurs="0" />
+                    <xs:element name="SurchargeOnAboveCrore" type="xs:string" minOccurs="0" />
+                    <xs:element name="EducationCess" type="xs:string" minOccurs="0" />
+                    <xs:element name="GrossTaxLiability" type="xs:string" minOccurs="0" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="TaxRelief" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Section89" type="xs:string" minOccurs="0" />
+                    <xs:element name="Section90" type="xs:string" minOccurs="0" />
+                    <xs:element name="Section91" type="xs:string" minOccurs="0" />
+                    <xs:element name="TotTaxRelief" type="xs:string" minOccurs="0" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="IntrstPay" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="IntrstPayUs234A" type="xs:string" minOccurs="0" />
+                    <xs:element name="IntrstPayUs234B" type="xs:string" minOccurs="0" />
+                    <xs:element name="IntrstPayUs234C" type="xs:string" minOccurs="0" />
+                    <xs:element name="TotalIntrstPay" type="xs:string" minOccurs="0" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="TaxPaid" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="BalTaxPayable" type="xs:string" minOccurs="0" />
+              <xs:element name="TaxesPaid" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="AdvanceTax" type="xs:string" minOccurs="0" />
+                    <xs:element name="TDS" type="xs:string" minOccurs="0" />
+                    <xs:element name="TCS" type="xs:string" minOccurs="0" />
+                    <xs:element name="SelfAssessmentTax" type="xs:string" minOccurs="0" />
+                    <xs:element name="TotalTaxesPaid" type="xs:string" minOccurs="0" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Refund" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="RefundDue" type="xs:string" minOccurs="0" />
+              <xs:element name="BankAccountDtls" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="BankAccounts" type="xs:string" minOccurs="0" />
+                    <xs:element name="PriBankDetails" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="IFSCCode" type="xs:string" minOccurs="0" />
+                          <xs:element name="BankName" type="xs:string" minOccurs="0" />
+                          <xs:element name="BankAccountNo" type="xs:string" minOccurs="0" />
+                          <xs:element name="BankAccountType" type="xs:string" minOccurs="0" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="AddtnlBankDetails" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="IFSCCode" type="xs:string" minOccurs="0" />
+                          <xs:element name="BankName" type="xs:string" minOccurs="0" />
+                          <xs:element name="BankAccountNo" type="xs:string" minOccurs="0" />
+                          <xs:element name="BankAccountType" type="xs:string" minOccurs="0" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Verification">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Place" type="xs:string" minOccurs="0" />
+        <xs:element name="Date" type="xs:string" minOccurs="0" />
+        <xs:element name="Declaration" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="AssesseeVerName" type="xs:string" minOccurs="0" />
+              <xs:element name="FatherName" type="xs:string" minOccurs="0" />
+              <xs:element name="AssesseeVerPAN" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TaxReturnPreparer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="IdentificationNoOfTRP" type="xs:string" minOccurs="0" />
+        <xs:element name="NameOfTRP" type="xs:string" minOccurs="0" />
+        <xs:element name="ReImbFrmGov" type="xs:string" minOccurs="0" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ScheduleS">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="TotIncUnderHeadSalaries" type="xs:string" minOccurs="0" />
+        <xs:element name="Salaries" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="NameOfEmployer" type="xs:string" minOccurs="0" />
+              <xs:element name="PANofEmployer" type="xs:string" minOccurs="0" />
+              <xs:element ref="AddressDetail" minOccurs="0" maxOccurs="unbounded" />
+              <xs:element name="Salarys" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Salary" type="xs:string" minOccurs="0" />
+                    <xs:element name="ExemptUSection10Travel" type="xs:string" minOccurs="0" />
+                    <xs:element name="ExemptUSection10NonMonetary" type="xs:string" minOccurs="0" />
+                    <xs:element name="ExemptUSection10HouseRent" type="xs:string" minOccurs="0" />
+                    <xs:element name="ExemptUSection10Oth" type="xs:string" minOccurs="0" />
+                    <xs:element name="AllowancesNotExempt" type="xs:string" minOccurs="0" />
+                    <xs:element name="ValueOfPerquisites" type="xs:string" minOccurs="0" />
+                    <xs:element name="ProfitsinLieuOfSalary" type="xs:string" minOccurs="0" />
+                    <xs:element name="DeductionUnderSection16" type="xs:string" minOccurs="0" />
+                    <xs:element name="IncomeFromSalary" type="xs:string" minOccurs="0" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ScheduleHP">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="RentOfEarlierYrSec25AandAA" type="xs:string" minOccurs="0" />
+        <xs:element name="RentArearsSec25BAfter30pcDeduct" type="xs:string" minOccurs="0" />
+        <xs:element name="TotalIncomeChargeableUnHP" type="xs:string" minOccurs="0" />
+        <xs:element name="PropertyDetails" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="HPSNo" type="xs:string" minOccurs="0" />
+              <xs:element name="PropCoOwnedFlg" type="xs:string" minOccurs="0" />
+              <xs:element name="AsseseeShareProperty" type="xs:string" minOccurs="0" />
+              <xs:element name="ifLetOut" type="xs:string" minOccurs="0" />
+              <xs:element ref="AddressDetail" minOccurs="0" maxOccurs="unbounded" />
+              <xs:element name="CoOwners" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="CoOwnersSNo" type="xs:string" minOccurs="0" />
+                    <xs:element name="NameCoOwner" type="xs:string" minOccurs="0" />
+                    <xs:element name="PAN_CoOwner" type="xs:string" minOccurs="0" />
+                    <xs:element name="PercentShareProperty" type="xs:string" minOccurs="0" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="TenantDetails" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="TenantSNo" type="xs:string" minOccurs="0" />
+                    <xs:element name="NameofTenant" type="xs:string" minOccurs="0" />
+                    <xs:element name="PANofTenant" type="xs:string" minOccurs="0" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Rentdetails" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="AnnualLetableValue" type="xs:string" minOccurs="0" />
+                    <xs:element name="RentNotRealized" type="xs:string" minOccurs="0" />
+                    <xs:element name="LocalTaxes" type="xs:string" minOccurs="0" />
+                    <xs:element name="TotalUnrealizedAndTax" type="xs:string" minOccurs="0" />
+                    <xs:element name="BalanceALV" type="xs:string" minOccurs="0" />
+                    <xs:element name="AnnualOfPropOwned" type="xs:string" minOccurs="0" />
+                    <xs:element name="ThirtyPercentOfBalance" type="xs:string" minOccurs="0" />
+                    <xs:element name="IntOnBorwCap" type="xs:string" minOccurs="0" />
+                    <xs:element name="TotalDeduct" type="xs:string" minOccurs="0" />
+                    <xs:element name="IncomeOfHP" type="xs:string" minOccurs="0" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ITR4ScheduleBP">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="IncChrgUnHdProftGain" type="xs:string" minOccurs="0" />
+        <xs:element name="BusinessIncOthThanSpec" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ProfBfrTaxPL" type="xs:string" minOccurs="0" />
+              <xs:element name="NetPLFromSpecBus" type="xs:string" minOccurs="0" />
+              <xs:element name="NetPLFromSpecifiedBus" type="xs:string" minOccurs="0" />
+              <xs:element name="PLUs44sChapXIIG" type="xs:string" minOccurs="0" />
+              <xs:element name="BalancePLOthThanSpecBus" type="xs:string" minOccurs="0" />
+              <xs:element name="ExpDebToPLExemptInc" type="xs:string" minOccurs="0" />
+              <xs:element name="TotExpDebPL" type="xs:string" minOccurs="0" />
+              <xs:element name="AdjustedPLOthThanSpecBus" type="xs:string" minOccurs="0" />
+              <xs:element name="DepreciationDebPLCosAct" type="xs:string" minOccurs="0" />
+              <xs:element name="AdjustPLAfterDeprOthSpecInc" type="xs:string" minOccurs="0" />
+              <xs:element name="AmtDebPLDisallowUs36" type="xs:string" minOccurs="0" />
+              <xs:element name="AmtDebPLDisallowUs37" type="xs:string" minOccurs="0" />
+              <xs:element name="AmtDebPLDisallowUs40" type="xs:string" minOccurs="0" />
+              <xs:element name="AmtDebPLDisallowUs40A" type="xs:string" minOccurs="0" />
+              <xs:element name="AmtDebPLDisallowUs43B" type="xs:string" minOccurs="0" />
+              <xs:element name="InterestDisAllowUs23SMEAct" type="xs:string" minOccurs="0" />
+              <xs:element name="DeemIncUs41" type="xs:string" minOccurs="0" />
+              <xs:element name="DeemIncUs3380HHD80IA" type="xs:string" minOccurs="0" />
+              <xs:element name="DeemIncUs43CA" type="xs:string" minOccurs="0" />
+              <xs:element name="OthItemDisallowUs28To44DA" type="xs:string" minOccurs="0" />
+              <xs:element name="AnyOthIncNotInclInExpDisallowPL" type="xs:string" minOccurs="0" />
+              <xs:element name="TotAfterAddToPLDeprOthSpecInc" type="xs:string" minOccurs="0" />
+              <xs:element name="DeductUs32_1_iii" type="xs:string" minOccurs="0" />
+              <xs:element name="DebPLUs35ExcessAmt" type="xs:string" minOccurs="0" />
+              <xs:element name="AmtDisallUs40NowAllow" type="xs:string" minOccurs="0" />
+              <xs:element name="AmtDisallUs43BNowAllow" type="xs:string" minOccurs="0" />
+              <xs:element name="AnyOthAmtAllDeduct" type="xs:string" minOccurs="0" />
+              <xs:element name="TotDeductionAmts" type="xs:string" minOccurs="0" />
+              <xs:element name="PLAftAdjDedBusOthThanSpec" type="xs:string" minOccurs="0" />
+              <xs:element name="NetPLAftAdjBusOthThanSpec" type="xs:string" minOccurs="0" />
+              <xs:element name="NetPLBusOthThanSpec7A7B7C" type="xs:string" minOccurs="0" />
+              <xs:element name="IncRecCredPLOthHeadDtls" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Salary" type="xs:string" minOccurs="0" />
+                    <xs:element name="HouseProperty" type="xs:string" minOccurs="0" />
+                    <xs:element name="CapitalGains" type="xs:string" minOccurs="0" />
+                    <xs:element name="OtherSources" type="xs:string" minOccurs="0" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="IncCredPL" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="FirmShareInc" type="xs:string" minOccurs="0" />
+                    <xs:element name="AOPBOISharInc" type="xs:string" minOccurs="0" />
+                    <xs:element name="OthExempInc" type="xs:string" minOccurs="0" />
+                    <xs:element name="TotExempIncPL" type="xs:string" minOccurs="0" />
+                    <xs:element name="OtherExmptIncDtls" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="OperatingRevenueName" type="xs:string" minOccurs="0" />
+                          <xs:element name="OperatingRevenueAmt" type="xs:string" minOccurs="0" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="ExpDebToPLOthHeadDtls" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Salary" type="xs:string" minOccurs="0" />
+                    <xs:element name="HouseProperty" type="xs:string" minOccurs="0" />
+                    <xs:element name="CapitalGains" type="xs:string" minOccurs="0" />
+                    <xs:element name="OtherSources" type="xs:string" minOccurs="0" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="DepreciationAllowITAct32" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="DepreciationAllowUs32_1_ii" type="xs:string" minOccurs="0" />
+                    <xs:element name="DepreciationAllowUs32_1_i" type="xs:string" minOccurs="0" />
+                    <xs:element name="TotDeprAllowITAct" type="xs:string" minOccurs="0" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="DeductUs35AC" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="DebPL35ACAmt" type="xs:string" minOccurs="0" />
+                    <xs:element name="AmtAllowUs35ACt" type="xs:string" minOccurs="0" />
+                    <xs:element name="ExcessAmtDeduct35AC" type="xs:string" minOccurs="0" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="DeemedProfitBusUs" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Section44AD" type="xs:string" minOccurs="0" />
+                    <xs:element name="Section44AE" type="xs:string" minOccurs="0" />
+                    <xs:element name="Section44B" type="xs:string" minOccurs="0" />
+                    <xs:element name="Section44BB" type="xs:string" minOccurs="0" />
+                    <xs:element name="Section44BBA" type="xs:string" minOccurs="0" />
+                    <xs:element name="Section44BBB" type="xs:string" minOccurs="0" />
+                    <xs:element name="Section44D" type="xs:string" minOccurs="0" />
+                    <xs:element name="Section44DA" type="xs:string" minOccurs="0" />
+                    <xs:element name="FirstSchTAct" type="xs:string" minOccurs="0" />
+                    <xs:element name="TotDeemedProfitBusUs" type="xs:string" minOccurs="0" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SpecBusinessInc" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="NetPLFrmSpecBus" type="xs:string" minOccurs="0" />
+              <xs:element name="AdditionUs28to44DA" type="xs:string" minOccurs="0" />
+              <xs:element name="DeductUs28to44DA" type="xs:string" minOccurs="0" />
+              <xs:element name="AdjustedPLFrmSpecuBus" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SpecifiedBusinessInc" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="NetPLFrmSpecifiedBus" type="xs:string" minOccurs="0" />
+              <xs:element name="AddSec28to44DA" type="xs:string" minOccurs="0" />
+              <xs:element name="DedSec28to44DAOTDedSec35AD" type="xs:string" minOccurs="0" />
+              <xs:element name="ProfitLossSpecifiedBusiness" type="xs:string" minOccurs="0" />
+              <xs:element name="DeductionUs35AD" type="xs:string" minOccurs="0" />
+              <xs:element name="PLFrmSpecifiedBus" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="BusSetoffCurrYr" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="LossSetOffOnBusLoss" type="xs:string" minOccurs="0" />
+              <xs:element name="TotLossSetOffOnBus" type="xs:string" minOccurs="0" />
+              <xs:element name="LossRemainSetOffOnBus" type="xs:string" minOccurs="0" />
+              <xs:element ref="SpeculativeInc" minOccurs="0" maxOccurs="unbounded" />
+              <xs:element ref="SpecifiedInc" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ScheduleDPM">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="PlantMachinery" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Rate15" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element ref="DepreciationDetail" minOccurs="0" maxOccurs="unbounded" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Rate30" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element ref="DepreciationDetail" minOccurs="0" maxOccurs="unbounded" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Rate40" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element ref="DepreciationDetail" minOccurs="0" maxOccurs="unbounded" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Rate50" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element ref="DepreciationDetail" minOccurs="0" maxOccurs="unbounded" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Rate60" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element ref="DepreciationDetail" minOccurs="0" maxOccurs="unbounded" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Rate80" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element ref="DepreciationDetail" minOccurs="0" maxOccurs="unbounded" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element ref="Rate100" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ScheduleDOA">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Building" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Rate5" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element ref="DepreciationDetail" minOccurs="0" maxOccurs="unbounded" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element ref="Rate10" minOccurs="0" maxOccurs="unbounded" />
+              <xs:element ref="Rate100" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="FurnitureFittings" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element ref="Rate10" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="IntangibleAssets" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Rate25" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element ref="DepreciationDetail" minOccurs="0" maxOccurs="unbounded" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Ships" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Rate20" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element ref="DepreciationDetail" minOccurs="0" maxOccurs="unbounded" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ScheduleDEP">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="SummaryFromDeprSch" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="FurnitureSummary" type="xs:string" minOccurs="0" />
+              <xs:element name="IntangibleAssetSummary" type="xs:string" minOccurs="0" />
+              <xs:element name="ShipsSummary" type="xs:string" minOccurs="0" />
+              <xs:element name="TotalDepreciation" type="xs:string" minOccurs="0" />
+              <xs:element name="PlantMachinerySummary" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="DeprBlockTot15Percent" type="xs:string" minOccurs="0" />
+                    <xs:element name="DeprBlockTot30Percent" type="xs:string" minOccurs="0" />
+                    <xs:element name="DeprBlockTot40Percent" type="xs:string" minOccurs="0" />
+                    <xs:element name="DeprBlockTot50Percent" type="xs:string" minOccurs="0" />
+                    <xs:element name="DeprBlockTot60Percent" type="xs:string" minOccurs="0" />
+                    <xs:element name="DeprBlockTot80Percent" type="xs:string" minOccurs="0" />
+                    <xs:element name="DeprBlockTot100Percent" type="xs:string" minOccurs="0" />
+                    <xs:element name="TotPlntMach" type="xs:string" minOccurs="0" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="BuildingSummary" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="DeprBlockTot5Percent" type="xs:string" minOccurs="0" />
+                    <xs:element name="DeprBlockTot10Percent" type="xs:string" minOccurs="0" />
+                    <xs:element name="DeprBlockTot100Percent" type="xs:string" minOccurs="0" />
+                    <xs:element name="TotBuildng" type="xs:string" minOccurs="0" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ScheduleDCG">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="SummaryFromDeprSchCG" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="FurnitureSummary" type="xs:string" minOccurs="0" />
+              <xs:element name="IntangibleAssetSummary" type="xs:string" minOccurs="0" />
+              <xs:element name="ShipsSummary" type="xs:string" minOccurs="0" />
+              <xs:element name="TotalDepreciation" type="xs:string" minOccurs="0" />
+              <xs:element name="PlantMachinerySummaryCG" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="DeprBlockTot15Percent" type="xs:string" minOccurs="0" />
+                    <xs:element name="DeprBlockTot30Percent" type="xs:string" minOccurs="0" />
+                    <xs:element name="DeprBlockTot40Percent" type="xs:string" minOccurs="0" />
+                    <xs:element name="DeprBlockTot50Percent" type="xs:string" minOccurs="0" />
+                    <xs:element name="DeprBlockTot60Percent" type="xs:string" minOccurs="0" />
+                    <xs:element name="DeprBlockTot80Percent" type="xs:string" minOccurs="0" />
+                    <xs:element name="DeprBlockTot100Percent" type="xs:string" minOccurs="0" />
+                    <xs:element name="TotPlntMach" type="xs:string" minOccurs="0" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="BuildingSummaryCG" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="DeprBlockTot5Percent" type="xs:string" minOccurs="0" />
+                    <xs:element name="DeprBlockTot10Percent" type="xs:string" minOccurs="0" />
+                    <xs:element name="DeprBlockTot100Percent" type="xs:string" minOccurs="0" />
+                    <xs:element name="TotBuildng" type="xs:string" minOccurs="0" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ScheduleESR">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="DeductionUs35" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Section35_1_i" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element ref="DeductUs35" minOccurs="0" maxOccurs="unbounded" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Section35_1_ii" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element ref="DeductUs35" minOccurs="0" maxOccurs="unbounded" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Section35_1_iia" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element ref="DeductUs35" minOccurs="0" maxOccurs="unbounded" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Section35_1_iii" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element ref="DeductUs35" minOccurs="0" maxOccurs="unbounded" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Section35_1_iv" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element ref="DeductUs35" minOccurs="0" maxOccurs="unbounded" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Section35_2AA" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element ref="DeductUs35" minOccurs="0" maxOccurs="unbounded" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Section35_2AB" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element ref="DeductUs35" minOccurs="0" maxOccurs="unbounded" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Section35_CCC" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element ref="DeductUs35" minOccurs="0" maxOccurs="unbounded" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Section35_CCD" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element ref="DeductUs35" minOccurs="0" maxOccurs="unbounded" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="TotUs35" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element ref="DeductUs35" minOccurs="0" maxOccurs="unbounded" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ScheduleCGFor23">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="TotScheduleCGFor23" type="xs:string" minOccurs="0" />
+        <xs:element name="ShortTermCapGainFor23" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="UnutilizedStcgFlag" type="xs:string" minOccurs="0" />
+              <xs:element name="AmtDeemedStcg" type="xs:string" minOccurs="0" />
+              <xs:element name="TotalAmtDeemedStcg" type="xs:string" minOccurs="0" />
+              <xs:element name="TotalAmtTaxUsDTAAStcg" type="xs:string" minOccurs="0" />
+              <xs:element name="DeemedStcgOnAssets" type="xs:string" minOccurs="0" />
+              <xs:element name="TotalSTCG" type="xs:string" minOccurs="0" />
+              <xs:element ref="SaleofLandBuild" minOccurs="0" maxOccurs="unbounded" />
+              <xs:element name="SlumpSaleInStcg" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="FullConsideration" type="xs:string" minOccurs="0" />
+                    <xs:element name="NetWorthOfDivision" type="xs:string" minOccurs="0" />
+                    <xs:element name="CapgainonAssets" type="xs:string" minOccurs="0" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="EquityMFonSTT" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="MFSectionCode" type="xs:string" minOccurs="0" />
+                    <xs:element name="EquityMFonSTTDtls" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="FullConsideration" type="xs:string" minOccurs="0" />
+                          <xs:element name="BalanceCG" type="xs:string" minOccurs="0" />
+                          <xs:element name="LossSec94of7Or94of8" type="xs:string" minOccurs="0" />
+                          <xs:element name="CapgainonAssets" type="xs:string" minOccurs="0" />
+                          <xs:element ref="DeductSec48" minOccurs="0" maxOccurs="unbounded" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="NRITransacSec48Dtl" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="NRItaxSTTPaid" type="xs:string" minOccurs="0" />
+                    <xs:element name="NRItaxSTTNotPaid" type="xs:string" minOccurs="0" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="NRISecur115AD" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="FullConsideration" type="xs:string" minOccurs="0" />
+                    <xs:element name="BalanceCG" type="xs:string" minOccurs="0" />
+                    <xs:element name="LossSec94of7Or94of8" type="xs:string" minOccurs="0" />
+                    <xs:element name="CapgainonAssets" type="xs:string" minOccurs="0" />
+                    <xs:element ref="DeductSec48" minOccurs="0" maxOccurs="unbounded" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="SaleOnOtherAssets" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="FullConsideration" type="xs:string" minOccurs="0" />
+                    <xs:element name="BalanceCG" type="xs:string" minOccurs="0" />
+                    <xs:element name="LossSec94of7Or94of8" type="xs:string" minOccurs="0" />
+                    <xs:element name="CapgainonAssets" type="xs:string" minOccurs="0" />
+                    <xs:element ref="DeductSec48" minOccurs="0" maxOccurs="unbounded" />
+                    <xs:element ref="ExemptionOrDednUs54" minOccurs="0" maxOccurs="unbounded" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element ref="UnutilizedCg" minOccurs="0" maxOccurs="unbounded" />
+              <xs:element ref="UnutilizedCgConst" minOccurs="0" maxOccurs="unbounded" />
+              <xs:element ref="NRICgDTAA" minOccurs="0" maxOccurs="unbounded" />
+              <xs:element name="AmtDeemedCGSec54Dtls" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element ref="ExemptionOrDednUs54" minOccurs="0" maxOccurs="unbounded" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="LongTermCapGain23" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="UnutilizedLtcgFlag" type="xs:string" minOccurs="0" />
+              <xs:element name="AmtDeemedLtcg" type="xs:string" minOccurs="0" />
+              <xs:element name="TotalAmtDeemedLtcg" type="xs:string" minOccurs="0" />
+              <xs:element name="TotalAmtTaxUsDTAALtcg" type="xs:string" minOccurs="0" />
+              <xs:element name="TotalLTCG" type="xs:string" minOccurs="0" />
+              <xs:element ref="SaleofLandBuild" minOccurs="0" maxOccurs="unbounded" />
+              <xs:element name="SlumpSaleInLtcg" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="FullConsideration" type="xs:string" minOccurs="0" />
+                    <xs:element name="NetWorthOfDivision" type="xs:string" minOccurs="0" />
+                    <xs:element name="SlumpBalance" type="xs:string" minOccurs="0" />
+                    <xs:element name="CapgainonAssets" type="xs:string" minOccurs="0" />
+                    <xs:element ref="ExemptionOrDednUs54" minOccurs="0" maxOccurs="unbounded" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="SaleofBondsDebntr" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="FullConsideration" type="xs:string" minOccurs="0" />
+                    <xs:element name="BalanceCG" type="xs:string" minOccurs="0" />
+                    <xs:element name="CapgainonAssets" type="xs:string" minOccurs="0" />
+                    <xs:element ref="DeductSec48" minOccurs="0" maxOccurs="unbounded" />
+                    <xs:element ref="ExemptionOrDednUs54" minOccurs="0" maxOccurs="unbounded" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Proviso112Applicable" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Proviso112SectionCode" type="xs:string" minOccurs="0" />
+                    <xs:element name="Proviso112Applicabledtls" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="FullConsideration" type="xs:string" minOccurs="0" />
+                          <xs:element name="BalanceCG" type="xs:string" minOccurs="0" />
+                          <xs:element name="CapgainonAssets" type="xs:string" minOccurs="0" />
+                          <xs:element ref="DeductSec48" minOccurs="0" maxOccurs="unbounded" />
+                          <xs:element ref="ExemptionOrDednUs54" minOccurs="0" maxOccurs="unbounded" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="NRIProvisoSec48" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="LTCGWithoutBenefit" type="xs:string" minOccurs="0" />
+                    <xs:element name="BalanceCG" type="xs:string" minOccurs="0" />
+                    <xs:element ref="ExemptionOrDednUs54" minOccurs="0" maxOccurs="unbounded" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="NRIOnSec112and115" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="NRIOnSec112and115Dtls" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="SectionCode" type="xs:string" minOccurs="0" />
+                          <xs:element name="FullConsideration" type="xs:string" minOccurs="0" />
+                          <xs:element name="BalanceCG" type="xs:string" minOccurs="0" />
+                          <xs:element name="CapgainonAssets" type="xs:string" minOccurs="0" />
+                          <xs:element ref="DeductSec48" minOccurs="0" maxOccurs="unbounded" />
+                          <xs:element ref="ExemptionOrDednUs54" minOccurs="0" maxOccurs="unbounded" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="NRISaleofForeignAsset" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="SaleonSpecAsset" type="xs:string" minOccurs="0" />
+                    <xs:element name="DednSpecAssetus115" type="xs:string" minOccurs="0" />
+                    <xs:element name="BalonSpeciAsset" type="xs:string" minOccurs="0" />
+                    <xs:element name="SaleOtherSpecAsset" type="xs:string" minOccurs="0" />
+                    <xs:element name="DednOtherSpecAssetus115" type="xs:string" minOccurs="0" />
+                    <xs:element name="BalOtherthanSpecAsset" type="xs:string" minOccurs="0" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="SaleofAssetNA" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="FullConsideration" type="xs:string" minOccurs="0" />
+                    <xs:element name="BalanceCG" type="xs:string" minOccurs="0" />
+                    <xs:element name="CapgainonAssets" type="xs:string" minOccurs="0" />
+                    <xs:element ref="DeductSec48" minOccurs="0" maxOccurs="unbounded" />
+                    <xs:element ref="ExemptionOrDednUs54" minOccurs="0" maxOccurs="unbounded" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element ref="UnutilizedCg" minOccurs="0" maxOccurs="unbounded" />
+              <xs:element ref="UnutilizedCgConst" minOccurs="0" maxOccurs="unbounded" />
+              <xs:element ref="NRICgDTAA" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DeducClaimInfo" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TotDeductClaim" type="xs:string" minOccurs="0" />
+              <xs:element name="DeductPAN" type="xs:string" minOccurs="0" />
+              <xs:element name="DeducClaimDtls" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="DeductedSecCode" type="xs:string" minOccurs="0" />
+                    <xs:element name="AmtDeducted" type="xs:string" minOccurs="0" />
+                    <xs:element name="CostofAsset" type="xs:string" minOccurs="0" />
+                    <xs:element name="DateofAcquist" type="xs:string" minOccurs="0" />
+                    <xs:element name="AmtDeposited" type="xs:string" minOccurs="0" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="CurrYrLosses" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="InLossSetOff" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="TypeOfCapGain" type="xs:string" minOccurs="0" />
+                    <xs:element name="StclSetoff15Per" type="xs:string" minOccurs="0" />
+                    <xs:element name="StclSetoff30Per" type="xs:string" minOccurs="0" />
+                    <xs:element name="StclSetoffAppRate" type="xs:string" minOccurs="0" />
+                    <xs:element name="LtclSetOff10Per" type="xs:string" minOccurs="0" />
+                    <xs:element name="LtclSetOff20Per" type="xs:string" minOccurs="0" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="InStcg15Per" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="TypeOfCapGain" type="xs:string" minOccurs="0" />
+                    <xs:element name="CurrYearIncome" type="xs:string" minOccurs="0" />
+                    <xs:element name="StclSetoff30Per" type="xs:string" minOccurs="0" />
+                    <xs:element name="StclSetoffAppRate" type="xs:string" minOccurs="0" />
+                    <xs:element name="CurrYrCapGain" type="xs:string" minOccurs="0" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="InStcg30Per" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="TypeOfCapGain" type="xs:string" minOccurs="0" />
+                    <xs:element name="CurrYearIncome" type="xs:string" minOccurs="0" />
+                    <xs:element name="StclSetoff15Per" type="xs:string" minOccurs="0" />
+                    <xs:element name="StclSetoffAppRate" type="xs:string" minOccurs="0" />
+                    <xs:element name="CurrYrCapGain" type="xs:string" minOccurs="0" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="InStcgAppRate" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="TypeOfCapGain" type="xs:string" minOccurs="0" />
+                    <xs:element name="CurrYearIncome" type="xs:string" minOccurs="0" />
+                    <xs:element name="StclSetoff15Per" type="xs:string" minOccurs="0" />
+                    <xs:element name="StclSetoff30Per" type="xs:string" minOccurs="0" />
+                    <xs:element name="CurrYrCapGain" type="xs:string" minOccurs="0" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="InLtcg10Per" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="TypeOfCapGain" type="xs:string" minOccurs="0" />
+                    <xs:element name="CurrYearIncome" type="xs:string" minOccurs="0" />
+                    <xs:element name="StclSetoff15Per" type="xs:string" minOccurs="0" />
+                    <xs:element name="StclSetoff30Per" type="xs:string" minOccurs="0" />
+                    <xs:element name="StclSetoffAppRate" type="xs:string" minOccurs="0" />
+                    <xs:element name="LtclSetOff20Per" type="xs:string" minOccurs="0" />
+                    <xs:element name="CurrYrCapGain" type="xs:string" minOccurs="0" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="InLtcg20Per" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="TypeOfCapGain" type="xs:string" minOccurs="0" />
+                    <xs:element name="CurrYearIncome" type="xs:string" minOccurs="0" />
+                    <xs:element name="StclSetoff15Per" type="xs:string" minOccurs="0" />
+                    <xs:element name="StclSetoff30Per" type="xs:string" minOccurs="0" />
+                    <xs:element name="StclSetoffAppRate" type="xs:string" minOccurs="0" />
+                    <xs:element name="LtclSetOff10Per" type="xs:string" minOccurs="0" />
+                    <xs:element name="CurrYrCapGain" type="xs:string" minOccurs="0" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="TotLossSetOff" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="TypeOfCapGain" type="xs:string" minOccurs="0" />
+                    <xs:element name="StclSetoff15Per" type="xs:string" minOccurs="0" />
+                    <xs:element name="StclSetoff30Per" type="xs:string" minOccurs="0" />
+                    <xs:element name="StclSetoffAppRate" type="xs:string" minOccurs="0" />
+                    <xs:element name="LtclSetOff10Per" type="xs:string" minOccurs="0" />
+                    <xs:element name="LtclSetOff20Per" type="xs:string" minOccurs="0" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="LossRemainSetOff" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="TypeOfCapGain" type="xs:string" minOccurs="0" />
+                    <xs:element name="StclSetoff15Per" type="xs:string" minOccurs="0" />
+                    <xs:element name="StclSetoff30Per" type="xs:string" minOccurs="0" />
+                    <xs:element name="StclSetoffAppRate" type="xs:string" minOccurs="0" />
+                    <xs:element name="LtclSetOff10Per" type="xs:string" minOccurs="0" />
+                    <xs:element name="LtclSetOff20Per" type="xs:string" minOccurs="0" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="AccruOrRecOfCG" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ShortTermUnder15Per" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element ref="DateRange" minOccurs="0" maxOccurs="unbounded" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="ShortTermUnder30Per" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element ref="DateRange" minOccurs="0" maxOccurs="unbounded" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="ShortTermUnderAppRate" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element ref="DateRange" minOccurs="0" maxOccurs="unbounded" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="LongTermUnder10Per" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element ref="DateRange" minOccurs="0" maxOccurs="unbounded" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="LongTermUnder20Per" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element ref="DateRange" minOccurs="0" maxOccurs="unbounded" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ScheduleOS">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="TotOthSrcNoRaceHorse" type="xs:string" minOccurs="0" />
+        <xs:element name="IncChargeable" type="xs:string" minOccurs="0" />
+        <xs:element name="IncOthThanOwnRaceHorse" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="DividendGross" type="xs:string" minOccurs="0" />
+              <xs:element name="InterestGross" type="xs:string" minOccurs="0" />
+              <xs:element name="RentFromMachPlantBldgs" type="xs:string" minOccurs="0" />
+              <xs:element name="OthersGross" type="xs:string" minOccurs="0" />
+              <xs:element name="TotalOSGross" type="xs:string" minOccurs="0" />
+              <xs:element name="GrossAmtChargblNormalRate" type="xs:string" minOccurs="0" />
+              <xs:element name="BalanceNoRaceHorse" type="xs:string" minOccurs="0" />
+              <xs:element name="OthersGrossDtls" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="SourceDescription" type="xs:string" minOccurs="0" />
+                    <xs:element name="OtherSourceDesc" type="xs:string" minOccurs="0" />
+                    <xs:element name="SourceAmount" type="xs:string" minOccurs="0" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="IncChargblSplRateOS" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="WinningFrmLotteries" type="xs:string" minOccurs="0" />
+                    <xs:element name="SecXIIOth" type="xs:string" minOccurs="0" />
+                    <xs:element name="TotalAmtTaxUsDTAASchOs" type="xs:string" minOccurs="0" />
+                    <xs:element name="TotalOSGrossChargblSplRate" type="xs:string" minOccurs="0" />
+                    <xs:element name="NRIOsDTAA" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="NRIDTAADtlsSchOS" minOccurs="0" maxOccurs="unbounded">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="CountryName" type="xs:string" minOccurs="0" />
+                                <xs:element name="CountryCode" type="xs:string" minOccurs="0" />
+                                <xs:element name="DTAAarticle" type="xs:string" minOccurs="0" />
+                                <xs:element name="RateUsDTAA" type="xs:string" minOccurs="0" />
+                                <xs:element name="TaxRescertifiedFlag" type="xs:string" minOccurs="0" />
+                                <xs:element name="ItemNoincl" type="xs:string" minOccurs="0" />
+                                <xs:element name="DTAAamt" type="xs:string" minOccurs="0" />
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Deductions" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Expenses" type="xs:string" minOccurs="0" />
+                    <xs:element name="Depreciation" type="xs:string" minOccurs="0" />
+                    <xs:element name="TotDeductions" type="xs:string" minOccurs="0" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="IncFromOwnHorse" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Receipts" type="xs:string" minOccurs="0" />
+              <xs:element name="DeductSec57" type="xs:string" minOccurs="0" />
+              <xs:element name="BalanceOwnRaceHorse" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ScheduleCYLA">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Salary" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element ref="IncCYLA" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element ref="HP" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element ref="BusProfExclSpecProf" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element ref="SpeculativeInc" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element ref="SpecifiedInc" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element ref="STCG15Per" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element ref="STCG30Per" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element ref="STCGAppRate" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element ref="LTCG10Per" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element ref="LTCG20Per" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element ref="OthSrcExclRaceHorse" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element ref="OthSrcRaceHorse" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element name="TotalCurYr" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TotHPlossCurYr" type="xs:string" minOccurs="0" />
+              <xs:element name="TotBusLoss" type="xs:string" minOccurs="0" />
+              <xs:element name="TotOthSrcLossNoRaceHorse" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="TotalLossSetOff" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TotHPlossCurYrSetoff" type="xs:string" minOccurs="0" />
+              <xs:element name="TotBusLossSetoff" type="xs:string" minOccurs="0" />
+              <xs:element name="TotOthSrcLossNoRaceHorseSetoff" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="LossRemAftSetOff" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="BalHPlossCurYrAftSetoff" type="xs:string" minOccurs="0" />
+              <xs:element name="BalBusLossAftSetoff" type="xs:string" minOccurs="0" />
+              <xs:element name="BalOthSrcLossNoRaceHorseAftSetoff" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ScheduleBFLA">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="IncomeOfCurrYrAftCYLABFLA" type="xs:string" minOccurs="0" />
+        <xs:element ref="HP" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element ref="BusProfExclSpecProf" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element ref="SpeculativeInc" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element ref="SpecifiedInc" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element ref="STCG15Per" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element ref="STCG30Per" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element ref="STCGAppRate" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element ref="LTCG10Per" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element ref="LTCG20Per" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element ref="OthSrcExclRaceHorse" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element ref="OthSrcRaceHorse" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element name="TotalBFLossSetOff" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TotBFLossSetoff" type="xs:string" minOccurs="0" />
+              <xs:element name="TotUnabsorbedDeprSetoff" type="xs:string" minOccurs="0" />
+              <xs:element name="TotAllUs35cl4Setoff" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ScheduleCFL">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="LossCFFromPrev8thYearFromAY" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element ref="CarryFwdLossDetail" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="LossCFFromPrev7thYearFromAY" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element ref="CarryFwdLossDetail" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="LossCFFromPrev6thYearFromAY" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element ref="CarryFwdLossDetail" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="LossCFFromPrev5thYearFromAY" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element ref="CarryFwdLossDetail" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="LossCFFromPrev4thYearFromAY" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element ref="CarryFwdLossDetail" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="LossCFFromPrev3rdYearFromAY" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element ref="CarryFwdLossDetail" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="LossCFFromPrev2ndYearFromAY" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element ref="CarryFwdLossDetail" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="LossCFFromPrevYrToAY" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element ref="CarryFwdLossDetail" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="TotalOfBFLossesEarlierYrs" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element ref="LossSummaryDetail" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="AdjTotBFLossInBFLA" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element ref="LossSummaryDetail" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="CurrentAYloss" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element ref="LossSummaryDetail" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="TotalLossCFSummary" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element ref="LossSummaryDetail" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ITR4ScheduleUD">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="CurrAssYr" type="xs:string" minOccurs="0" />
+        <xs:element name="CurBalCFNY" type="xs:string" minOccurs="0" />
+        <xs:element name="CurAllowBalCFNY" type="xs:string" minOccurs="0" />
+        <xs:element name="TotBFUDepritAmt" type="xs:string" minOccurs="0" />
+        <xs:element name="TotCurYrdepritSetoffInc" type="xs:string" minOccurs="0" />
+        <xs:element name="TotDepritBalCFNY" type="xs:string" minOccurs="0" />
+        <xs:element name="TotBFUAllowAmt" type="xs:string" minOccurs="0" />
+        <xs:element name="TotCurYrAllowSetoffInc" type="xs:string" minOccurs="0" />
+        <xs:element name="TotalBalCFNY" type="xs:string" minOccurs="0" />
+        <xs:element name="ScheduleUD" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="AssYr" type="xs:string" minOccurs="0" />
+              <xs:element name="AmtBFUD" type="xs:string" minOccurs="0" />
+              <xs:element name="AmtDeprSOCY" type="xs:string" minOccurs="0" />
+              <xs:element name="BalCFNY" type="xs:string" minOccurs="0" />
+              <xs:element name="AmtBFUAllow" type="xs:string" minOccurs="0" />
+              <xs:element name="AmtAllowSOCY" type="xs:string" minOccurs="0" />
+              <xs:element name="AllowBalCFNY" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Schedule10A">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="DeductSEZ" minOccurs="0" maxOccurs="unbounded" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Schedule10AA">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="DeductSEZ" minOccurs="0" maxOccurs="unbounded" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Schedule80G">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="TotalEligibleDonationsUs80G" type="xs:string" minOccurs="0" />
+        <xs:element name="TotalDonationsUs80G" type="xs:string" minOccurs="0" />
+        <xs:element name="Don100Percent" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TotEligibleDon100Percent" type="xs:string" minOccurs="0" />
+              <xs:element name="TotDon100Percent" type="xs:string" minOccurs="0" />
+              <xs:element ref="DoneeWithPan" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Don50PercentNoApprReqd" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TotEligibleDon50Percent" type="xs:string" minOccurs="0" />
+              <xs:element name="TotDon50PercentNoApprReqd" type="xs:string" minOccurs="0" />
+              <xs:element ref="DoneeWithPan" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Don100PercentApprReqd" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TotEligibleDon100PercentApprReqd" type="xs:string" minOccurs="0" />
+              <xs:element name="TotDon100PercentApprReqd" type="xs:string" minOccurs="0" />
+              <xs:element ref="DoneeWithPan" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Don50PercentApprReqd" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TotEligibleDon50PercentApprReqd" type="xs:string" minOccurs="0" />
+              <xs:element name="TotDon50PercentApprReqd" type="xs:string" minOccurs="0" />
+              <xs:element ref="DoneeWithPan" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Schedule80_IA">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Sch80SectionCode" type="xs:string" minOccurs="0" />
+        <xs:element name="TotSchedule80_IA" type="xs:string" minOccurs="0" />
+        <xs:element name="DeductUs80_IA_4_ii" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Sch80LocOrDescCode" type="xs:string" minOccurs="0" />
+              <xs:element ref="Sch80DeductAmtDtls" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DeductUs80_IA_4_iii" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Sch80LocOrDescCode" type="xs:string" minOccurs="0" />
+              <xs:element ref="Sch80DeductAmtDtls" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DeductUs80_IA_4_iv" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Sch80LocOrDescCode" type="xs:string" minOccurs="0" />
+              <xs:element ref="Sch80DeductAmtDtls" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DeductUs80_IA_4_v" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Sch80LocOrDescCode" type="xs:string" minOccurs="0" />
+              <xs:element ref="Sch80DeductAmtDtls" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Schedule80_IB">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Sch80SectionCode" type="xs:string" minOccurs="0" />
+        <xs:element name="TotSchedule80_IB" type="xs:string" minOccurs="0" />
+        <xs:element name="DeductJKLocUs80_IB_4_Und" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Sch80LocOrDescCode" type="xs:string" minOccurs="0" />
+              <xs:element ref="Sch80DeductAmtDtls" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DeductBackStatesUs80_IB_4_Und" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Sch80LocOrDescCode" type="xs:string" minOccurs="0" />
+              <xs:element ref="Sch80DeductAmtDtls" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DeductBackDisttUs80_IB_5_Und" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Sch80LocOrDescCode" type="xs:string" minOccurs="0" />
+              <xs:element ref="Sch80DeductAmtDtls" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DeductMultiplexUs80_IB_7A_Und" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Sch80LocOrDescCode" type="xs:string" minOccurs="0" />
+              <xs:element ref="Sch80DeductAmtDtls" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DeductConvCentUs80_IB_7B_Und" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Sch80LocOrDescCode" type="xs:string" minOccurs="0" />
+              <xs:element ref="Sch80DeductAmtDtls" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DeductMinOilUs80_IB_9_Und" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Sch80LocOrDescCode" type="xs:string" minOccurs="0" />
+              <xs:element ref="Sch80DeductAmtDtls" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DeductHousUs80_IB_10_Und" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Sch80LocOrDescCode" type="xs:string" minOccurs="0" />
+              <xs:element ref="Sch80DeductAmtDtls" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DeductColdChainUs80_IB_11_Und" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Sch80LocOrDescCode" type="xs:string" minOccurs="0" />
+              <xs:element ref="Sch80DeductAmtDtls" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DeductFruitVegUs80_IB_11A_Und" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Sch80LocOrDescCode" type="xs:string" minOccurs="0" />
+              <xs:element ref="Sch80DeductAmtDtls" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DeductFoodGrainUs80_IB_11A_Und" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Sch80LocOrDescCode" type="xs:string" minOccurs="0" />
+              <xs:element ref="Sch80DeductAmtDtls" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DeductRurHospUs80_IB_11B_Und" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Sch80LocOrDescCode" type="xs:string" minOccurs="0" />
+              <xs:element ref="Sch80DeductAmtDtls" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DeductHospAnyAreaUs80IB_11C_Und" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Sch80LocOrDescCode" type="xs:string" minOccurs="0" />
+              <xs:element ref="Sch80DeductAmtDtls" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Schedule80_IC">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Sch80SectionCode" type="xs:string" minOccurs="0" />
+        <xs:element name="TotSchedule80_IC" type="xs:string" minOccurs="0" />
+        <xs:element name="DeductInSikkim_Und" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Sch80LocOrDescCode" type="xs:string" minOccurs="0" />
+              <xs:element ref="Sch80DeductAmtDtls" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DeductInHimachalP_Und" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Sch80LocOrDescCode" type="xs:string" minOccurs="0" />
+              <xs:element ref="Sch80DeductAmtDtls" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DeductInUttaranchal_Und" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Sch80LocOrDescCode" type="xs:string" minOccurs="0" />
+              <xs:element ref="Sch80DeductAmtDtls" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DeductInNorthEast" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TotDeductInNorthEast" type="xs:string" minOccurs="0" />
+              <xs:element name="Assam_Und" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Sch80LocOrDescCode" type="xs:string" minOccurs="0" />
+                    <xs:element ref="Sch80DeductAmtDtls" minOccurs="0" maxOccurs="unbounded" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="ArunachalPradesh_Und" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Sch80LocOrDescCode" type="xs:string" minOccurs="0" />
+                    <xs:element ref="Sch80DeductAmtDtls" minOccurs="0" maxOccurs="unbounded" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Manipur_Und" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Sch80LocOrDescCode" type="xs:string" minOccurs="0" />
+                    <xs:element ref="Sch80DeductAmtDtls" minOccurs="0" maxOccurs="unbounded" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Mizoram_Und" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Sch80LocOrDescCode" type="xs:string" minOccurs="0" />
+                    <xs:element ref="Sch80DeductAmtDtls" minOccurs="0" maxOccurs="unbounded" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Meghalaya_Und" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Sch80LocOrDescCode" type="xs:string" minOccurs="0" />
+                    <xs:element ref="Sch80DeductAmtDtls" minOccurs="0" maxOccurs="unbounded" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Nagaland_Und" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Sch80LocOrDescCode" type="xs:string" minOccurs="0" />
+                    <xs:element ref="Sch80DeductAmtDtls" minOccurs="0" maxOccurs="unbounded" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Tripura_Und" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Sch80LocOrDescCode" type="xs:string" minOccurs="0" />
+                    <xs:element ref="Sch80DeductAmtDtls" minOccurs="0" maxOccurs="unbounded" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ScheduleVIA">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="UsrDeductUndChapVIA" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Section80C" type="xs:string" minOccurs="0" />
+              <xs:element name="Section80CCC" type="xs:string" minOccurs="0" />
+              <xs:element name="Section80CCDEmployeeOrSE" type="xs:string" minOccurs="0" />
+              <xs:element name="Section80CCDEmployer" type="xs:string" minOccurs="0" />
+              <xs:element name="Section80CCG" type="xs:string" minOccurs="0" />
+              <xs:element name="Section80D" type="xs:string" minOccurs="0" />
+              <xs:element name="Section80DD" type="xs:string" minOccurs="0" />
+              <xs:element name="Section80DDB" type="xs:string" minOccurs="0" />
+              <xs:element name="Section80E" type="xs:string" minOccurs="0" />
+              <xs:element name="Section80EE" type="xs:string" minOccurs="0" />
+              <xs:element name="Section80G" type="xs:string" minOccurs="0" />
+              <xs:element name="Section80GG" type="xs:string" minOccurs="0" />
+              <xs:element name="Section80GGC" type="xs:string" minOccurs="0" />
+              <xs:element name="TotPartBchapterVIA" type="xs:string" minOccurs="0" />
+              <xs:element name="Section80IA" type="xs:string" minOccurs="0" />
+              <xs:element name="Section80IAB" type="xs:string" minOccurs="0" />
+              <xs:element name="Section80IB" type="xs:string" minOccurs="0" />
+              <xs:element name="Section80IC" type="xs:string" minOccurs="0" />
+              <xs:element name="Section80ID" type="xs:string" minOccurs="0" />
+              <xs:element name="Section80JJA" type="xs:string" minOccurs="0" />
+              <xs:element name="Section80QQB" type="xs:string" minOccurs="0" />
+              <xs:element name="Section80RRB" type="xs:string" minOccurs="0" />
+              <xs:element name="TotPartCchapterVIA" type="xs:string" minOccurs="0" />
+              <xs:element name="Section80TTA" type="xs:string" minOccurs="0" />
+              <xs:element name="Section80U" type="xs:string" minOccurs="0" />
+              <xs:element name="TotPartCAandDchapterVIA" type="xs:string" minOccurs="0" />
+              <xs:element name="TotalChapVIADeductions" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DeductUndChapVIA" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Section80C" type="xs:string" minOccurs="0" />
+              <xs:element name="Section80CCC" type="xs:string" minOccurs="0" />
+              <xs:element name="Section80CCDEmployeeOrSE" type="xs:string" minOccurs="0" />
+              <xs:element name="Section80CCDEmployer" type="xs:string" minOccurs="0" />
+              <xs:element name="Section80CCG" type="xs:string" minOccurs="0" />
+              <xs:element name="Section80D" type="xs:string" minOccurs="0" />
+              <xs:element name="Section80DD" type="xs:string" minOccurs="0" />
+              <xs:element name="Section80DDB" type="xs:string" minOccurs="0" />
+              <xs:element name="Section80E" type="xs:string" minOccurs="0" />
+              <xs:element name="Section80EE" type="xs:string" minOccurs="0" />
+              <xs:element name="Section80G" type="xs:string" minOccurs="0" />
+              <xs:element name="Section80GG" type="xs:string" minOccurs="0" />
+              <xs:element name="Section80GGC" type="xs:string" minOccurs="0" />
+              <xs:element name="TotPartBchapterVIA" type="xs:string" minOccurs="0" />
+              <xs:element name="Section80IA" type="xs:string" minOccurs="0" />
+              <xs:element name="Section80IAB" type="xs:string" minOccurs="0" />
+              <xs:element name="Section80IB" type="xs:string" minOccurs="0" />
+              <xs:element name="Section80IC" type="xs:string" minOccurs="0" />
+              <xs:element name="Section80ID" type="xs:string" minOccurs="0" />
+              <xs:element name="Section80JJA" type="xs:string" minOccurs="0" />
+              <xs:element name="Section80QQB" type="xs:string" minOccurs="0" />
+              <xs:element name="Section80RRB" type="xs:string" minOccurs="0" />
+              <xs:element name="TotPartCchapterVIA" type="xs:string" minOccurs="0" />
+              <xs:element name="Section80TTA" type="xs:string" minOccurs="0" />
+              <xs:element name="Section80U" type="xs:string" minOccurs="0" />
+              <xs:element name="TotPartCAandDchapterVIA" type="xs:string" minOccurs="0" />
+              <xs:element name="TotalChapVIADeductions" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ITRScheduleAMT">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="TotalIncItem11" type="xs:string" minOccurs="0" />
+        <xs:element name="AdjustedUnderSec115JC" type="xs:string" minOccurs="0" />
+        <xs:element name="TaxPayableUnderSec115JC" type="xs:string" minOccurs="0" />
+        <xs:element name="AdjustmentSec115JC" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="DeductClaimSec6A" type="xs:string" minOccurs="0" />
+              <xs:element name="DeductClaimSec10AA" type="xs:string" minOccurs="0" />
+              <xs:element name="DeductClaimSec35AD" type="xs:string" minOccurs="0" />
+              <xs:element name="Total" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ITRScheduleAMTC">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="TaxSection115JC" type="xs:string" minOccurs="0" />
+        <xs:element name="TaxOthProvisions" type="xs:string" minOccurs="0" />
+        <xs:element name="AmtTaxCreditAvailable" type="xs:string" minOccurs="0" />
+        <xs:element name="CurrAssYr" type="xs:string" minOccurs="0" />
+        <xs:element name="CurrYrAmtCreditFwd" type="xs:string" minOccurs="0" />
+        <xs:element name="CurrYrCreditCarryFwd" type="xs:string" minOccurs="0" />
+        <xs:element name="TotAMTGross" type="xs:string" minOccurs="0" />
+        <xs:element name="TotSetOffEys" type="xs:string" minOccurs="0" />
+        <xs:element name="TotBalBF" type="xs:string" minOccurs="0" />
+        <xs:element name="TotAmtCreditUtilisedCY" type="xs:string" minOccurs="0" />
+        <xs:element name="TotBalAMTCreditCF" type="xs:string" minOccurs="0" />
+        <xs:element name="TaxSection115JD" type="xs:string" minOccurs="0" />
+        <xs:element name="AmtLiabilityAvailable" type="xs:string" minOccurs="0" />
+        <xs:element name="ScheduleAMTC" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="AssYr" type="xs:string" minOccurs="0" />
+              <xs:element name="AmtCreditFwd" type="xs:string" minOccurs="0" />
+              <xs:element name="AmtCreditSetOfEy" type="xs:string" minOccurs="0" />
+              <xs:element name="AmtCreditBalBroughtFwd" type="xs:string" minOccurs="0" />
+              <xs:element name="AmtCreditUtilized" type="xs:string" minOccurs="0" />
+              <xs:element name="BalAmtCreditCarryFwd" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ScheduleSPI">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="SpecifiedPerson" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="SpecifiedPersonName" type="xs:string" minOccurs="0" />
+              <xs:element name="PANofSpecPerson" type="xs:string" minOccurs="0" />
+              <xs:element name="ReltnShip" type="xs:string" minOccurs="0" />
+              <xs:element name="NatureOfInc" type="xs:string" minOccurs="0" />
+              <xs:element name="AmtIncluded" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ScheduleSI">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="TotSplRateIncTax" type="xs:string" minOccurs="0" />
+        <xs:element name="SplCodeRateTax" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="SecCode" type="xs:string" minOccurs="0" />
+              <xs:element name="SplRatePercent" type="xs:string" minOccurs="0" />
+              <xs:element name="SplRateInc" type="xs:string" minOccurs="0" />
+              <xs:element name="SplRateIncTax" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ScheduleIF">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="TotalProfitShareAmt" type="xs:string" minOccurs="0" />
+        <xs:element name="TotalFirmCapBalOn31Mar" type="xs:string" minOccurs="0" />
+        <xs:element name="PartnerFirmDetails" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="FirmName" type="xs:string" minOccurs="0" />
+              <xs:element name="FirmPAN" type="xs:string" minOccurs="0" />
+              <xs:element name="IsLiableToAudit" type="xs:string" minOccurs="0" />
+              <xs:element name="ProfitSharePercent" type="xs:string" minOccurs="0" />
+              <xs:element name="ProfitShareAmt" type="xs:string" minOccurs="0" />
+              <xs:element name="FirmCapBalOn31Mar" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ScheduleEI">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="InterestInc" type="xs:string" minOccurs="0" />
+        <xs:element name="DividendInc" type="xs:string" minOccurs="0" />
+        <xs:element name="LTCGWhereSTTPaid" type="xs:string" minOccurs="0" />
+        <xs:element name="GrossAgriRecpt" type="xs:string" minOccurs="0" />
+        <xs:element name="ExpIncAgri" type="xs:string" minOccurs="0" />
+        <xs:element name="UnabAgriLossPrev8" type="xs:string" minOccurs="0" />
+        <xs:element name="NetAgriIncOrOthrIncRule7" type="xs:string" minOccurs="0" />
+        <xs:element name="ShareOfProfitFirmAOP" type="xs:string" minOccurs="0" />
+        <xs:element name="Others" type="xs:string" minOccurs="0" />
+        <xs:element name="TotalExemptInc" type="xs:string" minOccurs="0" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ScheduleIT">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="TotalTaxPayments" type="xs:string" minOccurs="0" />
+        <xs:element name="TaxPayment" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="BSRCode" type="xs:string" minOccurs="0" />
+              <xs:element name="DateDep" type="xs:string" minOccurs="0" />
+              <xs:element name="SrlNoOfChaln" type="xs:string" minOccurs="0" />
+              <xs:element name="Amt" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ScheduleTDS1">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="TotalTDSonSalaries" type="xs:string" minOccurs="0" />
+        <xs:element name="TDSonSalary" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="IncChrgSal" type="xs:string" minOccurs="0" />
+              <xs:element name="TotalTDSSal" type="xs:string" minOccurs="0" />
+              <xs:element ref="EmployerOrDeductorOrCollectDetl" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ScheduleTDS2">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="TotalTDSonOthThanSals" type="xs:string" minOccurs="0" />
+        <xs:element name="TDSonOthThanSal" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="UniqueTDSCerNo" type="xs:string" minOccurs="0" />
+              <xs:element name="DeductedYr" type="xs:string" minOccurs="0" />
+              <xs:element name="BroughtFwdTDSAmt" type="xs:string" minOccurs="0" />
+              <xs:element name="TotTDSOnAmtPaidCY" type="xs:string" minOccurs="0" />
+              <xs:element name="AmtClaimedOnOwnHands" type="xs:string" minOccurs="0" />
+              <xs:element name="AmtClaimedBySpouse" type="xs:string" minOccurs="0" />
+              <xs:element name="AmtCarriedFwd" type="xs:string" minOccurs="0" />
+              <xs:element ref="EmployerOrDeductorOrCollectDetl" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ScheduleTDS3">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="TotalTDS3OnOthThanSal" type="xs:string" minOccurs="0" />
+        <xs:element name="TDS3onOthThanSal" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="UniqueTDSCerNo" type="xs:string" minOccurs="0" />
+              <xs:element name="DeductedYr" type="xs:string" minOccurs="0" />
+              <xs:element name="BroughtFwdTDSAmt" type="xs:string" minOccurs="0" />
+              <xs:element name="TotTDSOnAmtPaidCY" type="xs:string" minOccurs="0" />
+              <xs:element name="AmtClaimedOnOwnHands" type="xs:string" minOccurs="0" />
+              <xs:element name="AmtClaimedBySpouse" type="xs:string" minOccurs="0" />
+              <xs:element name="AmtCarriedFwd" type="xs:string" minOccurs="0" />
+              <xs:element name="EmployerOrDeductorOrCollectDetlTds3" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="PAN" type="xs:string" minOccurs="0" />
+                    <xs:element name="EmployerOrDeductorOrCollecterName" type="xs:string" minOccurs="0" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ScheduleTCS">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="TotalSchTCS" type="xs:string" minOccurs="0" />
+        <xs:element name="TCS" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="DeductedYr" type="xs:string" minOccurs="0" />
+              <xs:element name="BroughtFwdTDSAmt" type="xs:string" minOccurs="0" />
+              <xs:element name="TotalTCS" type="xs:string" minOccurs="0" />
+              <xs:element name="AmtTCSClaimedThisYear" type="xs:string" minOccurs="0" />
+              <xs:element name="AmtCarriedFwd" type="xs:string" minOccurs="0" />
+              <xs:element ref="EmployerOrDeductorOrCollectDetl" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ItrScheduleFsiAy2014">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="ScheduleFsiAy2014" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CountryName" type="xs:string" minOccurs="0" />
+              <xs:element name="CountryCode" type="xs:string" minOccurs="0" />
+              <xs:element name="TaxIdentificationNo" type="xs:string" minOccurs="0" />
+              <xs:element name="IncFromSal" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="IncFrmOutsideInd" type="xs:string" minOccurs="0" />
+                    <xs:element name="TaxPaidOutsideInd" type="xs:string" minOccurs="0" />
+                    <xs:element name="TaxPayableinInd" type="xs:string" minOccurs="0" />
+                    <xs:element name="TaxReliefinInd" type="xs:string" minOccurs="0" />
+                    <xs:element name="DTAAReliefUs90or90A" type="xs:string" minOccurs="0" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="IncFromHP" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="IncFrmOutsideInd" type="xs:string" minOccurs="0" />
+                    <xs:element name="TaxPaidOutsideInd" type="xs:string" minOccurs="0" />
+                    <xs:element name="TaxPayableinInd" type="xs:string" minOccurs="0" />
+                    <xs:element name="TaxReliefinInd" type="xs:string" minOccurs="0" />
+                    <xs:element name="DTAAReliefUs90or90A" type="xs:string" minOccurs="0" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="IncFromBusiness" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="IncFrmOutsideInd" type="xs:string" minOccurs="0" />
+                    <xs:element name="TaxPaidOutsideInd" type="xs:string" minOccurs="0" />
+                    <xs:element name="TaxPayableinInd" type="xs:string" minOccurs="0" />
+                    <xs:element name="TaxReliefinInd" type="xs:string" minOccurs="0" />
+                    <xs:element name="DTAAReliefUs90or90A" type="xs:string" minOccurs="0" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="IncCapGain" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="IncFrmOutsideInd" type="xs:string" minOccurs="0" />
+                    <xs:element name="TaxPaidOutsideInd" type="xs:string" minOccurs="0" />
+                    <xs:element name="TaxPayableinInd" type="xs:string" minOccurs="0" />
+                    <xs:element name="TaxReliefinInd" type="xs:string" minOccurs="0" />
+                    <xs:element name="DTAAReliefUs90or90A" type="xs:string" minOccurs="0" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="IncOthSrc" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="IncFrmOutsideInd" type="xs:string" minOccurs="0" />
+                    <xs:element name="TaxPaidOutsideInd" type="xs:string" minOccurs="0" />
+                    <xs:element name="TaxPayableinInd" type="xs:string" minOccurs="0" />
+                    <xs:element name="TaxReliefinInd" type="xs:string" minOccurs="0" />
+                    <xs:element name="DTAAReliefUs90or90A" type="xs:string" minOccurs="0" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="TotalCountryWise" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="IncFrmOutsideInd" type="xs:string" minOccurs="0" />
+                    <xs:element name="TaxPaidOutsideInd" type="xs:string" minOccurs="0" />
+                    <xs:element name="TaxPayableinInd" type="xs:string" minOccurs="0" />
+                    <xs:element name="TaxReliefinInd" type="xs:string" minOccurs="0" />
+                    <xs:element name="DTAAReliefUs90or90A" type="xs:string" minOccurs="0" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ScheduleTR1">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="TotalTaxPaidOutsideIndia" type="xs:string" minOccurs="0" />
+        <xs:element name="TaxReliefOutsideIndiaDTAA" type="xs:string" minOccurs="0" />
+        <xs:element name="TaxReliefOutsideIndiaNotDTAA" type="xs:string" minOccurs="0" />
+        <xs:element name="TaxPaidOutsideIndFlg" type="xs:string" minOccurs="0" />
+        <xs:element name="AmtTaxRefunded" type="xs:string" minOccurs="0" />
+        <xs:element name="AssmtYrTaxRelief" type="xs:string" minOccurs="0" />
+        <xs:element name="ScheduleTR" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CountryName" type="xs:string" minOccurs="0" />
+              <xs:element name="CountryCode" type="xs:string" minOccurs="0" />
+              <xs:element name="TaxIdentificationNo" type="xs:string" minOccurs="0" />
+              <xs:element name="TaxPaidOutsideIndia" type="xs:string" minOccurs="0" />
+              <xs:element name="TaxReliefOutsideIndia" type="xs:string" minOccurs="0" />
+              <xs:element name="ReliefClaimedUsSection" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ScheduleFA">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="DetailsForiegnBank" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CountryName" type="xs:string" minOccurs="0" />
+              <xs:element name="CountryCode" type="xs:string" minOccurs="0" />
+              <xs:element name="Bankname" type="xs:string" minOccurs="0" />
+              <xs:element name="AddressOfBank" type="xs:string" minOccurs="0" />
+              <xs:element name="NameAsInAccount" type="xs:string" minOccurs="0" />
+              <xs:element name="OwnerStatus" type="xs:string" minOccurs="0" />
+              <xs:element name="ForeignAccountNumber" type="xs:string" minOccurs="0" />
+              <xs:element name="AccOpenDate" type="xs:string" minOccurs="0" />
+              <xs:element name="PeakBalanceDuringYear" type="xs:string" minOccurs="0" />
+              <xs:element name="IntrstAccured" type="xs:string" minOccurs="0" />
+              <xs:element name="IntrstTaxAmt" type="xs:string" minOccurs="0" />
+              <xs:element name="IntrstTaxSch" type="xs:string" minOccurs="0" />
+              <xs:element name="IntrstTaxSchNo" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DetailsFinancialInterest" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CountryName" type="xs:string" minOccurs="0" />
+              <xs:element name="CountryCode" type="xs:string" minOccurs="0" />
+              <xs:element name="NatureOfEntity" type="xs:string" minOccurs="0" />
+              <xs:element name="NameOfEntity" type="xs:string" minOccurs="0" />
+              <xs:element name="AddressOfEntity" type="xs:string" minOccurs="0" />
+              <xs:element name="NatureOfInt" type="xs:string" minOccurs="0" />
+              <xs:element name="DateHeld" type="xs:string" minOccurs="0" />
+              <xs:element name="TotalInvestment" type="xs:string" minOccurs="0" />
+              <xs:element name="IncFromInt" type="xs:string" minOccurs="0" />
+              <xs:element name="NatureOfInc" type="xs:string" minOccurs="0" />
+              <xs:element name="IncTaxAmt" type="xs:string" minOccurs="0" />
+              <xs:element name="IncTaxSch" type="xs:string" minOccurs="0" />
+              <xs:element name="IncTaxSchNo" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DetailsImmovableProperty" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CountryName" type="xs:string" minOccurs="0" />
+              <xs:element name="CountryCode" type="xs:string" minOccurs="0" />
+              <xs:element name="AddressOfProperty" type="xs:string" minOccurs="0" />
+              <xs:element name="Ownership" type="xs:string" minOccurs="0" />
+              <xs:element name="DateOfAcq" type="xs:string" minOccurs="0" />
+              <xs:element name="TotalInvestment" type="xs:string" minOccurs="0" />
+              <xs:element name="IncDrvProperty" type="xs:string" minOccurs="0" />
+              <xs:element name="NatureOfInc" type="xs:string" minOccurs="0" />
+              <xs:element name="IncTaxAmt" type="xs:string" minOccurs="0" />
+              <xs:element name="IncTaxSch" type="xs:string" minOccurs="0" />
+              <xs:element name="IncTaxSchNo" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DetailsOthAssets" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CountryName" type="xs:string" minOccurs="0" />
+              <xs:element name="CountryCode" type="xs:string" minOccurs="0" />
+              <xs:element name="NatureOfAsset" type="xs:string" minOccurs="0" />
+              <xs:element name="Ownership" type="xs:string" minOccurs="0" />
+              <xs:element name="DateOfAcq" type="xs:string" minOccurs="0" />
+              <xs:element name="TotalInvestment" type="xs:string" minOccurs="0" />
+              <xs:element name="IncDrvAsset" type="xs:string" minOccurs="0" />
+              <xs:element name="NatureOfInc" type="xs:string" minOccurs="0" />
+              <xs:element name="IncTaxAmt" type="xs:string" minOccurs="0" />
+              <xs:element name="IncTaxSch" type="xs:string" minOccurs="0" />
+              <xs:element name="IncTaxSchNo" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DetailsOfAccntsHvngSigningAuth" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="NameOfInstitution" type="xs:string" minOccurs="0" />
+              <xs:element name="AddressOfInstitution" type="xs:string" minOccurs="0" />
+              <xs:element name="NameMentionedInAccnt" type="xs:string" minOccurs="0" />
+              <xs:element name="InstitutionAccountNumber" type="xs:string" minOccurs="0" />
+              <xs:element name="PeakBalanceOrInvestment" type="xs:string" minOccurs="0" />
+              <xs:element name="IncAccuredTaxFlag" type="xs:string" minOccurs="0" />
+              <xs:element name="IncAccuredInAcc" type="xs:string" minOccurs="0" />
+              <xs:element name="IncOfferedAmt" type="xs:string" minOccurs="0" />
+              <xs:element name="IncOfferedSch" type="xs:string" minOccurs="0" />
+              <xs:element name="IncOfferedSchNo" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DetailsOfTrustOutIndiaTrustee" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CountryName" type="xs:string" minOccurs="0" />
+              <xs:element name="CountryCode" type="xs:string" minOccurs="0" />
+              <xs:element name="NameOfTrust" type="xs:string" minOccurs="0" />
+              <xs:element name="AddressOfTrust" type="xs:string" minOccurs="0" />
+              <xs:element name="NameOfOtherTrustees" type="xs:string" minOccurs="0" />
+              <xs:element name="AddressOfOtherTrustees" type="xs:string" minOccurs="0" />
+              <xs:element name="NameOfSettlor" type="xs:string" minOccurs="0" />
+              <xs:element name="AddressOfSettlor" type="xs:string" minOccurs="0" />
+              <xs:element name="NameOfBeneficiaries" type="xs:string" minOccurs="0" />
+              <xs:element name="AddressOfBeneficiaries" type="xs:string" minOccurs="0" />
+              <xs:element name="DateHeld" type="xs:string" minOccurs="0" />
+              <xs:element name="IncDrvTaxFlag" type="xs:string" minOccurs="0" />
+              <xs:element name="IncDrvFromTrust" type="xs:string" minOccurs="0" />
+              <xs:element name="IncOfferedAmt" type="xs:string" minOccurs="0" />
+              <xs:element name="IncOfferedSch" type="xs:string" minOccurs="0" />
+              <xs:element name="IncOfferedSchNo" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DetailsOfOthSourcesIncOutsideIndia" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CountryName" type="xs:string" minOccurs="0" />
+              <xs:element name="CountryCode" type="xs:string" minOccurs="0" />
+              <xs:element name="NameOfPerson" type="xs:string" minOccurs="0" />
+              <xs:element name="AddressOfPerson" type="xs:string" minOccurs="0" />
+              <xs:element name="IncDerived" type="xs:string" minOccurs="0" />
+              <xs:element name="NatureOfInc" type="xs:string" minOccurs="0" />
+              <xs:element name="IncDrvTaxFlag" type="xs:string" minOccurs="0" />
+              <xs:element name="IncOfferedAmt" type="xs:string" minOccurs="0" />
+              <xs:element name="IncOfferedSch" type="xs:string" minOccurs="0" />
+              <xs:element name="IncOfferedSchNo" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Schedule5A2014">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="NameOfSpouse" type="xs:string" minOccurs="0" />
+        <xs:element name="PANOfSpouse" type="xs:string" minOccurs="0" />
+        <xs:element name="HPHeadIncome" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="IncRecvdUndHead" type="xs:string" minOccurs="0" />
+              <xs:element name="AmtApprndOfSpouse" type="xs:string" minOccurs="0" />
+              <xs:element name="AmtTDSDeducted" type="xs:string" minOccurs="0" />
+              <xs:element name="TDSApprndOfSpouse" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="BusHeadIncome" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="IncRecvdUndHead" type="xs:string" minOccurs="0" />
+              <xs:element name="AmtApprndOfSpouse" type="xs:string" minOccurs="0" />
+              <xs:element name="AmtTDSDeducted" type="xs:string" minOccurs="0" />
+              <xs:element name="TDSApprndOfSpouse" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="CapGainHeadIncome" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="IncRecvdUndHead" type="xs:string" minOccurs="0" />
+              <xs:element name="AmtApprndOfSpouse" type="xs:string" minOccurs="0" />
+              <xs:element name="AmtTDSDeducted" type="xs:string" minOccurs="0" />
+              <xs:element name="TDSApprndOfSpouse" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="OtherSourcesHeadIncome" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="IncRecvdUndHead" type="xs:string" minOccurs="0" />
+              <xs:element name="AmtApprndOfSpouse" type="xs:string" minOccurs="0" />
+              <xs:element name="AmtTDSDeducted" type="xs:string" minOccurs="0" />
+              <xs:element name="TDSApprndOfSpouse" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="TotalHeadIncome" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="IncRecvdUndHead" type="xs:string" minOccurs="0" />
+              <xs:element name="AmtApprndOfSpouse" type="xs:string" minOccurs="0" />
+              <xs:element name="AmtTDSDeducted" type="xs:string" minOccurs="0" />
+              <xs:element name="TDSApprndOfSpouse" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ScheduleAL">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="ImmovableAssetLand" type="xs:string" minOccurs="0" />
+        <xs:element name="ImmovableAssetBuilding" type="xs:string" minOccurs="0" />
+        <xs:element name="LiabilityInRelatAssets" type="xs:string" minOccurs="0" />
+        <xs:element name="MovableAsset" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="DepositsInBank" type="xs:string" minOccurs="0" />
+              <xs:element name="SharesAndSecurities" type="xs:string" minOccurs="0" />
+              <xs:element name="InsurancePolicies" type="xs:string" minOccurs="0" />
+              <xs:element name="LoansAndAdvancesGiven" type="xs:string" minOccurs="0" />
+              <xs:element name="CashInHand" type="xs:string" minOccurs="0" />
+              <xs:element name="JewelleryBullionEtc" type="xs:string" minOccurs="0" />
+              <xs:element name="ArchCollDrawPaintSulpArt" type="xs:string" minOccurs="0" />
+              <xs:element name="VehiclYachtsBoatsAircrafts" type="xs:string" minOccurs="0" />
+              <xs:element name="TotalImmovablMovablAssets" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,1373 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Data.SqlClient;
+using System.Data;
+using Admin.DataEntity;
+namespace Admin.DataAccess
+{
+    /// <summary>
+    /// Summary description for dalT00
+    /// </summary>
+    public class dalT00 : dalConnection
+    {
+        #region Constructor
+        public dalT00()
+        {
+            //
+            // TODO: Add constructor logic here
+            //
+        }
+        #endregion
+        #region Variables
+        SqlCommand cmd;
+        #endregion
+        #region Functions
+        //get t00 data by gindex
+        public DataTable T00Data(int GI, string Year, string C5,string itr)
+        {
+            try
+            {
+                this.PConnMain();
+                cmd = new SqlCommand("select *,case when c16>0 or c19=1 then 'Detailed' else 'Detail' end as lnk  from t00 where c6=@c6 and c21=@c21 and C5=@C5 and (charindex(@itr,returntype)>0) order by c1", this.SqlCon);
+                cmd.Parameters.AddWithValue("@c6", GI);
+                cmd.Parameters.AddWithValue("@c21", Year);
+                cmd.Parameters.AddWithValue("@C5", C5);
+                cmd.Parameters.AddWithValue("@itr", itr);
+                SqlDataReader dr = cmd.ExecuteReader();
+                DataTable dtT00 = new DataTable();
+                if (dr.HasRows)
+                {
+                    dtT00.Load(dr);
+                }
+                return dtT00;
+
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                this.SqlCon.Close();
+            }
+        }
+        public DataTable T00Data(int GI, string Year)
+        {
+            try
+            {
+                this.PConnMain();
+                cmd = new SqlCommand("select *  from t00 where c6=@c6 and c21=@c21  order by c2", this.SqlCon);
+                cmd.Parameters.AddWithValue("@c6", GI);
+                cmd.Parameters.AddWithValue("@c21", Year);
+                
+                SqlDataReader dr = cmd.ExecuteReader();
+                DataTable dtT00 = new DataTable();
+                if (dr.HasRows)
+                {
+                    dtT00.Load(dr);
+                }
+                return dtT00;
+
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                this.SqlCon.Close();
+            }
+        }
+        //get t00 data by gindex
+        public DataTable T00Data1(int GI, string Year)
+        {
+            try
+            {
+                this.PConnMain();
+                cmd = new SqlCommand("select *  from t00 where c6=@c6 and c21=@y ORDER BY C2", this.SqlCon);
+                cmd.Parameters.AddWithValue("@c6", GI);
+                cmd.Parameters.AddWithValue("@y", Year);
+                SqlDataReader dr = cmd.ExecuteReader();
+                DataTable dtT00 = new DataTable();
+                if (dr.HasRows)
+                {
+                    dtT00.Load(dr);
+                }
+                return dtT00;
+
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                this.SqlCon.Close();
+            }
+        }
+
+        //get t00 data by gindex
+        public DataTable T00Data1_GI_AY_ITR(int GI, string Year,string ITR)
+        {
+            try
+            {
+                this.PConnMain();
+                cmd = new SqlCommand("select *  from t00 where c6=@c6 and c21=@y and charindex(@ITR,ReturnType) > 0 ORDER BY C1", this.SqlCon);
+                cmd.Parameters.AddWithValue("@c6", GI);
+                cmd.Parameters.AddWithValue("@y", Year);
+                cmd.Parameters.AddWithValue("@ITR", ITR);
+
+                SqlDataReader dr = cmd.ExecuteReader();
+                DataTable dtT00 = new DataTable();
+                if (dr.HasRows)
+                {
+                    dtT00.Load(dr);
+                }
+                return dtT00;
+
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                this.SqlCon.Close();
+            }
+        }
+
+        //get t00 data by gindex
+        public DataTable T00DataDetail(int GI, string Year)
+        {
+            try
+            {
+                this.PConnMain();
+                cmd = new SqlCommand(@"select c1,c2,c3,c4,cmv.Description as tab from t00 tt
+                                    left outer join
+                                    Combo_Master_Values cmv on
+                                    tt.C5=cmv.ID
+                                    where cmv.VType	= (select vtype from screensettings where GridIndex = @c6) and tt.c6=@c6 and c21=@c21 and cmv.AY=@c21 order by c2", this.SqlCon);
+                cmd.Parameters.AddWithValue("@c6", GI);
+                cmd.Parameters.AddWithValue("@c21", Year);
+                SqlDataReader dr = cmd.ExecuteReader();
+                DataTable dtT00 = new DataTable();
+                if (dr.HasRows)
+                {
+                    dtT00.Load(dr);
+                }
+                return dtT00;
+
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                this.SqlCon.Close();
+            }
+        }
+
+        //get t00 data by gindex
+        public DataTable T00DataDetailforGI(int GI, string Year)
+        {
+            try
+            {
+                this.PConnMain();
+                cmd = new SqlCommand(@"select c1,c2,c3,c4,C5,'' as tab from t00 where c6=@c6 and c21=@c21 order by c2", this.SqlCon);
+                cmd.Parameters.AddWithValue("@c6", GI);
+                cmd.Parameters.AddWithValue("@c21", Year);
+                SqlDataReader dr = cmd.ExecuteReader();
+                DataTable dtT00 = new DataTable();
+                if (dr.HasRows)
+                {
+                    dtT00.Load(dr);
+                }
+                return dtT00;
+
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                this.SqlCon.Close();
+            }
+        }
+
+        //get t00 data by gindex and AY and ITR
+        public DataTable T00DataDetailforGI_ITR_AY(int GI, string Year, string ReturnType)
+        {
+            try
+            {
+                this.PConnMain();
+                cmd = new SqlCommand(@"select c1,c2,c3,c4,C5,'' as tab from t00 where c6=@c6 and c21=@c21 and CHARINDEX(@ReturnType,ReturnType) > 0 order by c2", this.SqlCon);
+                cmd.Parameters.AddWithValue("@c6", GI);
+                cmd.Parameters.AddWithValue("@c21", Year);
+                cmd.Parameters.AddWithValue("@ReturnType", ReturnType);
+                SqlDataReader dr = cmd.ExecuteReader();
+                DataTable dtT00 = new DataTable();
+                if (dr.HasRows)
+                {
+                    dtT00.Load(dr);
+                }
+                return dtT00;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                this.SqlCon.Close();
+            }
+        }
+
+        //Update data into T00
+        public void UpdateT00(denT00 objdenT00)
+        {
+            try
+            {
+                this.PConnMain();
+                SqlCommand cmd = new SqlCommand("update t00 set c2=@c2,c10=@c10,c16=@c16,c17=@c17,c19=@c19,TableName=@tn,FieldName=@fn,Query=@q,FloatColumn=@fc,TablePriority=@tp,primaryColumn=@pc,PrimaryTableCol=@ptc,c5=@c5,Details_ITR=@Details_ITR,C31=@C31 where c6=@c6 and c1=@c1 and C21=@C21 ", this.SqlCon);
+
+
+
+                cmd.Parameters.AddWithValue("@c2", objdenT00.C2);
+
+                cmd.Parameters.AddWithValue("@c10", objdenT00.C10);
+                cmd.Parameters.AddWithValue("@c16", objdenT00.C16);
+                cmd.Parameters.AddWithValue("@c17", objdenT00.C17);
+                cmd.Parameters.AddWithValue("@c19", objdenT00.C19);
+
+                cmd.Parameters.AddWithValue("@c6", objdenT00.C6);
+                cmd.Parameters.AddWithValue("@c1", objdenT00.C1);
+                cmd.Parameters.AddWithValue("@tn", objdenT00.TableName);
+                cmd.Parameters.AddWithValue("@fn", objdenT00.FieldName);
+                cmd.Parameters.AddWithValue("@q", objdenT00.Query);
+                cmd.Parameters.AddWithValue("@fc", objdenT00.FloatColumn);
+                cmd.Parameters.AddWithValue("@tp", objdenT00.TablePriority);
+                cmd.Parameters.AddWithValue("@pc", objdenT00.PrimaryColumn);
+                cmd.Parameters.AddWithValue("@ptc", objdenT00.PrimaryTableCol);
+                cmd.Parameters.AddWithValue("@c5", objdenT00.C5);
+                cmd.Parameters.AddWithValue("@C21", objdenT00.C21);
+                cmd.Parameters.AddWithValue("@Details_ITR", objdenT00.Details_ITR);
+                cmd.Parameters.AddWithValue("@C31", objdenT00.C31);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                this.SqlCon.Close();
+            }
+
+
+
+
+
+
+
+        }
+        //Update T00 c3 and c4 by constant id for itr
+        public void UpdateT00C3(denT00 objdenT00)
+        {
+            try
+            {
+                this.PConnMain();
+                SqlCommand cmd = new SqlCommand("update t00 set c4=@c4,ReturnType=@rt,c2=@c2 where c1=@c1 and c21=@c21  ", this.SqlCon);
+                //cmd.Parameters.AddWithValue("@c3", objdenT00.C3);
+                cmd.Parameters.AddWithValue("@c4", objdenT00.C4);
+                cmd.Parameters.AddWithValue("@c1", objdenT00.C1);
+                cmd.Parameters.AddWithValue("@rt", objdenT00.ReturnType);
+                cmd.Parameters.AddWithValue("@c2", objdenT00.C2);
+                cmd.Parameters.AddWithValue("@c21", objdenT00.C21);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                this.SqlCon.Close();
+            }
+        }
+
+        //Update T00 c5 and c6 by constant id for AY
+        public void updateGIndex(denT00 objdenT00)
+        {
+            try
+            {
+                this.PConnMain();
+                SqlCommand cmd = new SqlCommand("update t00 set c3=@c3,c6=@c6 where c21=@c21 and C1 = @c1", this.SqlCon);
+                //cmd.Parameters.AddWithValue("@c5", objdenT00.C5);
+                cmd.Parameters.AddWithValue("@c6", objdenT00.C6);
+                cmd.Parameters.AddWithValue("@c3", objdenT00.C3);
+                cmd.Parameters.AddWithValue("@c1", objdenT00.C1);
+                cmd.Parameters.AddWithValue("@c21", objdenT00.C21);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                this.SqlCon.Close();
+            }
+        }
+        //for tds
+        public void UpdateT00C3fortds(denT00 objdenT00)
+        {
+            try
+            {
+                this.PConnMain();
+                SqlCommand cmd = new SqlCommand("update t00 set c3=@c3,c4=@c4 where c1=@c1 ", this.SqlCon);
+                cmd.Parameters.AddWithValue("@c3", objdenT00.C3);
+                cmd.Parameters.AddWithValue("@c4", objdenT00.C4);
+                cmd.Parameters.AddWithValue("@c1", objdenT00.C1);
+                // cmd.Parameters.AddWithValue("@rt", objdenT00.ReturnType);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                this.SqlCon.Close();
+            }
+        }
+        //insert data into t00
+        public void AddT00(denT00 objdenT00)
+        {
+            try
+            {
+                this.PConnMain();
+                SqlCommand cmd = new SqlCommand("insert into t00 (c1,c3,c4,c6,c10,c16,c19,c21,Details_ITR,c5,c7,c8,c9,c11,c12,c13,c14,c15,c17,c18,c20,c22,c23,c24,c25,c26,c27,c28,c29,c30,c31,c32,c33,c34,c35,c36,c37,ReturnType,c40,TablePriority,c2) values(@c1,@c3,@c4,@c6,@c10,@c16,@c19,@c21,@dt,@c5,@c7,@c8,@c9,@c11,@c12,@c13,@c14,@c15,@c17,@c18,@c20,@c22,@c23,@c24,@c25,@c26,@c27,@c28,@c29,@c30,@c31,@c32,@c33,@c34,@c35,@c36,@c37,@ReturnType,@c40,@tp,@c2)", this.SqlCon);
+
+
+
+                cmd.Parameters.AddWithValue("@c1", objdenT00.C1);
+
+                cmd.Parameters.AddWithValue("@c3", objdenT00.C3);
+                cmd.Parameters.AddWithValue("@c4", objdenT00.C4);
+                cmd.Parameters.AddWithValue("@c10", objdenT00.C10);
+                cmd.Parameters.AddWithValue("@c6", objdenT00.C6);
+                cmd.Parameters.AddWithValue("@c16", objdenT00.C16);
+                cmd.Parameters.AddWithValue("@c19", objdenT00.C19);
+
+                cmd.Parameters.AddWithValue("@c21", objdenT00.C21);
+                cmd.Parameters.AddWithValue("@dt", objdenT00.Details_ITR);
+
+                cmd.Parameters.AddWithValue("@c5", objdenT00.C5);
+                cmd.Parameters.AddWithValue("@c7", objdenT00.C7);
+                cmd.Parameters.AddWithValue("@c8", objdenT00.C8);
+                cmd.Parameters.AddWithValue("@c9", objdenT00.C9);
+                cmd.Parameters.AddWithValue("@c11", objdenT00.C11);
+                cmd.Parameters.AddWithValue("@c12", objdenT00.C12);
+                cmd.Parameters.AddWithValue("@c13", objdenT00.C13);
+                cmd.Parameters.AddWithValue("@c14", objdenT00.C14);
+                cmd.Parameters.AddWithValue("@c15", objdenT00.C15);
+                cmd.Parameters.AddWithValue("@c17", objdenT00.C17);
+                cmd.Parameters.AddWithValue("@c18", objdenT00.C18);
+                cmd.Parameters.AddWithValue("@c20", objdenT00.C20);
+                cmd.Parameters.AddWithValue("@c22", objdenT00.C22);
+                cmd.Parameters.AddWithValue("@c23", objdenT00.C23);
+                cmd.Parameters.AddWithValue("@c24", objdenT00.C24);
+                cmd.Parameters.AddWithValue("@c25", objdenT00.C25);
+                cmd.Parameters.AddWithValue("@c26", objdenT00.C26);
+                cmd.Parameters.AddWithValue("@c27", objdenT00.C27);
+                cmd.Parameters.AddWithValue("@c28", objdenT00.C28);
+                cmd.Parameters.AddWithValue("@c29", objdenT00.C29);
+                cmd.Parameters.AddWithValue("@c30", objdenT00.C30);
+                cmd.Parameters.AddWithValue("@c31", objdenT00.C31);
+                cmd.Parameters.AddWithValue("@c32", objdenT00.C32);
+                cmd.Parameters.AddWithValue("@c33", objdenT00.C33);
+                cmd.Parameters.AddWithValue("@c34", objdenT00.C34);
+                cmd.Parameters.AddWithValue("@c35", objdenT00.C35);
+                cmd.Parameters.AddWithValue("@c36", objdenT00.C36);
+                cmd.Parameters.AddWithValue("@c37", objdenT00.C37);
+                cmd.Parameters.AddWithValue("@c40", objdenT00.C40);
+                cmd.Parameters.AddWithValue("@tp", objdenT00.TablePriority);
+                cmd.Parameters.AddWithValue("@ReturnType", objdenT00.ReturnType);
+                cmd.Parameters.AddWithValue("@c2", objdenT00.C2);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                this.SqlCon.Close();
+            }
+
+
+
+
+
+
+
+        }
+
+        //insert/update data into t00 w.r.t. AY and Return Type
+        public void AddUpdateT00(denT00 objdenT00)
+        {
+            try
+            {
+                this.PConnMain();
+                string strAY = "";
+                string[] arrAY = System.Text.RegularExpressions.Regex.Split(objdenT00.C21, "-");
+                strAY = ((Convert.ToInt32(arrAY[0]) - 1).ToString() + "-" + (Convert.ToInt32(arrAY[1]) - 1).ToString()).ToString();
+                //SqlCommand cmdF = new SqlCommand("select count(*) from T00 where C21 = @AY and C1 = (select ConstantId from vatastax_dev.dbo.tbl_Xml_Tag where FullPath=@Fullpath)", this.SqlCon);
+                //SqlCommand cmdF = new SqlCommand("select count(*) from T00 where C21 = @AY and C1 = @C1 ", this.SqlCon);
+                //cmdF.Parameters.AddWithValue("@C1", objdenT00.C1);
+                //cmdF.Parameters.AddWithValue("@AY", objdenT00.C21);
+                //int cnt = Convert.ToInt32(cmdF.ExecuteScalar());
+                //if (cnt > 0)
+                //{
+                //    SqlCommand cmd2 = new SqlCommand("update T00 set ReturnType = ReturnType + ',' + @ITRType where C21 = @AY and C1 = @C1", this.SqlCon);
+                //    cmd2.Parameters.AddWithValue("@AY", objdenT00.C21);
+                //    cmd2.Parameters.AddWithValue("@C1", objdenT00.C1);
+                //    cmd2.Parameters.AddWithValue("@ITRType", objdenT00.ReturnType);
+                //    cmd2.ExecuteNonQuery();
+                //}
+                //else
+                //{
+
+                SqlCommand cmdNew = new SqlCommand("select * from t00 where c1=@constantId and c21=@AY and CHARINDEX(@ITR, ReturnType)>0 ", this.SqlCon);
+                cmdNew.Parameters.AddWithValue("@constantId", objdenT00.C1);
+                cmdNew.Parameters.AddWithValue("@AY", strAY);
+                cmdNew.Parameters.AddWithValue("@ITR", objdenT00.ReturnType);
+                    SqlDataReader dr = cmdNew.ExecuteReader();
+                    DataTable dt = new DataTable();
+                    if (dr.HasRows)
+                    {
+                        // dt.Load(dr);
+                        SqlCommand cmd = new SqlCommand("insert into t00 (c1,c3,c4,c6,c10,c16,c19,c21,Details_ITR,c5,c7,c8,c9,c11,c12,c13,c14,c15,c17,c18,c20,c22,c23,c24,c25,c26,c27,c28,c29,c30,c31,c32,c33,c34,c35,c36,c37,ReturnType,c40,TablePriority,c2) values(@c1,@c3,@c4,@c6,@c10,@c16,@c19,@c21,@dt,@c5,@c7,@c8,@c9,@c11,@c12,@c13,@c14,@c15,@c17,@c18,@c20,@c22,@c23,@c24,@c25,@c26,@c27,@c28,@c29,@c30,@c31,@c32,@c33,@c34,@c35,@c36,@c37,@ReturnType,@c40,@tp,@c2)", this.SqlCon);
+                        while (dr.Read())
+                        {
+
+                            cmd.Parameters.AddWithValue("@c1", Convert.ToInt32(dr.GetInt32(0)));
+                            //  string strC3 = "";
+                            // if (!dr.IsDBNull(2))
+                            //strC3 = dt.Rows[0]["C3"].ToString();
+
+                            cmd.Parameters.AddWithValue("@c3", (dr.IsDBNull(2)) ? "" : dr.GetString(2));
+                            cmd.Parameters.AddWithValue("@c4", (dr.IsDBNull(3)) ? "" : dr.GetString(3));
+                            cmd.Parameters.AddWithValue("@c10", (dr.IsDBNull(9)) ? 0 : dr.GetInt32(9));
+                            cmd.Parameters.AddWithValue("@c6", (dr.IsDBNull(5)) ? 0 : dr.GetInt32(5));
+                            cmd.Parameters.AddWithValue("@c16", (dr.IsDBNull(15)) ? 0 : dr.GetInt32(15));
+                            cmd.Parameters.AddWithValue("@c19", (dr.IsDBNull(18)) ? 0 : dr.GetInt32(18));
+
+                            cmd.Parameters.AddWithValue("@c21", objdenT00.C21);
+                            cmd.Parameters.AddWithValue("@dt", (dr.IsDBNull(43)) ? "" : dr.GetString(43));
+
+                            cmd.Parameters.AddWithValue("@c5", (dr.IsDBNull(4)) ? 0 : dr.GetInt32(4));
+                            cmd.Parameters.AddWithValue("@c7", (dr.IsDBNull(6)) ? "" : dr.GetString(6));
+
+                            cmd.Parameters.AddWithValue("@c8", (dr.IsDBNull(7)) ? 0 : dr.GetInt32(7));
+                            cmd.Parameters.AddWithValue("@c9", (dr.IsDBNull(8)) ? 0 : dr.GetInt32(8));
+
+                            cmd.Parameters.AddWithValue("@c11", Convert.ToDecimal(dr["C11"]));
+                            cmd.Parameters.AddWithValue("@c12", (dr.IsDBNull(11)) ? 0 : dr.GetInt32(11));
+                            cmd.Parameters.AddWithValue("@c13", (dr.IsDBNull(12)) ? 0 : dr.GetInt32(12));
+                            cmd.Parameters.AddWithValue("@c14", (dr.IsDBNull(13)) ? 0 : dr.GetInt32(13));
+                            cmd.Parameters.AddWithValue("@c15", Convert.ToDecimal(dr["C15"]));
+                            cmd.Parameters.AddWithValue("@c17", (dr.IsDBNull(16)) ? 0 : dr.GetInt32(16));
+                            cmd.Parameters.AddWithValue("@c18", (dr.IsDBNull(17)) ? 0 : dr.GetInt32(17));
+                            cmd.Parameters.AddWithValue("@c20", (dr.IsDBNull(19)) ? 0 : dr.GetInt32(19));
+                            cmd.Parameters.AddWithValue("@c22", (dr.IsDBNull(20)) ? 0 : dr.GetInt32(20));
+                            cmd.Parameters.AddWithValue("@c23", (dr.IsDBNull(21)) ? "" : dr.GetString(21));
+                            cmd.Parameters.AddWithValue("@c24", (dr.IsDBNull(22)) ? 0 : dr.GetInt32(22));
+                            cmd.Parameters.AddWithValue("@c25", (dr.IsDBNull(23)) ? 0 : dr.GetInt32(23));
+                            cmd.Parameters.AddWithValue("@c26", (dr.IsDBNull(24)) ? 0 : dr.GetInt32(24));
+                            cmd.Parameters.AddWithValue("@c27", (dr.IsDBNull(25)) ? 0 : dr.GetInt32(25));
+                            cmd.Parameters.AddWithValue("@c28", (dr.IsDBNull(26)) ? 0 : dr.GetInt32(26));
+                            cmd.Parameters.AddWithValue("@c29", (dr.IsDBNull(27)) ? "" : dr.GetString(27));
+                            cmd.Parameters.AddWithValue("@c30", (dr.IsDBNull(28)) ? 0 : dr.GetInt32(28));
+                            cmd.Parameters.AddWithValue("@c31", (dr.IsDBNull(29)) ? "" : dr.GetString(29));
+                            cmd.Parameters.AddWithValue("@c32", (dr.IsDBNull(30)) ? 0 : dr.GetInt32(30));
+                            cmd.Parameters.AddWithValue("@c33", (dr.IsDBNull(31)) ? 0 : dr.GetInt32(31));
+                            cmd.Parameters.AddWithValue("@c34", (dr.IsDBNull(32)) ? "" : dr.GetString(32));
+                            cmd.Parameters.AddWithValue("@c35", (dr.IsDBNull(33)) ? 0 : dr.GetInt32(33));
+                            cmd.Parameters.AddWithValue("@c36", (dr.IsDBNull(34)) ? 0 : dr.GetInt32(34));
+                            cmd.Parameters.AddWithValue("@c37", (dr.IsDBNull(35)) ? 0 : dr.GetInt32(35));
+                            cmd.Parameters.AddWithValue("@c40", (dr.IsDBNull(40)) ? 0 : dr.GetInt32(40));
+                            cmd.Parameters.AddWithValue("@tp", (dr.IsDBNull(50)) ? 0 : dr.GetInt32(50));
+                            cmd.Parameters.AddWithValue("@ReturnType", objdenT00.ReturnType);
+                            cmd.Parameters.AddWithValue("@c2", (dr.IsDBNull(1)) ? 0 : dr.GetInt32(1));
+                        }
+                        dr.Close();
+                        cmd.ExecuteNonQuery();
+                    }
+                    else
+                    {
+                        dr.Close();
+                        SqlCommand cmdNew1 = new SqlCommand("select * from t00 where c1=@constantId and c21=@AY ", this.SqlCon);
+                        cmdNew1.Parameters.AddWithValue("@constantId", objdenT00.C1);
+                        cmdNew1.Parameters.AddWithValue("@AY",objdenT00.C21);
+                      
+                        SqlDataReader dr1 = cmdNew1.ExecuteReader();
+                        SqlCommand cmd1 = new SqlCommand("insert into t00 (c1,c3,c4,c6,c10,c16,c19,c21,Details_ITR,c5,c7,c8,c9,c11,c12,c13,c14,c15,c17,c18,c20,c22,c23,c24,c25,c26,c27,c28,c29,c30,c31,c32,c33,c34,c35,c36,c37,ReturnType,c40,TablePriority,c2) values(@c1,@c3,@c4,@c6,@c10,@c16,@c19,@c21,@dt,@c5,@c7,@c8,@c9,@c11,@c12,@c13,@c14,@c15,@c17,@c18,@c20,@c22,@c23,@c24,@c25,@c26,@c27,@c28,@c29,@c30,@c31,@c32,@c33,@c34,@c35,@c36,@c37,@ReturnType,@c40,@tp,@c2)", this.SqlCon);
+                        while (dr1.Read())
+                        {
+                            
+                            cmd1.Parameters.AddWithValue("@c1", Convert.ToInt32(dr1.GetInt32(0)));
+                            //  string strC3 = "";
+                            // if (!dr.IsDBNull(2))
+                            //strC3 = dt.Rows[0]["C3"].ToString();
+
+                            cmd1.Parameters.AddWithValue("@c3", (dr1.IsDBNull(2)) ? "" : dr1.GetString(2));
+                            cmd1.Parameters.AddWithValue("@c4", (dr1.IsDBNull(3)) ? "" : dr1.GetString(3));
+                            cmd1.Parameters.AddWithValue("@c10", (dr1.IsDBNull(9)) ? 0 : dr1.GetInt32(9));
+                            cmd1.Parameters.AddWithValue("@c6", (dr1.IsDBNull(5)) ? 0 : dr1.GetInt32(5));
+                            cmd1.Parameters.AddWithValue("@c16", (dr1.IsDBNull(15)) ? 0 : dr1.GetInt32(15));
+                            cmd1.Parameters.AddWithValue("@c19", (dr1.IsDBNull(18)) ? 0 : dr1.GetInt32(18));
+
+                            cmd1.Parameters.AddWithValue("@c21", objdenT00.C21);
+                            cmd1.Parameters.AddWithValue("@dt", (dr1.IsDBNull(43)) ? "" : dr1.GetString(43));
+
+                            cmd1.Parameters.AddWithValue("@c5", (dr1.IsDBNull(4)) ? 0 : dr1.GetInt32(4));
+                            cmd1.Parameters.AddWithValue("@c7", (dr1.IsDBNull(6)) ? "" : dr1.GetString(6));
+
+                            cmd1.Parameters.AddWithValue("@c8", (dr1.IsDBNull(7)) ? 0 : dr1.GetInt32(7));
+                            cmd1.Parameters.AddWithValue("@c9", (dr1.IsDBNull(8)) ? 0 : dr1.GetInt32(8));
+
+                            cmd1.Parameters.AddWithValue("@c11", Convert.ToDecimal(dr1["C11"]));
+                            cmd1.Parameters.AddWithValue("@c12", (dr1.IsDBNull(11)) ? 0 : dr1.GetInt32(11));
+                            cmd1.Parameters.AddWithValue("@c13", (dr1.IsDBNull(12)) ? 0 : dr1.GetInt32(12));
+                            cmd1.Parameters.AddWithValue("@c14", (dr1.IsDBNull(13)) ? 0 : dr1.GetInt32(13));
+                            cmd1.Parameters.AddWithValue("@c15", Convert.ToDecimal(dr1["C15"]));
+                            cmd1.Parameters.AddWithValue("@c17", (dr1.IsDBNull(16)) ? 0 : dr1.GetInt32(16));
+                            cmd1.Parameters.AddWithValue("@c18", (dr1.IsDBNull(17)) ? 0 : dr1.GetInt32(17));
+                            cmd1.Parameters.AddWithValue("@c20", (dr1.IsDBNull(19)) ? 0 : dr1.GetInt32(19));
+                            cmd1.Parameters.AddWithValue("@c22", (dr1.IsDBNull(20)) ? 0 : dr1.GetInt32(20));
+                            cmd1.Parameters.AddWithValue("@c23", (dr1.IsDBNull(21)) ? "" : dr1.GetString(21));
+                            cmd1.Parameters.AddWithValue("@c24", (dr1.IsDBNull(22)) ? 0 : dr1.GetInt32(22));
+                            cmd1.Parameters.AddWithValue("@c25", (dr1.IsDBNull(23)) ? 0 : dr1.GetInt32(23));
+                            cmd1.Parameters.AddWithValue("@c26", (dr1.IsDBNull(24)) ? 0 : dr1.GetInt32(24));
+                            cmd1.Parameters.AddWithValue("@c27", (dr1.IsDBNull(25)) ? 0 : dr1.GetInt32(25));
+                            cmd1.Parameters.AddWithValue("@c28", (dr1.IsDBNull(26)) ? 0 : dr1.GetInt32(26));
+                            cmd1.Parameters.AddWithValue("@c29", (dr1.IsDBNull(27)) ? "" : dr1.GetString(27));
+                            cmd1.Parameters.AddWithValue("@c30", (dr1.IsDBNull(28)) ? 0 : dr1.GetInt32(28));
+                            cmd1.Parameters.AddWithValue("@c31", (dr1.IsDBNull(29)) ? "" : dr1.GetString(29));
+                            cmd1.Parameters.AddWithValue("@c32", (dr1.IsDBNull(30)) ? 0 : dr1.GetInt32(30));
+                            cmd1.Parameters.AddWithValue("@c33", (dr1.IsDBNull(31)) ? 0 : dr1.GetInt32(31));
+                            cmd1.Parameters.AddWithValue("@c34", (dr1.IsDBNull(32)) ? "" : dr1.GetString(32));
+                            cmd1.Parameters.AddWithValue("@c35", (dr1.IsDBNull(33)) ? 0 : dr1.GetInt32(33));
+                            cmd1.Parameters.AddWithValue("@c36", (dr1.IsDBNull(34)) ? 0 : dr1.GetInt32(34));
+                            cmd1.Parameters.AddWithValue("@c37", (dr1.IsDBNull(35)) ? 0 : dr1.GetInt32(35));
+                            cmd1.Parameters.AddWithValue("@c40", (dr1.IsDBNull(40)) ? 0 : dr1.GetInt32(40));
+                            cmd1.Parameters.AddWithValue("@tp", (dr1.IsDBNull(50)) ? 0 : dr1.GetInt32(50));
+                            cmd1.Parameters.AddWithValue("@ReturnType", objdenT00.ReturnType);
+                            cmd1.Parameters.AddWithValue("@c2", (dr1.IsDBNull(1)) ? 0 : dr1.GetInt32(1));
+                        }
+                        dr1.Close();
+                        cmd1.ExecuteNonQuery();
+
+                    }
+               // }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                this.SqlCon.Close();
+            }
+        }
+     //insert/update data into t00 w.r.t. Fullpath
+        public Int32 AddUpdateT00_Fullpath(denT00 objdenT00, string Fullpath)
+        {
+            int constID = 0;    // this is to return this constantID to use further in tbl_xml_tag table for both add and update cases
+            try
+            {
+                this.PConnMain();
+                string strAY = "";
+                string[] arrAY = System.Text.RegularExpressions.Regex.Split(objdenT00.C21, "-");
+                strAY = ((Convert.ToInt32(arrAY[0]) - 1).ToString() + "-" + (Convert.ToInt32(arrAY[1]) - 1).ToString()).ToString();
+                string retType = "";
+                if (objdenT00.ReturnType == "8")
+                    retType = "ITR4S";
+                else
+                    retType = "ITR" + objdenT00.ReturnType;
+
+
+                Fullpath = Fullpath.Replace(retType, "ITR1");
+                string strSQL = @"if exists(select constantId from vatastax_dev.dbo.tbl_xml_tag where fullpath = '" + Fullpath + @"' and AY='" + objdenT00.C21 + @"')
+	                                select constantId from vatastax_dev.dbo.tbl_xml_tag where fullpath = '" + Fullpath + @"' and AY='" + objdenT00.C21 + @"'
+                                else
+	                                select constantId from vatastax_dev.dbo.tbl_xml_tag where fullpath = '" + Fullpath + @"' and AY='" + strAY + @"'";
+
+                
+                //SqlCommand cmdF = new SqlCommand("select count(*) from T00 where C21 = @AY and C1 = (select ConstantId from vatastax_dev.dbo.tbl_Xml_Tag where FullPath=@Fullpath)", this.SqlCon);
+                SqlCommand cmdC1 = new SqlCommand(strSQL, this.SqlCon);
+                constID = Convert.ToInt32(cmdC1.ExecuteScalar());
+                SqlCommand cmdF = new SqlCommand("select count(*) from T00 where C21 = @AY and C1 = @C1", this.SqlCon);
+                cmdF.Parameters.AddWithValue("@C1", constID);
+                cmdF.Parameters.AddWithValue("@AY", objdenT00.C21);
+                int cnt = Convert.ToInt32(cmdF.ExecuteScalar());
+                //if (cnt > 0)
+                //{
+                //    SqlCommand cmd2 = new SqlCommand("update T00 set ReturnType = ReturnType + ',' + @ITRType where C21 = @AY and C1 = @C1", this.SqlCon);
+                //    cmd2.Parameters.AddWithValue("@AY", objdenT00.C21);
+                //    cmd2.Parameters.AddWithValue("@C1", constID);
+                //    cmd2.Parameters.AddWithValue("@ITRType", objdenT00.ReturnType);
+                //    cmd2.ExecuteNonQuery();
+                    
+                //}
+                //else
+                //{
+                if (constID > 0)
+                {
+                    SqlCommand cmdNew = new SqlCommand("Select * from t00 where c1=@c1 and c21=@c21", this.SqlCon);
+                    cmdNew.Parameters.AddWithValue("@c1", objdenT00.C1);
+                    cmdNew.Parameters.AddWithValue("@c21", objdenT00.C21);
+                    SqlDataReader dr = cmdNew.ExecuteReader();
+                    DataTable dt = new DataTable();
+                    if (dr.HasRows)
+                    {
+                        // dt.Load(dr);
+                        SqlCommand cmd = new SqlCommand("insert into t00 (c1,c3,c4,c6,c10,c16,c19,c21,Details_ITR,c5,c7,c8,c9,c11,c12,c13,c14,c15,c17,c18,c20,c22,c23,c24,c25,c26,c27,c28,c29,c30,c31,c32,c33,c34,c35,c36,c37,ReturnType,c40,TablePriority,c2) values(@c1,@c3,@c4,@c6,@c10,@c16,@c19,@c21,@dt,@c5,@c7,@c8,@c9,@c11,@c12,@c13,@c14,@c15,@c17,@c18,@c20,@c22,@c23,@c24,@c25,@c26,@c27,@c28,@c29,@c30,@c31,@c32,@c33,@c34,@c35,@c36,@c37,@ReturnType,@c40,@tp,@c2)", this.SqlCon);
+                        while (dr.Read())
+                        {
+
+                            cmd.Parameters.AddWithValue("@c1", constID);
+                            //  string strC3 = "";
+                            // if (!dr.IsDBNull(2))
+                            //strC3 = dt.Rows[0]["C3"].ToString();
+
+                            cmd.Parameters.AddWithValue("@c3", (dr.IsDBNull(2)) ? "" : dr.GetString(2));
+                            cmd.Parameters.AddWithValue("@c4", (dr.IsDBNull(3)) ? "" : dr.GetString(3));
+                            cmd.Parameters.AddWithValue("@c10", (dr.IsDBNull(9)) ? 0 : dr.GetInt32(9));
+                            cmd.Parameters.AddWithValue("@c6", (dr.IsDBNull(5)) ? 0 : dr.GetInt32(5));
+                            cmd.Parameters.AddWithValue("@c16", (dr.IsDBNull(15)) ? 0 : dr.GetInt32(15));
+                            cmd.Parameters.AddWithValue("@c19", (dr.IsDBNull(18)) ? 0 : dr.GetInt32(18));
+
+                            cmd.Parameters.AddWithValue("@c21", objdenT00.C21);
+                            cmd.Parameters.AddWithValue("@dt", (dr.IsDBNull(43)) ? "" : dr.GetString(43));
+
+                            cmd.Parameters.AddWithValue("@c5", (dr.IsDBNull(4)) ? 0 : dr.GetInt32(4));
+                            cmd.Parameters.AddWithValue("@c7", (dr.IsDBNull(6)) ? "" : dr.GetString(6));
+
+                            cmd.Parameters.AddWithValue("@c8", (dr.IsDBNull(7)) ? 0 : dr.GetInt32(7));
+                            cmd.Parameters.AddWithValue("@c9", (dr.IsDBNull(8)) ? 0 : dr.GetInt32(8));
+
+                            cmd.Parameters.AddWithValue("@c11", Convert.ToDecimal(dr["C11"]));
+                            cmd.Parameters.AddWithValue("@c12", (dr.IsDBNull(11)) ? 0 : dr.GetInt32(11));
+                            cmd.Parameters.AddWithValue("@c13", (dr.IsDBNull(12)) ? 0 : dr.GetInt32(12));
+                            cmd.Parameters.AddWithValue("@c14", (dr.IsDBNull(13)) ? 0 : dr.GetInt32(13));
+                            cmd.Parameters.AddWithValue("@c15", Convert.ToDecimal(dr["C15"]));
+                            cmd.Parameters.AddWithValue("@c17", (dr.IsDBNull(16)) ? 0 : dr.GetInt32(16));
+                            cmd.Parameters.AddWithValue("@c18", (dr.IsDBNull(17)) ? 0 : dr.GetInt32(17));
+                            cmd.Parameters.AddWithValue("@c20", (dr.IsDBNull(19)) ? 0 : dr.GetInt32(19));
+                            cmd.Parameters.AddWithValue("@c22", (dr.IsDBNull(20)) ? 0 : dr.GetInt32(20));
+                            cmd.Parameters.AddWithValue("@c23", (dr.IsDBNull(21)) ? "" : dr.GetString(21));
+                            cmd.Parameters.AddWithValue("@c24", (dr.IsDBNull(22)) ? 0 : dr.GetInt32(22));
+                            cmd.Parameters.AddWithValue("@c25", (dr.IsDBNull(23)) ? 0 : dr.GetInt32(23));
+                            cmd.Parameters.AddWithValue("@c26", (dr.IsDBNull(24)) ? 0 : dr.GetInt32(24));
+                            cmd.Parameters.AddWithValue("@c27", (dr.IsDBNull(25)) ? 0 : dr.GetInt32(25));
+                            cmd.Parameters.AddWithValue("@c28", (dr.IsDBNull(26)) ? 0 : dr.GetInt32(26));
+                            cmd.Parameters.AddWithValue("@c29", (dr.IsDBNull(27)) ? "" : dr.GetString(27));
+                            cmd.Parameters.AddWithValue("@c30", (dr.IsDBNull(28)) ? 0 : dr.GetInt32(28));
+                            cmd.Parameters.AddWithValue("@c31", (dr.IsDBNull(29)) ? "" : dr.GetString(29));
+                            cmd.Parameters.AddWithValue("@c32", (dr.IsDBNull(30)) ? 0 : dr.GetInt32(30));
+                            cmd.Parameters.AddWithValue("@c33", (dr.IsDBNull(31)) ? 0 : dr.GetInt32(31));
+                            cmd.Parameters.AddWithValue("@c34", (dr.IsDBNull(32)) ? "" : dr.GetString(32));
+                            cmd.Parameters.AddWithValue("@c35", (dr.IsDBNull(33)) ? 0 : dr.GetInt32(33));
+                            cmd.Parameters.AddWithValue("@c36", (dr.IsDBNull(34)) ? 0 : dr.GetInt32(34));
+                            cmd.Parameters.AddWithValue("@c37", (dr.IsDBNull(35)) ? 0 : dr.GetInt32(35));
+                            cmd.Parameters.AddWithValue("@c40", (dr.IsDBNull(40)) ? 0 : dr.GetInt32(40));
+                            cmd.Parameters.AddWithValue("@tp", (dr.IsDBNull(50)) ? 0 : dr.GetInt32(50));
+                            cmd.Parameters.AddWithValue("@ReturnType", (dr.IsDBNull(42)) ? "" : dr.GetString(42));
+                            cmd.Parameters.AddWithValue("@c2", (dr.IsDBNull(1)) ? 0 : dr.GetInt32(1));
+                        }
+                        dr.Close();
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                else
+                {
+                    constID = getMaxC1()+1;
+                    this.SqlCon.Open();
+                    SqlCommand cmd1 = new SqlCommand("insert into t00 (c1,c3,c4,c6,c10,c16,c19,c21,Details_ITR,c5,c7,c8,c9,c11,c12,c13,c14,c15,c17,c18,c20,c22,c23,c24,c25,c26,c27,c28,c29,c30,c31,c32,c33,c34,c35,c36,c37,ReturnType,c40,TablePriority,c2) values(@c1,@c3,@c4,@c6,@c10,@c16,@c19,@c21,@dt,@c5,@c7,@c8,@c9,@c11,@c12,@c13,@c14,@c15,@c17,@c18,@c20,@c22,@c23,@c24,@c25,@c26,@c27,@c28,@c29,@c30,@c31,@c32,@c33,@c34,@c35,@c36,@c37,@ReturnType,@c40,@tp,@c2)", this.SqlCon);
+                 
+                    
+
+                        cmd1.Parameters.AddWithValue("@c1", constID);
+                        //  string strC3 = "";
+                        // if (!dr.IsDBNull(2))
+                        //strC3 = dt.Rows[0]["C3"].ToString();
+
+                        cmd1.Parameters.AddWithValue("@c3", objdenT00.C3);
+                        cmd1.Parameters.AddWithValue("@c4", objdenT00.C4);
+                        cmd1.Parameters.AddWithValue("@c10", objdenT00.C10);
+                        cmd1.Parameters.AddWithValue("@c6", objdenT00.C6);
+                        cmd1.Parameters.AddWithValue("@c16", objdenT00.C16);
+                        cmd1.Parameters.AddWithValue("@c19", objdenT00.C19);
+
+                        cmd1.Parameters.AddWithValue("@c21", objdenT00.C21);
+                        cmd1.Parameters.AddWithValue("@dt", objdenT00.Details_ITR);
+
+                        cmd1.Parameters.AddWithValue("@c5", objdenT00.C5);
+                        cmd1.Parameters.AddWithValue("@c7", objdenT00.C7);
+
+                        cmd1.Parameters.AddWithValue("@c8", objdenT00.C8);
+                        cmd1.Parameters.AddWithValue("@c9", objdenT00.C9);
+
+                        cmd1.Parameters.AddWithValue("@c11", objdenT00.C11);
+                        cmd1.Parameters.AddWithValue("@c12", objdenT00.C12);
+                        cmd1.Parameters.AddWithValue("@c13", objdenT00.C13);
+                        cmd1.Parameters.AddWithValue("@c14", objdenT00.C14);
+                        cmd1.Parameters.AddWithValue("@c15", objdenT00.C15);
+                        cmd1.Parameters.AddWithValue("@c17", objdenT00.C16);
+                        cmd1.Parameters.AddWithValue("@c18", objdenT00.C17);
+                        cmd1.Parameters.AddWithValue("@c20", objdenT00.C20);
+                        cmd1.Parameters.AddWithValue("@c22", objdenT00.C22);
+                        cmd1.Parameters.AddWithValue("@c23", objdenT00.C23);
+                        cmd1.Parameters.AddWithValue("@c24", objdenT00.C24);
+                        cmd1.Parameters.AddWithValue("@c25", objdenT00.C25);
+                        cmd1.Parameters.AddWithValue("@c26", objdenT00.C26);
+                        cmd1.Parameters.AddWithValue("@c27", objdenT00.C27);
+                        cmd1.Parameters.AddWithValue("@c28", objdenT00.C28);
+                        cmd1.Parameters.AddWithValue("@c29", objdenT00.C29);
+                        cmd1.Parameters.AddWithValue("@c30", objdenT00.C30);
+                        cmd1.Parameters.AddWithValue("@c31", objdenT00.C31);
+                        cmd1.Parameters.AddWithValue("@c32", objdenT00.C32);
+                        cmd1.Parameters.AddWithValue("@c33", objdenT00.C33);
+                        cmd1.Parameters.AddWithValue("@c34", objdenT00.C34);
+                        cmd1.Parameters.AddWithValue("@c35", objdenT00.C35);
+                        cmd1.Parameters.AddWithValue("@c36", objdenT00.C36);
+                        cmd1.Parameters.AddWithValue("@c37", objdenT00.C37);
+                        cmd1.Parameters.AddWithValue("@c40", objdenT00.C40);
+                        cmd1.Parameters.AddWithValue("@tp", objdenT00.TablePriority);
+                        cmd1.Parameters.AddWithValue("@ReturnType", objdenT00.ReturnType);
+                        cmd1.Parameters.AddWithValue("@c2", objdenT00.C2);
+                    
+                  
+                    cmd1.ExecuteNonQuery();
+                }
+               // }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                this.SqlCon.Close();
+            }
+            return constID;
+        }
+
+        //Delete Row from t00 by constantid
+        public void DeleteT00byC1(denT00 objdenT00)
+        {
+            try
+            {
+                this.PConnMain();
+                SqlCommand cmd = new SqlCommand("delete from t00 where c1=@c1 and c21=@c21 and returntype=@returntype", this.SqlCon);
+
+                cmd.Parameters.AddWithValue("@c1", objdenT00.C1);
+                cmd.Parameters.AddWithValue("@returntype", objdenT00.ReturnType);
+                cmd.Parameters.AddWithValue("@c21", ((objdenT00.C21 != null) ? objdenT00.C21 : "2015-2016"));
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                this.SqlCon.Close();
+            }
+        }
+        public int getMaxC1()
+        {
+            try
+            {
+                this.PConnMain();
+                SqlCommand cmd = new SqlCommand("if exists(select * from t00)select max(C1) from t00 else select 1 as C1 ", this.SqlCon);
+
+                int C1 = Convert.ToInt32(cmd.ExecuteScalar());
+                return C1;
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                this.SqlCon.Close();
+            }
+        }
+        //get t00 data by gindex
+        public DataTable T00FloatData(int GI,string AY)
+        {
+            try
+            {
+                this.PConnMain();
+                cmd = new SqlCommand("select *  from t00 where c6=@c6  and c16>0 and C21=@C21 order by c2", this.SqlCon);
+                cmd.Parameters.AddWithValue("@c6", GI);
+                cmd.Parameters.AddWithValue("@C21", AY);
+                SqlDataReader dr = cmd.ExecuteReader();
+                DataTable dtT00 = new DataTable();
+                if (dr.HasRows)
+                {
+                    dtT00.Load(dr);
+                }
+                return dtT00;
+
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                this.SqlCon.Close();
+            }
+        }
+        //get return type
+        public string getReturnType(int ConstID,string Ay,string rettype)
+        {
+            string ReturnType="";
+            try
+            {
+                this.PConnMain();
+                cmd = new SqlCommand("select ReturnType from t00 where C1=@c1 and c21=@AY and returntype=@rettype", this.SqlCon);
+                cmd.Parameters.AddWithValue("@c1", ConstID);
+                cmd.Parameters.AddWithValue("@AY",Ay);
+                cmd.Parameters.AddWithValue("@rettype", rettype);
+                object RetTypeobj = cmd.ExecuteScalar();
+                if (RetTypeobj != null)
+                {
+
+                    ReturnType = cmd.ExecuteScalar().ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                this.SqlCon.Close();
+            }
+            return ReturnType;
+        }
+        //get Detail_ITR
+        public string getDetail_ITR(int ConstID, string Year)
+        {
+            string ReturnType;
+            try
+            {
+                this.PConnMain();
+                cmd = new SqlCommand("select Details_ITR from t00 where C1=@c1 and c21=@c21", this.SqlCon);
+                cmd.Parameters.AddWithValue("@c1", ConstID);
+                cmd.Parameters.AddWithValue("@c21", Year);
+                ReturnType = cmd.ExecuteScalar().ToString();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                this.SqlCon.Close();
+            }
+            return ReturnType;
+        }
+        //get Assesee Type
+        public string getC31(int ConstID, string Year)
+        {
+            string C31;
+            try
+            {
+                this.PConnMain();
+                cmd = new SqlCommand("select C31 from t00 where C1=@c1 and c21=@c21", this.SqlCon);
+                cmd.Parameters.AddWithValue("@c1", ConstID);
+                cmd.Parameters.AddWithValue("@c21", Year);
+                C31 = cmd.ExecuteScalar().ToString();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                this.SqlCon.Close();
+            }
+            return C31;
+        }
+        //Update data into T00
+        public void UpdateT00ControlandTabIndex(denT00 objdenT00)
+        {
+            try
+            {
+                this.PConnMain();
+                SqlCommand cmd = new SqlCommand("update t00 set c5=@c5,c10=@c10 where c6=@c6 and c1=@c1 and C21=@C21 ", this.SqlCon);
+
+
+
+                cmd.Parameters.AddWithValue("@c5", objdenT00.C5);
+
+                cmd.Parameters.AddWithValue("@c10", objdenT00.C10);
+
+
+                cmd.Parameters.AddWithValue("@c6", objdenT00.C6);
+                cmd.Parameters.AddWithValue("@c1", objdenT00.C1);
+
+                cmd.Parameters.AddWithValue("@C21", objdenT00.C21);
+
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                this.SqlCon.Close();
+            }
+        }
+
+        //update return type ,c31,c25,simple formula
+        public void UpdateT00ReturnType(denT00 objdenT00)
+        {
+            try
+            {
+                this.PConnMain();
+                SqlCommand cmd = new SqlCommand("update t00 set ReturnType=@ReturnType,C25=@C25,Details_ITR=@Details_ITR ,C31=@C31 where c1=@c1 and C21=@C21 ", this.SqlCon);
+                cmd.Parameters.AddWithValue("@ReturnType", objdenT00.ReturnType);
+                cmd.Parameters.AddWithValue("@C25", objdenT00.C25);
+                cmd.Parameters.AddWithValue("@C31", objdenT00.C31);
+                cmd.Parameters.AddWithValue("@Details_ITR ", objdenT00.Details_ITR);
+                cmd.Parameters.AddWithValue("@c1", objdenT00.C1);
+                cmd.Parameters.AddWithValue("@C21", objdenT00.C21);
+
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                this.SqlCon.Close();
+            }
+        }
+
+        //update Return Type
+        public void UpdateT00ReturnTypeOnly(denT00 objdenT00)
+        {
+            try
+            {
+                this.PConnMain();
+
+                SqlCommand cmd = new SqlCommand("update t00 set ReturnType=ReturnType + ',' + @ReturnType where c1=@c1 and C21=@C21 ", this.SqlCon);
+                cmd.Parameters.AddWithValue("@ReturnType", objdenT00.ReturnType);
+                cmd.Parameters.AddWithValue("@c1", objdenT00.C1);
+                cmd.Parameters.AddWithValue("@C21", objdenT00.C21);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                this.SqlCon.Close();
+            }
+        }
+
+        //Update data into T00
+        public void UpdateT00Control(denT00 objdenT00)
+        {
+            try
+            {
+                this.PConnMain();
+                SqlCommand cmd = new SqlCommand("update t00 set c10=@c10 where c1=@c1 and C21=@C21 ", this.SqlCon);
+
+
+
+                // cmd.Parameters.AddWithValue("@c5", objdenT00.C5);
+
+                cmd.Parameters.AddWithValue("@c10", objdenT00.C10);
+
+
+                // cmd.Parameters.AddWithValue("@c6", objdenT00.C6);
+                cmd.Parameters.AddWithValue("@c1", objdenT00.C1);
+
+                cmd.Parameters.AddWithValue("@C21", objdenT00.C21);
+
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                this.SqlCon.Close();
+            }
+
+        }
+
+        public void UpdateT00Detail(denT00 objdenT00)
+        {
+            try
+            {
+                this.PConnMain();
+                //SqlCommand cmd = new SqlCommand("update t00 set c16=@c16,c19=@c19 where c6=@c6 and c1=@c1 and C21=@C21 ", this.SqlCon);
+                SqlCommand cmd = new SqlCommand("update t00 set c16=@c16,c19=@c19,Details_ITR=@Details_ITR where c1=@c1 and C21=@C21 ", this.SqlCon);
+                cmd.Parameters.AddWithValue("@c16", objdenT00.C16);
+                cmd.Parameters.AddWithValue("@c19", objdenT00.C19);
+                cmd.Parameters.AddWithValue("@c6", objdenT00.C6);
+                cmd.Parameters.AddWithValue("@c1", objdenT00.C1);
+                cmd.Parameters.AddWithValue("@C21", objdenT00.C21);
+                cmd.Parameters.AddWithValue("@Details_ITR", (objdenT00.Details_ITR != null) ? objdenT00.Details_ITR : "1,2,3,4,5,6,7,8");
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                this.SqlCon.Close();
+            }
+
+
+
+
+
+
+
+        }
+        public void UpdateT00Table(denT00 objdenT00)
+        {
+            try
+            {
+                this.PConnMain();
+                SqlCommand cmd = new SqlCommand("update t00 set TableName=@tn,FieldName=@fn ,Query=@q,FloatColumn=@fc,TablePriority=@tp,PrimaryColumn=@PC,PrimaryTableCol=@PTC where c1=@c1 and C21=@C21 ", this.SqlCon);
+
+                cmd.Parameters.AddWithValue("@tn", objdenT00.TableName);
+
+                cmd.Parameters.AddWithValue("@fn", objdenT00.FieldName);
+                cmd.Parameters.AddWithValue("@PC", objdenT00.PrimaryColumn);
+                cmd.Parameters.AddWithValue("@PTC", objdenT00.PrimaryTableCol);
+
+
+
+               // cmd.Parameters.AddWithValue("Q", objdenT00.Query);
+                cmd.Parameters.AddWithValue("@q", objdenT00.Query);
+                cmd.Parameters.AddWithValue("@fc", objdenT00.FloatColumn);
+
+                cmd.Parameters.AddWithValue("@tp", objdenT00.TablePriority);
+                //cmd.Parameters.AddWithValue("@pf", objdenT00.PrimaryTableCol);
+                //cmd.Parameters.AddWithValue("@Ip", objdenT00.PrimaryColumn);
+                //cmd.Parameters.AddWithValue("@c6", objdenT00.C6);
+                cmd.Parameters.AddWithValue("@c1", objdenT00.C1);
+
+                cmd.Parameters.AddWithValue("@C21", objdenT00.C21);
+
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                this.SqlCon.Close();
+            }
+        }
+        public void UpdateT00Table1(denT00 objdenT00)
+        {
+            try
+            {
+                this.PConnMain();
+                SqlCommand cmd = new SqlCommand("update t00 set TableName=@tn,FieldName=@fn ,FloatColumn=@fc,TablePriority=@tp,PrimaryColumn=@PC,PrimaryTableCol=@PTC where c1=@c1 and C21=@C21 ", this.SqlCon);
+
+                cmd.Parameters.AddWithValue("@tn", objdenT00.TableName);
+
+                cmd.Parameters.AddWithValue("@fn", objdenT00.FieldName);
+                cmd.Parameters.AddWithValue("@PC", objdenT00.PrimaryColumn);
+                cmd.Parameters.AddWithValue("@PTC", objdenT00.PrimaryTableCol);
+
+
+
+                // cmd.Parameters.AddWithValue("Q", objdenT00.Query);
+                cmd.Parameters.AddWithValue("@q", objdenT00.Query);
+                cmd.Parameters.AddWithValue("@fc", objdenT00.FloatColumn);
+
+                cmd.Parameters.AddWithValue("@tp", objdenT00.TablePriority);
+                //cmd.Parameters.AddWithValue("@pf", objdenT00.PrimaryTableCol);
+                //cmd.Parameters.AddWithValue("@Ip", objdenT00.PrimaryColumn);
+                //cmd.Parameters.AddWithValue("@c6", objdenT00.C6);
+                cmd.Parameters.AddWithValue("@c1", objdenT00.C1);
+
+                cmd.Parameters.AddWithValue("@C21", objdenT00.C21);
+
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                this.SqlCon.Close();
+            }
+        }
+        public void UpdateT00Table2(denT00 objdenT00)
+        {
+            try
+            {
+                this.PConnMain();
+                SqlCommand cmd = new SqlCommand("update t00 set TableName=@tn,FieldName=@fn ,Query=@q,TablePriority=@tp,PrimaryColumn=@PC,PrimaryTableCol=@PTC where c1=@c1 and C21=@C21 ", this.SqlCon);
+
+                cmd.Parameters.AddWithValue("@tn", objdenT00.TableName);
+
+                cmd.Parameters.AddWithValue("@fn", objdenT00.FieldName);
+                cmd.Parameters.AddWithValue("@PC", objdenT00.PrimaryColumn);
+                cmd.Parameters.AddWithValue("@PTC", objdenT00.PrimaryTableCol);
+
+
+
+                // cmd.Parameters.AddWithValue("Q", objdenT00.Query);
+                cmd.Parameters.AddWithValue("@q", objdenT00.Query);
+                cmd.Parameters.AddWithValue("@fc", objdenT00.FloatColumn);
+
+                cmd.Parameters.AddWithValue("@tp", objdenT00.TablePriority);
+                //cmd.Parameters.AddWithValue("@pf", objdenT00.PrimaryTableCol);
+                //cmd.Parameters.AddWithValue("@Ip", objdenT00.PrimaryColumn);
+                //cmd.Parameters.AddWithValue("@c6", objdenT00.C6);
+                cmd.Parameters.AddWithValue("@c1", objdenT00.C1);
+
+                cmd.Parameters.AddWithValue("@C21", objdenT00.C21);
+
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                this.SqlCon.Close();
+            }
+        }
+        public void UpdateT00Table3(denT00 objdenT00)
+        {
+            try
+            {
+                this.PConnMain();
+                SqlCommand cmd = new SqlCommand("update t00 set TableName=@tn,FieldName=@fn ,TablePriority=@tp,PrimaryColumn=@PC,PrimaryTableCol=@PTC where c1=@c1 and C21=@C21 ", this.SqlCon);
+
+                cmd.Parameters.AddWithValue("@tn", objdenT00.TableName);
+
+                cmd.Parameters.AddWithValue("@fn", objdenT00.FieldName);
+                cmd.Parameters.AddWithValue("@PC", objdenT00.PrimaryColumn);
+                cmd.Parameters.AddWithValue("@PTC", objdenT00.PrimaryTableCol);
+
+
+
+                // cmd.Parameters.AddWithValue("Q", objdenT00.Query);
+                cmd.Parameters.AddWithValue("@q", objdenT00.Query);
+                cmd.Parameters.AddWithValue("@fc", objdenT00.FloatColumn);
+
+                cmd.Parameters.AddWithValue("@tp", objdenT00.TablePriority);
+                //cmd.Parameters.AddWithValue("@pf", objdenT00.PrimaryTableCol);
+                //cmd.Parameters.AddWithValue("@Ip", objdenT00.PrimaryColumn);
+                //cmd.Parameters.AddWithValue("@c6", objdenT00.C6);
+                cmd.Parameters.AddWithValue("@c1", objdenT00.C1);
+
+                cmd.Parameters.AddWithValue("@C21", objdenT00.C21);
+
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                this.SqlCon.Close();
+            }
+        }
+        //select data by constid and year
+        public DataTable SelectT00(int ConstID, string Year)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                this.PConnMain();
+                cmd = new SqlCommand("select * from t00 where C1=@c1 and c21=@c21", this.SqlCon);
+                cmd.Parameters.AddWithValue("@c1", ConstID);
+                cmd.Parameters.AddWithValue("@c21", Year);
+                SqlDataReader dr = cmd.ExecuteReader();
+                if (dr.HasRows)
+                {
+                    dt.Load(dr);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                this.SqlCon.Close();
+            }
+            return dt;
+        }
+        //select data by constid and year
+        public DataTable SelectT00byCID(int ConstID)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                this.PConnMain();
+                cmd = new SqlCommand("select * from t00 where C1=@c1 ", this.SqlCon);
+                cmd.Parameters.AddWithValue("@c1", ConstID);
+
+                SqlDataReader dr = cmd.ExecuteReader();
+                if (dr.HasRows)
+                {
+                    dt.Load(dr);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                this.SqlCon.Close();
+            }
+            return dt;
+        }
+        //select data by -999
+        public DataTable SelectAllUnassigned()
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                this.PConnMain();
+                cmd = new SqlCommand("select * from t00 where C6=-999 order by c1", this.SqlCon);
+                SqlDataReader dr = cmd.ExecuteReader();
+                if (dr.HasRows)
+                {
+                    dt.Load(dr);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                this.SqlCon.Close();
+            }
+            return dt;
+        }
+        //update tab 
+        public void UpdateT00C5(denT00 objdenT00)
+        {
+            try
+            {
+                this.PConnMain();
+                //SqlCommand cmd = new SqlCommand("update t00 set c16=@c16,c19=@c19 where c6=@c6 and c1=@c1 and C21=@C21 ", this.SqlCon);
+                SqlCommand cmd = new SqlCommand("update t00 set c5=@c5 where c1=@c1 and C21=@C21 ", this.SqlCon);
+                cmd.Parameters.AddWithValue("@c5", objdenT00.C5);
+                cmd.Parameters.AddWithValue("@c1", objdenT00.C1);
+                cmd.Parameters.AddWithValue("@C21", objdenT00.C21);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                this.SqlCon.Close();
+            }
+        }
+        //Update T00 c6 by AY Added by Mudit
+        public void updateC6(denT00 objdenT00)
+        {
+            try
+            {
+                this.PConnMain();
+                SqlCommand cmd = new SqlCommand("update t00 set c4=@c4,c6=@c6 where c1=@c1 and c21=@c21", this.SqlCon);
+                //cmd.Parameters.AddWithValue("@c5", objdenT00.C5);
+                cmd.Parameters.AddWithValue("@c6", objdenT00.C6);
+                cmd.Parameters.AddWithValue("@c21", objdenT00.C21);
+                cmd.Parameters.AddWithValue("@c4", objdenT00.C4);
+                //cmd.Parameters.AddWithValue("@Node", objdenT00.C4);
+                cmd.Parameters.AddWithValue("@c1", objdenT00.C1);
+
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                this.SqlCon.Close();
+            }
+        }
+
+        //Function To Fetch C3 from T00
+        public DataTable FetchC3(string AY, string ITR, string ITRType, string Project)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                this.PConnMain();
+                cmd = new SqlCommand("select xmltag as tag from ScreenSettings where project=@Project union select fullpath as tag from vatastax_dev.dbo.tbl_Xml_Tag where ConstantId in(select c1 from t00 where C6 in(select gridindex from ScreenSettings where project=@Project))AND ( CHARINDEX(@ITR,@ITRType)!=0) union select fullpath as tag from vatastax_dev.dbo.tbl_Xml_Tag where ConstantId in (select c2 from t4 where c2 in (select c1 from t00 where c6 in(select gridindex from ScreenSettings where project=@Project ))AND ( CHARINDEX(@ITR,@ITRType)!=0)) union select FullPath as tag from vatastax_dev.dbo.tbl_Xml_Tag_Ref where XmlTag_RefId in (select EntryId from vatastax_dev.dbo.tbl_Xml_Tag where AY=@AY and ItrType=@ITR) and AY=@AY", this.SqlCon);
+                cmd.Parameters.AddWithValue("@ITR", ITR);
+                cmd.Parameters.AddWithValue("@ITRType", ITRType);
+                cmd.Parameters.AddWithValue("@AY", AY);
+                cmd.Parameters.AddWithValue("@Project", Project);
+                SqlDataReader dr = cmd.ExecuteReader();
+                if (dr.HasRows)
+                {
+                    dt.Load(dr);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                this.SqlCon.Close();
+            }
+            return dt;
+        }
+
+       
+        #endregion
+    }
+}

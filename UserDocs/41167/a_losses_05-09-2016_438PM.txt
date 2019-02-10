@@ -1,0 +1,584 @@
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		Ankush Bhanot
+-- Create date: 16-09-15
+-- Description:	Losses
+-- =============================================
+alter PROCEDURE A_Losses
+	@IFS decimal,
+	@IFHP decimal,
+	@IFBus decimal,
+	@IFSI decimal,
+	@IFSBus decimal,
+	@IFSTCG_15 decimal,
+	@IFSTCG_30 decimal,
+	@IFSTCG_app decimal,
+	@IFLTCG_10 decimal,
+	@IFLTCG_20 decimal,
+	@IFOS decimal,
+	@IFP_RH decimal,
+	@NameID nvarchar(500),
+	@AY nvarchar(50),
+	@ITR nvarchar(50)
+AS
+BEGIN
+	
+
+	Declare @IFS_adj decimal
+	Declare @IFHP_adj decimal
+	Declare @IFBus_adj decimal
+	Declare @IFSI_adj decimal
+	Declare @IFSBus_adj decimal
+	Declare @IFSTCG_15_adj decimal
+	Declare @IFSTCG_30_adj decimal
+	Declare @IFSTCG_app_adj decimal
+	Declare @IFLTCG_10_adj decimal
+	Declare @IFLTCG_20_adj decimal
+	Declare @IFOS_adj decimal
+	Declare @IFP_RH_adj decimal
+
+	
+	set @IFS = 50000;
+	set @IFHP = -96000
+	set @IFBus = 2000000
+	set @IFSI = 650000
+	set @IFSBus = 25000
+	set @IFSTCG_15 = 1000
+	set @IFSTCG_30 = 50000
+	set @IFSTCG_app = 10000	
+	set @IFLTCG_10 = 2000
+	set	@IFLTCG_20 = 1500
+	set @IFOS = 20000000
+	set @IFP_RH = 500
+
+	--setting Adjusted Values:
+	set @IFS_adj = @IFS;
+	set @IFHP_adj = @IFHP
+	set @IFBus_adj = @IFBus
+	set @IFSI_adj = @IFSI
+	set @IFSBus_adj = @IFSBus
+	set @IFSTCG_15_adj = @IFSTCG_15
+	set @IFSTCG_30_adj = @IFSTCG_30
+	set @IFSTCG_app_adj = @IFSTCG_app	
+	set @IFLTCG_10_adj = @IFLTCG_10
+	set	@IFLTCG_20_adj = @IFLTCG_20
+	set @IFOS_adj = @IFOS
+	set @IFP_RH_adj = @IFP_RH
+
+
+	--Declare tbl_LossesTmp Table (Indexing int,Source nvarchar(500),Income Decimal, HP decimal, BP decimal, OS decimal, CYIRASO decimal)
+	
+	insert into tbl_LossesTmp values(1,'LossToBeSetOff',0,0,0,0,0, @NameID, @AY, @ITR)		--1
+	insert into tbl_LossesTmp values(2,'IFS',@IFS,0,0,0,0, @NameID, @AY, @ITR)				--2
+	insert into tbl_LossesTmp values(3,'IHP',@IFHP,0,0,0,0, @NameID, @AY, @ITR)				--3
+	insert into tbl_LossesTmp values(4,'IFBus',@IFBus,0,0,0,0, @NameID, @AY, @ITR)			--4
+	insert into tbl_LossesTmp values(5,'IFSI',@IFSI,0,0,0,0, @NameID, @AY, @ITR)				--5
+	insert into tbl_LossesTmp values(6,'IFSBus',@IFSBus,0,0,0,0, @NameID, @AY, @ITR)			--6
+	insert into tbl_LossesTmp values(7,'IFSTCG15',@IFSTCG_15,0,0,0,0, @NameID, @AY, @ITR)		--7
+	insert into tbl_LossesTmp values(8,'IFSTCG30',@IFSTCG_30,0,0,0,0, @NameID, @AY, @ITR)		--8
+	insert into tbl_LossesTmp values(9,'IFSTCG_app',@IFSTCG_app,0,0,0,0, @NameID, @AY, @ITR)	--9
+	insert into tbl_LossesTmp values(10,'IFLTCG_10',@IFLTCG_10,0,0,0,0, @NameID, @AY, @ITR)	--10
+	insert into tbl_LossesTmp values(11,'IFLTCG_20',@IFLTCG_20,0,0,0,0, @NameID, @AY, @ITR)	--11
+	insert into tbl_LossesTmp values(12,'IFOS',@IFOS,0,0,0,0, @NameID, @AY, @ITR)				--12
+	insert into tbl_LossesTmp values(13,'PFOMRC',@IFP_RH,0,0,0,0, @NameID, @AY, @ITR)			--13
+	insert into tbl_LossesTmp values(14,'Total',0,0,0,0,0, @NameID, @AY, @ITR)				--14
+	insert into tbl_LossesTmp values(15,'LossRemaining',0,0,0,0,0, @NameID, @AY, @ITR)		--15
+		
+	Declare @tempVal decimal
+	Declare @tempVal_Adj decimal
+
+	if @IFHP < 0
+	Begin
+		set @tempVal = @IFS + @IFHP	--because @IFHP is (-) so adding it to subtract from IFS
+		if @tempVal >=0
+			set @tempVal_Adj = @IFHP
+		else
+			set @tempVal_Adj = @IFS
+
+		if @tempVal_Adj < 0	--to take out (-) sign before the value
+			set @tempVal_Adj = @tempVal_Adj * (-1)	
+
+		set @tempVal = @IFS - (@IFHP*(-1))
+
+		update tbl_LossesTmp set HP = @tempVal_Adj where Source = 'IFS'
+		set @IFS_adj = @IFS - @tempVal_Adj
+
+		print 'IFBus: tempVal :'
+		print @tempVal
+		if @tempVal < 0		-- if value is still in minus means that still there is balanced loss that needs to be set off	-- Income From Business
+		begin
+			if (@tempVal*(-1)) > @IFBus	--if the value left is still larger than the Business Income (as its in minus so comparion is < )
+			begin
+				set @tempVal = (@tempVal*(-1)) - @IFBus
+				set @tempVal_Adj = @IFBus -- (@tempVal*(-1))
+				update tbl_LossesTmp set HP = @tempVal_Adj where Source = 'IFBus'
+			end
+			else		--if the value left is lesser than or equal to the Business Income (as its in minus so comparion is < )
+			begin				
+				set @tempVal_Adj = (@tempVal*(-1))
+				set @tempVal = @tempVal-@IFBus
+				update tbl_LossesTmp set HP = @tempVal_Adj where Source = 'IFBus'
+			end
+			set @IFBus_adj = @IFBus - @tempVal_Adj
+		end
+
+		if @tempVal > 0		--Speculative Income
+		begin
+			if @tempVal > @IFSI
+				set @tempVal_Adj = @IFSI
+			else
+				set @tempVal_Adj = @tempVal
+
+			set @tempVal = @tempVal - @tempVal_Adj
+			update tbl_LossesTmp set HP = @tempVal_Adj where Source = 'IFSI'
+
+			set @IFSI_adj = @IFSI - @tempVal_Adj
+			
+		end
+
+		if @tempVal > 0		--Specified Business Income
+		begin
+			if @tempVal > @IFSBus
+				set @tempVal_Adj = @IFSBus
+			else
+				set @tempVal_Adj = @tempVal
+
+			set @tempVal = @tempVal - @tempVal_Adj
+			update tbl_LossesTmp set HP = @tempVal_Adj where Source = 'IFSBus'
+
+			set @IFSBus_adj = @IFSBus - @tempVal_Adj
+		end
+
+		if @tempVal > 0		--Short Term Capital Gain Taxable @ 15%
+		begin
+			if @tempVal > @IFSTCG_15
+				set @tempVal_Adj = @IFSTCG_15
+			else
+				set @tempVal_Adj = @tempVal
+
+			set @tempVal = @tempVal - @tempVal_Adj
+			update tbl_LossesTmp set HP = @tempVal_Adj where Source = 'IFSTCG15'
+
+			set @IFSTCG_15_adj = @IFSTCG_15 - @tempVal_Adj
+		end
+
+		if @tempVal > 0		--Short Term Capital Gain Taxable @ 30%
+		begin
+			if @tempVal > @IFSTCG_30
+				set @tempVal_Adj = @IFSTCG_30
+			else
+				set @tempVal_Adj = @tempVal
+
+			set @tempVal = @tempVal - @tempVal_Adj
+			update tbl_LossesTmp set HP = @tempVal_Adj where Source = 'IFSTCG30'
+			set @IFSTCG_30_adj = @IFSTCG_30 - @tempVal_Adj
+		end
+
+		if @tempVal > 0		--Short Term Capital Gain App
+		begin
+			if @tempVal > @IFSTCG_app
+				set @tempVal_Adj = @IFSTCG_app
+			else
+				set @tempVal_Adj = @tempVal
+
+			set @tempVal = @tempVal - @tempVal_Adj
+			update tbl_LossesTmp set HP = @tempVal_Adj where Source = 'IFSTCG_app'
+			set @IFSTCG_app_adj = @IFSTCG_app - @tempVal_Adj
+		end
+
+		if @tempVal > 0		--Logn Term Capital Gain @ 10%
+		begin
+			if @tempVal > @IFLTCG_10
+				set @tempVal_Adj = @IFLTCG_10
+			else
+				set @tempVal_Adj = @tempVal
+
+			set @tempVal = @tempVal - @tempVal_Adj
+			update tbl_LossesTmp set HP = @tempVal_Adj where Source = 'IFLTCG_10'
+			set @IFLTCG_10_adj = @IFLTCG_10 - @tempVal_Adj
+		end
+
+		if @tempVal > 0		--Logn Term Capital Gain @ 20%
+		begin
+			if @tempVal > @IFLTCG_20
+				set @tempVal_Adj = @IFLTCG_20
+			else
+				set @tempVal_Adj = @tempVal
+
+			set @tempVal = @tempVal - @tempVal_Adj
+			update tbl_LossesTmp set HP = @tempVal_Adj where Source = 'IFLTCG_20'
+			set @IFLTCG_20_adj = @IFLTCG_20 - @tempVal_Adj
+		end
+
+		if @tempVal > 0		--Income From Other Sources
+		begin
+			if @tempVal > @IFOS
+				set @tempVal_Adj = @IFOS
+			else
+				set @tempVal_Adj = @tempVal
+
+			set @tempVal = @tempVal - @tempVal_Adj
+			update tbl_LossesTmp set HP = @tempVal_Adj where Source = 'IFOS'
+			set @IFOS_adj = @IFOS - @tempVal_Adj
+		end
+
+		if @tempVal > 0		--PFOMRC
+		begin
+			if @tempVal > @IFP_RH
+				set @tempVal_Adj = @IFP_RH
+			else
+				set @tempVal_Adj = @tempVal
+
+			set @tempVal = @tempVal - @tempVal_Adj
+			update tbl_LossesTmp set HP = @tempVal_Adj where Source = 'PFOMRC'
+			set @IFP_RH_adj = @IFP_RH - @tempVal_Adj
+		end
+		if @tempVal > 0
+		set @tempVal = @tempVal * -1
+	--update tbl_LossesTmp set Income = @tempVal where Source = 'IHP'
+	End
+
+
+	if @IFBus < 0
+	Begin
+		set @tempVal = @IFHP + @IFBus	--because @IFHP is (-) so adding it to subtract from IFS
+		if @tempVal >=0
+			set @tempVal_Adj = @IFBus
+		else
+			set @tempVal_Adj = @IFHP
+
+		if @tempVal_Adj < 0	--to take out (-) sign before the value
+			set @tempVal_Adj = @tempVal_Adj * (-1)	
+
+		set @IFHP_adj = @IFHP - @tempVal_Adj
+
+		set @tempVal = @IFHP - (@IFBus*(-1))
+		update tbl_LossesTmp set BP = @tempVal_Adj where Source = 'IHP'
+if @tempVal < 0
+set @tempVal = @tempVal * (-1)						
+
+		if @tempVal > 0		--Short Term Capital Gain Taxable @ 15%
+		begin
+			if @tempVal > @IFSTCG_15_adj
+				set @tempVal_Adj = @IFSTCG_15_adj
+			else
+				set @tempVal_Adj = @tempVal
+
+			set @tempVal = @tempVal - @tempVal_Adj
+			update tbl_LossesTmp set BP = @tempVal_Adj where Source = 'IFSTCG15'
+			set @IFSTCG_15_adj = @IFSTCG_15_adj - @tempVal_Adj
+		end
+
+		if @tempVal > 0		--Short Term Capital Gain Taxable @ 30%
+		begin
+			if @tempVal > @IFSTCG_30_adj
+				set @tempVal_Adj = @IFSTCG_30_adj
+			else
+				set @tempVal_Adj = @tempVal
+
+			set @tempVal = @tempVal - @tempVal_Adj
+			update tbl_LossesTmp set BP = @tempVal_Adj where Source = 'IFSTCG30'
+			set @IFSTCG_30_adj = @IFSTCG_30_adj - @tempVal_Adj
+		end
+
+		if @tempVal > 0		--Short Term Capital Gain App
+		begin
+			if @tempVal > @IFSTCG_app_adj
+				set @tempVal_Adj = @IFSTCG_app_adj
+			else
+				set @tempVal_Adj = @tempVal
+
+			set @tempVal = @tempVal - @tempVal_Adj
+			update tbl_LossesTmp set BP = @tempVal_Adj where Source = 'IFSTCG_app'
+			set @IFSTCG_app_adj = @IFSTCG_app_adj - @tempVal_Adj
+		end
+
+		if @tempVal > 0		--Logn Term Capital Gain @ 10%
+		begin
+			if @tempVal > @IFLTCG_10_adj
+				set @tempVal_Adj = @IFLTCG_10_adj
+			else
+				set @tempVal_Adj = @tempVal
+
+			set @tempVal = @tempVal - @tempVal_Adj
+			update tbl_LossesTmp set BP = @tempVal_Adj where Source = 'IFLTCG_10'
+			set @IFLTCG_10_adj = @IFLTCG_10_adj - @tempVal_Adj
+		end
+
+		if @tempVal > 0		--Logn Term Capital Gain @ 20%
+		begin
+			if @tempVal > @IFLTCG_20_adj
+				set @tempVal_Adj = @IFLTCG_20_adj
+			else
+				set @tempVal_Adj = @tempVal
+
+			set @tempVal = @tempVal - @tempVal_Adj
+			update tbl_LossesTmp set BP = @tempVal_Adj where Source = 'IFLTCG_20'
+			set @IFLTCG_20_adj = @IFLTCG_20_adj - @tempVal_Adj
+		end
+
+		if @tempVal > 0		--Income From Other Sources
+		begin
+			if @tempVal > @IFOS_adj
+				set @tempVal_Adj = @IFOS_adj
+			else
+				set @tempVal_Adj = @tempVal
+
+			set @tempVal = @tempVal - @tempVal_Adj
+			update tbl_LossesTmp set BP = @tempVal_Adj where Source = 'IFOS'
+			set @IFOS_adj = @IFOS_adj - @tempVal_Adj
+		end
+
+		if @tempVal > 0		--PFOMRC
+		begin
+			if @tempVal > @IFP_RH_adj
+				set @tempVal_Adj = @IFP_RH_adj
+			else
+				set @tempVal_Adj = @tempVal
+
+			set @tempVal = @tempVal - @tempVal_Adj
+			update tbl_LossesTmp set BP = @tempVal_Adj where Source = 'PFOMRC'
+			set @IFP_RH_adj = @IFP_RH_adj - @tempVal_Adj
+		end
+
+		if @tempVal > 0
+		set @tempVal = @tempVal * -1
+	--update tbl_LossesTmp set Income = @tempVal where Source = 'IFBus'
+	End
+
+
+	if @IFOS < 0
+	Begin
+		set @tempVal = @IFS_adj + @IFOS	--because @IFHP is (-) so adding it to subtract from IFS
+		if @tempVal >=0
+			set @tempVal_Adj = @IFOS
+		else
+			set @tempVal_Adj = @IFS_adj
+
+		if @tempVal_Adj < 0	--to take out (-) sign before the value
+			set @tempVal_Adj = @tempVal_Adj * (-1)	
+
+		--set @tempVal = @IFS - (@IFOS*(-1))
+		print '@tempVal_Adj:OS'
+		print @tempVal
+		update tbl_LossesTmp set OS = @tempVal_Adj where Source = 'IFS'
+		
+		if @tempVal < 0	
+			set @tempVal = @tempVal * (-1)
+		
+
+		if @tempVal > 0		-- if value is still in minus means that still there is balanced loss that needs to be set off
+		begin
+			if @tempVal < @IFHP_adj	--if the value left is still larger than the Business Income (as its in minus so comparion is < )
+			begin	
+				set @tempVal = 0-- @tempVal - @IFHP
+				set @tempVal_Adj = @tempVal
+				update tbl_LossesTmp set OS = @tempVal_Adj where Source = 'IHP'
+			end
+			else		--if the value left is lesser than or equal to the Business Income (as its in minus so comparion is < )
+			begin
+				set @tempVal = @tempVal - @IFHP_adj
+				set @tempVal_Adj = @IFHP_adj
+				update tbl_LossesTmp set OS = @tempVal_Adj where Source = 'IHP'
+			end
+		end
+		
+		print 'min @tempVal'
+		print @tempVal
+		if @tempVal > 0		-- if value is still in minus means that still there is balanced loss that needs to be set off
+		begin
+			if @tempVal < @IFBus_adj	--if the value left is still larger than the Business Income (as its in minus so comparion is < )
+			begin
+				--set @tempVal = (@tempVal*(-1)) - @IFBus
+				set @tempVal_Adj = @tempVal
+				update tbl_LossesTmp set OS = @tempVal_Adj where Source = 'IFBus'
+				set @tempVal = 0
+			end
+			else		--if the value left is lesser than or equal to the Business Income (as its in minus so comparion is < )
+			begin
+				set @tempVal = @tempVal - @IFBus_adj
+				set @tempVal_Adj = @IFBus_adj
+				update tbl_LossesTmp set OS = @tempVal_Adj where Source = 'IFBus'
+			end
+			if @tempVal < 0
+				set @tempVal = @tempVal * (-1)
+		end
+		print '2nd @tempVal'
+		print @tempVal
+
+		if @tempVal > 0		--Speculative Income
+		begin
+			if @tempVal > @IFSI_adj
+			begin
+				set @tempVal_Adj = @IFSI_adj
+				set @tempVal = @tempVal - @IFSI_adj
+			end
+			else
+			begin
+				set @tempVal_Adj = @tempVal
+				set @tempVal = 0
+			end
+			
+			update tbl_LossesTmp set OS = @tempVal_Adj where Source = 'IFSI'
+			
+		end
+
+		if @tempVal > 0		--Specified Business Income
+		begin
+			if @tempVal > @IFSBus_adj
+			begin
+				set @tempVal_Adj = @IFSBus_adj
+				set @tempVal = @tempVal - @tempVal_Adj
+			end
+			else
+			begin
+				set @tempVal_Adj = @tempVal
+				set @tempVal = 0
+			end
+
+			
+			update tbl_LossesTmp set OS = @tempVal_Adj where Source = 'IFSBus'
+		end
+
+		if @tempVal > 0		--Short Term Capital Gain Taxable @ 15%
+		begin
+			if @tempVal > @IFSTCG_15_adj
+			begin
+				set @tempVal_Adj = @IFSTCG_15_adj
+				set @tempVal = @tempVal - @tempVal_Adj
+			end
+			else
+			begin
+				set @tempVal_Adj = @tempVal
+				set @tempVal = 0
+			end
+						
+			update tbl_LossesTmp set OS = @tempVal_Adj where Source = 'IFSTCG15'
+		end
+
+		if @tempVal > 0		--Short Term Capital Gain Taxable @ 30%
+		begin
+			if @tempVal > @IFSTCG_30_adj
+			begin
+				set @tempVal_Adj = @IFSTCG_30_adj
+				set @tempVal = @tempVal - @tempVal_Adj
+			end
+			else
+			begin
+				set @tempVal_Adj = @tempVal
+				set @tempVal = 0
+			end
+			
+			update tbl_LossesTmp set OS = @tempVal_Adj where Source = 'IFSTCG30'
+		end
+
+		if @tempVal > 0		--Short Term Capital Gain App
+		begin
+			if @tempVal > @IFSTCG_app_adj
+			begin
+				set @tempVal_Adj = @IFSTCG_app_adj
+				set @tempVal = @tempVal - @tempVal_Adj
+			end
+			else
+			begin
+				set @tempVal_Adj = @tempVal
+				set @tempVal = 0
+			end
+			update tbl_LossesTmp set OS = @tempVal_Adj where Source = 'IFSTCG_app'
+		end
+
+		if @tempVal > 0		--Logn Term Capital Gain @ 10%
+		begin
+			if @tempVal > @IFLTCG_10_adj
+			begin
+				set @tempVal_Adj = @IFLTCG_10_adj
+				set @tempVal = @tempVal - @tempVal_Adj
+			end
+			else
+			begin
+				set @tempVal_Adj = @tempVal
+				set @tempVal = 0
+			end
+
+			update tbl_LossesTmp set OS = @tempVal_Adj where Source = 'IFLTCG_10'
+		end
+
+		if @tempVal > 0		--Logn Term Capital Gain @ 20%
+		begin
+			if @tempVal > @IFLTCG_20_adj
+			begin
+				set @tempVal_Adj = @IFLTCG_20_adj
+				set @tempVal = @tempVal - @tempVal_Adj
+			end
+			else
+			begin
+				set @tempVal_Adj = @tempVal
+				set @tempVal = 0
+			end
+			update tbl_LossesTmp set OS = @tempVal_Adj where Source = 'IFLTCG_20'
+		end
+
+		if @tempVal > 0		--PFOMRC
+		begin
+			if @tempVal > @IFP_RH_adj
+			begin
+				set @tempVal_Adj = @IFP_RH_adj
+				set @tempVal = @tempVal - @tempVal_Adj
+			end
+			else
+			begin
+				set @tempVal_Adj = @tempVal
+				set @tempVal = 0
+			end
+			update tbl_LossesTmp set OS = @tempVal_Adj where Source = 'PFOMRC'
+		end
+		if @tempVal > 0
+		set @tempVal = @tempVal * -1
+	update tbl_LossesTmp set Income = @tempVal where Source = 'IFOS'
+	End
+	
+	----- Totals:
+	Declare @RowTot_Inc decimal
+	Declare @RowTot_HP decimal
+	Declare @RowTot_BP decimal
+	Declare @RowTot_OS decimal
+	Declare @RowTot_CYIRASO decimal
+
+	Select @RowTot_Inc = sum(Income) from tbl_LossesTmp
+	Select @RowTot_HP = sum(HP) from tbl_LossesTmp
+	Select @RowTot_BP = sum(BP) from tbl_LossesTmp
+	Select @RowTot_OS = sum(OS) from tbl_LossesTmp
+	Select @RowTot_CYIRASO = sum(CYIRASO) from tbl_LossesTmp
+
+	update tbl_LossesTmp set Income = @RowTot_Inc, HP=@RowTot_HP, bp=@RowTot_BP, os= @RowTot_OS, CYIRASO = @RowTot_CYIRASO where Source = 'Total'
+	
+	--CYIRASO Values:
+	Declare @Income decimal
+	Declare @HP decimal
+	Declare @BP decimal
+	Declare @OS decimal
+	declare @cnt int
+	set @cnt = 1
+	Declare curTemp Cursor For 
+		Select Income,HP,BP,OS from tbl_LossesTmp
+		Open curTemp
+		Fetch Next From curTemp into @Income,@HP,@BP,@OS
+		
+		While(@@Fetch_Status = 0)
+		Begin
+			update tbl_LossesTmp set CYIRASO = (@Income - @HP - @BP - @OS) where Indexing = @cnt
+
+			set @cnt = @cnt + 1
+			Fetch Next From curTemp into @Income,@HP,@BP,@OS
+		End
+		Close curTemp
+		Deallocate curTemp
+		print 'done'
+	select Indexing,Source,Income,HP,BP,OS,CYIRASO from tbl_LossesTmp
+	
+End
+GO

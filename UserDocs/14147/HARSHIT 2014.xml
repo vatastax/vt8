@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ITRETURN:ITR xmlns:ITRETURN="http://incometaxindiaefiling.gov.in/main" xmlns:ITR4SFORM="http://incometaxindiaefiling.gov.in/ITR4S" xmlns:ITRForm="http://incometaxindiaefiling.gov.in/master" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<ITR4SFORM:ITR4S>
+		<ITRForm:CreationInfo>
+            <ITRForm:SWVersionNo>R1</ITRForm:SWVersionNo>
+            <ITRForm:SWCreatedBy>DIT-EFILING-JAVA</ITRForm:SWCreatedBy>
+            <ITRForm:XMLCreatedBy>DIT-EFILING-JAVA</ITRForm:XMLCreatedBy>
+            <ITRForm:XMLCreationDate>2015-03-31</ITRForm:XMLCreationDate>
+            <ITRForm:IntermediaryCity>Delhi</ITRForm:IntermediaryCity>
+        </ITRForm:CreationInfo>
+        <ITRForm:Form_ITR4S>
+            <ITRForm:FormName>ITR-4S</ITRForm:FormName>
+            <ITRForm:Description>For Indl having Income From Presemptive Business</ITRForm:Description>
+            <ITRForm:AssessmentYear>2014</ITRForm:AssessmentYear>
+            <ITRForm:SchemaVer>Ver1.0</ITRForm:SchemaVer>
+            <ITRForm:FormVer>Ver1.0</ITRForm:FormVer>
+        </ITRForm:Form_ITR4S>
+		<ITRForm:PersonalInfo>
+			<ITRForm:AssesseeName>
+				<ITRForm:FirstName>HARSHIT</ITRForm:FirstName>
+				
+				<ITRForm:SurNameOrOrgName>MAGO</ITRForm:SurNameOrOrgName>
+				
+			</ITRForm:AssesseeName>
+			<ITRForm:PAN>BBTPM0197H</ITRForm:PAN>
+			<ITRForm:Address>
+				<ITRForm:ResidenceNo>555</ITRForm:ResidenceNo>
+				
+				
+				<ITRForm:LocalityOrArea>J P NAGAR</ITRForm:LocalityOrArea>
+				<ITRForm:CityOrTownOrDistrict>JALANDHAR</ITRForm:CityOrTownOrDistrict>
+				<ITRForm:StateCode>26</ITRForm:StateCode>
+				<ITRForm:CountryCode>91</ITRForm:CountryCode>
+				<ITRForm:PinCode>144001</ITRForm:PinCode>
+				
+				<ITRForm:MobileNo>9914896666</ITRForm:MobileNo>
+				
+				<ITRForm:EmailAddress>magoharshit@gmail.com</ITRForm:EmailAddress>
+				
+			</ITRForm:Address>
+			<ITRForm:DOB>1991-12-24</ITRForm:DOB>
+			<ITRForm:EmployerCategory>NA</ITRForm:EmployerCategory>
+			<ITRForm:Gender>M</ITRForm:Gender>
+			<ITRForm:Status>I</ITRForm:Status>
+		</ITRForm:PersonalInfo>
+		<ITRForm:FilingStatus>
+			
+			<ITRForm:ReturnFileSec>12</ITRForm:ReturnFileSec>
+			
+			
+			
+			<ITRForm:ReturnType>O</ITRForm:ReturnType>
+			
+			
+			<ITRForm:ResidentialStatus>RES</ITRForm:ResidentialStatus>
+			<ITRForm:TaxStatus>NT</ITRForm:TaxStatus>
+			
+			
+			<ITRForm:PortugeseCC5A>N</ITRForm:PortugeseCC5A>
+			
+			
+		</ITRForm:FilingStatus>
+		<ITRForm:ITR4S_IncomeDeductions>
+			<ITRForm:IncomeFromBusinessProf>319600</ITRForm:IncomeFromBusinessProf>
+			<ITRForm:IncomeFromSal>0</ITRForm:IncomeFromSal>
+			
+			<ITRForm:TotalIncomeOfHP>0</ITRForm:TotalIncomeOfHP>
+			<ITRForm:IncomeOthSrc>0</ITRForm:IncomeOthSrc>
+			<ITRForm:GrossTotIncome>319600</ITRForm:GrossTotIncome>
+			<ITRForm:UsrDeductUndChapVIA>
+				<ITRForm:Section80C>100433</ITRForm:Section80C>
+				<ITRForm:Section80CCC>0</ITRForm:Section80CCC>
+				<ITRForm:Section80CCDEmployeeOrSE>0</ITRForm:Section80CCDEmployeeOrSE>
+				<ITRForm:Section80CCDEmployer>0</ITRForm:Section80CCDEmployer>
+				<ITRForm:Section80D>0</ITRForm:Section80D>
+				<ITRForm:Section80DD>0</ITRForm:Section80DD>
+				<ITRForm:Section80DDB>0</ITRForm:Section80DDB>
+				<ITRForm:Section80E>0</ITRForm:Section80E>
+				<ITRForm:Section80EE>0</ITRForm:Section80EE>
+				<ITRForm:Section80G>0</ITRForm:Section80G>
+				<ITRForm:Section80GG>0</ITRForm:Section80GG>
+				
+				<ITRForm:Section80GGC>0</ITRForm:Section80GGC>
+				<ITRForm:Section80U>0</ITRForm:Section80U>
+				<ITRForm:Section80RRB>0</ITRForm:Section80RRB>
+				<ITRForm:Section80QQB>0</ITRForm:Section80QQB>
+				
+				
+				
+				
+				
+				
+				<ITRForm:Section80CCG>0</ITRForm:Section80CCG>
+				<ITRForm:Section80TTA>0</ITRForm:Section80TTA>
+				<ITRForm:TotalChapVIADeductions>100433</ITRForm:TotalChapVIADeductions>
+			</ITRForm:UsrDeductUndChapVIA>
+			<ITRForm:DeductUndChapVIA>
+				<ITRForm:Section80C>100000</ITRForm:Section80C>
+				<ITRForm:Section80CCC>0</ITRForm:Section80CCC>
+				<ITRForm:Section80CCDEmployeeOrSE>0</ITRForm:Section80CCDEmployeeOrSE>
+				<ITRForm:Section80CCDEmployer>0</ITRForm:Section80CCDEmployer>
+				<ITRForm:Section80D>0</ITRForm:Section80D>
+				<ITRForm:Section80DD>0</ITRForm:Section80DD>
+				<ITRForm:Section80DDB>0</ITRForm:Section80DDB>
+				<ITRForm:Section80E>0</ITRForm:Section80E>
+				<ITRForm:Section80EE>0</ITRForm:Section80EE>
+				<ITRForm:Section80G>0</ITRForm:Section80G>
+				<ITRForm:Section80GG>0</ITRForm:Section80GG>
+				
+				<ITRForm:Section80GGC>0</ITRForm:Section80GGC>
+				<ITRForm:Section80U>0</ITRForm:Section80U>
+				<ITRForm:Section80RRB>0</ITRForm:Section80RRB>
+				<ITRForm:Section80QQB>0</ITRForm:Section80QQB>
+				
+				
+				
+				
+				
+				
+				<ITRForm:Section80CCG>0</ITRForm:Section80CCG>
+				<ITRForm:Section80TTA>0</ITRForm:Section80TTA>
+				<ITRForm:TotalChapVIADeductions>100000</ITRForm:TotalChapVIADeductions>
+			</ITRForm:DeductUndChapVIA>
+			<ITRForm:TotalIncome>219600</ITRForm:TotalIncome>
+		</ITRForm:ITR4S_IncomeDeductions>
+		<ITRForm:ITR4S_TaxComputation>
+			<ITRForm:TotalTaxPayable>1960</ITRForm:TotalTaxPayable>
+			<ITRForm:Rebate87A>1960</ITRForm:Rebate87A>
+			<ITRForm:TaxPayableOnRebate>0</ITRForm:TaxPayableOnRebate>
+			<ITRForm:SurchargeOnAboveCrore>0</ITRForm:SurchargeOnAboveCrore>
+			<ITRForm:EducationCess>0</ITRForm:EducationCess>
+			<ITRForm:GrossTaxLiability>0</ITRForm:GrossTaxLiability>
+			<ITRForm:Section89>0</ITRForm:Section89>
+			<ITRForm:NetTaxLiability>0</ITRForm:NetTaxLiability>
+			<ITRForm:TotalIntrstPay>0</ITRForm:TotalIntrstPay>
+			<ITRForm:IntrstPay>
+				<ITRForm:IntrstPayUs234A>0</ITRForm:IntrstPayUs234A>
+				<ITRForm:IntrstPayUs234B>0</ITRForm:IntrstPayUs234B>
+				<ITRForm:IntrstPayUs234C>0</ITRForm:IntrstPayUs234C>
+				
+			</ITRForm:IntrstPay>
+			<ITRForm:TotTaxPlusIntrstPay>0</ITRForm:TotTaxPlusIntrstPay>
+		</ITRForm:ITR4S_TaxComputation>
+		<ITRForm:TaxPaid>
+			<ITRForm:TaxesPaid>
+				<ITRForm:AdvanceTax>0</ITRForm:AdvanceTax>
+				<ITRForm:TDS>0</ITRForm:TDS>
+				<ITRForm:TCS>0</ITRForm:TCS>
+				<ITRForm:SelfAssessmentTax>0</ITRForm:SelfAssessmentTax>
+				<ITRForm:TotalTaxesPaid>0</ITRForm:TotalTaxesPaid>
+			</ITRForm:TaxesPaid>
+			<ITRForm:BalTaxPayable>0</ITRForm:BalTaxPayable>
+		</ITRForm:TaxPaid>
+		<ITRForm:Refund>
+			<ITRForm:RefundDue>0</ITRForm:RefundDue>
+			<ITRForm:BankAccountNumber>31633627432</ITRForm:BankAccountNumber>
+			<ITRForm:DepositToBankAccount>
+				<ITRForm:IFSCCode>SBIN0008301</ITRForm:IFSCCode>
+				<ITRForm:BankAccountType>SAV</ITRForm:BankAccountType>
+			</ITRForm:DepositToBankAccount>
+		</ITRForm:Refund>
+		
+		
+		<ITRForm:Verification>
+			<ITRForm:Declaration>
+				<ITRForm:AssesseeVerName>HARSHIT MAGO</ITRForm:AssesseeVerName>
+				<ITRForm:FatherName>SH. BHARAT MAGO</ITRForm:FatherName>
+				<ITRForm:AssesseeVerPAN>BBTPM0197H</ITRForm:AssesseeVerPAN>
+			</ITRForm:Declaration>
+			<ITRForm:Place>JALANDHAR</ITRForm:Place>
+			<ITRForm:Date>2015-03-31</ITRForm:Date>
+		</ITRForm:Verification>
+		
+		<ITRForm:NatOfBus>
+			<ITRForm:Business>
+				<ITRForm:Code>0714</ITRForm:Code>
+				
+			</ITRForm:Business>
+			
+			
+		</ITRForm:NatOfBus>
+		<ITRForm:ScheduleBPForITR4S>
+			<ITRForm:PersumptiveInc44AD>
+				<ITRForm:GrsTrnOverOrReceipt>365000</ITRForm:GrsTrnOverOrReceipt>
+				<ITRForm:TotPersumptiveInc44AD>319600</ITRForm:TotPersumptiveInc44AD>
+			</ITRForm:PersumptiveInc44AD>
+			<ITRForm:PersumptiveInc44AE>
+				<ITRForm:PersumptiveIncHeavyVehicle>0</ITRForm:PersumptiveIncHeavyVehicle>
+				<ITRForm:PersumptiveIncOtherVehicle>0</ITRForm:PersumptiveIncOtherVehicle>
+				<ITRForm:TotPersumInc44AE>0</ITRForm:TotPersumInc44AE>
+			</ITRForm:PersumptiveInc44AE>
+			<ITRForm:IncChargeableUnderBus>319600</ITRForm:IncChargeableUnderBus>
+			<ITRForm:NoBooksOfAccBS>
+				<ITRForm:TotSundryDbtAmt>0</ITRForm:TotSundryDbtAmt>
+				<ITRForm:TotSundryCrdAmt>0</ITRForm:TotSundryCrdAmt>
+				<ITRForm:TotStkInTradAmt>0</ITRForm:TotStkInTradAmt>
+				<ITRForm:CashBalAmt>0</ITRForm:CashBalAmt>
+			</ITRForm:NoBooksOfAccBS>
+		</ITRForm:ScheduleBPForITR4S>
+		
+		
+		
+		
+		
+		<ITRForm:TotalHeavyVehcl>0</ITRForm:TotalHeavyVehcl>
+	</ITR4SFORM:ITR4S>
+</ITRETURN:ITR>

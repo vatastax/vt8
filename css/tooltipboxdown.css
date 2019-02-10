@@ -1,0 +1,24 @@
+﻿a.tooltipssmall {
+  position: relative;
+  display: inline;
+}
+a.tooltipssmall span {
+  position: absolute;
+  width:300px;
+  color: #FFFFFF;
+  background: #EB583A;
+  height: 68px;
+  line-height: 68px;
+  
+  border-radius: 16px;
+}
+a.tooltipssmall span:after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 0; height: 0;
+  border-top: 8px solid #EB583A;
+  border-right: 8px solid transparent;
+  border-left: 8px solid transparent;
+}

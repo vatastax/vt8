@@ -1,0 +1,555 @@
+﻿	body {}
+
+	.ul1 {
+		margin: 30px auto;
+		text-align: center;
+	}
+
+	.li1 
+	{
+	   /* z-index:-1;*/
+		list-style: none;
+		position: relative;
+		display: inline-block;
+		width: 100px;
+		height: 100px;
+	}
+
+	@-moz-keyframes rotate {
+		0% {transform: rotate(0deg);}
+		100% {transform: rotate(-360deg);}
+	}
+
+	@-webkit-keyframes rotate {
+		0% {transform: rotate(0deg);}
+		100% {transform: rotate(-360deg);}
+	}
+
+	@-o-keyframes rotate {
+		0% {transform: rotate(0deg);}
+		100% {transform: rotate(-360deg);}
+	}
+
+	@keyframes rotate {
+		0% {transform: rotate(0deg);}
+		100% {transform: rotate(-360deg);}
+	}
+/* make button round*/
+	.round {
+		display: block;
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		padding-top: 30px;		
+		text-decoration: none;		
+		text-align: center;
+		font-size: 25px;		
+		text-shadow: 0 1px 0 rgba(255,255,255,.7);
+		letter-spacing: -.065em;
+		font-family: Microsoft New Tai Lue;		
+		-webkit-transition: all .25s ease-in-out;
+		-o-transition: all .25s ease-in-out;
+		-moz-transition: all .25s ease-in-out;
+		transition: all .25s ease-in-out;
+		box-shadow: 2px 2px 7px rgba(0,0,0,.2);
+		border-radius: 300px;
+		z-index: 1;
+		border-width: 4px;
+		font-weight:bold;
+		border-style: solid;
+	}
+/* Effect on button hover */
+	.round:hover {
+		width: 130%;
+		height: 130%;
+		left: -15%;
+		top: -15%;
+		font-size: 40px;
+		padding-top: 38px;
+		-webkit-box-shadow: 5px 5px 10px rgba(0,0,0,.3);
+		-o-box-shadow: 5px 5px 10px rgba(0,0,0,.3);
+		-moz-box-shadow: 5px 5px 10px rgba(0,0,0,.3);
+		box-shadow: 5px 5px 10px rgba(0,0,0,.3);
+		z-index: 2;
+		border-size: 10px;
+		-webkit-transform: rotate(-360deg);
+		-moz-transform: rotate(-360deg);
+		-o-transform: rotate(-360deg);
+		transform: rotate(-360deg);
+	}
+	
+	
+/*Create red round button*/
+	a.red { 
+		background-color:#FA2A00 ;
+		color:White;
+		border-color: rgba(133,32,28,.2);
+		outline: 0;
+		
+	}
+
+	a.red:hover {
+		/*color: rgba(239,57,50,1);*/
+		color:White;
+	}
+	a.pink1
+	{
+	    background-color:#9b8399;
+	    color:White;
+	    border-color:#8e6581;
+	    outline: 0;
+	}
+	a.pink1:hover
+	{
+	    color:White;
+	    }
+	    .pink1 span
+	    {
+	        background-color:#9b8399;
+	    color:White;
+	    border-color:#8e6581;
+	    }
+	    a.pink2
+	{
+	    background-color:#8b93a5;
+	    color:White;
+	    border-color:#8f7792;
+	    outline: 0;
+	}
+	a.pink2:hover
+	{
+	    color:White;
+	    }
+	    .pink2 span
+	    {background-color:#8b93a5;
+	    color:White;
+	    border-color:#8f7792;
+	    }
+
+a.lightblue1
+	{
+	    background-color:#5bbec5;
+	    color:White;
+	    border-color:#00a7b3;
+	    outline: 0;
+	}
+	a.lightblue1:hover
+	{
+	    color:White;
+	    }
+	    .lightblue1 span
+	    {
+	        background-color:#5bbec5;
+	    color:White;
+	    border-color:#00a7b3;
+	    }
+	    a.green2
+	{
+	    background-color:#bdde9d;
+	    color:White;
+	    border-color:#96c95c;
+	    outline: 0;
+	}
+	a.green2:hover
+	{
+	    color:White;
+	    }
+	    .green2 span
+	    {
+	       background-color:#bdde9d;
+	    color:White;
+	    border-color:#96c95c;
+	    outline: 0;
+	    }
+	
+	    a.cgreen1
+	{
+	    background-color:#5dbba7;
+	    color:White;
+	    border-color:#00a57f;
+	    outline: 0;
+	}
+	a.cgreen1:hover
+	{
+	    color:White;
+	    }
+	    .cgreen1 span
+	    {
+	        background-color:#5dbba7;
+	    color:White;
+	    border-color:#00a57f;
+	    outline: 0;
+	    }
+	    a.blue1
+	{
+	    background-color:#33afb8;
+	    color:White;
+	    border-color:#0091a0;
+	    outline: 0;
+	}
+	a.blue1:hover
+	{
+	    color:White;
+	    }
+	    .blue1 span
+	    {
+	         background-color:#33afb8;
+	    color:White;
+	    border-color:#0091a0;
+	    outline: 0;
+	    }
+	       a.darkblue1
+	{
+	    background-color:#5b899a;
+	    color:White;
+	    border-color:#436d84;
+	    outline: 0;
+	}
+	a.darkblue1:hover
+	{
+	    color:White;
+	    }
+	    .darkblue1 span
+	    {
+	         background-color:#5b899a;
+	    color:White;
+	    border-color:#436d84;
+	    outline: 0;
+	    }
+	    a.green1
+	{
+	    background-color:#8cc67e;
+	    color:White;
+	    border-color:#68b41c;
+	    outline: 0;
+	}
+	a.green1:hover
+	{
+	    color:White;
+	    }
+	    .green1 span
+	    {
+	       background-color:#8cc67e;
+	    color:White;
+	    border-color:#68b41c;
+	    outline: 0;
+	    }
+
+
+a.black {
+		background-color:black;
+		color: white;
+		border-color: rgba(133,32,28,.2);
+		outline: 0;
+	}
+
+	a.black:hover {
+		color: black;
+	}
+
+	a.green {
+		background-color: #7fc31c;
+		color:White;
+		border-color: rgba(0,63,71,.2);
+		outline: 0;
+	}
+
+	a.green:hover {
+		/*color: rgba(1,151,171,1);*/
+		color:White;
+	}
+a.gray {
+		background-color:Gray;
+		color: rgba(0,63,71,1);
+		border-color: rgba(0,63,71,.2);
+		outline: 0;
+	}
+
+	a.gray:hover {
+		color: rgba(1,151,171,1);
+	}
+	/* Create round blue */
+	a.blue {
+		background-color:#007fff;
+		color:White;
+		border-color: rgba(0,63,71,.2);
+		outline: 0;
+	}
+
+	a.blue:hover {
+		/*color: #007fff;*/
+		color:White;
+	}
+
+    a.pink {
+		background-color:#7FCFB6;
+		color:White;
+		border-color: rgba(0,63,71,.2);
+		outline: 0;
+	}
+
+	a.pink:hover {
+		color:white;
+		/*color: rgba(1,151,171,1);*/
+	}
+	 a.purple {
+		background-color:#7e45d3;
+		color:White;
+		border-color: rgba(0,63,71,.2);
+		outline: 0;
+	}
+
+	a.purple:hover {
+		color: rgba(1,151,171,1);
+	}
+	 a.orange {
+		background-color:#ff6600;
+		color:White;
+		border-color: rgba(0,63,71,.2);
+		outline: 0;
+	}
+
+	a.orange:hover {
+		color:White;
+		/*font-size:20px;*/
+	}
+	
+	a.orange1 {
+		background-color:#ff6600;
+		color:White;
+		font-size:18px;
+		font-weight:bold;
+		/*font-family:Cambria;*/
+		font-family:"Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+		border-color: rgba(0,63,71,.2);
+		outline: 0;
+		
+	}
+
+	a.orange1:hover {
+		color:White;
+		font-size:20px;
+	}
+	
+	
+	
+	
+	
+	
+	a.yellow {
+		background-color: #ff9900;
+		color:White;
+		border-color: rgba(153,38,0,.2);
+		outline: 0;
+	}
+a.yellow1
+{background-color: #2B7CAD;
+		color:White;
+outline: 0;
+		border-color: rgba(153,38,0,.2);
+}
+a.yellow1:hover
+{
+    color:White;   
+ }
+	a.yellow:hover {
+		/*color: rgba(252,227,1,1);*/
+		color:White;
+	}
+
+	.round span.round {
+		display: block;
+		opacity: 0;
+		-webkit-transition: all .5s ease-in-out;
+		-moz-transition: all .5s ease-in-out;
+		-o-transition: all .5s ease-in-out;
+		transition: all .5s ease-in-out;
+		font-size: 1px;
+		border: none;
+		padding: 40% 20% 0 20%;
+		color: #fff;
+	}
+
+	.round span:hover {
+		opacity: .85;
+		font-size: 16px;
+		-webkit-text-shadow: 0 1px 1px rgba(0,0,0,.5);
+		-moz-text-shadow: 0 1px 1px rgba(0,0,0,.5);
+		-o-text-shadow: 0 1px 1px rgba(0,0,0,.5);
+		text-shadow: 0 1px 1px rgba(0,0,0,.5);	
+	}
+
+	.green span {
+		background-color: #7fc31c;
+		color:White;
+	}
+
+	.red span {
+background-color:#E42200 ;
+		color:White;
+	}
+
+	.yellow span 
+	{
+	    
+		background-color: #ff9900;
+		color:White;
+	}
+	.purple span
+	{
+	    background-color:#7e45d3;
+		color:White;
+		border-color: rgba(0,63,71,.2);
+	}
+	.pink span
+	{
+	    background-color:#7FCFB6;
+		color:White;
+	}
+	.orange span
+	{
+	    background-color:#ff6600;
+		color:White;
+	}
+		
+.blue span {
+		background-color:#007fff;
+		color:White;
+		
+	}
+	.yellow span
+	{
+	    background-color: #ff9900;
+		color:White;
+	}
+	.yellow1 span
+	{
+	    background-color:#2B7CAD;
+	    color:White;
+	}
+	
+	a.darkblue
+	{
+	    background-color:#22b7b1;
+	    border-color:#48CCCD;
+	    color:White;
+	}
+	
+	.darkblue span
+	{background-color:#22b7b1;
+	    border-color:#48CCCD;
+	    color:White;
+	}
+	a.darkblue:hover
+	{ color:White;
+	}
+	a.lightblue2
+	{
+	    background-color:#32bfc9;
+	    border-color:#43C6DB;
+	    color:White;
+	}
+	
+	.lightblue2 span
+	{background-color:#22b7b1;
+	    border-color:#43C6DB;
+	    color:White;
+	}
+	a.lightblue2:hover
+	{ color:White;
+	}
+	
+	a.darkpurple
+	{
+	    background-color:#85859f;
+	    border-color:#9172EC;
+	    color:White;
+	}
+	
+	.darkpurple span
+	{background-color:#85859f;
+	    border-color:#9172EC;
+	    color:White;
+	}
+	a.darkpurple:hover
+	{ color:White;
+	}
+	a.lightpurple
+	{
+	    background-color:#af91ab;
+	    border-color:#E38AAE;
+	    color:White;
+	}
+	
+	.lightpurple span
+	{background-color:#af91ab;
+	    border-color:#E38AAE;
+	    color:White;
+	}
+	a.lightpurple:hover
+	{ color:White;
+	}
+	
+	a.darkyellow
+	{
+	    background-color:#e8c15a;
+	    border-color:#FFDB58;
+	    color:White;
+	}
+	
+	.darkyellow span
+	{background-color:#e8c15a;
+	    border-color:#FFDB58;
+	    color:White;
+	}
+	a.darkyellow:hover
+	{ color:White;
+	}
+	a.lightyellow
+	{
+	    background-color:#ffe274;
+	    border-color:#EAC117;
+	    color:White;
+	}
+	
+	.lightyellow span
+	{background-color:#ffe274;
+	    border-color:#EAC117;
+	    color:White;
+	}
+	a.lightyellow:hover
+	{ color:White;
+	}
+	a.lightbrown
+	{
+	    background-color:#e6d64f;
+	    border-color:#C9BE62;
+	    color:White;
+	}
+	 .lightbrown span
+	{background-color:#e6d64f;
+	    border-color:#C9BE62;
+	    color:White;
+	}
+	a.lightbrown:hover
+	{ color:White;
+	}
+	
+	a.green3
+	{
+	    background-color:#aad784;
+	    border-color:#89C35C;
+	    color:White;
+	}
+	 .green3 span
+	{background-color:#aad784;
+	    border-color:#89C35C;
+	    color:White;
+	}
+	a.green3:hover
+	{ color:White;
+	}
+	
+	

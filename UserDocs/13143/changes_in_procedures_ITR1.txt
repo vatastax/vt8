@@ -1,0 +1,5 @@
+Changes in Procedures:
+
+1) procCalc234
+2) procCompute1
+3) procSendTransData

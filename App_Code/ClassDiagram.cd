@@ -1,0 +1,952 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Taxation.BusinessLogic.balAdmin" Collapsed="true">
+    <Position X="71.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEIAAAAEAQgAAAAAgAAAAAAAACAUAAAQAAAAAA=</HashCode>
+      <FileName>App_Code\BusinessLogic\balAdmin.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Taxation.BusinessLogic.balCountry" Collapsed="true">
+    <Position X="73" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>App_Code\BusinessLogic\balCountry.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Taxation.BusinessLogic.bllAddress" Collapsed="true">
+    <Position X="80" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgABAAAAAAAAAAACAIAAAAAAAAA=</HashCode>
+      <FileName>App_Code\BusinessLogic\bllAddress.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Taxation.BusinessLogic.bllAssessee" Collapsed="true">
+    <Position X="81.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAADACAgAAAoiAAAgAIAAAAAMIIAAAAKQQMAAQA=</HashCode>
+      <FileName>App_Code\BusinessLogic\bllAssessee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Taxation.BusinessLogic.bllAssetMast" Collapsed="true">
+    <Position X="83.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAACAAAAAAAAAAAABIAAAAEAAEAAAAAAAAAAAAg=</HashCode>
+      <FileName>App_Code\BusinessLogic\bllAssetMast.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Taxation.BusinessLogic.bllAssetTrans" Collapsed="true">
+    <Position X="85.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAEAAAQAAAAAA=</HashCode>
+      <FileName>App_Code\BusinessLogic\bllAssetTrans.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Taxation.BusinessLogic.bllAuditorMaster" Collapsed="true">
+    <Position X="71.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAQAAAAAAAAAQAAAAAQAAAAAA=</HashCode>
+      <FileName>App_Code\BusinessLogic\bllAuditorMaster.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Taxation.BusinessLogic.bllBankBranches" Collapsed="true">
+    <Position X="73" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>App_Code\BusinessLogic\bllBankBranches.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Taxation.BusinessLogic.bllBankMast" Collapsed="true">
+    <Position X="74.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAAAAAAAAAAAAAAEAAAgAAAAAQAAgAAA=</HashCode>
+      <FileName>App_Code\BusinessLogic\bllBankMast.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Taxation.BusinessLogic.bllCompAdditional" Collapsed="true">
+    <Position X="76.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Code\BusinessLogic\bllCompAdditional.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Taxation.BusinessLogic.bllCompDetails" Collapsed="true">
+    <Position X="78.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Code\BusinessLogic\bllCompDetails.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Taxation.BusinessLogic.bllConsultantMast" Collapsed="true">
+    <Position X="80" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAQAAAAAAAAAAAAAEACAAAAAACwAAAAAA=</HashCode>
+      <FileName>App_Code\BusinessLogic\bllConsultantMast.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Taxation.BusinessLogic.bllDocTrans" Collapsed="true">
+    <Position X="81.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAQCAACAAAAAAABAAAAAQAAQAAAIAAAAAAA=</HashCode>
+      <FileName>App_Code\BusinessLogic\bllDocTrans.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Taxation.BusinessLogic.bllEmployerMaster" Collapsed="true">
+    <Position X="83.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAABEAAAAAAAAAAAAAAAAAAAEAEAAAACBAQYAAAAA=</HashCode>
+      <FileName>App_Code\BusinessLogic\bllEmployerMaster.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Taxation.BusinessLogic.bllFloatGridInsert" Collapsed="true">
+    <Position X="85.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Code\BusinessLogic\bllFloatGridInsert.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Taxation.BusinessLogic.bllFloating" Collapsed="true">
+    <Position X="71.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAYAAAAAAAAAAAAAAAAAAEAAAAAAAAAhAAAAAA=</HashCode>
+      <FileName>App_Code\BusinessLogic\bllFloating.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Taxation.BusinessLogic.bllITR" Collapsed="true">
+    <Position X="73" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAACAAAAAAAAAAAAAAAAAAAAAACAAAAAAAA=</HashCode>
+      <FileName>App_Code\BusinessLogic\bllITR.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Taxation.BusinessLogic.bllLogin" Collapsed="true">
+    <Position X="74.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIACAAAkAAhCAQAAAAABAAAAAAAAAQAAQAABAAA=</HashCode>
+      <FileName>App_Code\BusinessLogic\bllLogin.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Taxation.BusinessLogic.bllMain" Collapsed="true">
+    <Position X="76.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIQiAAIAwAIAAAABGEAAAQAAAAAIAA=</HashCode>
+      <FileName>App_Code\BusinessLogic\bllMain.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Taxation.BusinessLogic.bllSalary" Collapsed="true">
+    <Position X="78.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>GIEACAyAgAgABAACFCAAIEAAAAAAAAAIAAAAYAAAAAA=</HashCode>
+      <FileName>App_Code\BusinessLogic\bllSalary.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Taxation.BusinessLogic.bllScreen" Collapsed="true">
+    <Position X="80" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAIAAAABAAAAAAQAAQAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Code\BusinessLogic\bllScreen.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Taxation.BusinessLogic.bllStates" Collapsed="true">
+    <Position X="81.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Code\BusinessLogic\bllStates.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Taxation.BusinessLogic.bllSTax" Collapsed="true">
+    <Position X="83.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAIAAAAACAAIIAACAgAAAgAAAAAARACAAAAA=</HashCode>
+      <FileName>App_Code\BusinessLogic\bllSTax.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Taxation.BusinessLogic.bllStoreTrans" Collapsed="true">
+    <Position X="85.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>JMAAABBIAQAAUAAAAABBgAAAAAIISoAAAAAAQCAFoAU=</HashCode>
+      <FileName>App_Code\BusinessLogic\bllStoreTrans.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Taxation.BusinessLogic.bllT4" Collapsed="true">
+    <Position X="71.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAQAAAAAAAAAAABAAAAAQAAAAAAA=</HashCode>
+      <FileName>App_Code\BusinessLogic\bllT4.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Taxation.BusinessLogic.bllUserMgmt" Collapsed="true">
+    <Position X="73" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAAAAABAAAAAAAEAAQAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Code\BusinessLogic\bllUserMgmt.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="balPDF" Collapsed="true">
+    <Position X="74.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQCAAA=</HashCode>
+      <FileName>App_Code\BusinessLogic\balPDF.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="balWhatsNew" Collapsed="true">
+    <Position X="78.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Code\BusinessLogic\balWhatsNew.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Constants" Collapsed="true">
+    <Position X="76.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CIQwAQIAkAABoGACAiAFAAYUAIJAAUjEGIY8CcgUgAE=</HashCode>
+      <FileName>App_Code\BusinessLogic\Constants.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="common" Collapsed="true">
+    <Position X="74.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAAAAAAAAAAABAAAAAAAAACAAAAAAA=</HashCode>
+      <FileName>App_Code\common.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="dalBankBranches" Collapsed="true">
+    <Position X="30.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>App_Code\DataAccess\dalBankBranches.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="dalConnection" Collapsed="true">
+    <Position X="36" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAQAEAAAgggAAAAAAAAAAAAEAAAAAAAACA=</HashCode>
+      <FileName>App_Code\DataAccess\dalConnection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="dalWhatsNew" Collapsed="true">
+    <Position X="44" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>App_Code\DataAccess\dalWhatsNew.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="denBankBranches" Collapsed="true">
+    <Position X="78.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAACCABAAAQAgAABAAAAEAABA=</HashCode>
+      <FileName>App_Code\DataEntity\denBankBranches.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FillTableFromExcel" Collapsed="true">
+    <Position X="73" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAIAAAAAAAAAIAAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>App_Code\FillTableFromExcel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RandomImage" Collapsed="true">
+    <Position X="74.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAABCAAAAQAQAAAAEAAEAAAAhAIAAQACAAAAAA=</HashCode>
+      <FileName>App_Code\RandomImage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Service" Collapsed="true">
+    <Position X="78.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>App_Code\Service.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Service_Banks" Collapsed="true">
+    <Position X="80" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Code\Service_Banks.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TextToDataSet" Collapsed="true">
+    <Position X="71.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>App_Code\TextToDataSet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Util" Collapsed="true">
+    <Position X="73" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAAAAAAAAAAAAAAAIAAAAAAgAAAAA=</HashCode>
+      <FileName>App_Code\Util.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="xmlFunctions" Collapsed="true">
+    <Position X="74.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAQAAAAAAAAA=</HashCode>
+      <FileName>App_Code\VB\xmlFunctions.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="XMLService" Collapsed="true">
+    <Position X="76.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAGAAAQACEAABABQBAAgCAAAAUCQAAQAABIAI=</HashCode>
+      <FileName>App_Code\XMLService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Query.BusinessLogic.balquery" Collapsed="true">
+    <Position X="76.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAA=</HashCode>
+      <FileName>App_Code\BusinessLogic\balquery.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Taxation.DataAccess.dalAddress" Collapsed="true">
+    <Position X="37.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAgAAAAAAAAAAAAACAIAAAAAAAAA=</HashCode>
+      <FileName>App_Code\DataAccess\dalAddress.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Taxation.DataAccess.dalAdmin" Collapsed="true">
+    <Position X="46.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEIAAAAEAQgAAAAAAAAAAAAAACAUAAAAAAAAAA=</HashCode>
+      <FileName>App_Code\DataAccess\dalAdmin.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Taxation.DataAccess.dalPath" Collapsed="true">
+    <Position X="53" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>App_Code\DataAccess\dalAdmin.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Taxation.DataAccess.dalAssessee" Collapsed="true">
+    <Position X="59.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAACASAgAAUhAAAAAAIAAABAIIIAICAKQQMAAAA=</HashCode>
+      <FileName>App_Code\DataAccess\dalAssessee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Taxation.DataAccess.dalAssetMast" Collapsed="true">
+    <Position X="66.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAQAAABABIAAAAEAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Code\DataAccess\dalAssetMast.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Taxation.DataAccess.dalAssetTrans" Collapsed="true">
+    <Position X="3.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAEAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>App_Code\DataAccess\dalAssetTrans.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Taxation.DataAccess.dalBankMast" Collapsed="true">
+    <Position X="8" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAAQAAAAAAAAAAAEAAAgAAAAAQAAgAAA=</HashCode>
+      <FileName>App_Code\DataAccess\dalBankMast.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Taxation.DataAccess.dalCompAdditional" Collapsed="true">
+    <Position X="12.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Code\DataAccess\dalCompAdditional.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Taxation.DataAccess.dalCompanyDetails" Collapsed="true">
+    <Position X="17" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Code\DataAccess\dalCompanyDetails.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Taxation.DataAccess.dalConsultantMast" Collapsed="true">
+    <Position X="21.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAQAQAAAAAAAAAAAEAAAAAAAACQAAAAIA=</HashCode>
+      <FileName>App_Code\DataAccess\dalConsultantMast.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Taxation.DataAccess.dalCountry" Collapsed="true">
+    <Position X="26" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>App_Code\DataAccess\dalCountry.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Taxation.DataAccess.dalDoctrans" Collapsed="true">
+    <Position X="32.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAQCAASAAAAAAAAAAAAAQAAQAAAIAAAAAAA=</HashCode>
+      <FileName>App_Code\DataAccess\dalDoctrans.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Taxation.DataAccess.dalEmployerMaster" Collapsed="true">
+    <Position X="39.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAABEAAAAAAAQAAAAAAAAAAAEAEAAAACBAQYAAAAA=</HashCode>
+      <FileName>App_Code\DataAccess\dalEmployerMaster.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Taxation.DataAccess.dalFloatGridInsert" Collapsed="true">
+    <Position X="48.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Code\DataAccess\dalFloatGridInsert.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Taxation.DataAccess.dalFloating" Collapsed="true">
+    <Position X="55.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAQAAAACAQAAAAAAAAEAAEAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>App_Code\DataAccess\dalFloating.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Taxation.DataAccess.dalITR" Collapsed="true">
+    <Position X="62" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAAAQBAAAAAAAAAAAAAAAAAACAAAAAAAA=</HashCode>
+      <FileName>App_Code\DataAccess\dalITR.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Taxation.DataAccess.dalLogin" Collapsed="true">
+    <Position X="68.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIACAAAkAAxCAQAAAAABAAAAAAAAIQAAQIABAAA=</HashCode>
+      <FileName>App_Code\DataAccess\dalLogin.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Taxation.DataAccess.dalMain" Collapsed="true">
+    <Position X="5.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAQQiAAIAwAIAAAAAGEAIAQAAAAAIAA=</HashCode>
+      <FileName>App_Code\DataAccess\dalMain.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Taxation.DataAccess.dalPDF" Collapsed="true">
+    <Position X="10.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Code\DataAccess\dalPDF.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Taxation.DataAccess.dalSalary" Collapsed="true">
+    <Position X="14.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>GIEAAAyAgAgABAQCFAAAIEAgAAAAAAAIAAAAYAAAAAA=</HashCode>
+      <FileName>App_Code\DataAccess\dalSalary.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Taxation.DataAccess.dalScreen" Collapsed="true">
+    <Position X="19.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAQABAAAAAAAAAQAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Code\DataAccess\dalScreen.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Taxation.DataAccess.dalStates" Collapsed="true">
+    <Position X="23.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAQBAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Code\DataAccess\dalStates.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Taxation.DataAccess.dalSTax" Collapsed="true">
+    <Position X="28.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAAAAQCAAIIAACAgAAAgAAAAAABACAAEAA=</HashCode>
+      <FileName>App_Code\DataAccess\dalSTax.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Taxation.DataAccess.dalStoreTrans" Collapsed="true">
+    <Position X="35" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>JMAAABBIEQAAUAQAEABBgQAAAEIISoAAAAAAQCAFoAU=</HashCode>
+      <FileName>App_Code\DataAccess\dalStoreTrans.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Taxation.DataAccess.dalT4" Collapsed="true">
+    <Position X="41.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAQAAAAAAAAAAAAAAAAAAAgAAEAA=</HashCode>
+      <FileName>App_Code\DataAccess\dalT4.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Taxation.DataAccess.dalUserMgmt" Collapsed="true">
+    <Position X="50.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAgARAAAAAAAEAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Code\DataAccess\dalUserMgmt.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Taxation.DataAccess.popup" Collapsed="true">
+    <Position X="57.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAQAAAAAAAAAAAAAAQAACAAA=</HashCode>
+      <FileName>App_Code\popup.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Query.DataAccess.dalquery" Collapsed="true">
+    <Position X="64.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>App_Code\DataAccess\dalquery.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Taxation.DataEntity.denAddress" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="80" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAABABIAgAAgAIIIAgAGgAEIABUEBACAAAABQSAAAA=</HashCode>
+      <FileName>App_Code\DataEntity\denAddress.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Taxation.DataEntity.denAdmin" Collapsed="true">
+    <Position X="81.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Code\DataEntity\denAdmin.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Taxation.DataEntity.denPath" Collapsed="true">
+    <Position X="71.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAEIAAAAAAAFAAAAACAAAAAAAAggAAAA=</HashCode>
+      <FileName>App_Code\DataEntity\denAdmin.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Taxation.DataEntity.tbl_UserRegistration" Collapsed="true">
+    <Position X="85.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AmAAjCAgAMAAAAAIEABGCAQAQAICAMAaIopABgAQAAA=</HashCode>
+      <FileName>App_Code\DataEntity\denAdmin.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Taxation.DataEntity.denAssesseeMain" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="71.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAgVABERAAAAAAAAAhAEgACICBSlFAyAQEAAAAAAAg=</HashCode>
+      <FileName>App_Code\DataEntity\denAssessee.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Taxation.DataEntity.denAssesseeIndividual" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="85.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAg1EBERAIFgAAAAAhQEhACICBTlFgyCQEAAAAKAAg=</HashCode>
+      <FileName>App_Code\DataEntity\denAssessee.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Taxation.DataEntity.denAssesseePartner" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="73" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAgVABERAAAAAAAAAhAEgACICBSlFCyAQEAAEAAAAg=</HashCode>
+      <FileName>App_Code\DataEntity\denAssessee.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Taxation.DataEntity.denAssesseeCompany" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="83.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAgVABURAAAAAAAAAhAEgACKCBSlFAyIQEAABAAAAg=</HashCode>
+      <FileName>App_Code\DataEntity\denAssessee.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Taxation.DataEntity.denAssetMast" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="74.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QKEYSwACAEAIwQIBTKxPBAkYACBACEADAQIABGAKACA=</HashCode>
+      <FileName>App_Code\DataEntity\denAssetMast.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Taxation.DataEntity.denAssetTrans" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="76.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QCAAQgAAAEAIwAABCIgDBAAAACAACEADAAAABCAAAAA=</HashCode>
+      <FileName>App_Code\DataEntity\denAssetTrans.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Taxation.DataEntity.denBankMast" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="80" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAIEAAAAAAAAADAAAAIAAEQBAAAACBDAAAAAACAI=</HashCode>
+      <FileName>App_Code\DataEntity\denBankMast.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Taxation.DataEntity.denCompAdditional" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="81.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EIQgQEAAAAAgIAAJAAEgAAGgCgDEAQAAAAAAABAAAAA=</HashCode>
+      <FileName>App_Code\DataEntity\denCompAdditional.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Taxation.DataEntity.denCompanyDetails" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="83.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EKAAAAEAEAAAAAAJAAhEAEEAAAAkgAAAAQAADACKCEA=</HashCode>
+      <FileName>App_Code\DataEntity\denCompanyDetails.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Taxation.DataEntity.denConsultantMast" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="85.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AICAAAABQAAAgAIBAAAIAggAAABBEBACAAAAIEAAAAA=</HashCode>
+      <FileName>App_Code\DataEntity\denConsultantMast.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Taxation.DataEntity.denCountry" Collapsed="true">
+    <Position X="71.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAAAAAAAAAAAQAAAAABAAAAAAAAA=</HashCode>
+      <FileName>App_Code\DataEntity\denCountry.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Taxation.DataEntity.denDocTrans" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="73" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>kmTA4IGIQQCAlAAJLAACfKUkYahEAvgFIFBgFQSsKBE=</HashCode>
+      <FileName>App_Code\DataEntity\denDocTrans.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Taxation.DataEntity.denEmployerMaster" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="74.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CACACgAARAAAgAgIIAQAUgQgAABQEgACAAAgBQSAAAA=</HashCode>
+      <FileName>App_Code\DataEntity\denEmployerMaster.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Taxation.DataEntity.denFloatGridInsert" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="78.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Code\DataEntity\denFloatGridInsert.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Taxation.DataEntity.denFloating" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="80" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACSSowYCABH8ggdx0HtEQoFAAgD2lUEhAQAAyKDQGgA=</HashCode>
+      <FileName>App_Code\DataEntity\denFloating.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Taxation.DataEntity.T1000_rules" Collapsed="true">
+    <Position X="83.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAgQIAAAAAAAQAACAAAAAAAAAEAAAAAAAAgAAAEgA=</HashCode>
+      <FileName>App_Code\DataEntity\denFloating.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Taxation.DataEntity.t00_Rules" Collapsed="true">
+    <Position X="81.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAECAAAAAAAAAIAAAAAAAAAAAAEgA=</HashCode>
+      <FileName>App_Code\DataEntity\denFloating.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Taxation.DataEntity.denITR" Collapsed="true">
+    <Position X="81.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAgAAAAAAAAAAAAAgAAAEgAACAAAAAAAA=</HashCode>
+      <FileName>App_Code\DataEntity\denITR.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Taxation.DataEntity.denLogin" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="83.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IEDAAAABQAABAAAAAAgJAAAKwAACgAACAUAAGAAAABA=</HashCode>
+      <FileName>App_Code\DataEntity\denLogin.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Taxation.DataEntity.denMain" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="85.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AADQBGAFSAIBkKAsAAAUAAhGAAAAAECwCwgAAAAQgBg=</HashCode>
+      <FileName>App_Code\DataEntity\denMain.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Taxation.DataEntity.denSalary" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="74.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CCEWwQgoJEAKLDeBYPsHIIAmaDIAdMGBCQQQGOFCMGE=</HashCode>
+      <FileName>App_Code\DataEntity\denSalary.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Taxation.DataEntity.denScreen" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="76.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAgAgAAAgAAYABAAAEAARAAAAgCIIECBEIIEABI=</HashCode>
+      <FileName>App_Code\DataEntity\denScreen.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Taxation.DataEntity.denStates" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="78.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAABAAAAACAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>App_Code\DataEntity\denStates.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Taxation.DataEntity.denSTax" Collapsed="true">
+    <Position X="80" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAQQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>App_Code\DataEntity\denSTax.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Taxation.DataEntity.denAbatementNotifications" Collapsed="true">
+    <Position X="78.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAgA=</HashCode>
+      <FileName>App_Code\DataEntity\denSTax.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Taxation.DataEntity.denExemptionSerials" Collapsed="true">
+    <Position X="76.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>App_Code\DataEntity\denSTax.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Taxation.DataEntity.denStoreTrans" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="81.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CACHiggoDEGCoDWB8FIAIgCuICHAdMcBGAQQGIFCgkE=</HashCode>
+      <FileName>App_Code\DataEntity\denStoreTrans.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Taxation.DataEntity.denT4" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="83.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAWAggGJCEBIDcB4EoAIAQCYDAANMUBEAAAOKFSICE=</HashCode>
+      <FileName>App_Code\DataEntity\denT4.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Taxation.DataEntity.denUserMgmt" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="85.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Code\DataEntity\denUserMgmt.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Query.DataEntity.denquery" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="73" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACIAAAAAAAAAAgAAAQAACAACAEAAAAAAAIAAAAAAE=</HashCode>
+      <FileName>App_Code\DataEntity\denquery.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="UpdateProgress.ExtendedUpdateProgress.ExtendedUpdateProgress" Collapsed="true">
+    <Position X="71.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACABAAAQAIAAACQAACAEAAAAAAAAAQAAQ=</HashCode>
+      <FileName>App_Code\ExtendedUpdateProgress.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sample.SearchList" Collapsed="true">
+    <Position X="76.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAkAAAAAAAAAAgAAAAAAIAAAAAAAAAAAIAAAAAI=</HashCode>
+      <FileName>App_Code\SearchList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Taxation.Interface.IAddress" Collapsed="true">
+    <Position X="71.25" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABABAAgAAgAAIIAAAEgAAAAAQAAACAAAABQSAAAA=</HashCode>
+      <FileName>App_Code\Interface\IAddress.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Taxation.Interface.IAssesseeMain" Collapsed="true">
+    <Position X="2.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgFABEAAAAAAAAAAAAAgAAICASBAASAQAAAAAAAAg=</HashCode>
+      <FileName>App_Code\Interface\IAssessee.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Taxation.Interface.IAssessseeIndividual" Collapsed="true">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAQAAAAAAABAAgAAAAAAAAIAAA=</HashCode>
+      <FileName>App_Code\Interface\IAssessee.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Taxation.Interface.IAssesseePartner" Collapsed="true">
+    <Position X="2.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Code\Interface\IAssessee.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Taxation.Interface.IAssesseeCompany" Collapsed="true">
+    <Position X="5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAABAAAAA=</HashCode>
+      <FileName>App_Code\Interface\IAssessee.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Taxation.Interface.IAssetMast" Collapsed="true">
+    <Position X="73" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QCAAQAACAEAIwAABCIgDBAEIACAACEADAQAABCAAAAA=</HashCode>
+      <FileName>App_Code\Interface\IAssetMast.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Taxation.Interface.IAssetTrans" Collapsed="true">
+    <Position X="74.75" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QCAAQgAAAEAIwAABCIgDBAAAACAACEADAAAABCAAAAA=</HashCode>
+      <FileName>App_Code\Interface\IAssetTrans.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Taxation.Interface.IBankBranches" Collapsed="true">
+    <Position X="76.5" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAACCABAAAQAgAABAAAAEAABA=</HashCode>
+      <FileName>App_Code\Interface\IBankBranches.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Taxation.Interface.IBankMast" Collapsed="true">
+    <Position X="78.25" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIEAAAAAAAAABAAAAAAAAQAAAAACADAAAAAAAAA=</HashCode>
+      <FileName>App_Code\Interface\IBankMast.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Taxation.Interface.ICompAdditional" Collapsed="true">
+    <Position X="80" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQgQAAAAAAgIAAIAAAgAAEAAADAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>App_Code\Interface\ICompAdditional.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Taxation.Interface.ICompanyDetails" Collapsed="true">
+    <Position X="81.75" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAEAAAAAAAAJAAgEAEEAAAAAAAAAAAAABACIAEA=</HashCode>
+      <FileName>App_Code\Interface\ICompanyDetails.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Taxation.Interface.IConsultantMast" Collapsed="true">
+    <Position X="83.5" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAIBAAAAAggAAAAAAAACAAAAIEAAAAA=</HashCode>
+      <FileName>App_Code\Interface\IConsultantMast.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Taxation.Interface.IDoctrans" Collapsed="true">
+    <Position X="85.25" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAIAAAAAAgAAIJAACFCQAIYgAAoAFAFBABQSsIAA=</HashCode>
+      <FileName>App_Code\Interface\IDoctrans.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Taxation.Interface.IEmployerMaster" Collapsed="true">
+    <Position X="71.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CACACgAAAAAAgAAAAAAAAgQAAAAQAgACAAAAAAAAAAA=</HashCode>
+      <FileName>App_Code\Interface\IEmployerMaster.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Taxation.Interface.IFloatGridInsert" Collapsed="true">
+    <Position X="73" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Code\Interface\IFloatGridInsert.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Taxation.Interface.IFloating" Collapsed="true">
+    <Position X="74.75" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACQSAgACAAD8ggMAAEBAAoFAAgAgkUAgAQAASCCQAAA=</HashCode>
+      <FileName>App_Code\Interface\IFloating.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Taxation.Interface.ILogin" Collapsed="true">
+    <Position X="76.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IADAAAAAAAAAAAAAAAAIAAAIgAAAAAACAQAACAAAABA=</HashCode>
+      <FileName>App_Code\Interface\ILogin.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Taxation.Interface.IMain" Collapsed="true">
+    <Position X="78.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAEAEAAAAACAEAAAUAAhAAAAAAAAAAQAAAAAAAAg=</HashCode>
+      <FileName>App_Code\Interface\IMain.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Taxation.Interface.Isalary" Collapsed="true">
+    <Position X="81.75" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAggAEACICSAYMoHAIAmQBAAAEEAAQAQCKACEAE=</HashCode>
+      <FileName>App_Code\Interface\Isalary.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Taxation.Interface.IScreen" Collapsed="true">
+    <Position X="83.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAgAgAAAgAAAAAAAAAAAQAAAAAAAAACAAIAEAAI=</HashCode>
+      <FileName>App_Code\Interface\IScreen.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Taxation.Interface.IStates" Collapsed="true">
+    <Position X="85.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>App_Code\Interface\Istates.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Taxation.Interface.IStoreTrans" Collapsed="true">
+    <Position X="71.25" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAFAgggAACCoCSA4EIAAgAmACCAAAUAAAAQCIACAAE=</HashCode>
+      <FileName>App_Code\Interface\IStoreTrans.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Taxation.Interface.IT4" Collapsed="true">
+    <Position X="73" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAggAACAAICQA4EIAAAACQBAAAEUAAAAAKKACIAE=</HashCode>
+      <FileName>App_Code\Interface\IT4.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Taxation.Interface.IUserMgmt" Collapsed="true">
+    <Position X="74.75" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Code\Interface\IUserMgmt.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Query.Interface.IQuery" Collapsed="true">
+    <Position X="80" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAAAAAACAAAAEAAAAAAAIAAAAAAA=</HashCode>
+      <FileName>App_Code\Interface\IQuery.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

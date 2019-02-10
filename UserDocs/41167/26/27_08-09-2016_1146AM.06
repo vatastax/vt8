@@ -1,0 +1,24 @@
+In assesse add page PAN valdiation error is working but error is not showen on screen.
+
+Alerts are coming on Exempt Income,Tax Details,Schedule AL---- when we click Continue or Back Button  "TypeError=Cannot read property 'split' of undefined"
+
+In case of Import, If Tax Details are more than 9 grid then only 9 Grids are added and rest are not shown----XML mailed.
+
+
+
+-------Imp Links------- 
+Know Your Jurisdictionl A.O.:           https://incometaxindiaefiling.gov.in/e-Filing/Services/KnowYourJurisdictionLink.html
+ITR-V Receipt Status: -                 https://incometaxindiaefiling.gov.in/e-Filing/Services/ITRVStatusLink.html
+Know Your PAN: -                        https://incometaxindiaefiling.gov.in/e-Filing/Services/KnowYourPanLink.html
+CPC Refund Status: -                    https://incometaxindiaefiling.gov.in/e-Filing/UserLogin/LoginHome.html?nextPage=refundStatus
+
+
+Demo eFiling not updated----- latest done by Shweta
+
+Font for HOME  SERVICES  ABOUT US CONTACT US  LOGOUT  to be written in same font as of page and should not be bold
+
+Change blue color on home page and replace it with rgb(73, 78, 107)
+
+Back to HOME button not working properly---link error
+
+In case of E-File with CA----- Go-To is coming on top bar please remove that 

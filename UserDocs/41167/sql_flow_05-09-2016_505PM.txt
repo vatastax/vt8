@@ -1,0 +1,150 @@
+(need to have the complete table explaining C1,C2,C3---Cn)
+
+Flow:
+
+Main:
+
+
+Salary:
+
+Page Load:
+
+1) Screen Data Filling with HideUnhide proc (to fill basic data of screen like heading and label)
+sql: select * from screensettings where vtype=@info
+
+2) procScreenSettings (to fill main dropdown)
+sql: inner join between Combo_Master_Values and screensettings for vtype
+
+3) usp_selectdata (proc to get data corresponding to the selected dropdown value from table T00 to bind the listing)
+sql:SELECT c2,c1,c16, C7, C4,C19,c6,c10,c14,c12,c11,c15,c23,c17,c18,c20,c5,c39,c25,c40  FROM T00 WHERE ((C6 = 0) AND (C21 = '2007-2008') AND (C5 = 1)) 
+ order by c2
+
+
+Main Dropdown Change:
+pt (3)
+
+Detail LinkButton click:
+[ProcCounterDetails] (SP)
+selectdatat4
+
+
+Basic Salary:
+
+Details Criteria:
+
+uses StoreTrans table to insert/update 8 records:
+
+Col3 column shows the amounts where the last row is for the total of the amounts.
+
+------------------------------------------------------------------------------------------
+
+note: ScreenSettings table that basically brings all master information on salary page is all set for 2007-08 only.
+
+All Types of Voucher Types:
+select * from screensettings
+
+All Types of options under every voucher:
+select * from combo_master_values
+
+Further Grid:
+T00
+C6=0 for Income From Salary
+c21='2007-2008' for all
+c5= different for different voucher ty
+pe
+
+note: no VType in T00 so all the condtions are through C5 and C6 bsaically where C5 is for VType (kind of) and C6 is the Dropdown value
+c5=DD Value
+c6=Grid Index (GIndex = 0 for Income Dropdown)
+
+To get the grid listing values from Table T00, we need to pass 3 parameters:
+1) GIndex -> Grid Index that shows which grid needs to be bind (Different GrdIndex means different Computation Centre like 0 for salary, 9 for House Property)
+2) Index - > This the dropdown index that shows the type of voucher (e.g all 7 types of voucher those come under Income from Salary)
+3) AY - > Accessment Year.
+Further Details -> Grid (T4)
+
+Linking: VType (Voucher Type)
+
+
+-------------------------------
+
+T00 Details:
+
+C2 -> Location Priority for the record in the grid. (means if it has C2=0 then it will be placed as first grid record and if c2=1 then it will be 2nd row)
+c4 -> Particulars
+C5=Index (for drop down above grid)
+C7 -> SNo. of Grid Value
+C21 ->Assessment Year (e.g. 2007-2008)
+
+C10 -> cHANGES THE THIRD COLUMN OF GRID WITH:
+
+0	:	TEXTBOX
+15	:	DROPDOWN
+9	:	NOTHING
+7	:	TEXTBOX
+4	:	TEXTBOX
+2	:	TEXTBOX
+5	:	TEXTBOX (datetime)
+
+c11:
+
+
+
+C14:
+
+0	:	NOTHING
+9	:	NOTHING
+10	:	NOTHING
+1	:	NOTHING
+4	:	NOTHING
+
+C18:
+0
+1
+2
+
+C19:
+
+0	:	NOTHING
+2	:	DETAILS BUTTON
+3	:	DETAILS BUTTON
+
+
+note: C19 and C16 if both are 0 then Deatils button will not be shown
+--------------------------------------
+SQL Commands:
+
+T00 Insert Command:
+
+insert into T00 values(152010,1,'Second Call','Second Called',1,5000,'3',9,3,2,0,0,0,0,0,0,0,0,0,0,0,'0',0,1,0,0,1,'',0,'0',0,0,'0',0,0,0,0,
+'2007-2008',0,'0',0,0)
+
+------------------------------------------
+
+Filling Dropdowns in gridviews:
+
+Table ComboItems:
+This is to fill all dropdowns within the grid. Also c10=15 in t00 is condition to show such dropdowns.
+
+using fields "ConstID" and "AssYear" where constID is the c1 field from t00.
+
+-------------------
+
+Yes No Dropdown trigger: from gridview "GridViewDetails":
+DOYesNo
+
+--------------------------------------
+
+if you want to add the grid for any screen settings without a combo then you need to add record in t00 with gridIndex(c6)=gridindex of screensettings
+
+------------------------------------------------------
+
+c19 and c36 from table t4 seems to be for extra row visibility when dropdown changes.
+
+
+if you want to add the grid for any screen settings without a combo then you need to add record in t00 with gridIndex(c6)=gridindex of screensettings
+
+KeyChecker   2 :-Amount with format  4 :- Amount without format 5 : Date 7 : Amount without format (negative) 0 : Non-Edit Cell 15 : Yes/No
+
+Tod disable a textbox in t00: 
+c25=0

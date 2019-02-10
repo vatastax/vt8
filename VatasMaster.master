@@ -1,0 +1,596 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="VatasMaster.master.cs" Inherits="VatasMaster" %>
+
+<!DOCTYPE html >
+
+<html class="no-js" lang="en">
+ 
+<head id="Head1" runat="server">
+    <title>The Interactive Platform for free e-filing Income Tax Returns in India</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge; IE=10;">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8" />
+   
+     <!--menu js files-->
+    <script src="js/modernizr.custom.js" type="text/javascript"></script>
+    <script src="js/classie.js" type="text/javascript"></script>
+
+
+    <!--master javascript file-->
+     <script src="js/MasterJScript.js" type="text/javascript"></script>
+    <!--master javascript file-->
+
+    <!--master style sheet-->
+    <link href="style_folder/SidePagesStyleSheet.css" rel="stylesheet" type="text/css" />
+    <link href="style_folder/StyleSheet.css" rel="Stylesheet"" type="text/css" />
+      <link href="ECAStyleSheet/Master.css" rel="stylesheet" type="text/css" />
+    <!--master style sheet-->
+
+    <asp:ContentPlaceHolder id="head" runat="server">
+         <script type="text/javascript">
+             $(document).ready(function () {
+                 $('.button-group a').click(function () {
+                     $(".button-group a").removeClass("active");
+                     alert('ffff');
+                     $(this).addClass('active');
+                 });
+             });</script>
+
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+ 
+  
+.linkFull
+{
+      padding-top: 12px;
+      padding-bottom:12px;
+      padding-left:20px;
+   <%--   padding-right:50px;--%>
+}
+.loginBtn{
+  background: #37588B;
+  color: #FFF;
+  border:none;
+  font-size: 23px;
+  font-weight: 400;
+  padding: 10px 0px;
+  width: 50%;
+  cursor: pointer;
+  outline: none;
+  border-radius:10px;
+}
+.loginBtn:hover{
+	background:#F05840;
+	border-radius:10px;
+	transition: 0.5s all;
+  -webkit-transition: 0.5s all;
+  -moz-transition: 0.5s all;
+  -o-transition: 0.5s all;
+}
+
+.loginBtn:focus{
+	background:#F05840;
+	border-radius:10px;
+	transition: 0.5s all;
+  -webkit-transition: 0.5s all;
+  -moz-transition: 0.5s all;
+  -o-transition: 0.5s all;
+}
+</style>
+
+
+    <%-------------------------------------LOGIN POP UP BOX------------------------------------------%>
+    <link href="css/loginpopupbox/loginpopbox.css" rel="stylesheet" type="text/css" />
+    <link href="css/loginpopupbox/font-awesome.css" rel="stylesheet" type="text/css" />
+    <link href="css/loginpopupbox/demo.css" rel="stylesheet" type="text/css" />
+    <script src="js/loginpopupbox/modernizr.custom.63321.js" type="text/javascript"></script>
+<%-----------------------------------------------------------------------------------------------%>
+<!--[if lt IE 8]>
+<script type="text/javascript" src="js/ie_compatibility/newhtml5shiv.js"></script>
+<script type="text/javascript" src="js/ie_compatibility/placeholder.min.js"></script>
+<script src="js/ie_compatibility/html5shiv.js" type="text/javascript"></script>
+    <script src="js/ie_compatibility/nwmatcher-1.2.5-min.js" type="text/javascript"></script>
+    <script src="js/ie_compatibility/respond.min.js" type="text/javascript"></script>
+    <script src="js/ie_compatibility/selectivizr-1.0.3b.js" type="text/javascript"></script>
+    <script src="js/ie_compatibility/es5-shim.min.js" type="text/javascript"></script>
+<![endif]-->
+<!--[if lt IE 9]>
+<script type="text/javascript" src="js/ie_compatibility/newhtml5shiv.js"></script>
+<script type="text/javascript" src="js/ie_compatibility/placeholder.min.js"></script>
+<script src="js/ie_compatibility/html5shiv.js" type="text/javascript"></script>
+    <script src="js/ie_compatibility/nwmatcher-1.2.5-min.js" type="text/javascript"></script>
+    <script src="js/ie_compatibility/respond.min.js" type="text/javascript"></script>
+    <script src="js/ie_compatibility/selectivizr-1.0.3b.js" type="text/javascript"></script>
+    <script src="js/ie_compatibility/es5-shim.min.js" type="text/javascript"></script>
+<![endif]-->
+<!--[if lt IE 10]>
+<script type="text/javascript" src="js/ie_compatibility/newhtml5shiv.js"></script>
+<script type="text/javascript" src="js/ie_compatibility/placeholder.min.js"></script>
+<script src="js/ie_compatibility/html5shiv.js" type="text/javascript"></script>
+    <script src="js/ie_compatibility/nwmatcher-1.2.5-min.js" type="text/javascript"></script>
+    <script src="js/ie_compatibility/respond.min.js" type="text/javascript"></script>
+    <script src="js/ie_compatibility/selectivizr-1.0.3b.js" type="text/javascript"></script>
+    <script src="js/ie_compatibility/es5-shim.min.js" type="text/javascript"></script>
+<![endif]-->
+    <script type="text/javascript" src="js/ie_compatibility/newhtml5shiv.js"></script>
+<script type="text/javascript" src="js/ie_compatibility/placeholder.min.js"></script>
+<script src="js/ie_compatibility/html5shiv.js" type="text/javascript"></script>
+    <script src="js/ie_compatibility/nwmatcher-1.2.5-min.js" type="text/javascript"></script>
+    <script src="js/ie_compatibility/respond.min.js" type="text/javascript"></script>
+    <script src="js/ie_compatibility/selectivizr-1.0.3b.js" type="text/javascript"></script>
+    <script src="js/ie_compatibility/es5-shim.min.js" type="text/javascript"></script>
+
+</head>
+<body>
+
+    <form id="form1" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true">
+    </asp:ScriptManager>
+    <%--This Message appears when Internet Explorer version is 8.0 or less than Internet Explorer 8.0--%>
+    <%--<div style="text-align: center;color:red;"><marquee>Please upgrade your browser to use ECHARTEREDACCOUNTANTS.COM or Press F12 -> Emulation -> Go to Document Mode -> Choose Edge or highest value. </marquee></div>--%>
+   <%-- <div id="divErrorMsg" runat="server" visible="false" style=" margin:0px; padding:0px; color:white; background-color:#7f7f7f; text-align:center">--%>
+    <br />
+     
+    <!--small-->
+     <div class="row show-for-small-only">
+        <div class="small-12 columns " >
+            <a href="default.aspx"><img alt="logo" src="images/logo2.PNG" style="width:240px" alt="logo" /></a>
+        </div>
+         <br />
+    </div>
+       
+     <div class="large-3 columns show-for-small-only " >
+                <!--left-menu(quick links)--> 
+                <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left " id="cbp-spmenu-s1">
+                   <ul style="list-style-type:none">
+			        <h3>Quick Links</h3>
+			        <li ><a id="aaaAbout" runat="server" href="AboutUs.aspx" ><img alt="About Us" src="images/small_images/small%20about%20us.png" />About Us</a></li>
+                    <li ><a id="aaaContact" runat="server" href="ContactUsNew.aspx"><img alt=" Contact Us" src="images/small_images/small%20contact%20us.png" />Contact Us</a></li>
+                    <li><a id="aaaLatest" runat="server" href="News.aspx" ><img alt="Latest News" src="images/small_images/smallNews-Icon.png" />Latest News</a></li>
+                    <li ><a id="aaaSite" runat="server" href="SiteMap.aspx" ><img alt="Sitemap" src="images/small_images/small%20sitemap.png" />Site Map</a></li>
+                    <li><a id="aaaTnC" runat="server" href="Terms_Conditions.aspx" ><img alt="Terms & Conditions" src="images/small_images/small%20terms.png" />Terms & Conditions</a></li>
+                    <%--<li><a href="#" >Feedback & Support</a></li>--%>
+                    <li ><a id="aaaPolicy" runat="server" href="PrivacyPolicy.aspx" ><img alt="Privacy Policy" src="images/small_images/small%20lock-2.png" />Privacy Policy</a></li>
+                   </ul>
+		        </nav>
+                <!--left-menu(quick links)-->  
+
+                 <!--top-menu(main menu)--> 
+                 <nav class="cbp-spmenu cbp-spmenu-horizontal cbp-spmenu-top" id="cbp-spmenu-s3">
+                    <ul style="list-style-type:none;margin-left: 0.5rem;">
+                        <a href="Default.aspx"><img src="images/logo2.PNG" alt="logo" style="width:200px; height:auto;margin:5px 0 2px 5px;"/></a>
+			            <li ><a href="default.aspx " >Home</a></li>
+                        <li ><a href="Services.aspx">Services</a></li>
+                        <li style="padding-left:5px"><a href="AboutUs.aspx">About</a></li>
+                        <li><a href="ContactUsNew.aspx" >Contact</a></li>
+                   <%--       <li><a href="Pricing.aspx" >Pricing.aspx</a></li>--%>
+                        <li id="li_Login11" runat="server"><a href="Presentation/login.aspx" >Login</a></li>
+                        <li id="li_Logout11" runat="server"><asp:LinkButton ID="LinkButton1" runat="server" Text="Logout" OnClick="lbtnLogout_Click"></asp:LinkButton></li>
+                   </ul>
+                 </nav>
+
+                  <!--placement of menu images-->
+                  <div class="row text-right">
+               		    <!-- Class "cbp-spmenu-open" gets applied to menu -->
+					    <%--<button  id="showLeft">Menu</button>	--%>
+                    
+                    <img src="images/mainmenumob.PNG" alt="menu"   id="showTop"/>
+                    <img src="images/menuuu1.png" alt="side-menu" id="showLeft"/>
+                 
+                         <%--<img src="images/mobilemenu.PNG" id="showLeft" />--%>
+                        <%-- <button id="showLeft" style="background-image:url('images/mainmenumob.PNG')"></button>
+					     <button id="showTop" style="background-image:url('images/mainmenumob.PNG')"></button>--%>
+			      </div>
+
+
+                 <!--java-script for menus-->
+                 <script type="text/javascript">
+                     var menuLeft = document.getElementById('cbp-spmenu-s1'),
+			            showLeft = document.getElementById('showLeft'),
+                        menuTop = document.getElementById('cbp-spmenu-s3'),
+                        showTop = document.getElementById('showTop'),
+                        body = document.body;
+
+                     showLeft.onclick = function () {
+                         classie.toggle(this, 'active');
+                         classie.toggle(menuLeft, 'cbp-spmenu-open');
+                         disableOther('showLeft');
+                     };
+
+                     showTop.onclick = function () {
+                         classie.toggle(this, 'active');
+                         classie.toggle(menuTop, 'cbp-spmenu-open');
+                         disableOther('showTop');
+                     };
+
+                     function disableOther(img) {
+                         
+                         if (img != 'showLeft') {
+                             classie.toggle(showLeft, 'disabled');
+                             
+                         }
+
+                         if (img != 'showTop') {
+                             classie.toggle(showTop, 'disabled');
+                             
+                         }
+                     }
+		        </script>
+                <!--java-script for menus-->
+              <!--top-menu(main menu)--> 
+            </div>
+    <!--small-->
+
+
+    <!--medium-->
+     <div class="row show-for-medium-only" >
+       
+        <div class="medium-4 columns" >
+              <a href="default.aspx"><img src="images/logo2.PNG" style="width:180px; height:auto; margin-left:15px;" /></a>
+        </div>
+        <div class="medium-8 columns ">
+            <ul class="right button-group" style="margin-left:-20px; margin-right:-10px; ">
+                <li style="margin-left:-10px;"><a href="default.aspx" class="button" style="font-size:14px" >HOME</a></li>
+                <li style="margin-left:-10px"><a href="Services.aspx" class="button" style="font-size:14px">SERVICES</a></li>
+                <li style="margin-left:-10px"><a href="AboutUs.aspx" class="button" style="font-size:14px">ABOUT US</a></li>
+                <li style="margin-left:-10px"><a href="ContactUsNew.aspx" class="button" style="font-size:14px">CONTACT US</a></li>
+             <%--       <li style="margin-left:-10px"><a href="Pricing.aspx" class="button" style="font-size:14px">Pricing</a></li>--%>
+                <li style="margin-left:-10px" id="li_Login1" runat="server" class="has-sub"><a href="Presentation/login.aspx" class="button" style="font-size:14px">LOGIN</a>
+<%--                 <ul>
+           <li>
+           <div style=" width:280px;height:auto;    border-radius:10px; margin-left:-60px; z-index:30001; background-color:#d3d3d3;opacity:0.85; overflow:hidden; ">
+           <table style="border:none;background-color:gray;margin-top:20px;margin-bottom:0px; padding-bottom:0px  ">
+           <tr style="background-color:#d3d3d3;">
+           <td>
+           <span style="font-weight:bold">Email ID</span>
+           </td>
+           <td>   
+           <asp:TextBox ID="txtUser11" runat="server"> </asp:TextBox></td>
+           <asp:RequiredFieldValidator ID="RqF1" runat="server" ControlToValidate="txtUser11" ErrorMessage="*" ForeColor="Red" ValidationGroup="loginpopup"></asp:RequiredFieldValidator>
+           <asp:RegularExpressionValidator ID="RegEV" runat="server" ControlToValidate="txtUser11" ErrorMessage="Incorrect Format" ForeColor="Red" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ValidationGroup="loginpopup"></asp:RegularExpressionValidator>
+           </tr>
+            <tr style="background-color:#d3d3d3;">
+           <td><span style="font-weight:bold">Password</span></td>
+           <td>   
+            <asp:TextBox ID="txtPassword11" runat="server"  TextMode="Password" ></asp:TextBox></td>
+           <asp:RequiredFieldValidator ID="RqF2" runat="server" ControlToValidate="txtPassword11" ErrorMessage="*" ForeColor="Red" ValidationGroup="loginpopup"></asp:RequiredFieldValidator>
+           </tr>
+            <tr style="background-color:#d3d3d3;">
+           <td>    
+            <span style="font-weight:bold">Security Code</span></td>
+           <td>    
+           <asp:Image ID="Image11" runat="server" ImageUrl="Presentation/CImage.aspx" Width="120px" Height="50px"/>
+            <asp:ImageButton ID="ImageButton11" runat="server" ImageUrl="images/refresh.png" /></td>
+           </tr>
+           <tr style="background-color:#d3d3d3;">
+           <td></td>
+           <td> 
+           <asp:TextBox ID="txtCaptcha1" runat="server" ></asp:TextBox></td>
+           <asp:RequiredFieldValidator ID="RqF3" runat="server" ControlToValidate="txtCaptcha1" ForeColor="Red" ErrorMessage="*" ValidationGroup="loginpopup"></asp:RequiredFieldValidator>
+           </tr>
+            <tr style="background-color:#d3d3d3; padding:0; margin:0"><td></td><td>
+            <asp:Button ID="Button11" runat="server" Text="Login" OnClick="btnLogin1_Click" Font-Bold="true" class="button" Height="30px" style="padding-top:0px; padding-bottom:0px; padding-left:5px; padding-right:5px" ></asp:Button></td></tr>
+           <tr style="background-color:#d3d3d3; padding:0;  margin-top:-70px">
+           <td><a href="#" style="padding:0px; margin:0px;color:#008CBA;margin-top:-70px">
+           <span style="font-weight:bold">Signup</span></a>
+           </td>
+         
+         <td><a href="#" style="padding:0px; margin:0px;color:#008CBA;margin-top:-70px"><span style="font-weight:bold">Forget password??</span></a></td>
+           </tr>
+       
+           <tr style="background-color:#d3d3d3; padding:0">
+           <td> <asp:Label ID="Label1" runat="server"></asp:Label></td><td></td>
+           </tr>--%>
+          
+           <%--<tr style="background-color:#d3d3d3;">
+           <td></td><td></td>
+           </tr>--%>
+   <%--        </table>--%>
+       <%--      <div class="row" style="margin-bottom:10px; margin-top:10px"">
+    <div class="large-4 columns">
+    Username
+    </div>
+    <div class="large-8 columns">
+        <asp:TextBox ID="TextBox1" runat="server"  required></asp:TextBox>
+    <%--Password--%>
+<%--    </div>
+                        </li>
+                   </ul>--%>
+                </li>
+                  <li id="li_Logout1" runat="server">
+           <asp:LinkButton ID="lbtnLogout1" runat="server" Text="LOGOUT" CssClass="button" OnClick="lbtnLogout_Click"></asp:LinkButton>
+           </li>
+            </ul>
+        </div>
+    </div>
+      
+     <div class="row show-for-medium-only">
+     <br />
+               <div class="medium-12 columns" style="margin-left:20px; margin-right:20px;">
+                  <!--content-part-->
+                     <div class="row" style="border:1px solid gray;  border-radius:10px">
+                        <!--left-part-->
+                         <div class=" medium-4 columns abt" >
+                           <%--<p style=" text-align:center; font-size:18px; font-family: Cambria;background-color:Gray;color:white;padding:5px">Quick Links</p> --%>
+                             <br />
+                             <ul >
+                                <li ><a id="aaAbout" runat="server" href="AboutUs.aspx"  >
+                                    <img src="images/small_images/small%20about%20us.png" alt="AboutUs" />  About Us</a></li>
+                                <li ><a id="aaContact" runat="server" href="ContactUsNew.aspx" >
+                                    <img src="images/small_images/small%20contact%20us.png" alt="ContactUs" />  Contact Us</a></li>
+                                <li><a id="aaLatest" runat="server" href="News.aspx"  >
+                                    <img src="images/small_images/smallNews-Icon.png" alt="LatestNews" />  Latest News</a></li>
+                                <li ><a id="aaSite" runat="server" href="SiteMap.aspx" >
+                                    <img src="images/small_images/small%20sitemap.png" alt="SiteMap" />  Site Map</a></li>
+                                <li><a id="aaTnC" runat="server" href="Terms_Conditions.aspx"  >
+                                    <img src="images/small_images/small%20terms.png" alt="TermsandCondition" />  Terms&Conditions</a></li>
+                                <%--<li><a href="#" >Feedback & Support</a></li>--%>
+                                <li ><a id="aaPolicy" runat="server" href="PrivacyPolicy.aspx"  >
+                                    <img src="images/small_images/small%20lock-2.png" alt="PrivacyPolicy" />  Privacy Policy</a></li>
+                            </ul>
+                         </div>    
+                             <div class=" medium-8 columns" style="border-left:1px solid gray;">
+                             <div class="row" style="margin-left:10px;">
+                             <br />
+                             <asp:ContentPlaceHolder ID="CPH2" runat="server">
+                             </asp:ContentPlaceHolder>
+                              </div>
+                         </div>
+                         </div>
+                    <div  style="background-color:white; padding-top:20px;" >
+                        <div class="row show-for-medium-only" >
+                        <hr />
+                                                                                                                                                                                                                                                                                                                    <div class="medium-12 columns" >
+                       <div class="row">
+                           <div class="medium-1 columns">
+                           </div>
+                           <!--footer menu-->
+                           <div class="medium-11 columns text-right">
+                              <ul class="inline-list right" >
+                                <li style="  margin-left: 0.375rem;"><a href="default.aspx" style="color:Black;">Home   |</a></li>
+                                <li style="  margin-left: 0.375rem;"><a href="Services.aspx" style="color:Black;">Services   |</a></li>
+                                <li style="  margin-left: 0.375rem;"><a href="ContactUsNew.aspx" style="color:Black;margin-left:0.05rem;">Contact Us   |</a></li>
+                                <li style="  margin-left: 0.375rem;"><a href="SiteMap.aspx" style="color:Black;">Site Map   |</a></li>
+                                <li style="  margin-left: 0.375rem;"><a href="https://incometaxindiaefiling.gov.in/eFiling/Portal/Registration_FAQ.pdf" target="_blank" style="color:Black;">FAQs   |</a></li>
+                                <%--<li style="  margin-left: 0.375rem;"><a href="#" style="color:Black;">Feedback & Support   |</a></li>--%>
+                                <li style="  margin-left: 0.375rem;"><a href="Terms_Conditions.aspx" style="color:Black;">Terms & Conditions   |</a></li>
+                                <li style="  margin-left: 0.375rem;"><a href="PrivacyPolicy.aspx" style="color:Black;">Privacy & Policy</a></li>
+                              </ul>
+                            </div>
+                           <!--footer menu-->
+                        </div>
+                        <!--footer bottom part-->
+                        <div class="row">
+                          <!--copyright-->
+                          <div class="medium-4 columns">
+                               <p style="color:black">© 2016 Vatas Infotech Pvt.Ltd.</p>
+                          </div>
+                          <!--copyright-->
+                          <!--social networking sites-->
+                          <div class="medium-8 columns text-right">
+                             <a href="https://www.facebook.com/echarteredaccountants" target="_blank"><img src="images/fb.png" alt="facebook" /></a>
+                            <a href="http://www.twitter.com/ECAccountant" target="_blank"><img src="images/twitter.png" alt="twitter" /></a>
+                            <a href="https://in.linkedin.com/pub/vatas-infotech/b9/264/a82" target="_blank"><img src="images/LINKEDIN1.PNG" alt="Linkedin" /></a>
+                            <a href="https://plus.google.com/u/0/b/108616341946641442746/108616341946641442746" target="_blank" ><img src="images/google.png" alt="google" /></a>
+                          </div>
+                          <!--social networking sites-->
+                       </div>
+                       <!--footer bottom part-->
+                     </div>
+                    </div>
+                  </div>
+              </div>
+        </div> 
+
+    <!--medium-->
+
+    <div class="row">  
+        <!--large-->
+   
+     <div class="row" style="margin-top: -20px;">
+    <div class="large-4 columns hide-for-small hide-for-medium" > <!--Resolution Problem Solved - Jaipal -->
+           <a href="default.aspx"> <img src="images/logo2.PNG" style="width:240px; height:auto" alt="logo" /></a>
+        </div>
+          <div class="large-2 columns text-right" >
+          <img src="images/toll5.JPG" style="padding:15px" alt="tollfree"  />
+          </div>
+        <div class="large-6 columns hide-for-small hide-for-medium "> <!--Resolution Problem Solved - Jaipal -->
+            <ul class="right button-group">
+                <li><a href="default.aspx" class="button">HOME</a></li>
+                <li><a href="Services.aspx" class="button">SERVICES</a></li>
+                <li><a href="AboutUs.aspx" class="button">ABOUT US</a></li>
+                <li><a href="ContactUsNew.aspx" class="button">CONTACT US</a></li>
+              <%--     <li><a href="Pricing.aspx" class="button">PRICING</a></li>--%>
+                <li id="li_Login" runat="server"><a href="#" class="button">LOGIN</a>
+                <ul>
+               <li>
+          <%----------------------------------------NEW LOGIN POP UP FOR LARGE------------------------------------%>
+
+
+                <div class="container1" style="margin-left:-40px;border: 1px solid rgba(182, 182, 182, 0.67);;width: 205px;border-radius:8px;-webkit-box-shadow: 10px 12px 15px -5px #ccc;background-color:White;">
+                    <section class="main1" style="margin-top: 7px;">
+                        <p style="margin-bottom: 4px">
+                            <asp:TextBox ID="txtUser1" runat="server" placeholder="Email ID"  style="border-radius:8px;padding:5px"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" Display="Dynamic" ControlToValidate="txtUser1" ErrorMessage="Enter Email ID" ForeColor="Red" ValidationGroup="loginpopup"></asp:RequiredFieldValidator>
+                            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" Display="Dynamic" ControlToValidate="txtUser1" ErrorMessage="Incorrect Format" ForeColor="Red" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ValidationGroup="loginpopup"></asp:RegularExpressionValidator>
+                        </p>
+        
+                        <p style="margin-bottom: 4px">
+                            <asp:TextBox ID="txtPassword1" runat="server" placeholder="Password"  TextMode="Password" style="border-radius:8px;padding:5px" ></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server"  Display="Dynamic" ControlToValidate="txtPassword1" ErrorMessage="Enter Password" ForeColor="Red" ValidationGroup="loginpopup"></asp:RequiredFieldValidator>
+                        </p>
+        
+                        <p class="field1">
+                           <%-- <asp:Image ID="Image1" runat="server" ImageUrl="Presentation/CImage.aspx" Width="140px" Height="30px"/>
+                            <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="images/refresh.png" />--%>
+                            <asp:UpdatePanel ID="updCap" runat="server">
+                        <ContentTemplate>
+                        <asp:Image ID="imgCaptcha" runat="server"  BorderWidth="1" BorderColor="LightGray" Height="40px" style="margin-left:20px;margin-top:-18px;  border-radius: 8px;"/>
+                         <asp:ImageButton ID="imgRefresh" runat="server" ImageUrl="images/refresh.png" OnClick="imgRefresh_Click" AlternateText="Refresh" />
+                        </ContentTemplate>
+                        </asp:UpdatePanel>
+                        </p>
+        
+                        <p class="field1">
+                            <asp:TextBox ID="txtCaptcha" placeholder="Captcha Code" runat="server" style="border-radius: 8px;margin-top:-16px; padding: 5px;"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtCaptcha" Display="Dynamic" ForeColor="Red" ErrorMessage="Enter Captcha Code" ValidationGroup="loginpopup"></asp:RequiredFieldValidator>
+                        </p>
+        
+                        <p class="submit" style="text-align:center">
+                            <asp:Button ID="Button1" runat="server" Text="Login" OnClick="btnLogin1_Click" Font-Bold="true" class="loginBtn" Height="30px" style="padding-top:0px; padding-bottom:0px;  font-size: larger; margin-bottom:0;border-radius:4px"  ></asp:Button> <asp:Label ID="lblMsg1" runat="server"></asp:Label>
+                        </p>
+        
+                        <br />
+        
+                        <p style="text-align:center;margin-top:-26px">
+                            <asp:LinkButton ID="lnkSignup" runat="server" Text="Signup" ForeColor="#008cba" Font-Bold="true" OnClick="lnkSignup_Click" Font-Size="12px"></asp:LinkButton><br />
+                            <asp:LinkButton ID="lnkPwd" runat="server" Text="Forget Password??" ForeColor="#008cba" Font-Bold="true" OnClick="lnkPwd_Click" Font-Size="12px"></asp:LinkButton>
+                        </p>
+                            <asp:Label ID="lblMsg" runat="server"></asp:Label>
+                    </section>
+                </div> 
+
+            <%-----------------------------------------------------------------------------------------------%>
+
+          
+                        </li>
+                   </ul>
+                </li>
+                 <li id="li_Logout" runat="server">
+           <asp:LinkButton ID="lbtnLogout" runat="server" Text="LOGOUT" CssClass="button" OnClick="lbtnLogout_Click"></asp:LinkButton>
+           </li>
+            </ul>
+        </div>
+       
+     </div>
+
+
+       <div style="float:right;"><asp:Literal ID="ltWelcome" runat="server"></asp:Literal> </div>
+       <br />
+       
+          <div class="row" style="border:1px solid gray; border-radius:10px; margin-top:20px;">
+         <div class="large-3 columns hide-for-small hide-for-medium abt " ">  <!--Resolution Problem Solved - Jaipal -->
+          <br />
+            <%--<p style=" text-align:center; font-size:18px; font-family: Cambria;background-color:Gray;color:white;padding:5px;">Quick Links</p> --%>
+            <ul>
+                <li  ><a id="aAbout" runat="server" href="AboutUs.aspx" class="linkFull"><span><img src="images/small_images/small%20about%20us.png" class="changeimg" alt="Aboutus" />  About Us</span></a></li>
+                    <li ><a id="aContact" runat="server" href="ContactUsNew.aspx" class="linkFull"><span>
+                        <img src="images/small_images/small%20contact%20us.png" alt="ContactUs" />  Contact Us</span></a></li>
+                    <li><a id="aLatest" runat="server" href="News.aspx" class="linkFull"><span>
+                        <img src="images/small_images/smallNews-Icon.png" alt="LatestNews"  />  Latest News</span></a></li>
+                    <li ><a id="aSite" runat="server" href="SiteMap.aspx" class="linkFull"><span>
+                        <img src="images/small_images/small%20sitemap.png" alt="SiteMap"  />  Site Map</span></a></li>
+                    <li  style="padding-left:0px;font-size:13px;"><a id="aTnC" runat="server"  href="Terms_Conditions.aspx" class="linkFull"><span>
+                        <img src="images/small_images/small%20terms.png" alt="TermsandConditions"  />  Terms&Conditions</span></a></li>
+                   <%-- <li><a href="#" >Feedback & Support</a></li>--%>
+                    <li ><a id="aPolicy" runat="server" href="PrivacyPolicy.aspx" class="linkFull"><span>
+                        <img src="images/small_images/small%20lock-2.png" alt="PrivacyPolicy"  />  Privacy Policy</span></a></li>
+            </ul>  
+       </div>
+
+
+    <!--large-->
+
+
+   <!-- small large-->
+        <div class="large-9 column hide-for-medium"  style="padding-left:10px; border-left:1px solid gray">
+       <br />
+         <asp:ContentPlaceHolder ID="CPH1" runat="server">
+         
+         </asp:ContentPlaceHolder>
+         </div>
+   <!-- small large-->
+         </div>
+      </div> 
+   
+   <!--footer--> 
+      <div  style="background-color:white; padding-top:20px;" >
+           
+            <div class="row hide-for-small-only hide-for-medium-only" >
+           
+            <hr/>         
+             <div class="large-12 columns">
+                 <!--footer menu-->
+                 <div class="row">
+                     <div class="large-3 columns">
+                     </div>     
+                      <div class="large-9 columns text-right">
+                        <ul class="inline-list right" >
+                        <li style="  margin-left: 0.375rem;"><a href="default.aspx" style="color:Black;">Home   |</a></li>
+                         <li style="  margin-left: 0.375rem;"><a href="Services.aspx" style="color:Black;">Services   |</a></li>
+                        <li style="  margin-left: 0.375rem;"><a href="ContactUsNew.aspx" style="color:Black;margin-left:0.05rem;">Contact Us   |</a></li>
+                        <li style="  margin-left: 0.375rem;"><a href="SiteMap.aspx" style="color:Black;">Site Map   |</a></li>
+                        <li style="  margin-left: 0.375rem;"><a href="https://incometaxindiaefiling.gov.in/eFiling/Portal/Registration_FAQ.pdf" target="_blank" style="color:Black;">FAQs   |</a></li>
+                        <%--<li style="  margin-left: 0.375rem;"><a href="#" style="color:Black;">Feedback & Support   |</a></li>--%>
+                        <li style="  margin-left: 0.375rem;"><a href="Terms_Conditions.aspx" style="color:Black;">Terms & Conditions   |</a></li>
+                        <li style="  margin-left: 0.375rem;"><a href="PrivacyPolicy.aspx" style="color:Black;">Privacy Policy</a></li>
+                    </ul>
+                    </div>
+                  </div>
+                  <!--footer menu-->
+                  <!--footer bottom-->
+                  <div class="row">
+                    <!--copyright-->
+                    <div class="large-4 columns">
+                         <p style="color:black">© 2016 Vatas Infotech Pvt.Ltd.</p>
+                    </div>
+                    <!--copyright-->
+                    <!--social networking sites-->
+                    <div class="large-8 columns text-right">
+                         <a href="https://www.facebook.com/echarteredaccountants" target="_blank"><img src="images/fb.png" alt="facebook" /></a>
+                        <a href="http://www.twitter.com/ECAccountant" target="_blank"><img src="images/twitter.png" alt="twitter" /></a>
+                        <a href="https://in.linkedin.com/pub/vatas-infotech/b9/264/a82" target="_blank"><img src="images/LINKEDIN1.PNG" alt="Linkedin" /></a>
+                        <a href="https://plus.google.com/u/0/b/108616341946641442746/108616341946641442746" target="_blank" ><img src="images/google.png" alt="google" /></a>
+                    </div>
+                    <!--social networking sites-->
+                  </div>
+                  <!--footer bottom-->
+              </div>
+          </div>    
+          
+          <div class="row show-for-small-only" >
+           
+            <hr/>         
+             <div class="small-12 columns">
+                 <!--footer menu-->
+                 <div class="row">
+                     <div class="small-3 columns" ">
+                     </div>     
+                      <div class="small-9 columns" >
+                        <ul class="inline-list " >
+                        <li style="  margin-left: 0.375rem;"><a href="default.aspx" style="color:Black;">Home |</a></li>
+                         <li style="  margin-left: 0.375rem;"><a href="Services.aspx" style="color:Black;">Services   |</a></li>
+                        <li style="  margin-left: 0.375rem;"><a href="ContactUsNew.aspx" style="color:Black;margin-left:0.05rem;">Contact Us   |</a></li>
+                        <li style="  margin-left: 0.375rem;"><a href="SiteMap.aspx" style="color:Black;">Site Map   |</a></li>
+                        <li style="  margin-left: 0.375rem;"><a href="https://incometaxindiaefiling.gov.in/eFiling/Portal/Registration_FAQ.pdf" target="_blank" style="color:Black;">FAQs   |</a></li>
+                       <%-- <li style="  margin-left: 0.375rem;"><a href="#" style="color:Black;">Feedback & Support   |</a></li>--%>
+                        <li style="  margin-left: 0.375rem;"><a href="Terms_Conditions.aspx" style="color:Black;">Terms & Conditions   |</a></li>
+                        <li style="  margin-left: 0.375rem;"><a href="PrivacyPolicy.aspx" style="color:Black;">Privacy & Policy</a></li>
+                    </ul>
+                    </div>
+                  </div>
+                  <!--footer menu-->
+                  <!--footer bottom-->
+                  <div class="row" style="margin-left:5px;">
+                    <!--copyright-->
+                    <div class="small-6 columns">
+                         <p style="color:black">© 2016 Vatas Infotech Pvt.Ltd.</p>
+                    <br />
+                    </div>
+                    <!--copyright-->
+                    <!--social networking sites-->
+                    <div class="small-6 columns">
+                        <a href="https://www.facebook.com/echarteredaccountants" target="_blank"><img src="images/fb.png" alt="facebook" /></a>
+                        <a href="http://www.twitter.com/ECAccountant" target="_blank"><img src="images/twitter.png" alt="twitter" /></a>
+                        <a href="https://in.linkedin.com/pub/vatas-infotech/b9/264/a82" target="_blank"><img src="images/LINKEDIN1.PNG" alt="Linkedin" /></a>
+                        <a href="https://plus.google.com/u/0/b/108616341946641442746/108616341946641442746" target="_blank" ><img src="images/google.png" alt="google" /></a>
+                    </div>
+                    <!--social networking sites-->
+                  </div>
+                  <!--footer bottom-->
+              </div>
+          </div> 
+
+     </div>
+    
+    </form>
+</body>
+</html>

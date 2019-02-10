@@ -1,0 +1,527 @@
+USE [vatastax_dev]
+GO
+/****** Object:  StoredProcedure [dbo].[procShowCalculation]    Script Date: 16/03/2016 5:54:34 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROCEDURE [dbo].[procShowCalculation]
+(
+	@gioNameID Varchar(10),
+	@MainID Varchar(100),
+	@VType Decimal,
+	@AYear Varchar(100),
+	@ConstantID Decimal,
+	@gIndex Decimal,
+	@ITRType nvarchar(20),
+	@AssType int,
+	@expNext nvarchar(max)
+)
+As
+Begin
+print '@VType in beg'
+print @MainID
+	Declare @exp Varchar(max)
+	Declare @tmpTbl1 Table (Value1 Varchar(500))
+	Declare @tmpTbl2 Table (Indexing int,Value2 Varchar(500))
+	Declare @tmpTbl3 Table (Value3 Varchar(500))
+	Declare @tmpTbl4 Table (Value4 Decimal)
+	Declare @tmpTbl5 Table (Value5 Decimal)
+	Declare @tmpValue1 Varchar(500)
+	Declare @tmpValue2 Varchar(500)
+	Declare @tmpValue3 Varchar(500)
+	Declare @tmpMain Decimal
+	Declare @tmpResult1 Decimal  --Postive value
+	Declare @tmpResult2 Decimal  --Negative Value
+	Declare @Result Decimal
+	Declare @Result1 Varchar(100)
+	Declare @counter int
+	Declare @dispName Varchar(200)
+	Declare @xmltagid Decimal
+	Declare @xmltag Varchar(200)
+	Declare @ConstID Decimal
+	Declare @constID_SC Decimal	-- ConstantID for GridIndex = -2 (T4) case
+	Declare @ttemp nvarchar(max)
+	Declare @Is_IIF int
+	set @Is_IIF = 0
+	Set @counter = 0
+	set @constID_SC= 0
+	Declare @CID nvarchar(50)
+	select @CID = CID from dbMain.dbo.T00 where C1 = @ConstantID and C21 = @AYear and charindex(@ITRType,ReturnType)>0
+	Declare @letItGo int
+	Declare @subconstID int
+
+	Declare @tmpTbl1_copy Table (Value1 Varchar(500))
+	delete from @tmpTbl1_copy
+	delete from tmpTbl1_copy
+	set @letItGo = 0
+	set @subconstID = 0
+	--Select @exp = Cast(C29 As Varchar(500)) From dbMain.dbo.T00 Where C1=@ConstantID and c21=@AYear
+	if @gIndex != '-1' and @gIndex != '-2'
+	Begin
+		----print '@expNext'
+		----print @expNext
+		print '@CID'
+		print @CID
+		if @expNext = ''
+			Select @exp = Cast(C29 As Varchar(max)) From dbMain.dbo.T00 Where C1=@CID and c21=@AYear and charindex(@ITRType,ReturnType)>0
+		else
+			Set @exp = @expNext
+	End
+	else if @gIndex = '-1'
+		Select @exp = Cast(C9 As Varchar(max)) From dbMain.dbo.T30 where C2=@ConstantID
+	else if @gIndex = '-2'
+	begin
+		
+		if @expNext = '' or @expNext is null
+			Select @exp = Cast(C45 As Varchar(max)) From dbMain.dbo.T4 where C1=@ConstantID	-- constantID is subconstID here
+		else
+		begin
+			Set @exp = @expNext
+			----print 'else inside'
+			end
+			
+	end
+	set @expNext = ''
+	--Select SplitChar From SplitChar(@exp, ';')
+	print '@exp'
+	print @exp
+	if CharIndex(';',@exp)>0		
+		Insert Into @tmpTbl1 Select SplitChar From SplitChar(@exp, ';')
+	else
+		insert into @tmpTbl1 values(@exp)
+
+	insert into @tmpTbl1_copy select * from @tmpTbl1
+	--insert into tmpTbl1_copy select * from @tmpTbl1
+	insert into tmpTbl1_copy values(@exp)
+		--Select @ttemp = SplitChar from SplitChar(@exp,';')
+	 ----print '@exp'
+	 ----print @exp
+	 select * from @tmpTbl1
+	 Declare @sql_Query nvarchar(max)
+	 Declare @result_Qry nvarchar(max)
+	 Declare @strMain nvarchar(max)
+
+	Declare curTbl1 Cursor Local For
+		Select Value1 From @tmpTbl1
+	open curTbl1
+	Fetch Next From curTbl1 into @tmpValue1
+	While (@@Fetch_Status = 0 )
+	  Begin
+	  if exists(select * from @tmpTbl1_copy)
+		delete top(1) from @tmpTbl1_copy
+
+		--if LEFT
+		Delete @tmpTbl2
+		Set @counter = 0
+		
+		Insert into @tmpTbl2 Select 0,SplitChar From SplitChar(@tmpValue1, '(')
+		--select * from @tmpTbl2
+		Select @ttemp = SplitChar from SplitChar(@tmpValue1,'(')
+		Update @tmpTbl2 
+		Set Indexing= @counter, Value2 = Replace(Value2,')',''), @counter=@counter+1
+		Select @tmpValue3=value2 From @tmpTbl2 Where indexing=2
+		--select value2 as val_tbl2 from @tmpTbl2
+		----print '@tmpValue1'
+		----print @tmpValue1
+		--if condition here--
+		
+		if Left(@tmpValue1,1)!= '=' and Left(@tmpValue1,1)!= '^' and Left(@tmpValue1,1)!= '#' and Left(@tmpValue1,3)!= 'IIF' and Left(@tmpValue1,3)!= 'SUM'
+		Begin
+		----print 'inside if'
+		----print @tmpValue1
+			Delete @tmpTbl3
+			Insert into @tmpTbl3 Select SplitChar From SplitChar(@tmpValue3, ',')
+			--select * from @tmpTbl3
+			
+			--Select * from @tmpTbl3
+			Delete @tmpTbl4
+			Insert into @tmpTbl4 Select Cast(Value3 As Decimal) from @tmpTbl3 where Cast(Value3 as Decimal)>=0	
+			--select * from @tmpTbl4
+		
+			Delete @tmpTbl5
+			Insert into @tmpTbl5 Select Cast(ABS(Value3) As Decimal) from @tmpTbl3 where Cast(Value3 as Decimal)<0
+			--select * from @tmpTbl5
+		
+			Select @tmpResult1=Sum(Cast(Col3 As Decimal)) From StoreTrans Where NameID=@gioNameID And MainID=@MainID And  ConstantID In (Select Cast(Value4 as Decimal) From @tmpTbl4) and SubConstID = 0
+			Select @tmpResult2=Sum(Cast(Col3 As Decimal)) From StoreTrans Where NameID=@gioNameID And MainID=@MainID And  ConstantID In (Select Cast(Value5 as Decimal) From @tmpTbl5) and SubConstID = 0
+		
+		if @tmpResult2 is null
+			set @tmpResult2 = 0
+		--Select Cast(Value2 as float) as '@tmpTbl2 as col tbale' From @tmpTbl2 Where Indexing=1
+			Set @Result = @tmpResult1 - IsNull(@tmpResult2,0)
+			--print @Result
+			--select Value2 as 'TmpMain' from @tmpTbl2 Where Indexing=1;
+			--print '@tmpMain - 0'
+			Select @tmpMain=Cast(Value2 as float) From @tmpTbl2 Where Indexing=1
+			--print '@tmpMain'
+			--print @tmpMain
+			set @letItGo = 1
+		End
+		else
+		Begin
+		--print 'inelse could be #'
+			Select @tmpValue3=value2 From @tmpTbl2 Where indexing=2			
+			Declare @eqn nvarchar(max)
+			--Declare @result_amt decimal
+			
+			set @eqn = '(' + cast(@tmpValue3 as nvarchar(max)) + ')'
+			if Left(@tmpValue1,1)= '='
+			begin
+			--print ' in = before proc_CalculateEquations2'
+				--exec proc_CalculateEquations2 @gioNameID, @MainID, @AYear, @ITRType, @eqn, '=', @strMain = @strMain Output
+				--Select @tmpMain=Cast(replace(Value2,'=','') as Decimal) From @tmpTbl2 Where Indexing=1
+				--print '= resulet'
+				--print @tmpValue1
+				print '@strMain - bodmas'
+				print @MainID
+				exec proc_BODMAS @tmpValue1, @strMain, @gioNameID, @MainID, @AYear, 0, @ITRType
+			end
+			else if Left(@tmpValue1,1)= '^'
+			begin
+				exec proc_CalculateEquations @gioNameID, @MainID, @AYear, @ITRType, @eqn, '^', @result_amt = @Result Output
+				Select @tmpMain=Cast(replace(Value2,'^','') as Decimal) From @tmpTbl2 Where Indexing=1
+			end
+			else if Left(@tmpValue1,1)= '#'
+			begin
+				if Left(@tmpValue1,4)= '#IIF'
+					exec proc_CalculationMain @tmpValue1, @gioNameID, @MainID, @strMain = @strMain output
+				--else
+				--	print 'not IIF #'
+				exec proc_CalculateEquations2 @gioNameID, @MainID, @AYear, @ITRType, @eqn, '#', @strMain = @strMain Output
+				Set @sql_Query = 'select @Result = cast(' + @strMain + ' as nvarchar(max))'
+				EXEC sp_executesql @sql_Query, N'@Result nvarchar(max) OUTPUT',@Result OUTPUT;
+				--print '@strMain in #'
+				--print @eqn
+				Declare @tmpCS nvarchar(500)
+				Select @tmpCS = replace(Value2,'#','') From @tmpTbl2 Where Indexing=1
+				Declare @tmpTbl_CS Table(id int identity, val nvarchar(500))
+				Declare @cntCS int
+				set @cntCS = 0
+				
+				insert into @tmpTbl_CS select SplitChar from SplitChar(@tmpCS,'_')
+				select @cntCS = count(*) from @tmpTbl_CS
+				--print '@cntCS'
+				--print @cntCS
+				if @cntCS > 1
+				Begin
+				select id,val as '@tmpTbl_CS val here' from @tmpTbl_CS
+					set @constID_SC = Cast(replace((select val from @tmpTbl_CS where id = 1),'#','') as Decimal)
+					Select @tmpMain=Cast(replace((select val from @tmpTbl_CS where id = 2),'#','') as Decimal)-- From @tmpTbl2 Where Indexing=1
+				End
+				else
+					Select @tmpMain=Cast(replace(Value2,'#','') as Decimal) From @tmpTbl2 Where Indexing=1				
+				delete from @tmpTbl_CS
+			end
+			else if Left(@tmpValue1,3)= 'SUM'
+			begin
+			set @Result = 0
+				Declare @tmpSum nvarchar(500)
+				set @tmpSum = REPLACE(REPLACE(REPLACE(@tmpValue1,'SUM(',''),')',''),'''','')
+				
+				Declare @tmpSumVal_Tbl Table (id int identity, Value1 Varchar(500))
+				insert into @tmpSumVal_Tbl select SplitChar from SplitChar(@tmpSum,',')
+				select id,value1 as '@tmpSumVal_Tbl' from @tmpSumVal_Tbl
+				
+				Declare @val_tbl nvarchar(500)				
+				select @val_tbl = value1 from @tmpSumVal_Tbl where id = (select top(1) id from @tmpSumVal_Tbl order by id)
+				
+				if CHARINDEX('_',@val_tbl)>0
+				begin
+					Declare @another_tbl Table(id int identity, val nvarchar(500))
+					insert into @another_tbl select SplitChar from SplitChar(@val_tbl,'_')
+					select @tmpMain = val from @another_tbl where id = (select top(1) id from @another_tbl order by id)
+					select @subconstID = val from @another_tbl where id = (select top(1) id from @another_tbl order by id desc)
+					delete from @another_tbl
+				end
+				else
+				begin
+					select @tmpMain = value1 from @tmpSumVal_Tbl where id = (select top(1) id from @tmpSumVal_Tbl order by id)
+				end
+				
+				Declare @curID int
+				Declare @curVal nvarchar(500)
+				Declare @sumEqn nvarchar(500)
+				
+				set @sumEqn = ''
+				set @Result = 0
+				
+				declare curSum cursor Local for
+				select id,value1 from @tmpSumVal_Tbl where id>(select top(1) id from @tmpSumVal_Tbl order by id)
+				--select id,value1 from @tmpSumVal_Tbl where abs(id%2) != 1 and id!=0
+				open curSum
+				fetch next from curSum into @curID,@curVal
+				while(@@FETCH_STATUS = 0)
+				Begin
+				
+					Declare @tmpSumVal_Tbl_Tmp Table (id int identity, Value1 Varchar(500))
+					Declare @tmp_cur_val nvarchar(500)
+					Declare @Sum_constID int=0
+					Declare @Sum_SubconstID int					
+					insert into @tmpSumVal_Tbl_Tmp select SplitChar from SplitChar(@curVal,'_')
+					
+					select @Sum_constID = value1 from @tmpSumVal_Tbl_Tmp where id=(select top(1) id from @tmpSumVal_Tbl_Tmp order by id)
+					
+					set @Sum_SubconstID = (select LTRIM(RTRIM(value1)) from @tmpSumVal_Tbl_Tmp where id=(select top(1) LTRIM(RTRIM(id)) from @tmpSumVal_Tbl_Tmp order by id desc))
+					
+					select @Result = @Result + sum(cast(col3 as int)) from StoreTrans where ConstantID = @Sum_constID and SubConstID = @Sum_SubconstID and NameID = @gioNameID and AY = @AYear-- and MainID = @MainID
+
+					fetch next from curSum into @curID,@curVal	
+				End
+				close curSum
+				deallocate curSum
+
+				--drop table @tmpSumVal_Tbl
+				delete from @tmpSumVal_Tbl
+				delete from @tmpSumVal_Tbl_Tmp
+				--print '@Sum_constID'
+				--print @Sum_constID
+				--print @Sum_SubconstID
+				--print @Result
+				--Declare @tmpSumVal_Tbl Table (id int identity, Value1 Varchar(500))
+				--insert into @tmpSumVal_Tbl select SplitChar from SplitChar(LTRIM(RTRIM(REPLACE(REPLACE(REPLACE(@tmpValue1,'SUM',''),'(',''),')',''))),',')
+				--delete from @tmpSumVal_Tbl where Value1 = ''
+				--select value1 as '@tmpSumVal_Tbl' from @tmpSumVal_Tbl
+				--select @tmpMain = Value1 from @tmpSumVal_Tbl where id=1
+				--select @Result = Col3 from StoreTrans where NameID = @gioNameID and AY = @AYear and ConstantID = (select Value1 from @tmpSumVal_Tbl where id=2)
+				----insert into @tmpSumVal_Tbl select SplitChar from SplitChar(REPLACE(@tmpValue1,'SUM',''),',')
+				----update StoreTrans set Col3 = '123' where ConstantID = 
+				--print 'sum function section'
+				--print @Result
+				--print @tmpMain
+			end
+			else if @tmpValue1 is null
+			begin
+			print 'do nothing'
+			end
+			else
+			begin	-- This condition is to execute IIF equation
+				
+				--Following Procedure is to replace the constantIDs into corresponding Col3								
+				-- CASE of IIF--
+				
+				--exec proc_CalculationMain @tmpValue1, @gioNameID, @MainID, @strMain = @strMain output
+				print 'main id before proc_CalculateEquations2'
+				print @MainID
+
+				if LEFT(@tmpValue1,4) = 'DIIF'
+					Begin
+						set @tmpValue1 = (REPLACE(@tmpValue1,'DIIF','IIF'))
+						exec Proc_IIF_Date @tmpValue1, @gioNameID, @AYear, @strMain = @strMain Output					
+					End
+				else
+					exec proc_CalculateEquations2 @gioNameID, @MainID, @AYear, @ITRType, @tmpValue1, 'IIF', @strMain = @strMain Output
+				
+				print '@strMain'
+				print @strMain
+				if RIGHT(@strMain,2) = '))'
+					set @strMain = REPLACE(@strMain, ''' ))',''' )')
+				Set @sql_Query = 'select @result_Qry = cast(' + @strMain + ' as nvarchar(max))'
+				EXEC sp_executesql @sql_Query, N'@result_Qry nvarchar(max) OUTPUT',@result_Qry OUTPUT;
+				
+				if LEFT(@result_Qry,3) = 'IIF'
+				begin
+					
+					--set @result_Qry = @result_Qry + ';' + @result_Qry
+					declare @qry_tmp nvarchar(max)
+					declare curQry cursor local for
+					select Value1 from @tmpTbl1_copy
+					open curQry
+					fetch next from curQry into @qry_tmp
+					while (@@FETCH_STATUS = 0)
+					Begin
+						set @result_Qry = @result_Qry + ';' + @qry_tmp
+						fetch next from curQry into @qry_tmp
+					End
+					close curQry
+					deallocate curQry
+					
+					exec procShowCalculation @gioNameID, @MainID, @VType, @AYear, @ConstantID, @gIndex, @ITRType, @AssType, @result_Qry
+
+					set @Is_IIF = 1
+					--exec proc_IIF @gioNameID, @MainID, @VType, @AYear, @ConstID, 14044, '4', 0, @result_Qry
+				end
+				else
+				begin
+					print 'going in bodmas'
+					print @MainID
+					exec proc_BODMAS @result_Qry, @strMain, @gioNameID, @MainID, @AYear, 0, @ITRType
+				end
+
+
+				--exec proc_ConstantIDAssignment @result_Qry, @strMain, @gioNameID,@AYear
+
+			end
+		End
+		--condition ends here
+		
+		--For T4 on change Events
+		----print 'after out'
+		Declare @IsRecExists int
+		set @IsRecExists = 0
+
+		if @constID_SC != 0
+			set @IsRecExists = 1
+
+
+		if @gIndex = '-2'
+		Begin
+		if @Is_IIF = 0
+		Begin
+		Declare @VType1 nvarchar(50)
+		Declare @grdIndx nvarchar(50)
+		Declare @Indx nvarchar(50)
+		Declare @grow_No nvarchar(50)
+		Declare @IsEnterFDetail nvarchar(50)
+		Declare @RecdAmt nvarchar(50)
+		Declare @scid nvarchar(50)
+		print '@tmpMain inside -2'
+
+		print @tmpMain
+			If Exists (Select * From StoreTrans Where SubConstID=@tmpMain and NameID=@gioNameID And MainID=@MainID)
+			Begin
+				Select @ConstID=C1, @dispName=Cast(C4 As Varchar(200)), @xmltagid=C41, @xmltag=Cast(C39 As Varchar(200)) From dbMain.dbo.T4 Where C1=@tmpMain And C40=@AYear-- and charindex(@ITRType,ReturnType)>0			
+				Set @Result = IsNull(@Result,0)
+				
+				if @constID_SC = 0 or @constID_SC is null
+					Update StoreTrans Set Col3 = Cast(@Result As Varchar(100)) Where NameID=@gioNameID And MainID=@MainID And SubConstID=@ConstID
+				else
+				Begin
+					If Exists (Select * From StoreTrans Where ConstantID = @constID_SC and SubConstID=@tmpMain and NameID=@gioNameID And MainID=@MainID)
+						Update StoreTrans Set Col3 = Cast(@Result As Varchar(100)) Where NameID=@gioNameID And MainID=@MainID And SubConstID=@tmpMain and ConstantID = @constID_SC
+					else
+					Begin
+				
+						Select @ConstID=C1, @grdIndx = C6, @Indx = C5, @grow_No = C7, @IsEnterFDetail = 1, @RecdAmt =0,  @dispName=Cast(C4 As Varchar(200)), @xmltagid=C41, @xmltag=Cast(C39 As Varchar(200)) From dbMain.dbo.T00 Where C1=@constID_SC And CharIndex(Cast(@AssType As Varchar(100)), C31) > 0 And C21=@AYear and charindex(@ITRType,ReturnType)>0
+						Select @scid=C1 From dbMain.dbo.T4 Where C1=@tmpMain And C40=@AYear-- and charindex(@ITRType,ReturnType)>0	
+						Set @Result1 = Cast(@Result As Varchar(100))
+						--Select @Result1			
+						select @VType1 = Vtype from dbMain.dbo.ScreenSettings where GridIndex = (select C6 from dbMain.dbo.T00 Where C1=@constID_SC And CharIndex(Cast(@AssType As Varchar(100)), C31) > 0 And C21=@AYear and charindex(@ITRType,ReturnType)>0)
+						Set @Result1 = IsNull(@Result1,0)
+						--select @ConstID = C2 from dbmain.dbo.T4 where C1= @constID_SC
+				
+						exec procInsertStoreTransMainNEW @gioNameID,@VType1, @AYear, @MainID, @Result1, @ConstID, @scid, @grdIndx, @Indx, @grow_No, @IsEnterFDetail, @RecdAmt
+					End
+
+				End
+			End
+			Else
+			Begin
+				-- Finding Initial Values for the new ConstantID 
+				
+				if @constID_SC != 0
+				Begin
+					set @ConstantID = @constID_SC
+					set @scid=0
+				End
+				else
+					Select @scid=C1 From dbMain.dbo.T4 Where C1=@tmpMain And C40=@AYear-- and charindex(@ITRType,ReturnType)>0			
+
+				Select @ConstID=C1, @grdIndx = C6, @Indx = C5, @grow_No = C7, @IsEnterFDetail = 1, @RecdAmt =0,  @dispName=Cast(C4 As Varchar(200)), @xmltagid=C41, @xmltag=Cast(C39 As Varchar(200)) From dbMain.dbo.T00 Where C1=@ConstantID And CharIndex(Cast(@AssType As Varchar(100)), C31) > 0 And C21=@AYear and charindex(@ITRType,ReturnType)>0
+				
+
+				Set @Result1 = Cast(@Result As Varchar(100))
+			
+				select @VType1 = Vtype from dbMain.dbo.ScreenSettings where GridIndex = (select C6 from dbMain.dbo.T00 Where C1=@ConstantID And CharIndex(Cast(@AssType As Varchar(100)), C31) > 0 And C21=@AYear and charindex(@ITRType,ReturnType)>0)
+
+				Set @Result1 = IsNull(@Result1,0)
+				--if exists(select * from storetrans where NameID=@gioNameID and AY=@AYear and ConstantID=@ConstID and SubConstID = 0)
+				--	Exec procUpdateStoreTransDetailsWithAY @gioNameID,	@VType, @MainID, 	@ConstID, 0, @Result1, @AYear
+				--else 
+				select @ConstID = C2 from dbmain.dbo.T4 where C1= @ConstantID
+				
+				set @scid = @ConstantID
+			
+				if not exists(select * from storetrans where NameID = @gioNameID and ConstantID = @ConstID and SubConstID=@scid)
+					exec procInsertStoreTransMainNEW @gioNameID,@VType1, @AYear, @MainID, @Result1, @ConstID, @scid, @grdIndx, @Indx, @grow_No, @IsEnterFDetail, @RecdAmt
+				--Exec procInsertStoreTransAll @gioNameID, @VType1, @AYear, @MainID, @Result1, @ConstID, 0, @xmltag, @xmltagid,0, @dispName, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, '', 0, 0, 0
+			End
+			End
+		End
+		else
+		--For T4 on change Events Ends
+		Begin
+		Declare @VType2 decimal
+			Declare @MainID2 nvarchar(100)
+		if @gIndex = '-1' or Left(@tmpValue1,3)= 'SUM' or @letItGo = 1
+		Begin
+			Declare @IsMaster nvarchar(50)
+			
+			if @ConstID is null or Left(@tmpValue1,3)= 'SUM'
+				set @ConstID = @tmpMain
+				print @ConstID
+			select @IsMaster = IsMaster, @VType2 = VType from dbMain.dbo.Screensettings where GridIndex= (select top(1) C6 from dbMain.dbo.T00 where c1 = @ConstID and ReturnType=@ITRType)
+			print 'inside sum ::'
+			print @IsMaster
+			print @VType2
+			if @IsMaster = '1' or @IsMaster = '2' or @IsMaster is not null or @VType2 = 40 or @VType2 = 42 or @VType2 =15037
+			begin
+				set @MainID2 = @MainID
+			end
+			else
+			begin
+				set @MainID2 = @gioNameID
+			end
+				print @MainID2
+			If Exists (Select * From StoreTrans Where ConstantID=@tmpMain and NameID=@gioNameID And MainID=@MainID2 and SubConstID = @subconstID)
+		  Begin
+			Select @ConstID=C1, @dispName=Cast(C4 As Varchar(200)), @xmltagid=C41, @xmltag=Cast(C39 As Varchar(200)) From dbMain.dbo.T00 Where C1=@tmpMain And CharIndex(Cast(@AssType As Varchar(100)), C31) > 0 And C21=@AYear and charindex(@ITRType,ReturnType)>0
+			
+			Set @Result = IsNull(@Result,0)
+			
+			Update StoreTrans 
+				Set Col3 = Cast(@Result As Varchar(100))
+				Where NameID=@gioNameID And MainID=@MainID2 And ConstantID=@ConstID and SubConstID = @subconstID-- And GRowNo=@tmpMain
+		  End
+		Else
+		  Begin
+		  ----print 'T4 else'
+			-- Finding Initial Values for the new ConstantID 
+			Declare @VType11 nvarchar(50)
+			Declare @grdIndx11 nvarchar(50)
+			Declare @Indx11 nvarchar(50)
+			Declare @grow_No11 nvarchar(50)
+			Declare @IsEnterFDetail11 nvarchar(50)
+			Declare @RecdAmt11 nvarchar(50)
+
+			Select @ConstID=C1, @grdIndx11 = C6, @Indx11 = C5, @grow_No11 = C7, @IsEnterFDetail11 = 1, @RecdAmt11 =0,  @dispName=Cast(C4 As Varchar(200)), @xmltagid=C41, @xmltag=Cast(C39 As Varchar(200)) From dbMain.dbo.T00 Where C1=@tmpMain And CharIndex(Cast(@AssType As Varchar(100)), C31) > 0 And C21=@AYear and charindex(@ITRType,ReturnType)>0
+
+			Set @Result1 = Cast(@Result As Varchar(100))			
+			select @VType11 = Vtype from dbMain.dbo.ScreenSettings where GridIndex = (select C6 from dbMain.dbo.T00 Where C1=@tmpMain And CharIndex(Cast(@AssType As Varchar(100)), C31) > 0 And C21=@AYear and charindex(@ITRType,ReturnType)>0)
+			
+			Set @Result1 = IsNull(@Result1,0)
+
+			if @IsMaster = '1' or @IsMaster = '2' or @IsMaster is not null or @VType11 = 40 or @VType11 = 42
+			begin
+				set @MainID2 = @MainID
+			end
+			else
+			begin
+				set @MainID2 = @gioNameID
+			end
+			
+			--if exists(select * from storetrans where NameID=@gioNameID and AY=@AYear and ConstantID=@ConstID and SubConstID = 0)
+			--	Exec procUpdateStoreTransDetailsWithAY @gioNameID,	@VType, @MainID, 	@ConstID, 0, @Result1, @AYear
+			--else 
+			--if @IsMaster = '1' or @IsMaster = '2'
+			--	exec procInsertStoreTransMainNEW @gioNameID,@VType11, @AYear, @MainID, @Result1, @ConstID, 0, @grdIndx11, @Indx11, @grow_No11, @IsEnterFDetail11, @RecdAmt11
+			--else
+				exec procInsertStoreTransMainNEW @gioNameID,@VType11, @AYear, @MainID2, @Result1, @ConstID, @subconstID, @grdIndx11, @Indx11, @grow_No11, @IsEnterFDetail11, @RecdAmt11
+			 ----print 'T4 else 2'
+			--Exec procInsertStoreTransAll @gioNameID, @VType11, @AYear, @MainID, @Result1, @ConstID, 0, @xmltag, @xmltagid,0, @dispName, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, '', 0, 0, 0
+		  End
+		End
+		End
+		
+		Fetch Next From curTbl1 into @tmpValue1
+End
+Close curtbl1
+Deallocate curtbl1
+	if exists(select * from @tmpTbl1_copy)
+		delete from @tmpTbl1_copy
+	if exists(select * from @tmpTbl1)
+		delete from @tmpTbl1
+		set @expNext = ''
+		set @exp =''
+End
+

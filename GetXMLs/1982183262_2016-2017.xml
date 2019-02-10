@@ -1,0 +1,57 @@
+<root>
+  <ITRETURN:ITR xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ITRForm="http://incometaxindiaefiling.gov.in/master" xmlns:ITR1FORM="http://incometaxindiaefiling.gov.in/ITR1" xmlns:ITRETURN="http://incometaxindiaefiling.gov.in/main">
+    <ITR1FORM:ITR1>
+      <ITRForm:CreationInfo>
+        <ITRForm:SWVersionNo>1</ITRForm:SWVersionNo>
+        <ITRForm:SWCreatedBy>SW10000143</ITRForm:SWCreatedBy>
+        <ITRForm:XMLCreatedBy>SW10000143</ITRForm:XMLCreatedBy>
+        <ITRForm:XMLCreationDate>2016-06-02</ITRForm:XMLCreationDate>
+        <ITRForm:IntermediaryCity>Jalandhar</ITRForm:IntermediaryCity>
+        <ITRForm:Digest>-</ITRForm:Digest>
+      </ITRForm:CreationInfo>
+      <ITRForm:Form_ITR1>
+        <ITRForm:FormName>ITR-1</ITRForm:FormName>
+        <ITRForm:Description>For Indls having Income from Salary, Pension, family pension and Interest</ITRForm:Description>
+        <ITRForm:AssessmentYear>2016</ITRForm:AssessmentYear>
+        <ITRForm:SchemaVer>Ver1.0</ITRForm:SchemaVer>
+        <ITRForm:FormVer>Ver1.0</ITRForm:FormVer>
+      </ITRForm:Form_ITR1>
+      <ITRForm:PersonalInfo>
+        <ITRForm:AssesseeName>
+          <ITRForm:FirstName>asdadsadssada</ITRForm:FirstName>
+          <ITRForm:SurNameOrOrgName>adad</ITRForm:SurNameOrOrgName>
+        </ITRForm:AssesseeName>
+        <ITRForm:PAN>DFSPR0394G</ITRForm:PAN>
+        <ITRForm:Address>
+          <ITRForm:ResidenceNo>232</ITRForm:ResidenceNo>
+          <ITRForm:LocalityOrArea>asdad</ITRForm:LocalityOrArea>
+          <ITRForm:CityOrTownOrDistrict>asas</ITRForm:CityOrTownOrDistrict>
+          <ITRForm:StateCode>17</ITRForm:StateCode>
+          <ITRForm:CountryCode>91</ITRForm:CountryCode>
+          <ITRForm:PinCode>144400</ITRForm:PinCode>
+          <ITRForm:MobileNo>2342342342</ITRForm:MobileNo>
+          <ITRForm:EmailAddress>asasas@asdsa.com</ITRForm:EmailAddress>
+        </ITRForm:Address>
+        <ITRForm:DOB>1988-01-01</ITRForm:DOB>
+        <ITRForm:Gender>M</ITRForm:Gender>
+        <ITRForm:Status>I</ITRForm:Status>
+      </ITRForm:PersonalInfo>
+      <ITRForm:FilingStatus>
+        <ITRForm:DesigOfficerWardorCircle>weewrewr</ITRForm:DesigOfficerWardorCircle>
+        <ITRForm:ResidentialStatus>RES</ITRForm:ResidentialStatus>
+      </ITRForm:FilingStatus>
+      <ITRForm:Refund>
+        <ITRForm:RefundDue>0</ITRForm:RefundDue>
+        <ITRForm:BankAccountDtls>
+          <ITRForm:PriBankDetails>
+            <ITRForm:IFSCCode>SBIN0000660</ITRForm:IFSCCode>
+            <ITRForm:BankName>STATE BANK OF INDIA</ITRForm:BankName>
+            <ITRForm:BankAccountNo>4747447447</ITRForm:BankAccountNo>
+            <ITRForm:BankAccountType>SAV</ITRForm:BankAccountType>
+          </ITRForm:PriBankDetails>
+          <ITRForm:BankAccounts>1</ITRForm:BankAccounts>
+        </ITRForm:BankAccountDtls>
+      </ITRForm:Refund>
+    </ITR1FORM:ITR1>
+  </ITRETURN:ITR>
+</root>

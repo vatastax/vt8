@@ -1,0 +1,415 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="testing.master.cs" Inherits="testing" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" class="no-js" lang="en">
+<head runat="server">
+    <title></title>
+    <meta charset="utf-8"  name="viewport" content="width=device-width, initial-scale=1.0" />
+    <%--<link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />--%>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <%--<link href="foundation-5.5.0/css/foundation.css" rel="stylesheet" type="text/css" />--%>
+    <script src="foundation-5.5.0/js/vendor/jquery.js" type="text/javascript"></script>
+    <script src="foundation-5.5.0/js/foundation/foundation.js" type="text/javascript"></script>
+     <script src="sliderengine/jquery.js" type="text/javascript"></script>
+    <%--<link href="StaticStylesheet/StyleSheet.css" rel="stylesheet" type="text/css" />--%>
+    <script src="js/rmm-js/responsivemobilemenu.js" type="text/javascript"></script>
+
+
+
+     <!--menu js files-->
+    <script src="js/modernizr.custom.js" type="text/javascript"></script>
+    <script src="js/classie.js" type="text/javascript"></script>
+
+<!--for mobile menu-->
+    <!--master javascript file-->
+     <script src="js/MasterJScript.js" type="text/javascript"></script>
+    <!--master javascript file-->
+    <!--master style sheet-->
+    <link href="style_folder/SidePagesStyleSheet.css" rel="stylesheet" type="text/css" />
+    <!--master style sheet-->
+<!--for mobile menu-->
+
+
+     <!--master style sheet-->
+    <link href="style_folder/StyleSheet.css" rel="Stylesheet"" type="text/css" />
+    <!--master style sheet-->
+   
+
+<%--
+<script  type="text/javascript">
+    $(document).ready(function () {
+        $('#Login').hover(function () {
+            $('.submenu1').css(
+            "display", "block"
+            )
+
+
+
+
+        });
+
+
+    });
+</script>
+<script  type="text/javascript">
+    $(document).ready(function () {
+        $('.submenu1').hover(function () {
+            $('.submenu1').css(
+            "display", "block"
+            )
+
+            },
+            function() {
+                $('.submenu1').css(
+            "display", "none"
+            )
+            }
+
+
+        );
+
+
+    });
+</script>--%>
+<%--<style type="text/css">
+    .submenu1
+    {
+         width:350px;
+    height:auto;
+    border:1px solid gray;
+    margin-top:0px;
+  
+     border-radius:10px;
+    position:absolute;
+    margin-left:850px;
+    /*background-color:#7fcfb6;*/
+    background-color:gray;
+    z-index:20001;
+    opacity:0.90;
+    padding:10px;
+    
+  
+    }
+</style>--%>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <%-- <div class="row" style="margin-top:10px">
+    <div class="large-8 columns">
+    </div>
+    <div class="large-4 columns text-right">
+        <img src="images/social.jpg" style="height:20px" />
+    </div>
+    <div class="large-2 columns">
+    </div>
+    </div>--%>
+    <br />
+    <div class="row">
+     <div class="small-12 columns" >
+         
+            <a href="Default.aspx"><img src="images/logo2.JPG" style="width:180px" /></a>
+      
+      
+        </div>
+    </div>
+ <%-- <div class="row show-for-small-only   ">
+        
+        <div class="small-12 columns ">
+        <div class="rmm" data-menu-style = "minimal">
+          <ul  >
+          <li><a href="Default.aspx" class="button">HOME</a></li>
+          <li><a href="Services.aspx" class="button">SERVICES</a></li>
+          <li><a href="AboutUs.aspx" class="button">ABOUT US</a></li>
+          <li><a href="ContactUsNew.aspx" class="button">CONTACT US</a></li>
+           <li><a href="#" class="button">LOGIN</a></li>
+          </ul>
+          </div>
+         </div>
+    
+       </div>--%>
+
+       <!--menu for small screen-->
+        <div class="large-3 columns " >
+                <!--left-menu(quick links)--> 
+                <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left " id="cbp-spmenu-s1">
+                   <ul style="list-style-type:none">
+			        <h3>Quick Links</h3>
+			        <li ><a href="AboutUs.aspx" >About Us</a></li>
+                    <li ><a href="ContactUsNew.aspx">Contact Us</a></li>
+                    <li><a href="News.aspx" >Latest News</a></li>
+                    <li ><a href="SiteMap.aspx" >Site Map</a></li>
+                    <li><a href="Terms_Conditions.aspx" >Terms & Conditions</a></li>
+                    <li><a href="#" >Feedback & Support</a></li>
+                    <li ><a href="PrivicyPolicy.aspx" >Privicy Policy</a></li>
+                   </ul>
+		        </nav>
+                <!--left-menu(quick links)-->  
+
+                 <!--top-menu(main menu)--> 
+                 <nav class="cbp-spmenu cbp-spmenu-horizontal cbp-spmenu-top" id="cbp-spmenu-s3">
+                    <ul style="list-style-type:none;margin-left: 0.5rem;">
+                        <img src="images/logo2.jpg" style="width:150px; height:auto;margin:5px 0 2px 5px;"/>
+			            <li ><a href="default.aspx " >Home</a></li>
+                        <li ><a href="Services.aspx">Services</a></li>
+                        <li style="padding-left:5px"><a href="AboutUs.aspx">About</a></li>
+                        <li><a href="ContactUsNew.aspx" >Contact</a></li>
+                        <li ><a href="#" >Login</a></li>
+                   </ul>
+                 </nav>
+
+                  <!--placement of menu images-->
+                  <div class="row text-right">
+               		    <!-- Class "cbp-spmenu-open" gets applied to menu -->
+					    <%--<button  id="showLeft">Menu</button>	--%>
+                    
+                    <img src="images/menu.PNG" alt="menu"   id="showTop"/>
+                   
+                         <%--<img src="images/mobilemenu.PNG" id="showLeft" />--%>
+                        <%-- <button id="showLeft" style="background-image:url('images/mainmenumob.PNG')"></button>
+					     <button id="showTop" style="background-image:url('images/mainmenumob.PNG')"></button>--%>
+			      </div>
+
+
+                 <!--java-script for menus-->
+                 <script type="text/javascript">
+                     var menuTop = document.getElementById('cbp-spmenu-s3'),
+                        showTop = document.getElementById('showTop'),
+                        body = document.body;
+
+
+
+                     showTop.onclick = function () {
+                         classie.toggle(this, 'active');
+                         classie.toggle(menuTop, 'cbp-spmenu-open');
+                         disableOther('showTop');
+                     };
+
+                     function disableOther(img) {
+                         if (img != 'showLeft') {
+                             classie.toggle(showLeft, 'disabled');
+                         }
+
+                         if (img != 'showTop') {
+                             classie.toggle(showTop, 'disabled');
+                         }
+                     }
+		        </script>
+                <!--java-script for menus-->
+              <!--top-menu(main menu)--> 
+            </div>
+       <!--menu for small screen-->
+        
+     <div class="row " >
+         <div class="large-4 columns" >
+         
+            
+             <a href="Default.aspx"><img src="images/logo2.JPG" style="width:240px; height:auto" /></a>
+      
+        </div>
+        <div class="large-8 columns ">
+          <ul class="right button-group">
+          <li><a href="default.aspx" class="button">HOME</a></li>
+          <li><a href="Services.aspx" class="button">SERVICES</a></li>
+          <li><a href="AboutUs.aspx" class="button">ABOUT US</a></li>
+          <li><a href="ContactUsNew.aspx" class="button">CONTACT US</a></li>
+           <li id="li_Login" runat="server" class="has-sub"><a href="#" class="button" >LOGIN</a>
+           <ul>
+           <li><div style=" width:280px;height:auto;    border-radius:10px; margin-left:-60px; z-index:30001; background-color:#d3d3d3;opacity:0.85; overflow:hidden; ">
+           <table style="border:none;background-color:gray;margin-top:20px;margin-bottom:0px; padding-bottom:0px  ">
+           <tr style="background-color:#d3d3d3;">
+           <td><span style="font-weight:bold">Username</span></td>
+           <td>   <asp:TextBox ID="txtUser1" runat="server"  required></asp:TextBox></td>
+           </tr>
+            <tr style="background-color:#d3d3d3;">
+           <td><span style="font-weight:bold">Password</span></td>
+           <td>    <asp:TextBox ID="txtPassword1" runat="server"  TextMode="Password" required></asp:TextBox></td>
+           </tr>
+            <tr style="background-color:#d3d3d3;">
+           <td>     <span style="font-weight:bold">Security Code</span></td>
+           <td>    <asp:Image ID="Image1" runat="server" ImageUrl="Presentation/CImage.aspx" Width="140px" Height="30px"/>
+            <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="images/refresh.png" /></td>
+           </tr>
+           <tr style="background-color:#d3d3d3;">
+           <td></td>
+           <td> <asp:TextBox ID="txtCaptcha" runat="server" ></asp:TextBox></td>
+           </tr>
+            <tr style="background-color:#d3d3d3; padding:0; margin:0"><td></td><td><asp:Button ID="Button1" runat="server" Text="Login" Font-Bold="true" class="button" Height="30px" style="padding-top:0px; padding-bottom:0px; padding-left:5px; padding-right:5px" ></asp:Button></td></tr>
+           <tr style="background-color:#d3d3d3; padding:0;  margin-top:-70px">
+           <td><asp:LinkButton ID="lnkSignup" runat="server" Text="Signup" ForeColor="#008cba" Font-Bold="true" ></asp:LinkButton></td>
+         
+         <td><asp:LinkButton ID="lnkPwd" runat="server" Text="Forget Password???" ForeColor="#008cba" Font-Bold="true" ></asp:LinkButton></td>
+           </tr>
+       
+           <tr style="background-color:#d3d3d3; padding:0">
+           <td> <asp:Label ID="Label1" runat="server"></asp:Label></td><td></td>
+           </tr>
+          
+           <%--<tr style="background-color:#d3d3d3;">
+           <td></td><td></td>
+           </tr>--%>
+           </table>
+       <%--      <div class="row" style="margin-bottom:10px; margin-top:10px"">
+    <div class="large-4 columns">
+    Username
+    </div>
+    <div class="large-8 columns">
+        <asp:TextBox ID="TextBox1" runat="server"  required></asp:TextBox>
+    <%--Password--%>
+    </div>
+    <%--<div class="large-3 columns">
+    </div>
+      <div class="large-3 columns">
+    </div>--%>
+   <%-- </div>
+ 
+   <div class="row" style="margin-bottom:10px">
+    <div class="large-4 columns">
+        Password
+    </div>
+    <div class="large-8 columns">
+       <asp:TextBox ID="TextBox2" runat="server"  TextMode="Password" required></asp:TextBox>
+    </div>
+    </div>
+       
+     <div class="row" >
+       <div class="large-4 columns">
+           Security Code:
+        </div>                        
+        <div class="large-8 columns">
+             <asp:Image ID="Image1" runat="server" ImageUrl="Presentation/CImage.aspx" Width="80%"/>
+            <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="images/refresh.png" />
+        </div>
+    </div>
+    <div class="row" style="margin-bottom:10px">    
+        <div class="large-4 columns">
+             
+        </div>                     
+        <div class="large-8 columns">
+              <asp:TextBox ID="TextBox3" runat="server" ></asp:TextBox>
+        </div>
+    </div>
+           
+          <div class="row" style="margin-bottom:10px">
+             <div class="large-4 columns"></div>
+            <div class="large-8 columns"> 
+                <asp:Button ID="Button1" runat="server" Text="Login" OnClick="btnLogin1_Click"></asp:Button>
+                <asp:Label ID="Label1" runat="server"></asp:Label>
+            </div>
+   
+   <%-- <div class="large-3 columns"></div>
+    <div class="large-3 columns"></div>--%>
+ <%--   </div>
+    <div class="row">
+         <div class="large-4 columns">
+          </div>
+        <div class="large-8 columns">
+         <a href="#" style="color:gray; font-weight:bold;">Forget Password??</a>
+        </div>
+
+    </div>--%>
+          </li>
+           </ul>
+           </li>
+           <li id="li_Logout" runat="server">
+           <asp:LinkButton ID="lbtnLogout" runat="server" Text="LOGOUT" CssClass="button" ></asp:LinkButton>
+           </li>
+          </ul>
+          
+         </div>
+    <div style="float:right;"><asp:Literal ID="ltWelcome" runat="server"></asp:Literal> </div>
+       </div>
+
+     <%--<div class="row" >
+        <br/>
+        <div class="medium-4 columns" >
+              <a href="default.aspx"><img src="images/logo2.JPG" style="width:180px; height:auto; margin-left:15px;" /></a>
+        </div>
+        <div class="medium-8 columns ">
+            <ul class="right button-group">
+                <li><a href="default.aspx" class="button">HOME</a></li>
+                <li><a href="Services.aspx" class="button">SERVICES</a></li>
+                <li><a href="AboutUs.aspx" class="button">ABOUT US</a></li>
+                <li><a href="ContactUsNew.aspx" class="button">CONTACT US</a></li>
+                <li><a href="#" class="button">LOGIN</a></li>
+            </ul>
+        </div>
+    </div>--%>
+
+    <div class="submenu1" style="display:none;" >
+
+     <div class="row" style="margin-bottom:10px; margin-top:10px"">
+    <div class="large-4 columns">
+    Username
+    </div>
+    <div class="large-8 columns">
+        <asp:TextBox ID="txtUser11" runat="server" ></asp:TextBox>
+    <%--Password--%>
+    </div>
+    <%--<div class="large-3 columns">
+    </div>
+      <div class="large-3 columns">
+    </div>--%>
+    </div>
+ 
+   <div class="row" style="margin-bottom:10px">
+    <div class="large-4 columns">
+        Password
+    </div>
+    <div class="large-8 columns">
+       <asp:TextBox ID="txtPassword11" runat="server"  TextMode="Password"></asp:TextBox>
+    </div>
+    </div>
+       
+     <div class="row" >
+       <div class="large-4 columns">
+           Security Code:
+        </div>                        
+        <div class="large-8 columns">
+             <asp:Image ID="Image2" runat="server" ImageUrl="Presentation/CImage.aspx" Width="80%"/>
+            <asp:ImageButton ID="ibtnCap1" runat="server" ImageUrl="images/refresh.png" />
+        </div>
+    </div>
+    <div class="row" style="margin-bottom:10px">    
+        <div class="large-4 columns">
+             
+        </div>                     
+        <div class="large-8 columns">
+              <asp:TextBox ID="txtCaptcha1" runat="server" ></asp:TextBox>
+        </div>
+    </div>
+             <%--  <div class="large-3 columns">
+   
+            </div>
+            <div class="large-3 columns"></div>
+            </div>--%>
+          <div class="row" style="margin-bottom:10px">
+             <div class="large-4 columns"></div>
+            <div class="large-8 columns"> 
+                <asp:Button ID="btnLogin1" runat="server" Text="Login"></asp:Button>
+                <asp:Label ID="lblMsg" runat="server"></asp:Label>
+            </div>
+   
+   <%-- <div class="large-3 columns"></div>
+    <div class="large-3 columns"></div>--%>
+    </div>
+    <div class="row">
+         <div class="large-4 columns">
+          </div>
+        <div class="large-8 columns">
+         <a href="#" style="color:gray; font-weight:bold;">Forget Password??</a>
+        </div>
+
+    </div>
+    </div>
+    <div>
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </div>
+    </form>
+</body>
+</html>

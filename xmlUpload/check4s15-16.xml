@@ -1,0 +1,1481 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ITRETURN:ITR xmlns:ITRETURN="http://incometaxindiaefiling.gov.in/main" xmlns:ITR4SFORM="http://incometaxindiaefiling.gov.in/ITR4S" xmlns:ITRForm="http://incometaxindiaefiling.gov.in/master" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<ITR4SFORM:ITR4S>
+		<ITRForm:CreationInfo>
+			<ITRForm:SWVersionNo>R1</ITRForm:SWVersionNo>
+			<ITRForm:SWCreatedBy>SW10000002</ITRForm:SWCreatedBy>
+			<ITRForm:XMLCreatedBy>SW10000002</ITRForm:XMLCreatedBy>
+			<ITRForm:XMLCreationDate>2016-07-08</ITRForm:XMLCreationDate>
+			<ITRForm:IntermediaryCity>Delhi</ITRForm:IntermediaryCity>
+			<ITRForm:Digest>FrkIq6ccK/DtBJXYOtbQIl3SlxwMil4pwhKvNpCxxpg=</ITRForm:Digest>
+		</ITRForm:CreationInfo>
+		<ITRForm:Form_ITR4S>
+			<ITRForm:FormName>ITR-4S</ITRForm:FormName>
+			<ITRForm:Description>For Indl having Income From Presemptive Business</ITRForm:Description>
+			<ITRForm:AssessmentYear>2015</ITRForm:AssessmentYear>
+			<ITRForm:SchemaVer>Ver1.0</ITRForm:SchemaVer>
+			<ITRForm:FormVer>Ver1.0</ITRForm:FormVer>
+		</ITRForm:Form_ITR4S>
+		<ITRForm:PersonalInfo>
+			<ITRForm:AssesseeName>
+				<ITRForm:FirstName>HARISH</ITRForm:FirstName>
+				
+				<ITRForm:SurNameOrOrgName>SHARMA</ITRForm:SurNameOrOrgName>
+				
+			</ITRForm:AssesseeName>
+			<ITRForm:PAN>APQPS5693Q</ITRForm:PAN>
+			<ITRForm:Address>
+				<ITRForm:ResidenceNo>20</ITRForm:ResidenceNo>
+				
+				<ITRForm:RoadOrStreet>E 13</ITRForm:RoadOrStreet>
+				<ITRForm:LocalityOrArea>DLF I</ITRForm:LocalityOrArea>
+				<ITRForm:CityOrTownOrDistrict>GURGAON</ITRForm:CityOrTownOrDistrict>
+				<ITRForm:StateCode>12</ITRForm:StateCode>
+				<ITRForm:CountryCode>91</ITRForm:CountryCode>
+				<ITRForm:PinCode>122002</ITRForm:PinCode>
+				
+				<ITRForm:MobileNo>9910700507</ITRForm:MobileNo>
+				
+				<ITRForm:EmailAddress>baljeet@sharmapartners.co.in</ITRForm:EmailAddress>
+				
+			</ITRForm:Address>
+			<ITRForm:DOB>1962-09-29</ITRForm:DOB>
+
+			<ITRForm:Gender>M</ITRForm:Gender>
+			<ITRForm:Status>I</ITRForm:Status>
+			<ITRForm:AadhaarCardFlg>N</ITRForm:AadhaarCardFlg>
+			
+		</ITRForm:PersonalInfo>
+		<ITRForm:FilingStatus>
+			<ITRForm:DesigOfficerWardorCircle>WARD 2(1) GURGAON</ITRForm:DesigOfficerWardorCircle>
+			<ITRForm:ReturnFileSec>12</ITRForm:ReturnFileSec>
+			
+			
+			
+			<ITRForm:ReturnType>O</ITRForm:ReturnType>
+			
+			
+			<ITRForm:ResidentialStatus>RES</ITRForm:ResidentialStatus>
+			<ITRForm:TaxStatus>TR</ITRForm:TaxStatus>
+			
+			
+			<ITRForm:PortugeseCC5A>N</ITRForm:PortugeseCC5A>
+			
+			
+		</ITRForm:FilingStatus>
+		<ITRForm:ITR4S_IncomeDeductions>
+			<ITRForm:IncomeFromBusinessProf>348454</ITRForm:IncomeFromBusinessProf>
+			<ITRForm:IncomeFromSal>0</ITRForm:IncomeFromSal>
+			<ITRForm:TypeOfHP>L</ITRForm:TypeOfHP>
+			<ITRForm:TotalIncomeOfHP>302271</ITRForm:TotalIncomeOfHP>
+			<ITRForm:IncomeOthSrc>4600</ITRForm:IncomeOthSrc>
+			<ITRForm:GrossTotIncome>655325</ITRForm:GrossTotIncome>
+			<ITRForm:UsrDeductUndChapVIA>
+				<ITRForm:Section80C>0</ITRForm:Section80C>
+				<ITRForm:Section80CCC>0</ITRForm:Section80CCC>
+				<ITRForm:Section80CCDEmployeeOrSE>0</ITRForm:Section80CCDEmployeeOrSE>
+				<ITRForm:Section80CCDEmployer>0</ITRForm:Section80CCDEmployer>
+				<ITRForm:Section80D>38000</ITRForm:Section80D>
+				<ITRForm:Section80DD>0</ITRForm:Section80DD>
+				<ITRForm:Section80DDB>0</ITRForm:Section80DDB>
+				<ITRForm:Section80E>0</ITRForm:Section80E>
+				<ITRForm:Section80EE>0</ITRForm:Section80EE>
+				<ITRForm:Section80G>0</ITRForm:Section80G>
+				<ITRForm:Section80GG>0</ITRForm:Section80GG>
+				
+				<ITRForm:Section80GGC>0</ITRForm:Section80GGC>
+				<ITRForm:Section80U>0</ITRForm:Section80U>
+				<ITRForm:Section80RRB>0</ITRForm:Section80RRB>
+				<ITRForm:Section80QQB>0</ITRForm:Section80QQB>
+				
+				
+				
+				
+				
+				
+				<ITRForm:Section80CCG>0</ITRForm:Section80CCG>
+				<ITRForm:Section80TTA>4600</ITRForm:Section80TTA>
+				<ITRForm:TotalChapVIADeductions>42600</ITRForm:TotalChapVIADeductions>
+			</ITRForm:UsrDeductUndChapVIA>
+			<ITRForm:DeductUndChapVIA>
+				<ITRForm:Section80C>0</ITRForm:Section80C>
+				<ITRForm:Section80CCC>0</ITRForm:Section80CCC>
+				<ITRForm:Section80CCDEmployeeOrSE>0</ITRForm:Section80CCDEmployeeOrSE>
+				<ITRForm:Section80CCDEmployer>0</ITRForm:Section80CCDEmployer>
+				<ITRForm:Section80D>35000</ITRForm:Section80D>
+				<ITRForm:Section80DD>0</ITRForm:Section80DD>
+				<ITRForm:Section80DDB>0</ITRForm:Section80DDB>
+				<ITRForm:Section80E>0</ITRForm:Section80E>
+				<ITRForm:Section80EE>0</ITRForm:Section80EE>
+				<ITRForm:Section80G>0</ITRForm:Section80G>
+				<ITRForm:Section80GG>0</ITRForm:Section80GG>
+				
+				<ITRForm:Section80GGC>0</ITRForm:Section80GGC>
+				<ITRForm:Section80U>0</ITRForm:Section80U>
+				<ITRForm:Section80RRB>0</ITRForm:Section80RRB>
+				<ITRForm:Section80QQB>0</ITRForm:Section80QQB>
+				
+				
+				
+				
+				
+				
+				<ITRForm:Section80CCG>0</ITRForm:Section80CCG>
+				<ITRForm:Section80TTA>4600</ITRForm:Section80TTA>
+				<ITRForm:TotalChapVIADeductions>39600</ITRForm:TotalChapVIADeductions>
+			</ITRForm:DeductUndChapVIA>
+			<ITRForm:TotalIncome>615730</ITRForm:TotalIncome>
+		</ITRForm:ITR4S_IncomeDeductions>
+		<ITRForm:ITR4S_TaxComputation>
+			<ITRForm:TotalTaxPayable>48146</ITRForm:TotalTaxPayable>
+			<ITRForm:Rebate87A>0</ITRForm:Rebate87A>
+			<ITRForm:TaxPayableOnRebate>48146</ITRForm:TaxPayableOnRebate>
+			<ITRForm:SurchargeOnAboveCrore>0</ITRForm:SurchargeOnAboveCrore>
+			<ITRForm:EducationCess>1444</ITRForm:EducationCess>
+			<ITRForm:GrossTaxLiability>49590</ITRForm:GrossTaxLiability>
+			<ITRForm:Section89>0</ITRForm:Section89>
+			<ITRForm:NetTaxLiability>49590</ITRForm:NetTaxLiability>
+			<ITRForm:TotalIntrstPay>0</ITRForm:TotalIntrstPay>
+			<ITRForm:IntrstPay>
+				<ITRForm:IntrstPayUs234A>0</ITRForm:IntrstPayUs234A>
+				<ITRForm:IntrstPayUs234B>0</ITRForm:IntrstPayUs234B>
+				<ITRForm:IntrstPayUs234C>0</ITRForm:IntrstPayUs234C>
+				
+			</ITRForm:IntrstPay>
+			<ITRForm:TotTaxPlusIntrstPay>49590</ITRForm:TotTaxPlusIntrstPay>
+		</ITRForm:ITR4S_TaxComputation>
+		<ITRForm:TaxPaid>
+			<ITRForm:TaxesPaid>
+				<ITRForm:AdvanceTax>0</ITRForm:AdvanceTax>
+				<ITRForm:TDS>54325</ITRForm:TDS>
+				<ITRForm:TCS>0</ITRForm:TCS>
+				<ITRForm:SelfAssessmentTax>0</ITRForm:SelfAssessmentTax>
+				<ITRForm:TotalTaxesPaid>54325</ITRForm:TotalTaxesPaid>
+			</ITRForm:TaxesPaid>
+			<ITRForm:BalTaxPayable>0</ITRForm:BalTaxPayable>
+		</ITRForm:TaxPaid>
+		<ITRForm:Refund>
+			<ITRForm:RefundDue>4740</ITRForm:RefundDue>
+		      <ITRForm:BankAccountDtls>
+		         <ITRForm:PriBankDetails>
+		        	<ITRForm:IFSCCode>CORP0000440</ITRForm:IFSCCode>
+					<ITRForm:BankName>CORPORATION BANK</ITRForm:BankName>
+					<ITRForm:BankAccountNo>002114</ITRForm:BankAccountNo>
+					<ITRForm:BankAccountType>CUR</ITRForm:BankAccountType>
+		         </ITRForm:PriBankDetails>
+		         
+		         <ITRForm:BankAccounts>1</ITRForm:BankAccounts>
+		      </ITRForm:BankAccountDtls>
+		</ITRForm:Refund>
+		
+		
+		<ITRForm:Verification>
+			<ITRForm:Declaration>
+				<ITRForm:AssesseeVerName>HARISH SHARMA</ITRForm:AssesseeVerName>
+				<ITRForm:FatherName>MANGAT RAM SHARMA</ITRForm:FatherName>
+				<ITRForm:AssesseeVerPAN>APQPS5693Q</ITRForm:AssesseeVerPAN>
+			</ITRForm:Declaration>
+			<ITRForm:Place>GURGAON</ITRForm:Place>
+			<ITRForm:Date>2016-03-29</ITRForm:Date>
+		</ITRForm:Verification>
+		
+		<ITRForm:NatOfBus>
+			<ITRForm:Business>
+				<ITRForm:Code>0505</ITRForm:Code>
+				
+			</ITRForm:Business>
+			
+			
+		</ITRForm:NatOfBus>
+		<ITRForm:ScheduleBPForITR4S>
+			<ITRForm:PersumptiveInc44AD>
+				<ITRForm:GrsTrnOverOrReceipt>813917</ITRForm:GrsTrnOverOrReceipt>
+				<ITRForm:TotPersumptiveInc44AD>348454</ITRForm:TotPersumptiveInc44AD>
+			</ITRForm:PersumptiveInc44AD>
+			<ITRForm:PersumptiveInc44AE>
+
+				<ITRForm:TotPersumInc44AE>0</ITRForm:TotPersumInc44AE>
+			</ITRForm:PersumptiveInc44AE>
+			<ITRForm:IncChargeableUnderBus>348454</ITRForm:IncChargeableUnderBus>
+			<ITRForm:NoBooksOfAccBS>
+				<ITRForm:TotSundryDbtAmt>0</ITRForm:TotSundryDbtAmt>
+				<ITRForm:TotSundryCrdAmt>0</ITRForm:TotSundryCrdAmt>
+				<ITRForm:TotStkInTradAmt>0</ITRForm:TotStkInTradAmt>
+				<ITRForm:CashBalAmt>0</ITRForm:CashBalAmt>
+			</ITRForm:NoBooksOfAccBS>
+		</ITRForm:ScheduleBPForITR4S>
+		
+		
+		
+		<ITRForm:TDSonOthThanSals>
+			<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>DELG05151G</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>GROSER &amp; GROSER</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>1</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>1</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>DELG05151G</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>GROSER &amp; GROSER</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>2</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>2</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>DELG05151G</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>GROSER &amp; GROSER</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>3</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>3</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>DELG05151G</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>GROSER &amp; GROSER</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>4</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>4</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>DELI09560F</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>INC RESEARCH CDS SERVICES PRIVATE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>5</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>5</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>DELI09560F</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>INC RESEARCH CDS SERVICES PRIVATE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>6</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>6</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>DELI09560F</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>INC RESEARCH CDS SERVICES PRIVATE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>7</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>7</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>DELM16054D</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>MIND EDUTAINMENT PRIVATE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>8</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>8</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>DELM16054D</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>MIND EDUTAINMENT PRIVATE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>9</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>9</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>DELM16054D</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>MIND EDUTAINMENT PRIVATE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>10</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>10</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>DELG05151G</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>GROSER &amp; GROSER</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>11</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>11</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>DELG05151G</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>GROSER &amp; GROSER</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>12</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>12</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>DELG05151G</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>GROSER &amp; GROSER</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>13</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>13</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>DELG05151G</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>GROSER &amp; GROSER</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>14</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>14</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>DELG05151G</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>GROSER &amp; GROSER</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>15</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>15</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>DELG05151G</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>GROSER &amp; GROSER</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>16</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>16</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>DELG05151G</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>GROSER &amp; GROSER</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>17</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>17</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>DELG05151G</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>GROSER &amp; GROSER</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>18</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>18</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>DELI09560F</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>INC RESEARCH CDS SERVICES PRIVATE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>19</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>19</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>DELI09560F</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>INC RESEARCH CDS SERVICES PRIVATE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>20</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>20</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>DELI09560F</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>INC RESEARCH CDS SERVICES PRIVATE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>21</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>21</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>DELI09560F</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>INC RESEARCH CDS SERVICES PRIVATE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>22</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>22</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>DELI09560F</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>INC RESEARCH CDS SERVICES PRIVATE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>23</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>23</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>DELI09560F</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>INC RESEARCH CDS SERVICES PRIVATE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>24</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>24</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>DELI09560F</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>INC RESEARCH CDS SERVICES PRIVATE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>25</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>25</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>DELI09560F</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>INC RESEARCH CDS SERVICES PRIVATE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>26</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>26</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>DELI09560F</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>INC RESEARCH CDS SERVICES PRIVATE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>27</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>27</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>DELI09560F</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>INC RESEARCH CDS SERVICES PRIVATE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>28</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>28</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>DELI09560F</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>INC RESEARCH CDS SERVICES PRIVATE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>29</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>29</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>DELI09560F</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>INC RESEARCH CDS SERVICES PRIVATE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>30</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>30</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>DELI09560F</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>INC RESEARCH CDS SERVICES PRIVATE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>31</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>31</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>RTKI00919C</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>INTERNATIONAL TRAVEL HOUSE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>32</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>32</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>RTKI00919C</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>INTERNATIONAL TRAVEL HOUSE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>33</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>33</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>RTKI00919C</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>INTERNATIONAL TRAVEL HOUSE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>34</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>34</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>RTKI00919C</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>INTERNATIONAL TRAVEL HOUSE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>35</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>35</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>RTKI00919C</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>INTERNATIONAL TRAVEL HOUSE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>36</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>36</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>RTKI00919C</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>INTERNATIONAL TRAVEL HOUSE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>37</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>37</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>RTKI00919C</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>INTERNATIONAL TRAVEL HOUSE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>38</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>38</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>RTKI00919C</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>INTERNATIONAL TRAVEL HOUSE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>39</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>39</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>RTKI00919C</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>INTERNATIONAL TRAVEL HOUSE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>40</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>40</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>RTKI00919C</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>INTERNATIONAL TRAVEL HOUSE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>41</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>41</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>RTKI00919C</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>INTERNATIONAL TRAVEL HOUSE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>42</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>42</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>RTKI00919C</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>INTERNATIONAL TRAVEL HOUSE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>43</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>43</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>RTKI00919C</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>INTERNATIONAL TRAVEL HOUSE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>44</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>44</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>RTKI00919C</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>INTERNATIONAL TRAVEL HOUSE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>45</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>45</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>RTKI00919C</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>INTERNATIONAL TRAVEL HOUSE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>46</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>46</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>RTKS12145A</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>SHARMAN HOSPITALITY SERVICES PRIVATE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>47</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>47</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>RTKS12145A</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>SHARMAN HOSPITALITY SERVICES PRIVATE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>48</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>48</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>RTKS12145A</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>SHARMAN HOSPITALITY SERVICES PRIVATE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>49</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>49</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>RTKS12145A</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>SHARMAN HOSPITALITY SERVICES PRIVATE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>50</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>50</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>RTKS12145A</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>SHARMAN HOSPITALITY SERVICES PRIVATE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>51</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>51</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>RTKV03594D</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>VENETIAN DIVINE INFRATECH LLP</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>52</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>52</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>RTKV03594D</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>VENETIAN DIVINE INFRATECH LLP</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>53</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>53</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>RTKV03594D</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>VENETIAN DIVINE INFRATECH LLP</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>54</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>54</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>DELM16054D</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>MIND EDUTAINMENT PRIVATE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>55</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>55</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>DELM16054D</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>MIND EDUTAINMENT PRIVATE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>56</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>56</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>DELM16054D</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>MIND EDUTAINMENT PRIVATE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>57</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>57</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>DELM16054D</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>MIND EDUTAINMENT PRIVATE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>58</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>58</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>DELQ00267B</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>QUADRANGLE CONSULTING SERVICES PRIVATE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>59</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>59</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>DELQ00267B</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>QUADRANGLE CONSULTING SERVICES PRIVATE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>60</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>60</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>DELI09560F</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>INC RESEARCH CDS SERVICES PRIVATE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>61</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>61</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>DELI09560F</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>INC RESEARCH CDS SERVICES PRIVATE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>62</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>62</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>DELI09560F</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>INC RESEARCH CDS SERVICES PRIVATE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>63</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>63</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>DELI09560F</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>INC RESEARCH CDS SERVICES PRIVATE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>64</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>64</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>DELI09560F</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>INC RESEARCH CDS SERVICES PRIVATE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>65</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>65</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>DELI09560F</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>INC RESEARCH CDS SERVICES PRIVATE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>66</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>66</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>DELI09560F</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>INC RESEARCH CDS SERVICES PRIVATE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>67</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>67</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>DELI09560F</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>INC RESEARCH CDS SERVICES PRIVATE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>68</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>68</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>DELI09560F</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>INC RESEARCH CDS SERVICES PRIVATE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>69</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>69</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>DELI09560F</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>INC RESEARCH CDS SERVICES PRIVATE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>70</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>70</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>DELI09560F</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>INC RESEARCH CDS SERVICES PRIVATE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>71</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>71</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>DELI09560F</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>INC RESEARCH CDS SERVICES PRIVATE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>72</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>72</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>DELI09560F</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>INC RESEARCH CDS SERVICES PRIVATE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>73</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>73</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>DELI09560F</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>INC RESEARCH CDS SERVICES PRIVATE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>74</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>74</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>DELI09560F</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>INC RESEARCH CDS SERVICES PRIVATE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>75</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>75</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>DELI09560F</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>INC RESEARCH CDS SERVICES PRIVATE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>76</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>76</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>DELI09560F</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>INC RESEARCH CDS SERVICES PRIVATE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>77</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>77</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>DELI09560F</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>INC RESEARCH CDS SERVICES PRIVATE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>78</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>78</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>DELI09560F</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>INC RESEARCH CDS SERVICES PRIVATE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>79</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>79</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>DELI09560F</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>INC RESEARCH CDS SERVICES PRIVATE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>80</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>80</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>DELI09560F</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>INC RESEARCH CDS SERVICES PRIVATE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>81</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>81</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>DELI09560F</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>INC RESEARCH CDS SERVICES PRIVATE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>82</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>82</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>DELI09560F</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>INC RESEARCH CDS SERVICES PRIVATE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>83</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>83</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>DELI09560F</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>INC RESEARCH CDS SERVICES PRIVATE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>84</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>84</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>DELI09560F</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>INC RESEARCH CDS SERVICES PRIVATE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>85</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>85</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>DELI09560F</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>INC RESEARCH CDS SERVICES PRIVATE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>86</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>86</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>DELI09560F</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>INC RESEARCH CDS SERVICES PRIVATE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>87</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>87</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>DELQ00267B</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>QUADRANGLE CONSULTING SERVICES PRIVATE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>88</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>88</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>DELQ00267B</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>QUADRANGLE CONSULTING SERVICES PRIVATE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>89</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>89</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>DELQ00267B</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>QUADRANGLE CONSULTING SERVICES PRIVATE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>90</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>90</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>DELQ00267B</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>QUADRANGLE CONSULTING SERVICES PRIVATE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>91</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>91</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>DELQ00267B</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>QUADRANGLE CONSULTING SERVICES PRIVATE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>92</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>92</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>DELV10431B</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>VSR INFRATECH PRIVATE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>93</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>93</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>DELV10431B</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>VSR INFRATECH PRIVATE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>94</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>94</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>HYDG00774E</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>GVK BIOSCIENCES PRIVATE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>95</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>95</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>HYDG00774E</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>GVK BIOSCIENCES PRIVATE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>96</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>96</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>HYDG00774E</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>GVK BIOSCIENCES PRIVATE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>97</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>97</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>HYDG00774E</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>GVK BIOSCIENCES PRIVATE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>98</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>98</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>HYDG00774E</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>GVK BIOSCIENCES PRIVATE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>99</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>99</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>HYDG00774E</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>GVK BIOSCIENCES PRIVATE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>100</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>100</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>HYDG00774E</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>GVK BIOSCIENCES PRIVATE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>101</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>101</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>HYDG00774E</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>GVK BIOSCIENCES PRIVATE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>102</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>102</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>RTKD04123A</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>DISHA INDIA EDUCATION FOUNDATION</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>103</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>103</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>RTKI00919C</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>INTERNATIONAL TRAVEL HOUSE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>104</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>104</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>RTKI00919C</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>INTERNATIONAL TRAVEL HOUSE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>105</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>105</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>RTKI00919C</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>INTERNATIONAL TRAVEL HOUSE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>106</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>106</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>RTKI00919C</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>INTERNATIONAL TRAVEL HOUSE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>107</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>107</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>RTKI00919C</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>INTERNATIONAL TRAVEL HOUSE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>108</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>108</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>RTKI00919C</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>INTERNATIONAL TRAVEL HOUSE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>109</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>109</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>RTKI00919C</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>INTERNATIONAL TRAVEL HOUSE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>110</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>110</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>RTKI00919C</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>INTERNATIONAL TRAVEL HOUSE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>111</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>111</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>RTKI00919C</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>INTERNATIONAL TRAVEL HOUSE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>112</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>112</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>RTKI00919C</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>INTERNATIONAL TRAVEL HOUSE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>113</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>113</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>RTKI00919C</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>INTERNATIONAL TRAVEL HOUSE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>114</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>114</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>RTKI00919C</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>INTERNATIONAL TRAVEL HOUSE LIMITED</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>47770</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>47770</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+			<ITRForm:TotalTDSonOthThanSals>54325</ITRForm:TotalTDSonOthThanSals>
+		</ITRForm:TDSonOthThanSals>
+		
+		<ITRForm:TotalHeavyVehcl>0</ITRForm:TotalHeavyVehcl>
+	</ITR4SFORM:ITR4S>
+</ITRETURN:ITR>

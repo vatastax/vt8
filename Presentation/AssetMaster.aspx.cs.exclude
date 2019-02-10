@@ -1,0 +1,1519 @@
+using System;
+using System.Data;
+using System.Configuration;
+using System.Collections;
+using System.Web;
+using System.Web.Security;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Web.UI.WebControls.WebParts;
+using System.Web.UI.HtmlControls;
+using Taxation.BusinessLogic;
+using Taxation.DataEntity;
+using System.Collections.Generic;
+
+public partial class Presentation_AssetMaster : System.Web.UI.Page
+{
+    denFloating objFloatingDEO = new denFloating();
+    bllAssetMast objbllAssetMast = new bllAssetMast();
+    static Int64 id = 0;
+    static Int32 AssetID = 0;
+    static string url_ref = "";
+
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        if (!IsPostBack)
+        {
+            bllAssetMast objbllAssetMast = new bllAssetMast();
+            ddlItems.DataSource = objbllAssetMast.GetComboData();
+            ddlItems.DataBind();
+            if (Request.UrlReferrer != null)
+                url_ref = Request.UrlReferrer.ToString();
+            if (Session["NameID"] == null)
+            {
+                Response.Redirect("Main.aspx");
+            }
+           //bindGrid();
+            if (Request.QueryString["sc"] != null)
+            {
+                if (Request.QueryString["sc"].ToString() == "hp")
+                {
+                    ddlItems.SelectedValue = "9";
+                    GridView1.DataSourceID = "";
+                    GridView1.DataSourceID = "ObjectDataSource2";
+                }
+            }
+            if (Request.QueryString["id"] != null)
+            {
+                GridView1.DataSourceID = "";
+                GridView1.DataSourceID = "ObjectDataSource2";
+                AssetID = Convert.ToInt32(Request.QueryString["id"]);
+                bindGridEdited();
+            }
+        }
+    }
+
+    protected void GridView1_DataBound(object sender, EventArgs e)
+    {
+        
+    }
+
+    protected void btnBack2_Click(object sender, EventArgs e)
+    {
+        if (url_ref != Request.Url.ToString())
+            Response.Redirect(url_ref);
+        else
+            Response.Redirect("Salary.aspx?vtype=42");
+        //Response.Redirect("");
+    }
+
+    protected void btnDel_Click(object sender, EventArgs e)
+    {
+        objbllAssetMast.Delete(id);
+        Response.Redirect(Request.Url.ToString());
+        //bindGrid();
+    }
+
+    private void bindGrid()
+    {
+        //gvMain.DataSource = objbllAssetMast.SelectCompleteAssetDetail(Session["NameID"].ToString());
+        //gvMain.DataBind();
+    }
+
+    protected void gvMain_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+        if (e.Row.RowIndex != -1)
+        {
+            Label lblSNO = new Label();
+            lblSNO = (Label)e.Row.FindControl("lblSNO");
+            lblSNO.Text = (e.Row.RowIndex + 1).ToString();
+        }
+    }
+    protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        
+    }
+
+    protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        GridView1.DataSourceID = "";
+        GridView1.DataSourceID = "ObjectDataSource2";
+    }
+    protected void ObjectDataSource1_Selecting(object sender, ObjectDataSourceSelectingEventArgs e)
+    {
+
+    }
+    protected void ObjectDataSource2_Selecting(object sender, ObjectDataSourceSelectingEventArgs e)
+    {
+        e.InputParameters["intIndex"] = (ddlItems.SelectedValue == "") ? "0" : ddlItems.SelectedValue;
+        if (Request.QueryString["id"] != null)
+        {
+            AssetID = Convert.ToInt32(Request.QueryString["id"]);
+            bindGridEdited();
+        }
+    }
+    protected void btnAdd_Click(object sender, EventArgs e)
+    {
+        string str = ddlItems.SelectedValue;
+        ViewState["AssetType"] = str;
+        if (str == "1" || str == "2" || str == "3" || str == "4" || str == "6" || str == "7" || str == "8")
+            InsertData1_8();
+
+        else if (str == "5")
+            InsertDataBonusShares();
+        else if (str == "9")
+            InsertDataHouseProperty();
+        else if (str == "10")
+            InsertDataLand();
+        else if (str == "14")
+            InsertDataJewellery();
+        else if (str == "15")
+            InsertDataStockAndTrade();
+        else if (str == "16" || str == "17")
+            InsertDataIntangibleAssets();
+        else if (str == "19")
+            InsertDataNSC();
+        else if (str == "18")
+            InsertDataDepreciableAssets();
+
+        Response.Redirect("AssetMaster.aspx");
+    }
+    void InsertData1_8()
+    {
+        denAssetMast objAssetMastDEN;
+        bllAssetMast objAssetMastBLL;
+        objAssetMastDEN = new denAssetMast();
+        objAssetMastBLL = new bllAssetMast();
+
+        TextBox txt1 = (TextBox)GridView1.Rows[0].FindControl("txtAmount");
+        TextBox txt2 = (TextBox)GridView1.Rows[1].FindControl("txtAmount");
+        TextBox txt3 = (TextBox)GridView1.Rows[2].FindControl("txtAmount");
+        TextBox txt4 = (TextBox)GridView1.Rows[3].FindControl("txtAmount");
+        TextBox txt5 = (TextBox)GridView1.Rows[4].FindControl("txtAmount");
+        TextBox txt6 = (TextBox)GridView1.Rows[5].FindControl("txtAmount");
+
+
+
+
+        objAssetMastDEN.NameID = Convert.ToString(Session["NameID"]);
+        objAssetMastDEN.CompanyName = txt1.Text;
+        objAssetMastDEN.NoOfShares = Convert.ToInt32(txt2.Text);
+        objAssetMastDEN.PurchaseDate = txt3.Text;
+        objAssetMastDEN.PurchaseCost = Convert.ToInt32(txt5.Text);
+        objAssetMastDEN.PurchaseExp = Convert.ToInt32(txt6.Text);
+        objAssetMastDEN.AssetType = Convert.ToInt32(ViewState["AssetType"]) ;
+        objAssetMastDEN.IsExempted = 0;
+        objAssetMastDEN.Rate = 0;
+        //objAssetMastDEN.PurchaseCost = 0;
+        objAssetMastDEN.FMV = 0;
+        //objAssetMastDEN.PurchaseExp = 0;
+        objAssetMastDEN.ImproveCost = 0;
+        objAssetMastDEN.ImproveDate = "nil";
+        objAssetMastDEN.SaleAmount = 0;
+        objAssetMastDEN.Address = "Nil";
+        objAssetMastDEN.TOP = 0;
+        objAssetMastDEN.LTCG = 0;
+        objAssetMastDEN.Town_City = "NIL";
+        objAssetMastDEN.State = "NIL";
+        objAssetMastDEN.PinCode = "NIL";
+        objAssetMastDEN.TenantName = "NIL";
+        objAssetMastDEN.TenantPAN = "NIL";
+
+        objAssetMastBLL.InsertAssetTrans(objAssetMastDEN);
+        
+
+        
+    }
+
+    void InsertDataBonusShares()
+    {
+        try
+        {
+            denAssetMast objAssetMastDEN;
+            bllAssetMast objAssetMastBLL;
+            objAssetMastDEN = new denAssetMast();
+            objAssetMastBLL = new bllAssetMast();
+
+            TextBox txt1 = (TextBox)GridView1.Rows[0].FindControl("txtAmount");
+            TextBox txt2 = (TextBox)GridView1.Rows[1].FindControl("txtAmount");
+            TextBox txt3 = (TextBox)GridView1.Rows[2].FindControl("txtAmount");
+            TextBox txt4 = (TextBox)GridView1.Rows[3].FindControl("txtAmount");
+
+            objAssetMastDEN.NameID = Convert.ToString(Session["NameID"]);
+            objAssetMastDEN.CompanyName = txt1.Text;
+            objAssetMastDEN.NoOfShares = Convert.ToInt32(txt2.Text);
+            objAssetMastDEN.PurchaseDate = txt3.Text;
+            objAssetMastDEN.PurchaseCost = 0;
+            objAssetMastDEN.PurchaseExp = 0;
+            objAssetMastDEN.AssetType = Convert.ToInt32(ViewState["AssetType"]);
+            objAssetMastDEN.IsExempted = 0;
+            objAssetMastDEN.Rate = 0;
+            //objAssetMastDEN.PurchaseCost = 0;
+            objAssetMastDEN.FMV = 0;
+            //objAssetMastDEN.PurchaseExp = 0;
+            objAssetMastDEN.ImproveCost = 0;
+            objAssetMastDEN.ImproveDate = "nil";
+            objAssetMastDEN.SaleAmount = 0;
+            objAssetMastDEN.Address = "Nil";
+            objAssetMastDEN.TOP = 0;
+            objAssetMastDEN.LTCG = 0;
+            objAssetMastDEN.Town_City = "NIL";
+            objAssetMastDEN.State = "NIL";
+            objAssetMastDEN.PinCode = "NIL";
+            objAssetMastDEN.TenantName = "NIL";
+            objAssetMastDEN.TenantPAN = "NIL";
+
+            objAssetMastBLL.InsertAssetTrans(objAssetMastDEN);
+        }
+        catch (Exception ex)
+        {
+            ClientScript.RegisterClientScriptBlock(GetType(), "asd", "<script type='text/javascript'>alert('Wrong!!'); </script>");
+        //    btnAdd.Text = ex.Message;
+        }
+    }
+
+    void InsertDataHouseProperty()
+    {
+        denAssetMast objAssetMastDEN;
+        bllAssetMast objAssetMastBLL;
+
+        try
+        {
+            objAssetMastDEN = new denAssetMast();
+            objAssetMastBLL = new bllAssetMast();
+
+            TextBox txt1 = (TextBox)GridView1.Rows[0].FindControl("txtAmount");
+            TextBox txt2 = (TextBox)GridView1.Rows[1].FindControl("txtAmount");
+            TextBox txt3 = (TextBox)GridView1.Rows[2].FindControl("txtAmount");
+            TextBox txt4 = (TextBox)GridView1.Rows[3].FindControl("txtAmount");
+            TextBox txt5 = (TextBox)GridView1.Rows[4].FindControl("txtAmount");
+            TextBox txt6 = (TextBox)GridView1.Rows[5].FindControl("txtAmount");
+            TextBox txt7 = (TextBox)GridView1.Rows[6].FindControl("txtAmount");            
+            TextBox txt8 = (TextBox)GridView1.Rows[7].FindControl("txtAmount");
+            if (GridView1.Rows.Count > 8)
+            {
+                TextBox txt9 = (TextBox)GridView1.Rows[8].FindControl("txtAmount");
+                TextBox txt10 = (TextBox)GridView1.Rows[9].FindControl("txtAmount");
+                objAssetMastDEN.PurchaseCost = Convert.ToInt32(txt9.Text);
+                objAssetMastDEN.PurchaseExp = Convert.ToInt32(txt10.Text);
+            }
+            objAssetMastDEN.NameID = Convert.ToString(Session["NameID"]);
+            objAssetMastDEN.CompanyName = txt1.Text;
+            objAssetMastDEN.Address = txt2.Text;
+            objAssetMastDEN.Town_City = txt3.Text;
+            objAssetMastDEN.State = txt4.Text;
+            objAssetMastDEN.PinCode = txt5.Text;
+            objAssetMastDEN.NoOfShares = Convert.ToInt32(txt6.Text);
+            objAssetMastDEN.PurchaseDate = txt7.Text;
+            
+            objAssetMastDEN.AssetType = Convert.ToInt32(ViewState["AssetType"]);
+            objAssetMastDEN.IsExempted = 0;
+            objAssetMastDEN.Rate = 0;
+            //objAssetMastDEN.PurchaseCost = 0;
+            objAssetMastDEN.FMV = 0;
+            //objAssetMastDEN.PurchaseExp = 0;
+            objAssetMastDEN.ImproveCost = 0;
+            objAssetMastDEN.ImproveDate = "nil";
+            objAssetMastDEN.SaleAmount = 0;
+            
+            objAssetMastDEN.TOP = 0;
+            objAssetMastDEN.LTCG = 0;
+            
+            
+            
+            objAssetMastDEN.TenantName = "NIL";
+            objAssetMastDEN.TenantPAN = "NIL";
+
+            objAssetMastBLL.InsertAssetTrans(objAssetMastDEN);
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
+    }
+
+    void InsertDataLand()
+    {
+
+        denAssetMast objAssetMastDEN;
+        bllAssetMast objAssetMastBLL;
+
+        try
+        {
+            objAssetMastDEN = new denAssetMast();
+            objAssetMastBLL = new bllAssetMast();
+
+            TextBox txt1 = (TextBox)GridView1.Rows[0].FindControl("txtAmount");
+            TextBox txt2 = (TextBox)GridView1.Rows[1].FindControl("txtAmount");
+            TextBox txt3 = (TextBox)GridView1.Rows[2].FindControl("txtAmount");
+            TextBox txt4 = (TextBox)GridView1.Rows[3].FindControl("txtAmount");
+            TextBox txt5 = (TextBox)GridView1.Rows[4].FindControl("txtAmount");
+            TextBox txt6 = (TextBox)GridView1.Rows[5].FindControl("txtAmount");
+            TextBox txt7 = (TextBox)GridView1.Rows[6].FindControl("txtAmount");
+
+
+            objAssetMastDEN.NameID = Convert.ToString(Session["NameID"]);
+            objAssetMastDEN.CompanyName = txt1.Text;
+            objAssetMastDEN.Address = txt2.Text;
+            objAssetMastDEN.NoOfShares = Convert.ToInt32(txt3.Text);
+            objAssetMastDEN.Town_City = "NIL";
+            objAssetMastDEN.PurchaseDate = txt4.Text;
+            objAssetMastDEN.PurchaseCost = Convert.ToInt32(txt6.Text);
+            objAssetMastDEN.PurchaseExp = Convert.ToInt32(txt7.Text);
+            objAssetMastDEN.State = "NIL";
+            objAssetMastDEN.PinCode = "NIL";
+            objAssetMastDEN.AssetType = Convert.ToInt32(ViewState["AssetType"]);
+            objAssetMastDEN.IsExempted = 0;
+            objAssetMastDEN.Rate = 0;
+            objAssetMastDEN.FMV = 0;
+            objAssetMastDEN.ImproveCost = 0;
+            objAssetMastDEN.ImproveDate = "nil";
+            objAssetMastDEN.SaleAmount = 0;
+            objAssetMastDEN.TOP = 0;
+            objAssetMastDEN.LTCG = 0;
+            objAssetMastDEN.TenantName = "NIL";
+            objAssetMastDEN.TenantPAN = "NIL";
+
+            objAssetMastBLL.InsertAssetTrans(objAssetMastDEN);
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
+    }
+
+    void InsertDataJewellery()
+    {
+        denAssetMast objAssetMastDEN;
+        bllAssetMast objAssetMastBLL;
+
+        try
+        {
+            objAssetMastDEN = new denAssetMast();
+            objAssetMastBLL = new bllAssetMast();
+
+            TextBox txt1 = (TextBox)GridView1.Rows[0].FindControl("txtAmount");
+            TextBox txt2 = (TextBox)GridView1.Rows[1].FindControl("txtAmount");
+            TextBox txt3 = (TextBox)GridView1.Rows[2].FindControl("txtAmount");
+            TextBox txt4 = (TextBox)GridView1.Rows[3].FindControl("txtAmount");
+            TextBox txt5 = (TextBox)GridView1.Rows[4].FindControl("txtAmount");
+            TextBox txt6 = (TextBox)GridView1.Rows[5].FindControl("txtAmount");
+
+
+
+            objAssetMastDEN.NameID = Convert.ToString(Session["NameID"]);
+            objAssetMastDEN.CompanyName = txt1.Text;
+            objAssetMastDEN.Address = "NIL";
+            objAssetMastDEN.NoOfShares = Convert.ToInt32(txt2.Text);
+            objAssetMastDEN.Town_City = "NIL";
+            objAssetMastDEN.PurchaseDate = txt3.Text;
+            objAssetMastDEN.PurchaseCost = Convert.ToInt32(txt5.Text);
+            objAssetMastDEN.PurchaseExp = Convert.ToInt32(txt6.Text);
+            objAssetMastDEN.State = "NIL";
+            objAssetMastDEN.PinCode = "NIL";
+            objAssetMastDEN.AssetType = Convert.ToInt32(ViewState["AssetType"]);
+            objAssetMastDEN.IsExempted = 0;
+            objAssetMastDEN.Rate = 0;
+            objAssetMastDEN.FMV = 0;
+            objAssetMastDEN.ImproveCost = 0;
+            objAssetMastDEN.ImproveDate = "nil";
+            objAssetMastDEN.SaleAmount = 0;
+            objAssetMastDEN.TOP = 0;
+            objAssetMastDEN.LTCG = 0;
+            objAssetMastDEN.TenantName = "NIL";
+            objAssetMastDEN.TenantPAN = "NIL";
+
+            objAssetMastBLL.InsertAssetTrans(objAssetMastDEN);
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
+
+    }
+
+    void InsertDataStockAndTrade()
+    {
+        denAssetMast objAssetMastDEN;
+        bllAssetMast objAssetMastBLL;
+
+        try
+        {
+            objAssetMastDEN = new denAssetMast();
+            objAssetMastBLL = new bllAssetMast();
+
+            TextBox txt1 = (TextBox)GridView1.Rows[0].FindControl("txtAmount");
+            TextBox txt2 = (TextBox)GridView1.Rows[1].FindControl("txtAmount");
+            TextBox txt3 = (TextBox)GridView1.Rows[2].FindControl("txtAmount");
+            TextBox txt4 = (TextBox)GridView1.Rows[3].FindControl("txtAmount");
+            TextBox txt5 = (TextBox)GridView1.Rows[4].FindControl("txtAmount");
+            TextBox txt6 = (TextBox)GridView1.Rows[5].FindControl("txtAmount");
+
+            objAssetMastDEN.NameID = Convert.ToString(Session["NameID"]);
+            objAssetMastDEN.CompanyName = txt1.Text;
+            objAssetMastDEN.Address = "NIL";
+            objAssetMastDEN.NoOfShares = Convert.ToInt32(txt2.Text);
+            objAssetMastDEN.Town_City = "NIL";
+            objAssetMastDEN.PurchaseDate = txt3.Text;
+            objAssetMastDEN.PurchaseCost = Convert.ToInt32(txt5.Text);
+            objAssetMastDEN.PurchaseExp = Convert.ToInt32(txt6.Text);
+            objAssetMastDEN.State = "NIL";
+            objAssetMastDEN.PinCode = "NIL";
+            objAssetMastDEN.AssetType = Convert.ToInt32(ViewState["AssetType"]);
+            objAssetMastDEN.IsExempted = 0;
+            objAssetMastDEN.Rate = 0;
+            objAssetMastDEN.FMV = 0;
+            objAssetMastDEN.ImproveCost = 0;
+            objAssetMastDEN.ImproveDate = "nil";
+            objAssetMastDEN.SaleAmount = 0;
+            objAssetMastDEN.TOP = 0;
+            objAssetMastDEN.LTCG = 0;
+            objAssetMastDEN.TenantName = "NIL";
+            objAssetMastDEN.TenantPAN = "NIL";
+
+            objAssetMastBLL.InsertAssetTrans(objAssetMastDEN);
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }  
+    }
+
+    void InsertDataIntangibleAssets()
+    {
+        denAssetMast objAssetMastDEN;
+        bllAssetMast objAssetMastBLL;
+
+        try
+        {
+            objAssetMastDEN = new denAssetMast();
+            objAssetMastBLL = new bllAssetMast();
+
+            TextBox txt1 = (TextBox)GridView1.Rows[0].FindControl("txtAmount");
+            TextBox txt2 = (TextBox)GridView1.Rows[1].FindControl("txtAmount");
+            TextBox txt3 = (TextBox)GridView1.Rows[2].FindControl("txtAmount");
+            TextBox txt4 = (TextBox)GridView1.Rows[3].FindControl("txtAmount");
+            TextBox txt5 = (TextBox)GridView1.Rows[4].FindControl("txtAmount");
+            TextBox txt6 = (TextBox)GridView1.Rows[5].FindControl("txtAmount");
+
+            objAssetMastDEN.NameID = Convert.ToString(Session["NameID"]);
+            objAssetMastDEN.CompanyName = txt1.Text;
+            objAssetMastDEN.Address = "NIL";
+            objAssetMastDEN.NoOfShares = Convert.ToInt32(txt2.Text);
+            objAssetMastDEN.Town_City = "NIL";
+            objAssetMastDEN.PurchaseDate = txt3.Text;
+            objAssetMastDEN.PurchaseCost = Convert.ToInt32(txt5.Text);
+            objAssetMastDEN.PurchaseExp = Convert.ToInt32(txt6.Text);
+            objAssetMastDEN.State = "NIL";
+            objAssetMastDEN.PinCode = "NIL";
+            objAssetMastDEN.AssetType = Convert.ToInt32(ViewState["AssetType"]);
+            objAssetMastDEN.IsExempted = 0;
+            objAssetMastDEN.Rate = 0;
+            objAssetMastDEN.FMV = 0;
+            objAssetMastDEN.ImproveCost = 0;
+            objAssetMastDEN.ImproveDate = "nil";
+            objAssetMastDEN.SaleAmount = 0;
+            objAssetMastDEN.TOP = 0;
+            objAssetMastDEN.LTCG = 0;
+            objAssetMastDEN.TenantName = "NIL";
+            objAssetMastDEN.TenantPAN = "NIL";
+
+            objAssetMastBLL.InsertAssetTrans(objAssetMastDEN);
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }  
+    }
+
+    void InsertDataNSC()
+    {
+        denAssetMast objAssetMastDEN;
+        bllAssetMast objAssetMastBLL;
+
+        try
+        {
+            objAssetMastDEN = new denAssetMast();
+            objAssetMastBLL = new bllAssetMast();
+
+            TextBox txt1 = (TextBox)GridView1.Rows[0].FindControl("txtAmount");
+            TextBox txt2 = (TextBox)GridView1.Rows[1].FindControl("txtAmount");
+            TextBox txt3 = (TextBox)GridView1.Rows[2].FindControl("txtAmount");
+
+
+            objAssetMastDEN.NameID = Convert.ToString(Session["NameID"]);
+            objAssetMastDEN.CompanyName = txt1.Text;
+            objAssetMastDEN.Address = "NIL";
+            objAssetMastDEN.NoOfShares =0;
+            objAssetMastDEN.Town_City = "NIL";
+            objAssetMastDEN.PurchaseDate = txt2.Text;
+            objAssetMastDEN.PurchaseCost = Convert.ToInt32(txt3.Text);
+            objAssetMastDEN.PurchaseExp = 0;
+            objAssetMastDEN.State = "NIL";
+            objAssetMastDEN.PinCode = "NIL";
+            objAssetMastDEN.AssetType = Convert.ToInt32(ViewState["AssetType"]);
+            objAssetMastDEN.IsExempted = 0;
+            objAssetMastDEN.Rate = 0;
+            objAssetMastDEN.FMV = 0;
+            objAssetMastDEN.ImproveCost = 0;
+            objAssetMastDEN.ImproveDate = "nil";
+            objAssetMastDEN.SaleAmount = 0;
+            objAssetMastDEN.TOP = 0;
+            objAssetMastDEN.LTCG = 0;
+            objAssetMastDEN.TenantName = "NIL";
+            objAssetMastDEN.TenantPAN = "NIL";
+
+            objAssetMastBLL.InsertAssetTrans(objAssetMastDEN);
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }  
+    }
+
+    void InsertDataDepreciableAssets()
+    {
+        denAssetMast objAssetMastDEN;
+        bllAssetMast objAssetMastBLL;
+
+        try
+        {
+            objAssetMastDEN = new denAssetMast();
+            objAssetMastBLL = new bllAssetMast();
+
+            TextBox txt1 = (TextBox)GridView1.Rows[0].FindControl("txtAmount");
+            TextBox txt2 = (TextBox)GridView1.Rows[1].FindControl("txtAmount");
+            TextBox txt3 = (TextBox)GridView1.Rows[2].FindControl("txtAmount");
+            TextBox txt4 = (TextBox)GridView1.Rows[3].FindControl("txtAmount");
+            TextBox txt5 = (TextBox)GridView1.Rows[4].FindControl("txtAmount");
+            TextBox txt6 = (TextBox)GridView1.Rows[5].FindControl("txtAmount");
+
+            objAssetMastDEN.NameID = Convert.ToString(Session["NameID"]);
+            objAssetMastDEN.CompanyName = "NIL";
+            objAssetMastDEN.Address = txt1.Text;
+            objAssetMastDEN.NoOfShares = Convert.ToInt32(txt2.Text); ;
+            objAssetMastDEN.Town_City = "NIL";
+            objAssetMastDEN.PurchaseDate = txt3.Text;
+            objAssetMastDEN.PurchaseCost = Convert.ToInt32(txt5.Text);
+            objAssetMastDEN.PurchaseExp = Convert.ToInt32(txt6.Text);
+            objAssetMastDEN.State = "NIL";
+            objAssetMastDEN.PinCode = "NIL";
+            objAssetMastDEN.AssetType = Convert.ToInt32(ViewState["AssetType"]);
+            objAssetMastDEN.IsExempted = 0;
+            objAssetMastDEN.Rate = 0;
+            objAssetMastDEN.FMV = 0;
+            objAssetMastDEN.ImproveCost = 0;
+            objAssetMastDEN.ImproveDate = "nil";
+            objAssetMastDEN.SaleAmount = 0;
+            objAssetMastDEN.TOP = 0;
+            objAssetMastDEN.LTCG = 0;
+            objAssetMastDEN.TenantName = "NIL";
+            objAssetMastDEN.TenantPAN = "NIL";
+
+            objAssetMastBLL.InsertAssetTrans(objAssetMastDEN);
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }  
+    }
+    protected void btnUpdate_Click(object sender, EventArgs e)
+    {
+        string str = ddlItems.SelectedValue;
+        ViewState["AssetID"] = 12;
+        ViewState["AssetType"] = str;
+        if (str == "1" || str == "2" || str == "3" || str == "4" || str == "6" || str == "7" || str == "8")
+            UpdateData1_8();
+
+        else if (str == "5")
+            UpdateDataBonusShares();
+        else if (str == "9")
+            UpdateDataHouseProperty();
+        else if (str == "10")
+            UpdateDataLand();
+        else if (str == "14")
+            UpdateDataJewellery();
+        else if (str == "15")
+            UpdateDataStockAndTrade();
+        else if (str == "16" || str == "17")
+            UpdateDataIntangibleAssets();
+        else if (str == "19")
+            UpdateDataNSC();
+        else if (str == "18")
+            UpdateDataDepreciableAssets();
+
+    }
+
+    void UpdateData1_8()
+    {
+        denAssetMast objAssetMastDEN;
+        bllAssetMast objAssetMastBLL;
+        objAssetMastDEN = new denAssetMast();
+        objAssetMastBLL = new bllAssetMast();
+
+        TextBox txt1 = (TextBox)GridView1.Rows[0].FindControl("txtAmount");
+        TextBox txt2 = (TextBox)GridView1.Rows[1].FindControl("txtAmount");
+        TextBox txt3 = (TextBox)GridView1.Rows[2].FindControl("txtAmount");
+        TextBox txt4 = (TextBox)GridView1.Rows[3].FindControl("txtAmount");
+        TextBox txt5 = (TextBox)GridView1.Rows[4].FindControl("txtAmount");
+        TextBox txt6 = (TextBox)GridView1.Rows[5].FindControl("txtAmount");
+
+
+
+        objAssetMastDEN.AssetID = Convert.ToInt32(ViewState["AssetID"]);
+        objAssetMastDEN.NameID = Convert.ToString(Session["NameID"]);
+        objAssetMastDEN.CompanyName = txt1.Text;
+        objAssetMastDEN.NoOfShares = Convert.ToInt32(txt2.Text);
+        objAssetMastDEN.PurchaseDate = txt3.Text;
+        objAssetMastDEN.PurchaseCost = Convert.ToInt32(txt5.Text);
+        objAssetMastDEN.PurchaseExp = Convert.ToInt32(txt6.Text);
+        objAssetMastDEN.AssetType = Convert.ToInt32(ViewState["AssetType"]);
+        objAssetMastDEN.IsExempted = 0;
+        objAssetMastDEN.Rate = 0;
+        //objAssetMastDEN.PurchaseCost = 0;
+        objAssetMastDEN.FMV = 0;
+        //objAssetMastDEN.PurchaseExp = 0;
+        objAssetMastDEN.ImproveCost = 0;
+        objAssetMastDEN.ImproveDate = "nil";
+        objAssetMastDEN.SaleAmount = 0;
+        objAssetMastDEN.Address = "Nil";
+        objAssetMastDEN.TOP = 0;
+        objAssetMastDEN.LTCG = 0;
+        objAssetMastDEN.Town_City = "NIL";
+        objAssetMastDEN.State = "NIL";
+        objAssetMastDEN.PinCode = "NIL";
+        objAssetMastDEN.TenantName = "NIL";
+        objAssetMastDEN.TenantPAN = "NIL";
+
+        objAssetMastBLL.UpdateAssetTrans(objAssetMastDEN);
+        
+    }
+
+    void UpdateDataBonusShares()
+    {
+        denAssetMast objAssetMastDEN;
+        bllAssetMast objAssetMastBLL;
+        objAssetMastDEN = new denAssetMast();
+        objAssetMastBLL = new bllAssetMast();
+
+        TextBox txt1 = (TextBox)GridView1.Rows[0].FindControl("txtAmount");
+        TextBox txt2 = (TextBox)GridView1.Rows[1].FindControl("txtAmount");
+        TextBox txt3 = (TextBox)GridView1.Rows[2].FindControl("txtAmount");
+        TextBox txt4 = (TextBox)GridView1.Rows[3].FindControl("txtAmount");
+        objAssetMastDEN.AssetID = Convert.ToInt32(ViewState["AssetID"]);
+        objAssetMastDEN.NameID = Convert.ToString(Session["NameID"]);
+        objAssetMastDEN.CompanyName = txt1.Text;
+        objAssetMastDEN.NoOfShares = Convert.ToInt32(txt2.Text);
+        objAssetMastDEN.PurchaseDate = txt3.Text;
+        objAssetMastDEN.PurchaseCost = 0;
+        objAssetMastDEN.PurchaseExp = 0;
+        objAssetMastDEN.AssetType = Convert.ToInt32(ViewState["AssetType"]);
+        objAssetMastDEN.IsExempted = 0;
+        objAssetMastDEN.Rate = 0;
+        //objAssetMastDEN.PurchaseCost = 0;
+        objAssetMastDEN.FMV = 0;
+        //objAssetMastDEN.PurchaseExp = 0;
+        objAssetMastDEN.ImproveCost = 0;
+        objAssetMastDEN.ImproveDate = "nil";
+        objAssetMastDEN.SaleAmount = 0;
+        objAssetMastDEN.Address = "Nil";
+        objAssetMastDEN.TOP = 0;
+        objAssetMastDEN.LTCG = 0;
+        objAssetMastDEN.Town_City = "NIL";
+        objAssetMastDEN.State = "NIL";
+        objAssetMastDEN.PinCode = "NIL";
+        objAssetMastDEN.TenantName = "NIL";
+        objAssetMastDEN.TenantPAN = "NIL";
+
+        objAssetMastBLL.UpdateAssetTrans(objAssetMastDEN);
+    }
+
+    void UpdateDataHouseProperty()
+    {
+        denAssetMast objAssetMastDEN;
+        bllAssetMast objAssetMastBLL;
+
+        try
+        {
+            objAssetMastDEN = new denAssetMast();
+            objAssetMastBLL = new bllAssetMast();
+
+            TextBox txt1 = (TextBox)GridView1.Rows[0].FindControl("txtAmount");
+            TextBox txt2 = (TextBox)GridView1.Rows[1].FindControl("txtAmount");
+            TextBox txt3 = (TextBox)GridView1.Rows[2].FindControl("txtAmount");
+            TextBox txt4 = (TextBox)GridView1.Rows[3].FindControl("txtAmount");
+            TextBox txt5 = (TextBox)GridView1.Rows[4].FindControl("txtAmount");
+            TextBox txt6 = (TextBox)GridView1.Rows[5].FindControl("txtAmount");
+            TextBox txt7 = (TextBox)GridView1.Rows[6].FindControl("txtAmount");
+            TextBox txt8 = (TextBox)GridView1.Rows[7].FindControl("txtAmount");
+            TextBox txt9 = (TextBox)GridView1.Rows[8].FindControl("txtAmount");
+            TextBox txt10 = (TextBox)GridView1.Rows[9].FindControl("txtAmount");
+            objAssetMastDEN.AssetID = Convert.ToInt32(ViewState["AssetID"]);
+            objAssetMastDEN.NameID = Convert.ToString(Session["NameID"]);
+            objAssetMastDEN.CompanyName = txt1.Text;
+            objAssetMastDEN.Address = txt2.Text;
+            objAssetMastDEN.Town_City = txt3.Text;
+            objAssetMastDEN.State = txt4.Text;
+            objAssetMastDEN.PinCode = txt5.Text;
+            objAssetMastDEN.NoOfShares = Convert.ToInt32(txt6.Text);
+            objAssetMastDEN.PurchaseDate = txt7.Text;
+            objAssetMastDEN.PurchaseCost = Convert.ToInt32(txt9.Text);
+            objAssetMastDEN.PurchaseExp = Convert.ToInt32(txt10.Text);
+            objAssetMastDEN.AssetType = Convert.ToInt32(ViewState["AssetType"]);
+            objAssetMastDEN.IsExempted = 0;
+            objAssetMastDEN.Rate = 0;
+            //objAssetMastDEN.PurchaseCost = 0;
+            objAssetMastDEN.FMV = 0;
+            //objAssetMastDEN.PurchaseExp = 0;
+            objAssetMastDEN.ImproveCost = 0;
+            objAssetMastDEN.ImproveDate = "nil";
+            objAssetMastDEN.SaleAmount = 0;
+
+            objAssetMastDEN.TOP = 0;
+            objAssetMastDEN.LTCG = 0;
+
+
+
+            objAssetMastDEN.TenantName = "NIL";
+            objAssetMastDEN.TenantPAN = "NIL";
+            objAssetMastBLL.UpdateAssetTrans(objAssetMastDEN);
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
+    }
+
+    protected void gvMain_RowCommand(object sender, GridViewCommandEventArgs e)
+    {
+        if (e.CommandName == "ddel")
+        {
+            objbllAssetMast.Delete(Convert.ToInt64(e.CommandArgument));
+            bindGrid();
+        }
+        else
+        {          
+            AssetID = Convert.ToInt32(e.CommandArgument);
+            bindGridEdited();
+        }
+    }
+
+    public void bindGridEdited()
+    {
+        bllAssetTrans objbllAssetTrans = new bllAssetTrans();
+        List<denAssetTrans> objList = new List<denAssetTrans>();
+
+        objList = objbllAssetTrans.Select(AssetID);
+        ddlItems.SelectedValue = objList[0].AssetType.ToString();
+        txtCountryName.Text = objList[0].CompanyName;
+        txtStateName.Text = objList[0].State;
+        id = AssetID;
+        int cnt = 0;
+
+        if (GridView1.Rows.Count > 0)
+        {
+            foreach (GridViewRow row1 in GridView1.Rows)
+            {
+                TextBox txtAmount = new TextBox();
+                txtAmount = (TextBox)row1.FindControl("txtAmount");
+
+                if (cnt == 0)
+                    txtAmount.Text = objList[0].CompanyName;
+                else if (cnt == 1)
+                    txtAmount.Text = objList[0].NoOfShares.ToString();
+                else if (cnt == 2)
+                    txtAmount.Text = objList[0].PurchaseDate.ToString();
+                else if (cnt == 3)
+                    txtAmount.Text = objList[0].PurchaseCost.ToString();
+                else if (cnt == 4)
+                    txtAmount.Text = objList[0].PurchaseExp.ToString();
+                else if (cnt == 5)
+                    txtAmount.Text = objList[0].ImproveCost.ToString();
+
+                cnt += 1;
+            }
+        }
+        //return objList;
+    }
+
+    void UpdateDataLand()
+    {
+        denAssetMast objAssetMastDEN;
+        bllAssetMast objAssetMastBLL;
+
+        try
+        {
+            objAssetMastDEN = new denAssetMast();
+            objAssetMastBLL = new bllAssetMast();
+
+            TextBox txt1 = (TextBox)GridView1.Rows[0].FindControl("txtAmount");
+            TextBox txt2 = (TextBox)GridView1.Rows[1].FindControl("txtAmount");
+            TextBox txt3 = (TextBox)GridView1.Rows[2].FindControl("txtAmount");
+            TextBox txt4 = (TextBox)GridView1.Rows[3].FindControl("txtAmount");
+            TextBox txt5 = (TextBox)GridView1.Rows[4].FindControl("txtAmount");
+            TextBox txt6 = (TextBox)GridView1.Rows[5].FindControl("txtAmount");
+            TextBox txt7 = (TextBox)GridView1.Rows[6].FindControl("txtAmount");
+
+            objAssetMastDEN.AssetID = Convert.ToInt32(ViewState["AssetID"]);
+            objAssetMastDEN.NameID = Convert.ToString(Session["NameID"]);
+            objAssetMastDEN.CompanyName = txt1.Text;
+            objAssetMastDEN.Address = txt2.Text;
+            objAssetMastDEN.NoOfShares = Convert.ToInt32(txt3.Text);
+            objAssetMastDEN.Town_City = "NIL";
+            objAssetMastDEN.PurchaseDate = txt4.Text;
+            objAssetMastDEN.PurchaseCost = Convert.ToInt32(txt6.Text);
+            objAssetMastDEN.PurchaseExp = Convert.ToInt32(txt7.Text);
+            objAssetMastDEN.State = "NIL";
+            objAssetMastDEN.PinCode = "NIL";
+            objAssetMastDEN.AssetType = Convert.ToInt32(ViewState["AssetType"]);
+            objAssetMastDEN.IsExempted = 0;
+            objAssetMastDEN.Rate = 0;
+            objAssetMastDEN.FMV = 0;
+            objAssetMastDEN.ImproveCost = 0;
+            objAssetMastDEN.ImproveDate = "nil";
+            objAssetMastDEN.SaleAmount = 0;
+            objAssetMastDEN.TOP = 0;
+            objAssetMastDEN.LTCG = 0;
+            objAssetMastDEN.TenantName = "NIL";
+            objAssetMastDEN.TenantPAN = "NIL";
+
+            objAssetMastBLL.UpdateAssetTrans(objAssetMastDEN);
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
+    }
+
+    void UpdateDataJewellery()
+    {
+        denAssetMast objAssetMastDEN;
+        bllAssetMast objAssetMastBLL;
+
+        try
+        {
+            objAssetMastDEN = new denAssetMast();
+            objAssetMastBLL = new bllAssetMast();
+
+            TextBox txt1 = (TextBox)GridView1.Rows[0].FindControl("txtAmount");
+            TextBox txt2 = (TextBox)GridView1.Rows[1].FindControl("txtAmount");
+            TextBox txt3 = (TextBox)GridView1.Rows[2].FindControl("txtAmount");
+            TextBox txt4 = (TextBox)GridView1.Rows[3].FindControl("txtAmount");
+            TextBox txt5 = (TextBox)GridView1.Rows[4].FindControl("txtAmount");
+            TextBox txt6 = (TextBox)GridView1.Rows[5].FindControl("txtAmount");
+
+
+            objAssetMastDEN.AssetID = Convert.ToInt32(ViewState["AssetID"]);
+            objAssetMastDEN.NameID = Convert.ToString(Session["NameID"]);
+            objAssetMastDEN.CompanyName = txt1.Text;
+            objAssetMastDEN.Address = "NIL";
+            objAssetMastDEN.NoOfShares = Convert.ToInt32(txt2.Text);
+            objAssetMastDEN.Town_City = "NIL";
+            objAssetMastDEN.PurchaseDate = txt3.Text;
+            objAssetMastDEN.PurchaseCost = Convert.ToInt32(txt5.Text);
+            objAssetMastDEN.PurchaseExp = Convert.ToInt32(txt6.Text);
+            objAssetMastDEN.State = "NIL";
+            objAssetMastDEN.PinCode = "NIL";
+            objAssetMastDEN.AssetType = Convert.ToInt32(ViewState["AssetType"]);
+            objAssetMastDEN.IsExempted = 0;
+            objAssetMastDEN.Rate = 0;
+            objAssetMastDEN.FMV = 0;
+            objAssetMastDEN.ImproveCost = 0;
+            objAssetMastDEN.ImproveDate = "nil";
+            objAssetMastDEN.SaleAmount = 0;
+            objAssetMastDEN.TOP = 0;
+            objAssetMastDEN.LTCG = 0;
+            objAssetMastDEN.TenantName = "NIL";
+            objAssetMastDEN.TenantPAN = "NIL";
+
+            objAssetMastBLL.UpdateAssetTrans(objAssetMastDEN);
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
+    }
+
+    void UpdateDataStockAndTrade()
+    {
+        denAssetMast objAssetMastDEN;
+        bllAssetMast objAssetMastBLL;
+
+        try
+        {
+            objAssetMastDEN = new denAssetMast();
+            objAssetMastBLL = new bllAssetMast();
+
+            TextBox txt1 = (TextBox)GridView1.Rows[0].FindControl("txtAmount");
+            TextBox txt2 = (TextBox)GridView1.Rows[1].FindControl("txtAmount");
+            TextBox txt3 = (TextBox)GridView1.Rows[2].FindControl("txtAmount");
+            TextBox txt4 = (TextBox)GridView1.Rows[3].FindControl("txtAmount");
+            TextBox txt5 = (TextBox)GridView1.Rows[4].FindControl("txtAmount");
+            TextBox txt6 = (TextBox)GridView1.Rows[5].FindControl("txtAmount");
+
+            objAssetMastDEN.AssetID = Convert.ToInt32(ViewState["AssetID"]);
+            objAssetMastDEN.NameID = Convert.ToString(Session["NameID"]);
+            objAssetMastDEN.CompanyName = txt1.Text;
+            objAssetMastDEN.Address = "NIL";
+            objAssetMastDEN.NoOfShares = Convert.ToInt32(txt2.Text);
+            objAssetMastDEN.Town_City = "NIL";
+            objAssetMastDEN.PurchaseDate = txt3.Text;
+            objAssetMastDEN.PurchaseCost = Convert.ToInt32(txt5.Text);
+            objAssetMastDEN.PurchaseExp = Convert.ToInt32(txt6.Text);
+            objAssetMastDEN.State = "NIL";
+            objAssetMastDEN.PinCode = "NIL";
+            objAssetMastDEN.AssetType = Convert.ToInt32(ViewState["AssetType"]);
+            objAssetMastDEN.IsExempted = 0;
+            objAssetMastDEN.Rate = 0;
+            objAssetMastDEN.FMV = 0;
+            objAssetMastDEN.ImproveCost = 0;
+            objAssetMastDEN.ImproveDate = "nil";
+            objAssetMastDEN.SaleAmount = 0;
+            objAssetMastDEN.TOP = 0;
+            objAssetMastDEN.LTCG = 0;
+            objAssetMastDEN.TenantName = "NIL";
+            objAssetMastDEN.TenantPAN = "NIL";
+
+            objAssetMastBLL.UpdateAssetTrans(objAssetMastDEN);
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }  
+    }
+
+    void UpdateDataIntangibleAssets()
+    {
+        denAssetMast objAssetMastDEN;
+        bllAssetMast objAssetMastBLL;
+
+        try
+        {
+            objAssetMastDEN = new denAssetMast();
+            objAssetMastBLL = new bllAssetMast();
+
+            TextBox txt1 = (TextBox)GridView1.Rows[0].FindControl("txtAmount");
+            TextBox txt2 = (TextBox)GridView1.Rows[1].FindControl("txtAmount");
+            TextBox txt3 = (TextBox)GridView1.Rows[2].FindControl("txtAmount");
+            TextBox txt4 = (TextBox)GridView1.Rows[3].FindControl("txtAmount");
+            TextBox txt5 = (TextBox)GridView1.Rows[4].FindControl("txtAmount");
+            TextBox txt6 = (TextBox)GridView1.Rows[5].FindControl("txtAmount");
+
+            objAssetMastDEN.AssetID = Convert.ToInt32(ViewState["AssetID"]);
+            objAssetMastDEN.NameID = Convert.ToString(Session["NameID"]);
+            objAssetMastDEN.CompanyName = txt1.Text;
+            objAssetMastDEN.Address = "NIL";
+            objAssetMastDEN.NoOfShares = Convert.ToInt32(txt2.Text);
+            objAssetMastDEN.Town_City = "NIL";
+            objAssetMastDEN.PurchaseDate = txt3.Text;
+            objAssetMastDEN.PurchaseCost = Convert.ToInt32(txt5.Text);
+            objAssetMastDEN.PurchaseExp = Convert.ToInt32(txt6.Text);
+            objAssetMastDEN.State = "NIL";
+            objAssetMastDEN.PinCode = "NIL";
+            objAssetMastDEN.AssetType = Convert.ToInt32(ViewState["AssetType"]);
+            objAssetMastDEN.IsExempted = 0;
+            objAssetMastDEN.Rate = 0;
+            objAssetMastDEN.FMV = 0;
+            objAssetMastDEN.ImproveCost = 0;
+            objAssetMastDEN.ImproveDate = "nil";
+            objAssetMastDEN.SaleAmount = 0;
+            objAssetMastDEN.TOP = 0;
+            objAssetMastDEN.LTCG = 0;
+            objAssetMastDEN.TenantName = "NIL";
+            objAssetMastDEN.TenantPAN = "NIL";
+
+            objAssetMastBLL.UpdateAssetTrans(objAssetMastDEN);
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }  
+    }
+
+    void UpdateDataNSC()
+    {
+        denAssetMast objAssetMastDEN;
+        bllAssetMast objAssetMastBLL;
+
+        try
+        {
+            objAssetMastDEN = new denAssetMast();
+            objAssetMastBLL = new bllAssetMast();
+
+            TextBox txt1 = (TextBox)GridView1.Rows[0].FindControl("txtAmount");
+            TextBox txt2 = (TextBox)GridView1.Rows[1].FindControl("txtAmount");
+            TextBox txt3 = (TextBox)GridView1.Rows[2].FindControl("txtAmount");
+
+            objAssetMastDEN.AssetID = Convert.ToInt32(ViewState["AssetID"]);
+            objAssetMastDEN.NameID = Convert.ToString(Session["NameID"]);
+            objAssetMastDEN.CompanyName = txt1.Text;
+            objAssetMastDEN.Address = "NIL";
+            objAssetMastDEN.NoOfShares = 0;
+            objAssetMastDEN.Town_City = "NIL";
+            objAssetMastDEN.PurchaseDate = txt2.Text;
+            objAssetMastDEN.PurchaseCost = Convert.ToInt32(txt3.Text);
+            objAssetMastDEN.PurchaseExp = 0;
+            objAssetMastDEN.State = "NIL";
+            objAssetMastDEN.PinCode = "NIL";
+            objAssetMastDEN.AssetType = Convert.ToInt32(ViewState["AssetType"]);
+            objAssetMastDEN.IsExempted = 0;
+            objAssetMastDEN.Rate = 0;
+            objAssetMastDEN.FMV = 0;
+            objAssetMastDEN.ImproveCost = 0;
+            objAssetMastDEN.ImproveDate = "nil";
+            objAssetMastDEN.SaleAmount = 0;
+            objAssetMastDEN.TOP = 0;
+            objAssetMastDEN.LTCG = 0;
+            objAssetMastDEN.TenantName = "NIL";
+            objAssetMastDEN.TenantPAN = "NIL";
+
+            objAssetMastBLL.UpdateAssetTrans(objAssetMastDEN);
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }  
+    }
+
+    void UpdateDataDepreciableAssets()
+    {
+        denAssetMast objAssetMastDEN;
+        bllAssetMast objAssetMastBLL;
+
+        try
+        {
+            objAssetMastDEN = new denAssetMast();
+            objAssetMastBLL = new bllAssetMast();
+
+            TextBox txt1 = (TextBox)GridView1.Rows[0].FindControl("txtAmount");
+            TextBox txt2 = (TextBox)GridView1.Rows[1].FindControl("txtAmount");
+            TextBox txt3 = (TextBox)GridView1.Rows[2].FindControl("txtAmount");
+            TextBox txt4 = (TextBox)GridView1.Rows[3].FindControl("txtAmount");
+            TextBox txt5 = (TextBox)GridView1.Rows[4].FindControl("txtAmount");
+            TextBox txt6 = (TextBox)GridView1.Rows[5].FindControl("txtAmount");
+
+            objAssetMastDEN.AssetID = Convert.ToInt32(ViewState["AssetID"]);
+            objAssetMastDEN.NameID = Convert.ToString(Session["NameID"]);
+            objAssetMastDEN.CompanyName = "NIL";
+            objAssetMastDEN.Address = txt1.Text;
+            objAssetMastDEN.NoOfShares = Convert.ToInt32(txt2.Text); ;
+            objAssetMastDEN.Town_City = "NIL";
+            objAssetMastDEN.PurchaseDate = txt3.Text;
+            objAssetMastDEN.PurchaseCost = Convert.ToInt32(txt5.Text);
+            objAssetMastDEN.PurchaseExp = Convert.ToInt32(txt6.Text);
+            objAssetMastDEN.State = "NIL";
+            objAssetMastDEN.PinCode = "NIL";
+            objAssetMastDEN.AssetType = Convert.ToInt32(ViewState["AssetType"]);
+            objAssetMastDEN.IsExempted = 0;
+            objAssetMastDEN.Rate = 0;
+            objAssetMastDEN.FMV = 0;
+            objAssetMastDEN.ImproveCost = 0;
+            objAssetMastDEN.ImproveDate = "nil";
+            objAssetMastDEN.SaleAmount = 0;
+            objAssetMastDEN.TOP = 0;
+            objAssetMastDEN.LTCG = 0;
+            objAssetMastDEN.TenantName = "NIL";
+            objAssetMastDEN.TenantPAN = "NIL";
+
+            objAssetMastBLL.UpdateAssetTrans(objAssetMastDEN);
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }  
+    }
+
+    protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+        if (e.Row.DataItemIndex != -1)
+        {
+            Control LnkButton;
+            LnkButton = (LinkButton)e.Row.Cells[2].FindControl("lnkButton");
+            GridViewRow row = (GridViewRow)LnkButton.NamingContainer;
+            ViewState["AssetConstID"] = Convert.ToInt16(row.Cells[5].Text);
+            ViewState["Header"] = Convert.ToInt16(row.Cells[4].Text);
+            if (Convert.ToInt16(row.Cells[4].Text) == 0)
+                row.Cells[2].Text = "";
+
+            GridViewRow row2 = (GridViewRow)LnkButton.NamingContainer;
+            if (Convert.ToInt16(row.Cells[3].Text) == 1)
+                row.Visible = false;
+
+            if (e.Row.Cells[0].Text.Contains("date") || e.Row.Cells[0].Text.Contains("Date"))
+            {
+                TextBox txt = new TextBox();
+                txt = (TextBox)e.Row.FindControl("txtAmount");
+                txt.Attributes.Add("type", "date");
+            }
+            else if (e.Row.Cells[0].Text.Contains("No."))
+            {
+                TextBox txt = new TextBox();
+                txt = (TextBox)e.Row.FindControl("txtAmount");
+                txt.Attributes.Add("onkeypress", "return isNumberKey(event)");
+            }
+        }
+    }
+
+    protected void lnkButton_Click(object sender, EventArgs e)
+    {
+        
+        mltView.ActiveViewIndex = 3;
+        GridView1.DataSourceID = "";
+    }
+
+    protected void GridViewFlaoting_DataBound(object sender, EventArgs e)
+    {
+
+
+        bllFloating objbllFloating = new bllFloating();
+        List<denFloating> genFloating = new List<denFloating>();
+        genFloating = objbllFloating.GetFlaotingHeaders(Convert.ToString(Session["NameID"]), Convert.ToInt16(ViewState["Header"]), Convert.ToInt16(ViewState["AssetConstID"]), 0);
+
+
+
+        GridViewFlaoting.HeaderRow.Cells[0].Text = genFloating[0].C1;
+        GridViewFlaoting.HeaderRow.Cells[1].Text = genFloating[0].C2;
+        GridViewFlaoting.HeaderRow.Cells[2].Text = genFloating[0].C3;
+        GridViewFlaoting.HeaderRow.Cells[3].Text = genFloating[0].C4;
+        GridViewFlaoting.HeaderRow.Cells[4].Text = genFloating[0].C5;
+        GridViewFlaoting.HeaderRow.Cells[5].Text = genFloating[0].C6;
+        GridViewFlaoting.HeaderRow.Cells[6].Text = genFloating[0].C7;
+        GridViewFlaoting.HeaderRow.Cells[7].Text = genFloating[0].C8;
+        GridViewFlaoting.HeaderRow.Cells[8].Text = genFloating[0].C9;
+        GridViewFlaoting.HeaderRow.Cells[9].Text = genFloating[0].C10;
+        GridViewFlaoting.HeaderRow.Cells[10].Text = genFloating[0].C11;
+        GridViewFlaoting.HeaderRow.Cells[11].Text = genFloating[0].C12;
+        GridViewFlaoting.HeaderRow.Cells[12].Text = genFloating[0].C13;
+        GridViewFlaoting.HeaderRow.Cells[13].Text = genFloating[0].C14;
+        GridViewFlaoting.HeaderRow.Cells[14].Text = genFloating[0].C15;
+
+
+        GridViewFlaoting.HeaderRow.Cells[15].Text = genFloating[0].C16;
+        GridViewFlaoting.HeaderRow.Cells[16].Text = genFloating[0].C17;
+        GridViewFlaoting.HeaderRow.Cells[17].Text = genFloating[0].C18;
+        GridViewFlaoting.HeaderRow.Cells[18].Text = genFloating[0].C19;
+        GridViewFlaoting.HeaderRow.Cells[19].Text = genFloating[0].C20;
+        GridViewFlaoting.HeaderRow.Cells[20].Text = genFloating[0].C21;
+        GridViewFlaoting.HeaderRow.Cells[21].Text = genFloating[0].C22;
+        GridViewFlaoting.HeaderRow.Cells[22].Text = genFloating[0].C23;
+        GridViewFlaoting.HeaderRow.Cells[23].Text = genFloating[0].C24;
+        GridViewFlaoting.HeaderRow.Cells[24].Text = genFloating[0].C25;
+        GridViewFlaoting.HeaderRow.Cells[25].Text = genFloating[0].C26;
+        GridViewFlaoting.HeaderRow.Cells[26].Text = genFloating[0].C27;
+        GridViewFlaoting.HeaderRow.Cells[27].Text = genFloating[0].C28;
+
+        for (int x = 0; x <= 27; x++)
+        {
+            if (GridViewFlaoting.HeaderRow.Cells[x].Text == "NIL")
+                GridViewFlaoting.Columns[x].Visible = false;
+            else
+                GridViewFlaoting.Columns[x].Visible = true;
+        }
+
+
+
+
+
+
+
+
+
+
+    }
+
+    protected void ObjectDataSource3_Selecting(object sender, ObjectDataSourceSelectingEventArgs e)
+    {
+        e.InputParameters["strNameID"] = Convert.ToString(Session["NameID"]);
+        e.InputParameters["intC16"] = Convert.ToInt16(ViewState["Header"]);
+        e.InputParameters["intconstID"] = Convert.ToInt16(ViewState["AssetConstID"]);
+        if (Convert.ToInt32(ViewState["Selection"]) != 1 && Convert.ToInt32(ViewState["Selection"]) != 0)
+        {
+            ViewState["Selection"] = 0;
+        }
+        e.InputParameters["intSelection"] = Convert.ToInt32(ViewState["Selection"]);
+    }
+    protected void txtC2_TextChanged(object sender, EventArgs e)
+    {
+        TextBox txt;
+        txt = (TextBox)sender;
+        objFloatingDEO.Col2 = txt.Text;
+        Session["Common"] = objFloatingDEO;
+        GridViewRow row = (GridViewRow)txt.NamingContainer;
+        ViewState["Gorder"] = Convert.ToInt32(row.Cells[0].Text);
+        ViewState["Number"] = 2;
+        InsertOrUpdate(objFloatingDEO);
+
+    }
+    protected void txtC3_TextChanged(object sender, EventArgs e)
+    {
+        TextBox txt;
+        txt = (TextBox)sender;
+        objFloatingDEO.Col3 = txt.Text;
+        Session["Common"] = objFloatingDEO;
+        GridViewRow row = (GridViewRow)txt.NamingContainer;
+        ViewState["Gorder"] = Convert.ToInt32(row.Cells[0].Text);
+        ViewState["Number"] = 3;
+        InsertOrUpdate(objFloatingDEO);
+    }
+    protected void txtC4_TextChanged(object sender, EventArgs e)
+    {
+        TextBox txt;
+        txt = (TextBox)sender;
+        objFloatingDEO.Col4 = txt.Text;
+        Session["Common"] = objFloatingDEO;
+        GridViewRow row = (GridViewRow)txt.NamingContainer;
+        ViewState["Gorder"] = Convert.ToInt32(row.Cells[0].Text);
+        ViewState["Number"] = 4;
+        InsertOrUpdate(objFloatingDEO);
+    }
+    protected void txtC5_TextChanged(object sender, EventArgs e)
+    {
+        TextBox txt;
+        txt = (TextBox)sender;
+        objFloatingDEO.Col5 = txt.Text;
+        Session["Common"] = objFloatingDEO;
+        GridViewRow row = (GridViewRow)txt.NamingContainer;
+        ViewState["Gorder"] = Convert.ToInt32(row.Cells[0].Text);
+        ViewState["Number"] = 5;
+        InsertOrUpdate(objFloatingDEO);
+    }
+    protected void txtC6_TextChanged(object sender, EventArgs e)
+    {
+        TextBox txt;
+        txt = (TextBox)sender;
+        objFloatingDEO.Col6 = txt.Text;
+        Session["Common"] = objFloatingDEO;
+        GridViewRow row = (GridViewRow)txt.NamingContainer;
+        ViewState["Gorder"] = Convert.ToInt32(row.Cells[0].Text);
+        ViewState["Number"] = 6;
+        InsertOrUpdate(objFloatingDEO);
+    }
+    protected void txtC7_TextChanged(object sender, EventArgs e)
+    {
+        TextBox txt;
+        txt = (TextBox)sender;
+        objFloatingDEO.Col7 = txt.Text;
+        Session["Common"] = objFloatingDEO;
+        GridViewRow row = (GridViewRow)txt.NamingContainer;
+        ViewState["Gorder"] = Convert.ToInt32(row.Cells[0].Text);
+        ViewState["Number"] = 7;
+        InsertOrUpdate(objFloatingDEO);
+
+    }
+    protected void txtC8_TextChanged(object sender, EventArgs e)
+    {
+        TextBox txt;
+        txt = (TextBox)sender;
+        objFloatingDEO.Col8 = txt.Text;
+        Session["Common"] = objFloatingDEO;
+        GridViewRow row = (GridViewRow)txt.NamingContainer;
+        ViewState["Gorder"] = Convert.ToInt32(row.Cells[0].Text);
+        ViewState["Number"] = 8;
+        InsertOrUpdate(objFloatingDEO);
+    }
+    protected void txtC9_TextChanged(object sender, EventArgs e)
+    {
+        TextBox txt;
+        txt = (TextBox)sender;
+        objFloatingDEO.Col9 = txt.Text;
+        Session["Common"] = objFloatingDEO;
+        GridViewRow row = (GridViewRow)txt.NamingContainer;
+        ViewState["Gorder"] = Convert.ToInt32(row.Cells[0].Text);
+        ViewState["Number"] = 9;
+        InsertOrUpdate(objFloatingDEO);
+    }
+    protected void txtC10_TextChanged(object sender, EventArgs e)
+    {
+        TextBox txt;
+        txt = (TextBox)sender;
+        objFloatingDEO.Col10 = txt.Text;
+        Session["Common"] = objFloatingDEO;
+        GridViewRow row = (GridViewRow)txt.NamingContainer;
+        ViewState["Gorder"] = Convert.ToInt32(row.Cells[0].Text);
+        ViewState["Number"] = 10;
+        InsertOrUpdate(objFloatingDEO);
+    }
+    protected void txtC11_TextChanged(object sender, EventArgs e)
+    {
+        TextBox txt;
+        txt = (TextBox)sender;
+        objFloatingDEO.Col11 = txt.Text;
+        Session["Common"] = objFloatingDEO;
+        GridViewRow row = (GridViewRow)txt.NamingContainer;
+        ViewState["Gorder"] = Convert.ToInt32(row.Cells[0].Text);
+        ViewState["Number"] = 11;
+        InsertOrUpdate(objFloatingDEO);
+    }
+    protected void txtC12_TextChanged(object sender, EventArgs e)
+    {
+        TextBox txt;
+        txt = (TextBox)sender;
+        objFloatingDEO.Col12 = txt.Text;
+        Session["Common"] = objFloatingDEO;
+        GridViewRow row = (GridViewRow)txt.NamingContainer;
+        ViewState["Gorder"] = Convert.ToInt32(row.Cells[0].Text);
+        ViewState["Number"] = 12;
+        InsertOrUpdate(objFloatingDEO);
+    }
+    protected void txtC13_TextChanged(object sender, EventArgs e)
+    {
+        TextBox txt;
+        txt = (TextBox)sender;
+        objFloatingDEO.Col13 = txt.Text;
+        Session["Common"] = objFloatingDEO;
+        GridViewRow row = (GridViewRow)txt.NamingContainer;
+        ViewState["Gorder"] = Convert.ToInt32(row.Cells[0].Text);
+        ViewState["Number"] = 13;
+        InsertOrUpdate(objFloatingDEO);
+    }
+    protected void txtC14_TextChanged(object sender, EventArgs e)
+    {
+        TextBox txt;
+        txt = (TextBox)sender;
+        objFloatingDEO.Col14 = txt.Text;
+        Session["Common"] = objFloatingDEO;
+        GridViewRow row = (GridViewRow)txt.NamingContainer;
+        ViewState["Gorder"] = Convert.ToInt32(row.Cells[0].Text);
+        ViewState["Number"] = 14;
+        InsertOrUpdate(objFloatingDEO);
+    }
+    protected void txtC15_TextChanged(object sender, EventArgs e)
+    {
+        TextBox txt;
+        txt = (TextBox)sender;
+        objFloatingDEO.Col15 = txt.Text;
+        Session["Common"] = objFloatingDEO;
+        GridViewRow row = (GridViewRow)txt.NamingContainer;
+        ViewState["Gorder"] = Convert.ToInt32(row.Cells[0].Text);
+        ViewState["Number"] = 15;
+        InsertOrUpdate(objFloatingDEO);
+    }
+    protected void txtC16_TextChanged(object sender, EventArgs e)
+    {
+        TextBox txt;
+        txt = (TextBox)sender;
+        objFloatingDEO.Col16 = txt.Text;
+        Session["Common"] = objFloatingDEO;
+        GridViewRow row = (GridViewRow)txt.NamingContainer;
+        ViewState["Gorder"] = Convert.ToInt32(row.Cells[0].Text);
+        ViewState["Number"] = 16;
+        InsertOrUpdate(objFloatingDEO);
+    }
+    protected void txtC17_TextChanged(object sender, EventArgs e)
+    {
+        TextBox txt;
+        txt = (TextBox)sender;
+        objFloatingDEO.Col17 = txt.Text;
+        Session["Common"] = objFloatingDEO;
+        GridViewRow row = (GridViewRow)txt.NamingContainer;
+        ViewState["Gorder"] = Convert.ToInt32(row.Cells[0].Text);
+        ViewState["Number"] = 17;
+        InsertOrUpdate(objFloatingDEO);
+    }
+    protected void txtC18_TextChanged(object sender, EventArgs e)
+    {
+        TextBox txt;
+        txt = (TextBox)sender;
+        objFloatingDEO.Col18 = txt.Text;
+        Session["Common"] = objFloatingDEO;
+        GridViewRow row = (GridViewRow)txt.NamingContainer;
+        ViewState["Gorder"] = Convert.ToInt32(row.Cells[0].Text);
+        ViewState["Number"] = 18;
+        InsertOrUpdate(objFloatingDEO);
+    }
+    protected void txtC19_TextChanged(object sender, EventArgs e)
+    {
+        TextBox txt;
+        txt = (TextBox)sender;
+        objFloatingDEO.Col19 = txt.Text;
+        Session["Common"] = objFloatingDEO;
+        GridViewRow row = (GridViewRow)txt.NamingContainer;
+        ViewState["Gorder"] = Convert.ToInt32(row.Cells[0].Text);
+        ViewState["Number"] = 19;
+        InsertOrUpdate(objFloatingDEO);
+    }
+    protected void txtC20_TextChanged(object sender, EventArgs e)
+    {
+        TextBox txt;
+        txt = (TextBox)sender;
+        objFloatingDEO.Col20 = txt.Text;
+        Session["Common"] = objFloatingDEO;
+        GridViewRow row = (GridViewRow)txt.NamingContainer;
+        ViewState["Gorder"] = Convert.ToInt32(row.Cells[0].Text);
+        ViewState["Number"] = 20;
+        InsertOrUpdate(objFloatingDEO);
+    }
+    protected void txtC21_TextChanged(object sender, EventArgs e)
+    {
+        TextBox txt;
+        txt = (TextBox)sender;
+        objFloatingDEO.Col21 = txt.Text;
+        Session["Common"] = objFloatingDEO;
+        GridViewRow row = (GridViewRow)txt.NamingContainer;
+        ViewState["Gorder"] = Convert.ToInt32(row.Cells[0].Text);
+        ViewState["Number"] = 21;
+        InsertOrUpdate(objFloatingDEO);
+    }
+    protected void txtC22_TextChanged(object sender, EventArgs e)
+    {
+        TextBox txt;
+        txt = (TextBox)sender;
+        objFloatingDEO.Col22 = txt.Text;
+        Session["Common"] = objFloatingDEO;
+        GridViewRow row = (GridViewRow)txt.NamingContainer;
+        ViewState["Gorder"] = Convert.ToInt32(row.Cells[0].Text);
+        ViewState["Number"] = 22;
+        InsertOrUpdate(objFloatingDEO);
+    }
+    protected void txtC23_TextChanged(object sender, EventArgs e)
+    {
+        TextBox txt;
+        txt = (TextBox)sender;
+        objFloatingDEO.Col23 = txt.Text;
+        Session["Common"] = objFloatingDEO;
+        GridViewRow row = (GridViewRow)txt.NamingContainer;
+        ViewState["Gorder"] = Convert.ToInt32(row.Cells[0].Text);
+        ViewState["Number"] = 23;
+        InsertOrUpdate(objFloatingDEO);
+    }
+    protected void txtC24_TextChanged(object sender, EventArgs e)
+    {
+        TextBox txt;
+        txt = (TextBox)sender;
+        objFloatingDEO.Col24 = txt.Text;
+        Session["Common"] = objFloatingDEO;
+        GridViewRow row = (GridViewRow)txt.NamingContainer;
+        ViewState["Gorder"] = Convert.ToInt32(row.Cells[0].Text);
+        ViewState["Number"] = 24;
+        InsertOrUpdate(objFloatingDEO);
+    }
+    protected void txtC25_TextChanged(object sender, EventArgs e)
+    {
+        TextBox txt;
+        txt = (TextBox)sender;
+        objFloatingDEO.Col25 = txt.Text;
+        Session["Common"] = objFloatingDEO;
+        GridViewRow row = (GridViewRow)txt.NamingContainer;
+        ViewState["Gorder"] = Convert.ToInt32(row.Cells[0].Text);
+        ViewState["Number"] = 25;
+        InsertOrUpdate(objFloatingDEO);
+    }
+    protected void txtC26_TextChanged(object sender, EventArgs e)
+    {
+        TextBox txt;
+        txt = (TextBox)sender;
+        objFloatingDEO.Col26 = txt.Text;
+        Session["Common"] = objFloatingDEO;
+        GridViewRow row = (GridViewRow)txt.NamingContainer;
+        ViewState["Gorder"] = Convert.ToInt32(row.Cells[0].Text);
+        ViewState["Number"] = 26;
+        InsertOrUpdate(objFloatingDEO);
+    }
+    protected void txtC27_TextChanged(object sender, EventArgs e)
+    {
+        TextBox txt;
+        txt = (TextBox)sender;
+        objFloatingDEO.Col27 = txt.Text;
+        Session["Common"] = objFloatingDEO;
+        GridViewRow row = (GridViewRow)txt.NamingContainer;
+        ViewState["Gorder"] = Convert.ToInt32(row.Cells[0].Text);
+        ViewState["Number"] = 27;
+        InsertOrUpdate(objFloatingDEO);
+    }
+    protected void InsertOrUpdate(denFloating objFloatingDEO)
+    {
+        objFloatingDEO.NameID = Convert.ToString(Session["NameID"]);
+        objFloatingDEO.HeaderID = Convert.ToString(ViewState["Header"]);
+        objFloatingDEO.Vtype = Convert.ToString(ViewState["vtype"]);
+        objFloatingDEO.ConstID = Convert.ToString(ViewState["AssetConstID"]);
+        objFloatingDEO.Gorder = Convert.ToString(ViewState["Gorder"]);
+        objFloatingDEO.Number = Convert.ToInt32(ViewState["Number"]);
+
+        bllFloating objFloatingBLO = new bllFloating();
+        objFloatingBLO.InsertOrUpdate(objFloatingDEO);
+        GridViewFlaoting.DataSourceID = "";
+        GridViewFlaoting.DataSourceID = "ObjectDataSource3";
+        Session["Common"] = null;
+    }
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        objFloatingDEO.NameID = Convert.ToString(Session["NameID"]);
+        objFloatingDEO.HeaderID = Convert.ToString(ViewState["Header"]);
+        objFloatingDEO.Vtype = Convert.ToString(ViewState["vtype"]);
+        objFloatingDEO.ConstID = Convert.ToString(ViewState["AssetConstID"]);
+        objFloatingDEO.Gorder = Convert.ToString(ViewState["Gorder"]);
+        objFloatingDEO.Number = Convert.ToInt32(ViewState["Number"]);
+
+        bllFloating objFloatingBLO = new bllFloating();
+        objFloatingBLO.InsertFloatGridData(objFloatingDEO);
+        GridViewFlaoting.DataSourceID = "";
+        GridViewFlaoting.DataSourceID = "ObjectDataSource3";
+
+        Session["Common"] = null;
+    }
+    protected void btnBack_Click(object sender, EventArgs e)
+    {
+        GridView1.DataSourceID = "ObjectDataSource2";
+        mltView.ActiveViewIndex = 0;
+    }
+}

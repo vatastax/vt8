@@ -1,0 +1,825 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using Service_Add_Client_Detail;
+using Service_Outstanding_Tax_Demand;
+using Serviceitrvstatus;
+using ServiceReFUNDSTATUS;
+using ServiceRectificationStatus;
+using ServiceGetTAN;
+using ServiceGet26As;
+using System.Data;
+using System.Reflection;
+using System.Globalization;
+using ServiceGetPanInfo;
+public partial class Webservices : System.Web.UI.Page
+{
+    string AssementYear, DemandDate, din, OutStandDemand,Section;
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        if (!Page.IsPostBack)
+        {
+            for (int i = 11; i < 30; i++)
+            {
+                DDLYear1.Items.Add("20" + i + "-" + (i + 1));
+                DDLYear.Items.Add("20" + i + "-" + (i + 1));
+                //DDL_AY.Items.Add("20" + i + "-" + (i + 1));
+            }
+        }
+    }
+    protected void btnsubmit_Click(object sender, EventArgs e)
+    {
+        //Rdbl_Options.Visible = true;
+        lblresult.Text = AddClientDetail(txtpan.Text, Convert.ToDateTime(txtdob.Text), txtemail.Text);
+    }
+  
+  
+    protected void Btn_Data_Click(object sender, EventArgs e)
+    {
+       
+    }
+    public string AddClientDetail(string pan, DateTime dob, string email)
+    {
+        try
+        {
+            Service_Add_Client_Detail.LoginInfoType obj_login = new Service_Add_Client_Detail.LoginInfoType();
+            obj_login.userName = "ERIA100133";
+            obj_login.password = "gill123456@";
+            
+            
+            addClientDetailsType obj_addclientdetail = new addClientDetailsType();
+            obj_addclientdetail.panNumber = pan;
+            obj_addclientdetail.dateOfBirth = dob;
+            obj_addclientdetail.email = email;            
+
+            addClientType obj_addclienttype = new addClientType();
+            obj_addclienttype.addClientDetails = obj_addclientdetail;
+
+
+            addClientDetails obj_detail = new addClientDetails();
+            obj_detail.addClient = obj_addclienttype;
+            obj_detail.LoginInfo = obj_login;
+            addClientPortClient client = new addClientPortClient("addClientPortSoap11", "http://incometaxindiaefiling.gov.in/e-FilingWS/ditws");
+            client.Open();
+
+
+            addClientType obj_addClientType = new addClientType();
+            obj_addClientType.addClientDetails = obj_addclientdetail;
+            addClientDetailsRequest obj_addclientdetailrequest = new addClientDetailsRequest(obj_detail);
+
+
+
+
+
+
+
+
+            addClientDetailsResponse obj_addclientdetailresponse = new addClientDetailsResponse();
+            obj_addclientdetailresponse.result = client.addClientDetails(obj_detail).result;
+
+            addClientDetailsResponse1 obj_addclientdetailsresponse1 = new addClientDetailsResponse1();
+            obj_addclientdetailsresponse1.addClientDetailsResponse.result = obj_addclientdetailresponse.result;
+
+            return obj_addclientdetailsresponse1.addClientDetailsResponse.result;
+        }
+        catch (Exception ex)
+        {
+            return ex.Message;
+        }
+
+    }
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        List<string> listresponse = new List<string>();
+        listresponse = outstandingtaxdemand(TextBox1.Text, TextBox2.Text);
+        lblassyear.Text = listresponse.ElementAt(0).ToString();
+        lbldin.Text = listresponse.ElementAt(1).ToString();
+        lbldemanddate.Text = listresponse.ElementAt(2).ToString();
+
+        lbloutstanddemand.Text = listresponse.ElementAt(3).ToString();
+        lblsection.Text = listresponse.ElementAt(4).ToString();
+    }
+    public List<string> outstandingtaxdemand(string panno, string assessmentyear)
+    {
+        try
+        {
+            //client object
+            OutstandingTaxDemandPortClient objclient = new OutstandingTaxDemandPortClient("OutstandingTaxDemandPortSoap11", "https://incometaxindiaefiling.gov.in/e-FilingWS/ditws");
+            objclient.Open();
+
+
+            //set login parameter
+            Service_Outstanding_Tax_Demand.LoginInfoType objlogin = new Service_Outstanding_Tax_Demand.LoginInfoType();
+            objlogin.userName = "ERIA100133";
+            objlogin.password = "gill123456@";
+
+
+            //set outstanding demand info parameter
+
+            TaxDemandInputType objtaxdemandtype = new TaxDemandInputType();
+            objtaxdemandtype.panNo = panno;
+            objtaxdemandtype.asseessmentYear = assessmentyear;
+
+
+            //request client detail
+
+            getOutstandingTaxDemandRequest objreqgetoutstandingtaxdemand = new getOutstandingTaxDemandRequest();
+            objreqgetoutstandingtaxdemand.LoginInfo = objlogin;
+
+            objreqgetoutstandingtaxdemand.OutstandingTaxDemandInput = objtaxdemandtype;
+
+
+            ////objclient.getTaxDemandDetails(objreqgetoutstandingtaxdemand);
+
+
+
+
+            //request 1
+            getOutstandingTaxDemandRequest1 objreq1getoutstandingtaxdemand = new getOutstandingTaxDemandRequest1();
+            objreq1getoutstandingtaxdemand.getOutstandingTaxDemandRequest = objreqgetoutstandingtaxdemand;
+
+
+
+
+            //reponse client detail
+
+            getOutstandingTaxDemandResponse objresgetoutstandingtaxdemand = new getOutstandingTaxDemandResponse();
+            objresgetoutstandingtaxdemand = objclient.getTaxDemandDetails(objreqgetoutstandingtaxdemand);
+
+
+            getOutstandingTaxDemandResponse1 objres1outstandingtaxdemand = new getOutstandingTaxDemandResponse1();
+            objres1outstandingtaxdemand.getOutstandingTaxDemandResponse = objresgetoutstandingtaxdemand;
+
+
+
+            //objres1outstandingtaxdemand.getOutstandingTaxDemandResponse
+            System.Xml.XmlNode[] objAY = (System.Xml.XmlNode[])objres1outstandingtaxdemand.getOutstandingTaxDemandResponse.asstYear;
+
+            AssementYear = objAY[0].Value;
+            System.Xml.XmlNode[] objdin = (System.Xml.XmlNode[])objres1outstandingtaxdemand.getOutstandingTaxDemandResponse.din;
+
+            din = objdin[0].Value;
+
+
+            System.Xml.XmlNode[] objdemanddate = (System.Xml.XmlNode[])objres1outstandingtaxdemand.getOutstandingTaxDemandResponse.demandDate;
+
+            DemandDate = objdemanddate[0].Value;
+
+            System.Xml.XmlNode[] obj_Outstand_Demand = (System.Xml.XmlNode[])objres1outstandingtaxdemand.getOutstandingTaxDemandResponse.outstandDemand;
+
+            OutStandDemand = obj_Outstand_Demand[0].Value;
+            System.Xml.XmlNode[] objSection = (System.Xml.XmlNode[])objres1outstandingtaxdemand.getOutstandingTaxDemandResponse.section;
+
+            Section = objSection[0].Value;
+            List<string> list = new List<string>();
+            list.Add(AssementYear);
+            list.Add(din);
+            list.Add(DemandDate);
+            list.Add(OutStandDemand);
+            list.Add(Section);
+            return list;
+
+
+        }
+        catch (Exception ex)
+        {
+            List<string> listexception = new List<string>();
+            listexception.Add(ex.Message.ToString());
+            return listexception;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    }
+    protected void Button2_Click(object sender, EventArgs e)
+    {
+
+        lbl_status_Itr.Text = "";
+        lblError.Text = "";
+        try
+        {
+            //Sending PAN and AY Details
+            getITRVStatusRequest obj_getITRVStatusRequest = new getITRVStatusRequest();
+            obj_getITRVStatusRequest.PAN = Txt_PAN.Text;
+            obj_getITRVStatusRequest.AssessmentYear = DDLYear.SelectedItem.Text;
+
+            //Providing Details Further
+            getITRVStatusRequest1 obj_getITRVStatusRequest1 = new getITRVStatusRequest1(obj_getITRVStatusRequest);
+
+            //Getting Response from Income Tax India
+            getITRVStatusResponse obj_getITRVStatusResponse = new getITRVStatusResponse();
+            getITRVStatusResponse1 obj_getITRVStatusResponse1 = new getITRVStatusResponse1(obj_getITRVStatusResponse);
+
+            
+            //Connecting The Income Tax India via Endpoint Name and Remote Address
+            itrvstatusPortClient obj_itrvstatusPortClient = new itrvstatusPortClient("Serviceitrvstatus.itrvstatusPortSoap11", "https://incometaxindiaefiling.gov.in/e-FilingWS/ditws");
+            obj_itrvstatusPortClient.Open();
+            obj_getITRVStatusResponse = obj_itrvstatusPortClient.getITRVStatus(obj_getITRVStatusRequest);
+
+            lbl_status_Itr.Text = obj_getITRVStatusResponse.result;
+        }
+        catch (Exception ex)
+        {
+            lblError.Text = ex.Message;
+        }
+    }
+    protected void Button3_Click(object sender, EventArgs e)
+    {
+        lblRefundDemand.Text = getrefund(TextBox3.Text, TextBox4.Text);
+    }
+    public string getrefund(string pan, string assyear)
+    {
+        try
+        {
+            //create object of logininfo
+            ServiceReFUNDSTATUS.LoginInfoType obj_Login = new ServiceReFUNDSTATUS.LoginInfoType();
+            obj_Login.userName = "ERIA100133";
+            obj_Login.password = "gill123456@";
+
+            //create object of refund input
+
+            ServiceReFUNDSTATUS.RefundInputType obj_RefundInputType = new RefundInputType();
+            obj_RefundInputType.panNo = pan;
+            obj_RefundInputType.asseessmentyear = assyear;
+
+
+            //client
+
+            ServiceReFUNDSTATUS.refundstatusPortClient client = new refundstatusPortClient("refundstatusPortSoap11", "http://incometaxindiaefiling.gov.in/e-FilingWS/ditws");
+            client.Open();
+
+            //request
+
+
+            ServiceReFUNDSTATUS.getRefundStatusRequest obj_getRefundStatusRequest = new getRefundStatusRequest();
+            obj_getRefundStatusRequest.LoginInfo = obj_Login;
+            obj_getRefundStatusRequest.RefundInput = obj_RefundInputType;
+
+            //requset2
+
+            ServiceReFUNDSTATUS.getRefundStatusRequest1 obj_getRefundStatusRequest1 = new getRefundStatusRequest1();
+            obj_getRefundStatusRequest1.getRefundStatusRequest = obj_getRefundStatusRequest;
+
+            //response
+
+            ServiceReFUNDSTATUS.getRefundStatusResponse obj_getRefundStatusResponse = new getRefundStatusResponse();
+            obj_getRefundStatusResponse.result = client.getRefundStatus(obj_getRefundStatusRequest).result;
+
+
+            //response2
+
+
+            ServiceReFUNDSTATUS.getRefundStatusResponse1 obj_getRefundStatusresponse1 = new getRefundStatusResponse1();
+            obj_getRefundStatusresponse1.getRefundStatusResponse = obj_getRefundStatusResponse;
+
+            string result = obj_getRefundStatusresponse1.getRefundStatusResponse.result.ToString();
+            return result;
+        }
+        catch (Exception ex)
+        {
+            return ex.Message;
+        }
+
+
+
+
+
+    }
+    public List<string> webRectificationstatus(string pan, string assyear)
+    {
+        try
+        {
+            //objlogininfo
+
+            ServiceRectificationStatus.LoginInfoType obj_LoginInfo_Type = new ServiceRectificationStatus.LoginInfoType();
+            obj_LoginInfo_Type.userName = "ERIA100133";
+            obj_LoginInfo_Type.password = "gill123456@";
+
+            //Creating object of rectification input type
+
+            ServiceRectificationStatus.RectificationInputType obj_RectificationInputType = new RectificationInputType();
+            obj_RectificationInputType.panNo = pan;
+            obj_RectificationInputType.asseessmentYear = assyear;
+
+            //client
+
+            ServiceRectificationStatus.rectificationstatusPortClient client = new rectificationstatusPortClient("rectificationstatusPortSoap11", "http://incometaxindiaefiling.gov.in/e-FilingWS/ditws/rectificationstatus.wsdl");
+            client.Open();
+
+            //request
+
+            ServiceRectificationStatus.getRectificationStatusRequest obj_RectificationStatusRequest = new getRectificationStatusRequest();
+            obj_RectificationStatusRequest.LoginInfo = obj_LoginInfo_Type;
+
+            obj_RectificationStatusRequest.RectificationInput = obj_RectificationInputType;
+
+            //requset1
+
+            ServiceRectificationStatus.getRectificationStatusRequest1 obj_RectificationStatusRequest1 = new getRectificationStatusRequest1();
+            obj_RectificationStatusRequest1.getRectificationStatusRequest = obj_RectificationStatusRequest;
+
+            //response
+
+            ServiceRectificationStatus.getRectificationStatusResponse obj_RectificationStatusResponse = new getRectificationStatusResponse();
+            obj_RectificationStatusResponse.getRectificationStatusResponse1 = client.getRectificationStatus(obj_RectificationStatusRequest);
+            List<string> listres = new List<string>();
+            RectificationStatusType obj_RectificationStatusType = new RectificationStatusType();
+
+
+            obj_RectificationStatusType.asseessmentYear = obj_RectificationStatusResponse.getRectificationStatusResponse1.ElementAt(0).asseessmentYear;
+            //obj_RectificationStatusType.cpcOrder.cpcOrderNo = obj_RectificationStatusResponse.getRectificationStatusResponse1.ElementAt(0).cpcOrder.cpcOrderNo;
+            obj_RectificationStatusType.details = obj_RectificationStatusResponse.getRectificationStatusResponse1.ElementAt(0).details;
+            obj_RectificationStatusType.itrName = obj_RectificationStatusResponse.getRectificationStatusResponse1.ElementAt(0).itrName;
+            obj_RectificationStatusType.panNo = obj_RectificationStatusResponse.getRectificationStatusResponse1.ElementAt(0).panNo;
+            //obj_RectificationStatusType.rectification.rectificationReferenceNo = obj_RectificationStatusResponse.getRectificationStatusResponse1.ElementAt(0).rectification.rectificationReferenceNo;
+            obj_RectificationStatusType.status = obj_RectificationStatusResponse.getRectificationStatusResponse1.ElementAt(0).status;
+            listres.Add(obj_RectificationStatusType.asseessmentYear);
+            //listres.Add(obj_RectificationStatusType.cpcOrder.cpcOrderNo);
+            //listres.Add(obj_RectificationStatusType.cpcOrder.cpcOrderNo);
+            //listres.Add(obj_RectificationStatusType.cpcOrder.cpcOrderNo);
+            listres.Add(obj_RectificationStatusType.details);
+            listres.Add(obj_RectificationStatusType.itrName);
+            listres.Add(obj_RectificationStatusType.panNo);
+            //listres.Add(obj_RectificationStatusType.rectification.rectificationReferenceNo);
+            listres.Add(obj_RectificationStatusType.status);
+
+            return listres;
+
+        }
+        catch (Exception ex)
+        {
+            List<string> lstException = new List<string>();
+            lstException.Add(ex.Message);
+            return lstException;
+        }
+
+
+
+
+
+
+
+
+    }
+    protected void Button4_Click(object sender, EventArgs e)
+    {
+        List<string> listresponse = new List<string>();
+        listresponse = webRectificationstatus(txtPAN1.Text,txtAY.Text);
+        lblitr.Text = listresponse.ElementAt(2).ToString();
+        //lblrectification.Text = listresponse.ElementAt(1).ToString();
+        lbldate.Text = listresponse.ElementAt(0).ToString();
+        lblPanNo.Text = listresponse.ElementAt(3).ToString();
+        lblstatus.Text = listresponse.ElementAt(4).ToString();
+    }
+    protected void Button5_Click(object sender, EventArgs e)
+    {
+        List<string> ListResponse = new List<string>();
+        ListResponse = webgetretuenstatus(TextBox5.Text, TextBox6.Text);
+        lblresult.Text = ListResponse.ElementAt(0).ToString();
+        lblackno.Text = ListResponse.ElementAt(1).ToString();
+    }
+    public List<string> webgetretuenstatus(string pan, string assessmentyear)
+    {
+        try
+        {
+            //object login info type
+
+            Servicereturnstatus.LoginInfoType obj_LoginInfoType = new Servicereturnstatus.LoginInfoType();
+            obj_LoginInfoType.userName = "ERIA100133";
+            obj_LoginInfoType.password = "gill123456@";
+
+
+            //object ReturnInputType
+
+            Servicereturnstatus.ReturnInputType obj_ReturnInputType = new Servicereturnstatus.ReturnInputType();
+            obj_ReturnInputType.panNo = pan;
+            obj_ReturnInputType.asseessmentyear = assessmentyear;
+
+            //client
+
+            Servicereturnstatus.ReturnstatusPortClient client = new Servicereturnstatus.ReturnstatusPortClient("returnstatusPortSoap11", "https://incometaxindiaefiling.gov.in/e-FilingWS/ditws");
+            client.Open();
+
+
+            //request1
+
+            Servicereturnstatus.getReturnStatusRequest obj_getReturnStatusrequest = new Servicereturnstatus.getReturnStatusRequest();
+            obj_getReturnStatusrequest.LoginInfo = obj_LoginInfoType;
+            obj_getReturnStatusrequest.ReturnInput = obj_ReturnInputType;
+
+            //request2
+
+            Servicereturnstatus.getReturnStatusRequest1 obj_getReturnStatusrequest1 = new Servicereturnstatus.getReturnStatusRequest1(obj_getReturnStatusrequest);
+            obj_getReturnStatusrequest1.getReturnStatusRequest = obj_getReturnStatusrequest;
+
+            //response
+            Servicereturnstatus.getReturnStatusResponse obj_getReturnStatusresponse = new Servicereturnstatus.getReturnStatusResponse();
+            obj_getReturnStatusresponse.result = client.getReturnStatus(obj_getReturnStatusrequest).result;
+            obj_getReturnStatusresponse.ackNo = client.getReturnStatus(obj_getReturnStatusrequest).ackNo;
+
+
+
+
+
+            //response1
+
+            //Servicereturnstatus.getReturnStatusResponse1 obj_getReturnStatusresponse1 = new getReturnStatusResponse1();
+            //obj_getReturnStatusresponse1.getReturnStatusResponse.result = obj_getReturnStatusresponse.result.ToString();
+
+            //obj_getReturnStatusresponse1.getReturnStatusResponse.ackNo = obj_getReturnStatusresponse.ackNo.ToString();
+
+
+            List<string> ListResult = new List<string>();
+            ListResult.Add(obj_getReturnStatusresponse.result);
+            ListResult.Add(obj_getReturnStatusresponse.ackNo);
+            return ListResult;
+
+
+
+        }
+        catch (Exception ex)
+        {
+            List<string> listException = new List<string>();
+            listException.Add(ex.Message);
+            return listException;
+        }
+
+
+
+
+
+
+        //
+
+
+
+
+    }
+    protected void Button6_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            //Providing Login Info
+            ServiceGetPanInfo.LoginInfo obj_LoginInfo = new ServiceGetPanInfo.LoginInfo();
+            obj_LoginInfo.userName = TxtName.Text.ToString();
+            obj_LoginInfo.password = TxtPass.Text.ToString();
+
+            //Providing PAN Details
+            PanNum obj_PanNum = new PanNum();
+            obj_PanNum.panNo = TextBox7.Text.ToString();
+
+            //Getting PAN Details
+            GetPanInfoClient obj_GetPanInfoClient = new GetPanInfoClient("PanWS", "https://incometaxindiaefiling.gov.in/e-FilingWS/ditws/PanWS.wsdl");
+            obj_GetPanInfoClient.Open();
+
+            PanInfo obj_PanInfo = new PanInfo();
+            obj_PanInfo = obj_GetPanInfoClient.getPanInfo(obj_LoginInfo, obj_PanNum);
+
+            PAN.Text = "PAN Number : " + obj_PanInfo.pan.ToString();
+            NAME.Text = "Full Name : " + obj_PanInfo.fullname.ToString();
+            FNAME.Text = "Father Name : " + obj_PanInfo.ffullname.ToString();
+            DOB.Text = "Date Of Birth : " + obj_PanInfo.dob.ToString();
+            ADDRS.Text = "Address : " + obj_PanInfo.address.ToString();
+
+            Error.Text = obj_PanInfo.error.ToString();
+        }
+        catch (Exception ex)
+        {
+            Error.Text = Environment.NewLine + ex.Message;
+
+        }
+    }
+    protected void Button8_Click(object sender, EventArgs e)
+    {
+        foreach (Control pagecontrols in div.Controls)
+        {
+            Label lbl = new Label();
+            if (pagecontrols is Label)
+            {
+                lbl = pagecontrols as Label;
+                lbl.Text = "";
+            }
+        }
+        Label3.Text = "TAN : ";
+        try
+        {
+
+            //Class TanInfoType
+            ServiceGetTAN.TanInfoType obj_TanInfoType = new TanInfoType();
+
+
+            //Giving Login Information via LoginInfo Class
+            ServiceGetTAN.LoginInfoType obj_LoginInfoType = new ServiceGetTAN.LoginInfoType();
+            obj_LoginInfoType.userName = "ERIA100133";
+            obj_LoginInfoType.password = "gill123456@";
+
+            //Giving TAN information via TanNum Class
+            ServiceGetTAN.TanNumType obj_TanNumType = new TanNumType();
+            obj_TanNumType.tanNo = TxtTAN.Text.ToString();
+
+
+            //Get_Tan_Info Class and Passing LoginInfo and TanNum
+            ServiceGetTAN.getTanInfo obj_getTanInfo = new getTanInfo();
+            obj_getTanInfo.LoginInfo = obj_LoginInfoType;
+            obj_getTanInfo.TanNum = obj_TanNumType;
+
+            //Pass Above Class Object as Parameters
+            ServiceGetTAN.GetTANInfoPortClient obj_getTanInfoPortClient = new GetTANInfoPortClient("GetTANInfoPortSoap11", "https://incometaxindiaefiling.gov.in/e-FilingWS/ditws");
+            obj_getTanInfoPortClient.Open();
+            obj_getTanInfoPortClient.getTanInfo(obj_getTanInfo);
+
+
+            //Class Tan Info Request
+            ServiceGetTAN.TanInfoRequest obj_TanInfoRequest = new TanInfoRequest(obj_getTanInfo);
+
+
+            //Class Tan Info Response
+            ServiceGetTAN.TanInfoResponse obj_TanInfoResponse = new ServiceGetTAN.TanInfoResponse();
+
+            obj_TanInfoResponse.TanInfo = obj_TanInfoType;
+            obj_TanInfoResponse = obj_getTanInfoPortClient.getTanInfo(obj_getTanInfo);//assign values
+
+
+            ServiceGetTAN.TanInfoResponse1 obj_TanInfoResponse1 = new TanInfoResponse1(obj_TanInfoResponse);
+
+
+            // Getting all Information
+
+
+            lblTan.Text = "TAN : " + obj_TanInfoResponse1.TanInfoResponse.TanInfo.tan.ToString();
+            lblCategory.Text = "Category of Deductor : " + obj_TanInfoResponse1.TanInfoResponse.TanInfo.categoryOfDeductor.ToString();
+            lbladdress.Text = "Address : " + obj_TanInfoResponse1.TanInfoResponse.TanInfo.address.ToString();
+            lblPan.Text = "PAN : " + obj_TanInfoResponse1.TanInfoResponse.TanInfo.pan.ToString();
+            //lblStatus.Text = "Status : " + obj_TanInfoResponse1.TanInfoResponse.TanInfo.status.ToString();
+            lblemail_1.Text = "Email Id 1 : " + obj_TanInfoResponse1.TanInfoResponse.TanInfo.emailId1.ToString();
+            lblemail_2.Text = "Email Id 2 : " + obj_TanInfoResponse1.TanInfoResponse.TanInfo.emailId2.ToString();
+            lblarea_code.Text = "Area Code : " + obj_TanInfoResponse1.TanInfoResponse.TanInfo.areaCode.ToString();
+            lblAOtype.Text = "AO Type : " + obj_TanInfoResponse1.TanInfoResponse.TanInfo.AOType.ToString();
+            lblRange_code.Text = "Range Code : " + obj_TanInfoResponse1.TanInfoResponse.TanInfo.rangeCode.ToString();
+            lblAO_number.Text = "AO Number : " + obj_TanInfoResponse1.TanInfoResponse.TanInfo.AONumber.ToString();
+            lblName.Text = "Name : " + obj_TanInfoResponse1.TanInfoResponse.TanInfo.fullname.ToString();
+        }
+        catch (Exception ex)
+        {
+            lblError.Text = ex.Message;
+        }
+    }
+    protected void Button9_Click(object sender, EventArgs e)
+    {
+        lblError.Text = "";
+        GrdVw_TaxPayments.DataSource = ""; GrdVw_TaxPayments.DataBind();
+        GrdVw_TCS.DataSource = ""; GrdVw_TCS.DataBind();
+        GrdVw_TDSOnOthSal.DataSource = ""; GrdVw_TDSOnOthSal.DataBind();
+        GrdVw_TDSonSal.DataSource = ""; GrdVw_TDSonSal.DataBind();
+
+        try
+        {
+
+            //Providing Login Details
+            ServiceGet26As.LoginInfoType obj_LoginInfoType = new ServiceGet26As.LoginInfoType();
+            obj_LoginInfoType.userName = "ERIA100133";
+            obj_LoginInfoType.password = "gill123456@";
+
+
+            //Providing Client Details
+
+            //DateTime Date_of_Birth = DateTime.ParseExact(TxtDOB.Text.TrimEnd().TrimStart(), "yyyy-MM-dd", CultureInfo.InvariantCulture);
+            DateTime Date_of_Birth;
+            string[] formats = { "yyyy-MM-dd" };
+            DateTime.TryParseExact(txtDob1.Text, formats, CultureInfo.InvariantCulture, DateTimeStyles.None, out Date_of_Birth);
+
+            ServiceGet26As.ClientInfoType obj_ClientInfoType = new ClientInfoType();
+            obj_ClientInfoType.pan = txtPan11.Text.ToString();
+            obj_ClientInfoType.dob = Date_of_Birth;
+            obj_ClientInfoType.assessmentYear = DDLYear1.SelectedItem.Text;
+
+
+            //Fetching TDS Details via LoginInfo and ClientInfo
+            ServiceGet26As.getTDSDetails obj_getTDSDetails = new getTDSDetails();
+            obj_getTDSDetails.ClientInfo = obj_ClientInfoType;
+            obj_getTDSDetails.LoginInfo = obj_LoginInfoType;
+
+
+            //Creating a TDS Request with GetTDSDetails Class Object
+            ServiceGet26As.GetTDSRequest obj_GetTDSRequest = new GetTDSRequest(obj_getTDSDetails);
+            obj_GetTDSRequest.getTDSDetails = obj_getTDSDetails;
+
+            //Getting TAN and TAN Name Details
+            ServiceGet26As.EmployerOrDeductorOrCollectDetl obj_EmployerOrDeductorOrCollectDetl = new EmployerOrDeductorOrCollectDetl();
+
+            //Passing TDS Details as parameter in TDSPortClient
+            ServiceGet26As.GetTDSPortClient obj_GetTDSPortClient = new GetTDSPortClient("GetTDSPortSoap11", "http://incometaxindiaefiling.gov.in/e-FilingWS/ditws");
+            obj_GetTDSPortClient.Open();
+
+            ServiceGet26As.GetTDSResponseType obj_GetTDSResponseType = new GetTDSResponseType();
+            obj_GetTDSResponseType = obj_GetTDSPortClient.getTDSDetails(obj_getTDSDetails);
+
+            //Getting The TDS Response
+            ServiceGet26As.GetTDSResponse obj_GetTDSResponse = new GetTDSResponse();
+            obj_GetTDSResponse.GetTDSResponse1 = obj_GetTDSResponseType;
+
+            //-----------------------------------------------------------------------------
+            //Getting TDS on Salary Data.....
+            //-----------------------------------------------------------------------------
+            if (obj_GetTDSResponse.GetTDSResponse1.TDSonSalaries != null)
+            {
+
+                int Length_TDSOnSal_Array = obj_GetTDSResponseType.TDSonSalaries.Length;
+                ServiceGet26As.TDSonSalary[] obj_TDSonSalary = obj_GetTDSResponseType.TDSonSalaries;
+
+
+
+                DataTable dt_arr = new DataTable();
+                dt_arr.Columns.Add("TAN", typeof(String));
+                dt_arr.Columns.Add("TAN Name", typeof(String));
+                dt_arr.Columns.Add("Income Chargeable on Salary", typeof(String));
+                dt_arr.Columns.Add("Total TDS Salary", typeof(String));
+
+                for (int i = 0; i < obj_GetTDSResponseType.TDSonSalaries.Length; i++)
+                {
+                    var x = obj_TDSonSalary[i].IncChrgSal.ToString();
+                    var y = obj_TDSonSalary[i].TotalTDSSal.ToString();
+                    obj_EmployerOrDeductorOrCollectDetl = obj_TDSonSalary[i].EmployerOrDeductorOrCollectDetl;
+
+                    DataRow Dr = dt_arr.NewRow();
+                    Dr["TAN"] = obj_TDSonSalary[i].EmployerOrDeductorOrCollectDetl.TAN;
+                    Dr["TAN Name"] = obj_TDSonSalary[i].EmployerOrDeductorOrCollectDetl.EmployerOrDeductorOrCollecterName;
+                    Dr["Income Chargeable on Salary"] = x;
+                    Dr["Total TDS Salary"] = y;
+                    dt_arr.Rows.Add(Dr);
+                }
+                //TDS on Salary Retrieved in Grid View
+                GrdVw_TDSonSal.DataSource = dt_arr;
+                GrdVw_TDSonSal.DataBind();
+
+
+
+
+            }
+
+            //------------------------------------------------------------------------------------
+            //Getting TDS On Other Than Salary Data......
+            //--------------------------------------------------------------------------------
+            if (obj_GetTDSResponse.GetTDSResponse1.TDSonOthThanSals != null)
+            {
+
+                int Length_TDSOnOthSal_Array = obj_GetTDSResponseType.TDSonOthThanSals.Length;
+                ServiceGet26As.TDSonOthThanSal[] obj_TDSonOthThanSal = new TDSonOthThanSal[Length_TDSOnOthSal_Array];
+                obj_TDSonOthThanSal = obj_GetTDSResponseType.TDSonOthThanSals;
+
+                DataTable dt_arr = new DataTable();
+                dt_arr.Columns.Add("TAN", typeof(String));
+                dt_arr.Columns.Add("TAN Name", typeof(String));
+                dt_arr.Columns.Add("Total TDS On Amt Paid", typeof(String));
+                dt_arr.Columns.Add("Claim Out Of Tot. TDS On Amt Paid", typeof(String));
+                for (int i = 0; i < obj_GetTDSResponseType.TDSonOthThanSals.Length; i++)
+                {
+                    var x = obj_TDSonOthThanSal[i].TotTDSOnAmtPaid.ToString();
+                    var y = obj_TDSonOthThanSal[i].ClaimOutOfTotTDSOnAmtPaid.ToString();
+                    EmployerOrDeductorOrCollectDetl obj_EmployerOrDeductorOrCollectDet1_2 = obj_TDSonOthThanSal[i].EmployerOrDeductorOrCollectDetl;
+
+
+
+
+
+                    DataRow Dr = dt_arr.NewRow();
+                    Dr["TAN"] = obj_TDSonOthThanSal[i].EmployerOrDeductorOrCollectDetl.TAN;
+                    Dr["TAN Name"] = obj_TDSonOthThanSal[i].EmployerOrDeductorOrCollectDetl.EmployerOrDeductorOrCollecterName;
+                    Dr["Total TDS On Amt Paid"] = x;
+                    Dr["Claim Out Of Tot. TDS On Amt Paid"] = y;
+                    dt_arr.Rows.Add(Dr);
+                }
+                //TDS on Other Than Salary Retrieved in Grid View
+                GrdVw_TDSOnOthSal.DataSource = dt_arr;
+                GrdVw_TDSOnOthSal.DataBind();
+
+            }
+
+            //--------------------------------------------------------------------------------------
+            //Getting TCS Details Array
+            //---------------------------------------------------------------------------------------
+            if (obj_GetTDSResponse.GetTDSResponse1.ScheduleTCS != null)
+            {
+
+                int length_TCS_Array = obj_GetTDSResponse.GetTDSResponse1.ScheduleTCS.Length;
+                ServiceGet26As.TCS[] obj_TCS = new TCS[length_TCS_Array];
+                obj_TCS = obj_GetTDSResponseType.ScheduleTCS;
+
+                DataTable dt = new DataTable();
+                dt.Columns.Add("TAN", typeof(String));
+                dt.Columns.Add("TAN Name", typeof(String));
+                dt.Columns.Add("Total TCS", typeof(String));
+                dt.Columns.Add("Amt TC Claimed This Year", typeof(String));
+
+                for (int i = 0; i < obj_GetTDSResponseType.ScheduleTCS.Length; i++)
+                {
+
+                    var x = obj_TCS[i].AmtTCSClaimedThisYear.ToString();
+                    var y = obj_TCS[i].TotalTCS.ToString();
+                    EmployerOrDeductorOrCollectDetl obj_EmployerOrDeductorOrCollectDet1_3 = obj_TCS[i].EmployerOrDeductorOrCollectDetl;
+
+                    DataRow dr = dt.NewRow();
+                    dr["TAN"] = obj_TCS[i].EmployerOrDeductorOrCollectDetl.TAN;
+                    dr["TAN Name"] = obj_TCS[i].EmployerOrDeductorOrCollectDetl.EmployerOrDeductorOrCollecterName;
+                    dr["Total TCS"] = x;
+                    dr["Amt TC Claimed This Yeard"] = y;
+                }
+
+                //TCS Data Retrieved in GridView
+                GrdVw_TCS.DataSource = dt;
+                GrdVw_TCS.DataBind();
+            }
+
+            //------------------------------------------------------------------------------------------
+            //Getting Tax Payments Arrays.
+            //-------------------------------------------------------------------------------------------
+            if (obj_GetTDSResponse.GetTDSResponse1.TaxPayments != null)
+            {
+
+                int Length_Taxpayments_Array = obj_GetTDSResponseType.TaxPayments.Length;
+                ServiceGet26As.TaxPayment[] obj_TaxPayment = new TaxPayment[Length_Taxpayments_Array];
+                obj_TaxPayment = obj_GetTDSResponseType.TaxPayments;
+
+
+                //Tax Payment Data Retrieved in Grid View
+                GrdVw_TaxPayments.DataSource = ConvertArrayToDataTable(obj_TaxPayment);
+                GrdVw_TaxPayments.DataBind();
+                GrdVw_TaxPayments.HeaderRow.Cells[0].Text = "BSR Code";
+                GrdVw_TaxPayments.HeaderRow.Cells[1].Text = "Dt. Deposited";
+                GrdVw_TaxPayments.HeaderRow.Cells[2].Text = "Sr. No. of Challan";
+                GrdVw_TaxPayments.HeaderRow.Cells[3].Text = "Amount";
+            }
+
+        }
+        catch (Exception ex)
+        {
+            lblError.Text = ex.Message;
+        }
+    }
+    public DataTable ConvertArrayToDataTable(object[] inArray)
+    {
+
+        //create our datatable
+        DataTable dt = new DataTable();
+
+
+        if (inArray.Length == 0)
+            return new DataTable();
+        //initialize a new type of our inArray type
+        Type type = inArray[0].GetType();
+
+
+        //extract all our properties (public & static) from our type (generic)
+        PropertyInfo[] proInfo = type.GetProperties();
+
+
+        //create the columns for each property setting the name & type (generic)
+        foreach (PropertyInfo i in proInfo)
+            dt.Columns.Add(i.Name, i.PropertyType);
+
+
+        //loop through each object in the array
+        foreach (object o in inArray)
+        {
+            //create a new datarow
+            DataRow r = dt.NewRow();
+            //loop through each property in order and set our row columns to the value of the property
+            for (int i = 0; i < proInfo.Length; i++)
+                r[i] = o.GetType().InvokeMember(proInfo[i].Name, BindingFlags.GetProperty, null, o, null);
+
+
+            //add the row to our table
+            dt.Rows.Add(r);
+        }
+
+        return dt;
+    }
+}

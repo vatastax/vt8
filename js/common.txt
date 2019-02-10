@@ -1,0 +1,45 @@
+function isNumberKey(evt) {
+    var charCode = (evt.which) ? evt.which : event.keyCode
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+        //alert('Value Should Be Numeric!!');
+        document.getElementById("divErrMsg").innerHTML = "Value Should Be Numeric!!";
+        ShowErrMsg();
+        return false;
+    }
+    document.getElementById("divErrMsg").innerHTML = "";
+    return true;
+}
+function ShowErrMsg() {
+
+    $("#divErrMsg").dialog({
+        title: "Error Message",
+        width: 'auto',
+        height: 'auto',
+        minHeight: '0',
+
+
+
+
+
+        modal: true
+        //buttons: {
+        //Cancel: function () {
+        //     $(this).dialog('close');
+        //   }
+        // }
+    });
+}
+
+
+
+
+
+function validateIt() {
+    if (confirm('Are you sure you want to remove the selected record?')) {
+        //alert(document.getElementById('hdnGRowSel').value);
+        //document.getElementById('hdnGRowSel').value = '';
+    }
+    else {
+        document.getElementById('hdnGRowSel').value = '';
+    }
+}

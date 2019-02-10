@@ -1,0 +1,416 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using Taxation.BusinessLogic;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using System.Collections.Generic;
+using System.Linq;
+using System.IO;
+using System.Data;
+using itextsharp.pdfa.iTextSharp.text;
+using itextsharp.pdfa;
+using iTextSharp.text.xml;
+using iTextSharp.text.html;
+using iTextSharp.text.html.simpleparser;
+public partial class Presentation_RptComputation : System.Web.UI.Page
+{
+ static   DataTable dt1 ;
+    bllStoreTrans objbllStoreTrans = new bllStoreTrans();
+    bllAssessee objAssesseeBLL;
+    decimal gIFS, gIFHP, gIFBUS, gIFSTCG, gIFLTCG, gIFOS, gDED, gDED1, gICE, gAI, gTDS, gTCS, gSelfAss, gATP, gCasuInc, gCLUB, gRelief, gTI, gGIT, gNIT, gSum_234, gSur, gEduCess, gRebate87A;
+
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        if (!IsPostBack)
+        {
+            bllSalary objbllSalary = new bllSalary();
+            dt1 = new DataTable();
+            int[] arrVtype = new int[2];
+            arrVtype[0] = 15031;
+            arrVtype[1] = 15032;
+            dt1 = objbllStoreTrans.getVtypeData(arrVtype, Session["ay"].ToString(), Session["ITR"].ToString(), Session["NameID"].ToString());
+        //    ExportToPdf(dt);
+            grdStatement.DataSource = dt1;
+            grdStatement.DataBind();
+            gIFS = 0; gIFHP = 0; gIFBUS = 0; gIFSTCG = 0; gIFLTCG = 0; gIFOS = 0; gDED = 0; gDED1 = 0; gICE = 0; gAI = 0; gTDS = 0; gTCS = 0; gSelfAss = 0; gATP = 0; gCasuInc = 0; gCLUB = 0; gRelief = 0; gTI = 0; gGIT = 0; gNIT = 0; gSum_234 = 0;
+            gSur = 0; gRebate87A = 0;
+            gEduCess = 0;
+            objbllSalary.calcSal("0", Session["NameID"].ToString(), Session["ay"].ToString(), Session["duedate"].ToString(), out gIFS, out  gIFHP, out  gIFBUS, out  gIFSTCG, out  gIFLTCG, out  gIFOS, out  gDED, out  gDED1, out  gICE, out  gAI, out  gTDS, out  gTCS, out  gSelfAss, out  gATP, out  gCasuInc, out  gCLUB, out  gRelief, out gTI, out gGIT, out gNIT, out gSum_234, out gEduCess, out gSur, out gRebate87A);
+            DataTable dt = new DataTable();
+            dt = objbllSalary.getStatementHeaders();
+            string strData = "";
+            string strStatement = "<table width='100%'  cellpadding='0' cellspacing='0'  style='border: solid 3px black;'>";
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                if (i < 3)
+                {
+                    strData = "";
+                    strData = (getEmp(i));
+                    if (strData != "")
+                    {
+                        strStatement += @"<tr'>
+                    <td style='font-weight:bold; font-size:17px; text-decoration:underline;'>" +
+                                    dt.Rows[i]["ScreenTitle"].ToString() + @"
+                    </td>
+                    </tr>" + strData;
+                    }
+                }
+                else if (i == 3)
+                {
+//                    strData = "";
+//                    int[] arrVt=new int[2];
+//                    arrVt[0]=15037;
+//                    arrVt[1]=15039;
+//                    DataTable dtCapGain = new DataTable();
+//                    dtCapGain= objbllStoreTrans.getVtypeData(arrVt,Session["AY"].ToString(),Session["ITR"].ToString(),Session["NameID"].ToString());
+//                    if (dtCapGain.Rows.Count>0)
+//                    {
+//                        strStatement += @"<tr>
+//                    <td style='font-weight:bold; font-size:17px; text-decoration:underline;'>" +
+//                                    dt.Rows[i]["ScreenTitle"].ToString() + @"
+//                    </td>
+//                    </tr>";
+//                        for (int j = 0; j < dtCapGain.Rows.Count; j++)
+//                        {
+//                            strStatement += @"<tr>
+//                    <td style='font-weight:bold; font-size:17px; text-decoration:underline;'>" +
+//                                   dtCapGain.Rows[j]["Detail"].ToString() + @"
+//                    </td>
+//<td style='font-weight:bold; font-size:17px; text-decoration:underline;'>" +
+//                                   dtCapGain.Rows[j]["Amount"].ToString() + @"
+//                    </td>
+//                    </tr>";
+//                        }
+                          
+//                    }
+                }
+                else if (i == 4)
+                {
+//                    strData = "";
+//                    int[] arrVt = new int[1];
+//                    arrVt[0] = 44;
+//                   // arrVt[1] = 15039;
+//                    DataTable dtCapGain = new DataTable();
+//                    dtCapGain = objbllStoreTrans.getVtypeData(arrVt, Session["AY"].ToString(), Session["ITR"].ToString(), Session["NameID"].ToString());
+//                    if (dtCapGain.Rows.Count > 0)
+//                    {
+//                        strStatement += @"<tr>
+//                    <td style='font-weight:bold; font-size:17px; text-decoration:underline;'>" +
+//                                    dt.Rows[i]["ScreenTitle"].ToString() + @"
+//                    </td>
+//                    </tr>";
+//                        for (int j = 0; j < dtCapGain.Rows.Count; j++)
+//                        {
+//                            strStatement += @"<tr>
+//                    <td style='font-weight:bold; font-size:17px; text-decoration:underline;'>" +
+//                                   dtCapGain.Rows[j]["Detail"].ToString() + @"
+//                    </td>
+//<td style='font-weight:bold; font-size:17px; text-decoration:underline;'>" +
+//                                   dtCapGain.Rows[j]["Amount"].ToString() + @"
+//                    </td>
+//                    </tr>";
+//                        }
+
+//                    }
+                }
+//                else if (i == 5)
+//                {
+//                    int[] arrVt = new int[1];
+//                    arrVt[0] = 46;
+//                    strData = "";
+//                    strData = (getBusiness(Convert.ToInt64(Session["NameID"]), arrVt));
+//                    if (strData != "")
+//                    {
+//                        strStatement += @"<tr>
+//                    <td style='font-weight:bold; font-size:17px; text-decoration:underline;'>
+//Deductions Under Chapter VI-A
+//                    </td>
+//                    </tr>" + strData;
+//                    }
+//                }
+//                else if (i == 7)
+//                {
+//                    int[] arrVt = new int[1];
+//                    arrVt[0] = 49;
+//                    strStatement += @"<tr>
+//                    <td style='font-weight:bold; font-size:17px; text-decoration:underline;'>" +
+//                             dt.Rows[i]["ScreenTitle"].ToString() + @"
+//                    </td>
+//                    </tr>" + (getBusiness(Convert.ToInt64(Session["NameID"]), arrVt));
+//                }
+            }
+            strStatement += "</table>";
+             ltStatement.Text = strStatement;
+       
+        }
+    }
+    //function for export datatable to pdf
+    public void ExportToPdf(DataTable dt)
+    {
+        objAssesseeBLL = new bllAssessee();
+        DataTable dtnew = new DataTable();
+        dtnew = objAssesseeBLL.getPdfData(Session["PAN"].ToString(), Convert.ToInt32(Session["Status"])).Copy();
+        Document document = new Document();
+        PdfWriter writer = PdfWriter.GetInstance(document, new FileStream(Server.MapPath("~/SavePdf/Sample.pdf"), FileMode.Create));
+        document.Open();
+        iTextSharp.text.Font font5 = iTextSharp.text.FontFactory.GetFont(FontFactory.HELVETICA, 10);
+        PdfPTable table = new PdfPTable(dt.Columns.Count);
+        PdfPRow row = null;
+        float[] widths = new float[] { 4f, 4f};
+        table.SetWidths(widths);
+        table.WidthPercentage = 100;
+        int iCol = 0;
+        string colname = "";
+        PdfPCell cell = new PdfPCell(new Phrase("Computation"));
+        cell.Colspan = dt.Columns.Count;
+        table.SpacingBefore = 20f;
+        foreach (DataColumn c in dt.Columns)
+        {
+            table.AddCell(new Phrase(c.ColumnName, font5));
+        }
+
+        foreach (DataRow r in dt.Rows)
+        {
+            if (dt.Rows.Count > 0)
+            {
+                
+                    table.AddCell((new Phrase(r[0].ToString(), font5)));
+                    PdfPCell cell1 = new PdfPCell(new Phrase(r[1].ToString(),font5));
+                    cell1.HorizontalAlignment = Element.ALIGN_RIGHT;
+                    table.AddCell(cell1);
+               
+            }
+        }
+        Chunk ch = new Chunk("COMPUTATION CHART", FontFactory.GetFont("Verdana", 11));
+        Paragraph p = new Paragraph();
+        p.Alignment = Element.ALIGN_CENTER;
+        p.Add(ch);
+
+        document.Add(p);
+        document.Add(table);
+        document.Close();
+        FileStream fs = new FileStream(Server.MapPath("~/SavePdf/Sample.pdf"), FileMode.Open, FileAccess.Read);
+        byte[] ar = new byte[(int)fs.Length];
+        fs.Read(ar, 0, (int)fs.Length);
+        fs.Close();
+        string type = string.Empty;
+        type = "application/pdf";
+        Response.AddHeader("content-disposition", "attachment;filename=" + "c:\\Sample" + ".pdf");
+        Response.ContentType = type;
+        Response.BinaryWrite(ar);
+        Response.End();
+       
+        
+    }
+    //button for generate pdf
+    protected void btnPDF_Click(object sender, EventArgs e)
+    {
+        ExportToPdf(dt1);
+    }
+    //get Employer data
+    public string getEmp(Int32 indx)
+    {
+        string[] arrInfo = { "Employer", "Business", "House Property" };
+        string[] arrData = { "Salary (Including All Allowances)", "Net Profit/Loss as per Profit & Loss Account", "Income From House Property" };
+        string str = "";
+
+        DataSet ds = new DataSet();
+        bllSalary objbllSalary = new bllSalary();
+        int[] arrVtype = new int[6];
+        arrVtype[0] = 40;
+        arrVtype[1] = 62;
+        arrVtype[2] = 42;
+        arrVtype[3] = 44;
+        arrVtype[4] = 15037;
+        arrVtype[5] = 15039;
+        ds = objbllSalary.getStatementData(Session["NameID"].ToString(), Session["AY"].ToString(),arrVtype);
+        DataTable dtEmp = new DataTable();
+        int cnt = 0;
+        if (ds.Tables[indx].Rows.Count > 0)
+        {
+            str = @"<tr style='background-color:white'>
+                    <td>
+                    <table width='100%' style='font-size:12px;   cellpadding='0' cellspacing='0'>";
+
+            for (int i = 0; i < ds.Tables[indx].Rows.Count; i++)
+            {
+                if (ds.Tables[indx].Rows[i]["amt"].ToString() != "NULL" && ds.Tables[indx].Rows[i]["amt"].ToString() != "")
+                {
+                    cnt += 1;
+                    if (ds.Tables[indx].Rows.Count > 1)
+                    {
+                        str += @"
+                    <tr>
+                    <td style='font-weight:bold; width:60%; text-align:Center;font-size:16px; width:100%;'>
+                    " + arrInfo[indx] + " " + (cnt).ToString() + ": <span style='text-transform:initial;'>" + ds.Tables[indx].Rows[i]["Name"].ToString() + @"</span>
+                    </td>
+                    <td style='text-align:left;font-size:12px'>
+                    </td>
+                    </tr>";
+                    }
+                    if (indx == 0 || indx == 2)
+                    {
+                        str += @"<tr style='background-color:white'>
+                    <td style='font-size:14px;'>
+                   " + arrData[indx] + @": 
+                    </td>
+                    <td style='font-size:12px;text-align:right;'><img src='../images/rupee-symbol_small.png' style='height:10px'/>&nbsp;" +
+                                  ds.Tables[indx].Rows[i]["amt"].ToString()
+                                  + @"</td>
+                                </tr>";
+                    }
+                    else if (indx == 1)
+                    {
+                        int[] arrVt = new int[1];
+                        arrVt[0] = 41;
+                        string strTemp = getBusiness(Convert.ToInt64(ds.Tables[indx].Rows[i]["EmpID"]), arrVt);
+                        if (strTemp != "")
+                            str += getBusiness(Convert.ToInt64(ds.Tables[indx].Rows[i]["EmpID"]), arrVt);
+                        else
+                            str = "";
+                    }
+                }
+            }
+            double grand_tot = 0;
+            if (indx == 0)
+                grand_tot = Convert.ToDouble(gIFS);
+            else if (indx == 1)
+                grand_tot = Convert.ToDouble(gIFBUS);
+            else if (indx == 2)
+                grand_tot = Convert.ToDouble(gIFHP);
+            if (grand_tot > 0)
+            {
+                str += @"<tr style='background-color:white'>
+                    <td style='font-weight:bold;font-size:14px'>
+                    Grand Total:
+                    </td>
+                    <td style='font-weight:bold;font-size:12px;text-align:right;'><img src='../images/rupee-symbol_small.png' style='height:10px'/>&nbsp;&nbsp;" + (grand_tot).ToString() + @"</td>";
+            }
+            if (cnt == 0)
+                str = "";
+            else
+            {
+                str += @"</table>
+                    </td>
+                    </tr>";
+            }
+        }
+        return str;
+    }
+    public string getBusiness(Int64 mainID, int[] vtype)
+    {
+        string str = "";
+        DataTable dt = new DataTable();
+        bllSalary objbllSalary = new bllSalary();
+        objbllStoreTrans = new bllStoreTrans();
+        dt = objbllStoreTrans.getVtypeData(vtype,Session["AY"].ToString(),Session["ITR"].ToString(),mainID.ToString());
+
+        if (dt.Rows.Count > 0)
+        {
+            str = @"<tr style='background-color:white'>
+                    <td>
+                    <table width='100%' style='font-size:12px'  cellpadding='0' cellspacing='0';>";
+            double grand_tot = 0;
+            double grand_tot_Elg = 0;
+            int cnti = 0;
+            for (int j = 0; j < dt.Rows.Count; j++)
+            {
+                if (vtype[j] == 46)
+                {
+                    if (j == 0)
+                    {
+                        //grand_tot += Convert.ToDouble(dt.Rows[j]["col3"]);
+                        str += @"<tr style='background-color:white'>
+                    <td style='font-size:14px;'>
+                    </td>
+                    <td><table width='100%' border='0' style='border:solid 0 white;'><tr>
+                    <td style='font-size:14px; text-align:right'><b>Claimed</b></td>
+                    <td style='font-size:14px; text-align:right'><b>Eligible</b></td></tr></table></td>
+                                </tr>";
+                    }
+                    grand_tot += Convert.ToDouble(dt.Rows[j]["col3"]);
+                    grand_tot_Elg += Convert.ToDouble(dt.Rows[j]["elgAmt"]);
+                    str += @"<tr style='background-color:white'>
+                    <td style='font-size:14px;'>
+                   " + dt.Rows[j]["Detail"].ToString() + @": 
+                    </td>
+                    <td><table width='100%' border='0' style='border:solid 0 white;'><tr>
+                    <td style='font-size:14px; text-align:right'><img src='../images/rupee-symbol_small.png' style='height:10px'/>&nbsp;" +
+                                  dt.Rows[j]["Amount"].ToString()
+                                  + @"</td>
+                    <td style='font-size:14px; text-align:right'><img src='../images/rupee-symbol_small.png' style='height:10px'/>&nbsp;" +
+                                  dt.Rows[j]["elgAmt"].ToString()
+                                  + @"</td></tr></table></td>
+                                </tr>";
+                }
+                else
+                {
+                    grand_tot += Convert.ToDouble(dt.Rows[j]["col3"]);
+                    str += @"<tr style='background-color:white'>
+                    <td style='font-size:14px;'>
+                   " + dt.Rows[j]["c4"].ToString() + @": 
+                    </td>
+                    <td style='font-size:14px; text-align:right'><img src='../images/rupee-symbol_small.png' style='height:10px'/>&nbsp;" +
+                                  dt.Rows[j]["col3"].ToString()
+                                  + @"</td>
+                                </tr>";
+                }
+
+                //grand_tot = Convert.ToDouble(gIFOS);
+                if (vtype[j] == 44)
+                {
+                    str += @"<tr style='background-color:white'>
+                    <td style='font-size:14px; font-weight:bold'>
+                    Grand Total:
+                    </td>
+                    <td style='font-weight:bold;font-size:14px;text-align:right;'><img src='../images/rupee-symbol_small.png' style='height:10px'/>&nbsp;&nbsp;" + (grand_tot).ToString() + @"</td>";
+                }
+                else if (vtype[j] == 46)
+                {
+                    //grand_tot = Convert.ToDouble(gDED + gDED1);
+                    str += @"<tr style='background-color:white'>
+                    <td style='font-weight:bold;font-size:14px'>
+                    Grand Total of Deductions:
+                    </td>
+                    <td style='font-weight:bold;font-size:14px;text-align:right'><img src='../images/rupee-symbol_small.png' style='height:10px'/>&nbsp;&nbsp;" + (grand_tot_Elg).ToString() + @"</td>";
+                }
+                str += @"</table>
+                    </td>
+                    </tr>";
+            }
+        }
+        return str;
+    }
+    public string getHP()
+    {
+        string str = @"<tr style='background-color:white'>
+                    <td>
+                    <table width='100%' style='font-size:12px'>  <tr>
+                    <td style='font-weight:bold; width:60%; text-align:left;font-size:12px'>
+                   Type of Propert is Let Out
+                    </td>
+                    <td style='width:40%; text-align:left;font-size:12px'>
+                    </td>
+                    </tr>
+                    <tr style='background-color:white'>
+                    <td style='font-weight:bold; width:60%; text-align:left;font-size:12px'>
+                   Income From House Property
+                    </td>
+                    <td style='width:40%; text-align:left;font-size:12px'>
+                    " + gIFHP.ToString() + @"
+                    </td>
+                    </tr>";
+
+        str += @"</table>
+                    </td>
+                    </tr>";
+        return str;
+    }
+
+ 
+
+}

@@ -1,0 +1,62 @@
+<root>
+  <ITRETURN:ITR xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ITRForm="http://incometaxindiaefiling.gov.in/master" xmlns:ITR1FORM="http://incometaxindiaefiling.gov.in/ITR1" xmlns:ITRETURN="http://incometaxindiaefiling.gov.in/main">
+    <ITR1FORM:ITR1>
+      <ITRForm:CreationInfo>
+        <ITRForm:SWVersionNo>1</ITRForm:SWVersionNo>
+        <ITRForm:SWCreatedBy>SW10000143</ITRForm:SWCreatedBy>
+        <ITRForm:XMLCreatedBy>SW10000143</ITRForm:XMLCreatedBy>
+        <ITRForm:XMLCreationDate>2016-05-23</ITRForm:XMLCreationDate>
+        <ITRForm:IntermediaryCity>Jalandhar</ITRForm:IntermediaryCity>
+        <ITRForm:Digest>-</ITRForm:Digest>
+      </ITRForm:CreationInfo>
+      <ITRForm:Form_ITR1>
+        <ITRForm:FormName>ITR-1</ITRForm:FormName>
+        <ITRForm:Description>For Indls having Income from Salary, Pension, family pension and Interest</ITRForm:Description>
+        <ITRForm:AssessmentYear>2015</ITRForm:AssessmentYear>
+        <ITRForm:SchemaVer>Ver1.0</ITRForm:SchemaVer>
+        <ITRForm:FormVer>Ver1.0</ITRForm:FormVer>
+      </ITRForm:Form_ITR1>
+      <ITRForm:PersonalInfo>
+        <ITRForm:AssesseeName>
+          <ITRForm:FirstName>GURDEV</ITRForm:FirstName>
+          <ITRForm:SurNameOrOrgName>SINGH</ITRForm:SurNameOrOrgName>
+        </ITRForm:AssesseeName>
+        <ITRForm:PAN>FFNPS0015D</ITRForm:PAN>
+        <ITRForm:Address>
+          <ITRForm:ResidenceNo>NN-347</ITRForm:ResidenceNo>
+          <ITRForm:LocalityOrArea>GOPAL NAGAR</ITRForm:LocalityOrArea>
+          <ITRForm:CityOrTownOrDistrict>JALANDHAR</ITRForm:CityOrTownOrDistrict>
+          <ITRForm:StateCode>26</ITRForm:StateCode>
+          <ITRForm:CountryCode>91</ITRForm:CountryCode>
+          <ITRForm:PinCode>144008</ITRForm:PinCode>
+          <ITRForm:MobileNo>8872737973</ITRForm:MobileNo>
+          <ITRForm:EmailAddress>gurdev_27@yahoo.in</ITRForm:EmailAddress>
+        </ITRForm:Address>
+        <ITRForm:DOB>1995-04-27</ITRForm:DOB>
+        <ITRForm:EmployerCategory>NA</ITRForm:EmployerCategory>
+        <ITRForm:Gender>M</ITRForm:Gender>
+        <ITRForm:Status>I</ITRForm:Status>
+        <ITRForm:AadhaarCardFlg>Y</ITRForm:AadhaarCardFlg>
+        <ITRForm:AadhaarCardNo>488352285841</ITRForm:AadhaarCardNo>
+      </ITRForm:PersonalInfo>
+      <ITRForm:FilingStatus>
+        <ITRForm:ReturnFileSec>11</ITRForm:ReturnFileSec>
+        <ITRForm:ReturnType>O</ITRForm:ReturnType>
+        <ITRForm:ResidentialStatus>RES</ITRForm:ResidentialStatus>
+        <ITRForm:PortugeseCC5A>N</ITRForm:PortugeseCC5A>
+      </ITRForm:FilingStatus>
+      <ITRForm:Refund>
+        <ITRForm:RefundDue>0</ITRForm:RefundDue>
+        <ITRForm:BankAccountDtls>
+          <ITRForm:PriBankDetails>
+            <ITRForm:IFSCCode>BARB0JULJUL</ITRForm:IFSCCode>
+            <ITRForm:BankName>Bank of Baroda</ITRForm:BankName>
+            <ITRForm:BankAccountNo>06180100007219</ITRForm:BankAccountNo>
+            <ITRForm:BankAccountType>SAV</ITRForm:BankAccountType>
+          </ITRForm:PriBankDetails>
+          <ITRForm:BankAccounts>1</ITRForm:BankAccounts>
+        </ITRForm:BankAccountDtls>
+      </ITRForm:Refund>
+    </ITR1FORM:ITR1>
+  </ITRETURN:ITR>
+</root>

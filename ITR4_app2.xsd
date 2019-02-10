@@ -1,0 +1,60 @@
+<?xml version="1.0" standalone="yes"?>
+<xs:schema targetNamespace="http://incometaxindiaefiling.gov.in/ITR4" xmlns:mstns="http://incometaxindiaefiling.gov.in/main" xmlns="http://incometaxindiaefiling.gov.in/ITR4" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" attributeFormDefault="qualified" elementFormDefault="qualified" xmlns:app2="http://incometaxindiaefiling.gov.in/ITR4" xmlns:app1="http://incometaxindiaefiling.gov.in/master">
+  <xs:import namespace="http://incometaxindiaefiling.gov.in/main" schemaLocation="ITR4.xsd" />
+  <xs:import namespace="http://incometaxindiaefiling.gov.in/master" schemaLocation="ITR4_app1.xsd" />
+  <xs:element name="ITR4">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="app1:CreationInfo" />
+        <xs:element ref="app1:Form_ITR4" />
+        <xs:element ref="app1:PartA_GEN1" />
+        <xs:element ref="app1:PartA_GEN2" />
+        <xs:element ref="app1:PARTA_BS" />
+        <xs:element ref="app1:PARTA_PL" />
+        <xs:element ref="app1:PARTA_OI" />
+        <xs:element ref="app1:PARTA_QD" />
+        <xs:element ref="app1:PartB-TI" />
+        <xs:element ref="app1:PartB_TTI" />
+        <xs:element ref="app1:Verification" />
+        <xs:element ref="app1:TaxReturnPreparer" />
+        <xs:element ref="app1:ScheduleS" />
+        <xs:element ref="app1:ScheduleHP" />
+        <xs:element ref="app1:ITR4ScheduleBP" />
+        <xs:element ref="app1:ScheduleDPM" />
+        <xs:element ref="app1:ScheduleDOA" />
+        <xs:element ref="app1:ScheduleDEP" />
+        <xs:element ref="app1:ScheduleDCG" />
+        <xs:element ref="app1:ScheduleESR" />
+        <xs:element ref="app1:ScheduleCGFor23" />
+        <xs:element ref="app1:ScheduleOS" />
+        <xs:element ref="app1:ScheduleCYLA" />
+        <xs:element ref="app1:ScheduleBFLA" />
+        <xs:element ref="app1:ScheduleCFL" />
+        <xs:element ref="app1:ITR4ScheduleUD" />
+        <xs:element ref="app1:Schedule10A" />
+        <xs:element ref="app1:Schedule10AA" />
+        <xs:element ref="app1:Schedule80G" />
+        <xs:element ref="app1:Schedule80_IA" />
+        <xs:element ref="app1:Schedule80_IB" />
+        <xs:element ref="app1:Schedule80_IC" />
+        <xs:element ref="app1:ScheduleVIA" />
+        <xs:element ref="app1:ITRScheduleAMT" />
+        <xs:element ref="app1:ITRScheduleAMTC" />
+        <xs:element ref="app1:ScheduleSPI" />
+        <xs:element ref="app1:ScheduleSI" />
+        <xs:element ref="app1:ScheduleIF" />
+        <xs:element ref="app1:ScheduleEI" />
+        <xs:element ref="app1:ScheduleIT" />
+        <xs:element ref="app1:ScheduleTDS1" />
+        <xs:element ref="app1:ScheduleTDS2" />
+        <xs:element ref="app1:ScheduleTDS3" />
+        <xs:element ref="app1:ScheduleTCS" />
+        <xs:element ref="app1:ItrScheduleFsiAy2014" />
+        <xs:element ref="app1:ScheduleTR1" />
+        <xs:element ref="app1:ScheduleFA" />
+        <xs:element ref="app1:Schedule5A2014" />
+        <xs:element ref="app1:ScheduleAL" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

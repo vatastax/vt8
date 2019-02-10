@@ -1,0 +1,17 @@
+USE [dbMain]
+GO
+
+DECLARE	@return_value int
+
+EXEC	@return_value = [dbo].[ProcSendTransData]
+		@Vtype = N'106',
+		@NameID = N'1982223388',
+		@AY = N'2016-2017',
+		@UserName = N'ankush.passion@gmail.com',
+		@flag = 1,
+		@itrtype = '1',
+		@IsImport = 0
+
+SELECT	'Return Value' = @return_value
+
+GO

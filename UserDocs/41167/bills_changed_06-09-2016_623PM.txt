@@ -1,0 +1,2883 @@
+using System;
+using System.Collections;
+using System.Configuration;
+using System.Data;
+using System.Linq;
+using System.Web;
+using System.Web.Security;
+using System.Web.UI;
+using System.Web.UI.HtmlControls;
+using System.Web.UI.WebControls;
+using System.Web.UI.WebControls.WebParts;
+using System.Xml.Linq;
+using VatasSolutionBAL.Accounts;
+using VatasSolutionBAL.JobWork;
+using BALVatasETDS.JobWork1;
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
+using System.Drawing;
+using System.Web.Services;
+using CrystalDecisions.CrystalReports.Engine;
+using CrystalDecisions.Shared;
+using System.Text;
+using System.Net.Mail;
+using AjaxControlToolkit;
+using BALVatasETDS.Vouchers;
+using BALVatasETDS.Error_Box;
+using BALVatasETDS.Interface_By_Role;
+using BALVatasETDS.System_Config;
+using DALVatasETDS;
+using Sample;
+using System.Transactions;
+using BALVatasETDS.Firm1;
+using BALVatasETDS.Path_Management;
+using controlgrid;
+
+public partial class Bills : System.Web.UI.Page
+{
+    #region Declaration
+
+    //Initilization
+    Bltbl_JobWork objBltbl_JobWork;
+    tbl_JobWork objtbl_JobWork;
+
+    Bltbl_Vouchers objBltbl_Vouchers;
+    tbl_Vouchers objtbl_Vouchers;
+
+    Bltbl_Errors objBltbl_Errors;
+    tbl_Errors objtbl_Errors;
+
+    //Create Object of the Interface_By_Role Class
+    Bltbl_Interface_By_Role objBltbl_Interface_By_Role;
+    tbl_Interface_By_Role objtbl_Interface_By_Role;
+
+    //Intialize the Object of the System_Config Module
+    Bltbl_System_Config objBltbl_System_Config;
+    tbl_System_Config objtbl_System_Config;
+    DataTable dt_Voucher_Details_prnt = new DataTable();
+
+    //Initialize the Object of the Accounts Module
+    BLtbl_Accounts objBLtbl_Accounts11;
+    tbl_Accounts objtbl_Accounts1;
+
+
+    //Intialize the object of the Service to be Consumed
+    list.Service obj_Service;
+    public static List<Double> Lst_Amount = new List<Double>();
+
+    //Initialize the Object of the Firm Module
+    Bltbl_Firm11 objBltbl_Firm11;
+    tbl_Firm1 objtbl_Firm1;
+
+    //Create Object of Path_Management Module
+    Bltbl_PathManagement objBltbl_PathManagement;
+    tbl_PathManagement objtbl_PathManagement;
+
+    DBtbl_Module objDBtbl_Module;
+
+    string strConnName, strConnectionString, strConnName_Admin, strConnectionString_Admin;
+    DataTable dt;
+    decimal totalUploadFee;
+    private bool tableCopied = false;
+    private DataTable originalTable;
+    string reformattedDate;
+    protected string clientId = "";
+    //Intialize the object of JobWork1
+    Bltbl_JobWork11 objBltbl_JobWork11;
+    tbl_JobWork1 objtbl_JobWork1;
+    Double Total_Amount = 0.00;
+    Double Total_UploadFees = 0.00;
+    int Popup_ControlID = 0;
+    public string FlagClose = "";
+    public static DataTable dt_SearchRecord = new DataTable();
+    public static string Check_Reload = string.Empty;
+    public static Double Grand_Total_Amount = 0.00;
+    public static Double Grand_Total_Amount_Received = 0.00;
+    public static Double Grand_Balance_Due = 0.00;
+    public static Double Total_Amount_Received = 0.00;
+    public static string FlagBack = "";
+    public static string IS_Load = string.Empty;
+
+    string Flag_Multiple = "";
+    #endregion
+
+    #region Page Load
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        //Intialize ConnectionString
+        strConnName = Application["DBEngine"].ToString();
+        strConnectionString = ConfigurationManager.ConnectionStrings[strConnName].ConnectionString;
+        //Connection String For Admin project
+        strConnName_Admin = ConfigurationManager.AppSettings["DatabaseEngine2"].ToString();
+        strConnectionString_Admin = ConfigurationManager.ConnectionStrings[strConnName_Admin].ConnectionString;
+
+        string Leftpath = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority);
+        string ApplicationHost = HttpContext.Current.Request.Url.DnsSafeHost.ToString();
+        DBtbl_Module.Project_Name = "VS," + ApplicationHost + "," + Leftpath;
+        DynamicControl.Project_Name = "VS," + ApplicationHost + "," + Leftpath;
+        objtbl_JobWork = new tbl_JobWork();
+        objBltbl_JobWork = new Bltbl_JobWork(strConnectionString, strConnName);
+        //Create the Object of JobWork1;
+        objBltbl_JobWork11 = new Bltbl_JobWork11(strConnectionString, strConnName);
+        objtbl_JobWork1 = new tbl_JobWork1();
+
+        //Create The Object of the Voucher
+        objBltbl_Vouchers = new Bltbl_Vouchers(strConnectionString, strConnName);
+        objtbl_Vouchers = new tbl_Vouchers();
+
+        //Create The Object For the Error Class 
+        objBltbl_Errors = new Bltbl_Errors(strConnectionString_Admin, strConnName_Admin);
+        objtbl_Errors = new tbl_Errors();
+
+        //Create the Object For InterFace_By_Role
+        objBltbl_Interface_By_Role = new Bltbl_Interface_By_Role(strConnectionString_Admin, strConnName_Admin);
+        objtbl_Interface_By_Role = new tbl_Interface_By_Role();
+
+        //Create the Object For the System_Config Module
+        objBltbl_System_Config = new Bltbl_System_Config(strConnectionString, strConnName);
+        objtbl_System_Config = new tbl_System_Config();
+
+        //Create the Object For the Accounts Module
+        objBLtbl_Accounts11 = new BLtbl_Accounts(strConnectionString, strConnName);
+        objtbl_Accounts1 = new tbl_Accounts();
+
+        //Create the Object of the Service to be Consumed
+        obj_Service = new list.Service();
+
+        //Create the Object of the Firm Module
+        objBltbl_Firm11 = new Bltbl_Firm11(strConnectionString, strConnName);
+        objtbl_Firm1 = new tbl_Firm1();
+
+        //Initialize the object of Path_Management
+        objBltbl_PathManagement = new Bltbl_PathManagement(strConnectionString_Admin, strConnName_Admin);
+        objtbl_PathManagement = new tbl_PathManagement();
+
+        //Initialize the object of TAN Master
+        objDBtbl_Module = new DBtbl_Module(strConnectionString, strConnName);
+
+        SearchList obj_SearchList = new SearchList();
+
+        string MenuName = Request.QueryString["menu"].ToString();
+        ViewState["Menu"] = MenuName;
+        //Get the RoleID Supplied to the page
+        int Role_ID = 0;
+        if (Request.QueryString["RoleID"] != null)
+        {
+            Role_ID = Convert.ToInt32(Request.QueryString["RoleID"]);
+            Session["Role_ID"] = Role_ID;
+        }
+        //Get the UserID Supplied to the Page
+        int User_ID = 0;
+        if (Request.QueryString["UserID"] != null)
+        {
+            User_ID = Convert.ToInt32(Request.QueryString["UserID"]);
+        }
+
+        if (MenuName != "" && MenuName != null)
+        {
+            if (!Page.IsPostBack)
+            {
+                //Bind the Financial Year
+                BindFinancialYearCombo();
+
+                Load_Interface_By_Role(Role_ID, MenuName);
+
+                FlagBack = "";
+                Pnl_Search_Bill.Attributes.Add("style", "display:none");
+                Pnl_Select_Bill.Attributes.Add("style", "display:none");
+                Grand_Total_Amount = 0.00;
+                Grand_Total_Amount_Received = 0.00;
+                Grand_Balance_Due = 0.00;
+                Total_Amount_Received = 0.00;
+            }
+        }
+        //Pnl_Print.Visible = false;
+        //Pnl_Print.Attributes.Add("style", "display:none");
+
+        if (MenuName == "PrintBill")
+        {
+            Popup_ControlID = 19;
+
+            Pnl_PrintBillFirst.Attributes.Remove("style");
+            //txt_DatePrnt.Text = DateTime.Now.ToShortDateString();
+            txt_DatePrnt.Text = DateTime.Now.ToString("dd/MM/yyyy");
+
+            if (!Page.IsPostBack)
+            {
+                Bind_Empty_Print_GridView();
+                Upload_Save_Interface();
+                IS_Load = "";
+            }
+            DBtbl_Module.User_ID = Convert.ToInt32(Request.QueryString["UserID"]);
+            auto_prntCustName.ContextKey = getQuery(7, 1, "AccName", auto_prntCustName) + "!" + Popup_ControlID + "!" + txt_CustomerNameprnt.ID;
+            //txt_JobID_AutoCompleteExtender.ContextKey = getQuery(26, 9, "Job_ID") + "!" + Popup_ControlID + "!" + txt_JobNumber.ID;
+            auto_AccountNameSearch.ContextKey = getQuery(413, 110, "AccName", auto_AccountNameSearch) + "!" + Popup_ControlID + "!" + txt_AccountName.ID;
+            //auto_NameofFirm_Search.ContextKey = getQuery(414, 110, "Name_Of_Firm") + "!" + Popup_ControlID + "!" + txt_NameofFirm.ID;
+
+            auto_FirmBill.ContextKey = getQuery(172, 42, "NameOfFirm", auto_FirmBill) + "!" + Popup_ControlID + "!" + txt_FirmText.ID;
+            Auto_TANExt.ContextKey = Get_Query_Conditionally2(539, 1000, "TAN") + "!" + Popup_ControlID + "!" + txt_TANNumber.ID + "!" + txt_FirmText.Text;
+
+            // getQuery(7, 1, "AccName", auto_FirmBill) + "!" + Popup_ControlID + "!" + txt_TANNumber.ID;
+            //"SELECT DISTINCT TOP (#) AccName,AccID FROM  Accounts WHERE (NameOfFirm = '#') AND (# LIKE '#%')!AccName!19!txt_TANNumber!VatasInfosys-JALANDHAR";// getQueryTAN(367, 101, "TAN", Auto_TANExt) + "!" + Popup_ControlID + "!" + txt_TANNumber.ID;
+            //Setting Context Key and Attributes and to Call the Error Message
+            //Customer Name Print Bill
+            string context_Name_PrintBill = auto_prntCustName.ContextKey.ToString();
+
+            context_Name_PrintBill = context_Name_PrintBill.Replace("'", "");
+            context_Name_PrintBill = context_Name_PrintBill.Replace("'", "");
+            txt_CustomerNameprnt.Attributes.Add("onkeyup", "ShowMessage(event,this,'" + context_Name_PrintBill + "')");
+
+            //Account Name Print Bill
+            string context_AccountName_PrintBill = auto_AccountNameSearch.ContextKey.ToString();
+
+            context_AccountName_PrintBill = context_AccountName_PrintBill.Replace("'", "");
+            context_AccountName_PrintBill = context_AccountName_PrintBill.Replace("'", "");
+            txt_AccountName.Attributes.Add("onkeyup", "ShowMessage(event,this,'" + context_AccountName_PrintBill + "')");
+
+            //Firm Name  Print Bill
+
+            //string context_FirmName_PrintBill = auto_NameofFirm_Search.ContextKey.ToString();
+
+            //context_FirmName_PrintBill = context_FirmName_PrintBill.Replace("'", "");
+            //context_FirmName_PrintBill = context_FirmName_PrintBill.Replace("'", "");
+            //txt_NameofFirm.Attributes.Add("onkeyup", "ShowMessage(event,this,'" + context_FirmName_PrintBill + "')");
+
+        }
+        if (!Page.IsPostBack)
+        {
+            txttotal.Text = "0.00";
+            txtServicetex.Text = "0.00";
+            txtuploadfee.Text = "0.00";
+            txt_OutOfPocketExpense.Text = "0.00";
+            txtgrandtotal.Text = "0.00";
+        }
+        string type = string.Empty;
+        if (Request.QueryString["type"] != null)
+        {
+            type = Request.QueryString["type"].ToString();
+            if (type == "ledger")
+            {
+                string Sub_Module_Name = Request.QueryString["Sub_Module_Name"].ToString();
+                if (Sub_Module_Name == "PrintBill")
+                {
+                    int ID_Admin = Convert.ToInt32(Request.QueryString["ID_Admin"]);
+                    Pnl_PrintBillFirst.Attributes.Add("style", "display:none");
+                    Pnl_Print.Attributes.Remove("style");
+                    btn_Bill_Back_To_Ledger.Attributes.Remove("style");
+                    btn_BackToPrev1.Attributes.Add("style", "display:none");
+                    if (IS_Load != "T")
+                    {
+                        Get_Bill(ID_Admin);
+                    }
+                }
+            }
+        }
+    }
+    #endregion
+
+    #region Print Bill Functions and Events
+
+    //Function to Load the Interface of Bill From Ledger
+    public void Get_Bill(int ID_Admin)
+    {
+        IS_Load = "T";
+        //Get Bill According to the ID Admin
+
+        int Bill_ID = objBltbl_Vouchers.Get_BillID(ID_Admin);
+        //objtbl_JobWork1.ID_Admin = ID_Admin;
+        objtbl_JobWork1.ID_Admin = Bill_ID;
+        //Get the Existence of Record in the Bill Table
+        dt = new DataTable();
+
+        dt = objBltbl_JobWork11.Get_Bill_Data_By_ID_Admin(objtbl_JobWork1);
+        //Session["Table"] = dt;
+        grdPrintRecords.DataSource = dt;
+        grdPrintRecords.DataBind();
+
+        //Bind Other Fields
+
+        //bind Upload fee and Amount Field
+        int count = dt.Rows.Count;
+        string Job_ID = string.Empty;
+        for (int j = 0; j < count; j++)
+        {
+            Job_ID = Job_ID + dt.Rows[j]["SerialNo_By_Job_Firm"].ToString() + ",";
+
+            //Label lbl_UploadFee = (Label)grdPrintRecords.Rows[j].FindControl("lbl_UploadFees");
+            TextBox lbl_UploadFee = (TextBox)grdPrintRecords.Rows[j].FindControl("lbl_UploadFees");
+            lbl_UploadFee.Text = dt.Rows[j]["Upload_Charges"].ToString();
+            TextBox txt_Amount = (TextBox)grdPrintRecords.Rows[j].FindControl("txtBillAmt");
+            txt_Amount.Text = dt.Rows[j]["Amount"].ToString();
+            //}
+            Job_ID = Job_ID.Remove(Job_ID.Length - 1, 1);
+            lbl_SelectedJobNo.Text = Job_ID;
+            lbl_SelectedFirm.Text = dt.Rows[0]["NameOfFirm"].ToString();
+            lbl_Date.Text = dt.Rows[0]["Date"].ToString();
+            txttotal.Text = dt.AsEnumerable().Sum(x => x.Field<decimal>("Amount")).ToString();
+            txtServicetex.Text = dt.Rows[0]["Service_Tax"].ToString();
+            txtuploadfee.Text = dt.Rows[0]["Total_Upload_Charges"].ToString();
+            txt_OutOfPocketExpense.Text = dt.Rows[0]["Out_of_Pocket_Expense"].ToString();
+            txt_Remarks.Text = dt.Rows[0]["Remarks"].ToString();
+            lbl_SelectedCustomerName.Text = dt.Rows[0]["AccName"].ToString();
+        }
+        //Get Grand Total
+        Double Total_Amount = Convert.ToDouble(txttotal.Text);
+        Double Service_Tax = Convert.ToDouble(txtServicetex.Text);
+        Double Upld_Fees = Convert.ToDouble(txtuploadfee.Text);
+        Double Out_Of_Expense = Convert.ToDouble(txt_OutOfPocketExpense.Text);
+        txtgrandtotal.Text = Get_Grand_Total1(Total_Amount.ToString(), Service_Tax.ToString(), Upld_Fees.ToString(), Out_Of_Expense.ToString());
+
+        // Bind_Empty_Print_GridView();
+
+
+
+
+    }
+    //Functoion to Calculate Grand Total
+    public string Get_Grand_Total1(string Total_Amt, string Service_Tax, string Upload_Fees, string Out_of_pocket_expense)
+    {
+        //Convert all the Parameters to Type Double
+        Double Tot_Amt = Convert.ToDouble(Total_Amt);
+        Double Servc_Tax = Convert.ToDouble(Service_Tax);
+        Double Upld_Fees = Convert.ToDouble(Upload_Fees);
+        Double Out_Of_Pock_Expense = Convert.ToDouble(Out_of_pocket_expense);
+
+        //Get the Grand Total
+        Double Grand_Total = Tot_Amt + Servc_Tax + Upld_Fees + Out_Of_Pock_Expense;
+        string Grand_Tot = Grand_Total.ToString();
+        Grand_Tot = string.Format("{0:f2}", Convert.ToInt32(Grand_Tot));
+        return Grand_Tot;
+
+
+
+    }
+    public void FillBillNoCombo(int JobID)
+    {
+        //objtbl_JobWork.JobID = JobID;
+        //drp_BillNoPrnt.DataSource = objBltbl_JobWork.GetReturnType(objtbl_JobWork);
+        //drp_BillNoPrnt.DataTextField = "ReturnType";
+        //drp_BillNoPrnt.DataValueField = "ReturnTypeCode";
+        //drp_BillNoPrnt.DataBind();
+        //drp_BillNoPrnt.Items.Insert(0, new ListItem("---Select---", "0"));
+    }
+    //Fill Record Print Tab
+    protected void txt_CustomerNameprnt_TextChanged(object sender, EventArgs e)
+    {
+        getBillData();
+    }
+
+    private void getBillData()
+    {
+        //get the Customer ID
+        string Customer_Name = txt_CustomerNameprnt.Text;
+        objtbl_JobWork1.AccName = Customer_Name;
+        objtbl_JobWork1.FirmName = txt_FirmText.Text;
+        int Cust_ID = objBltbl_JobWork11.Get_CustID(objtbl_JobWork1);
+        Session["Cust_Id"] = Cust_ID;
+
+        //get All the Record Form Returns_Copy
+        objtbl_JobWork1.CusID = Cust_ID;
+        objtbl_JobWork1.Cust_ID = Cust_ID;
+        //String[] tempDate = txt_FY.Text.Trim().Split('-');
+        String[] tempDate = ViewState["FY"].ToString().Split('-');
+        objtbl_JobWork1.FinancialYear = tempDate[0] + "-20" + tempDate[1];
+        //Get the Existence of Record in the Bill Table
+        bool Is_BillExist = objBltbl_JobWork11.Check_Existence_of_Bill(objtbl_JobWork1);
+        //if (Is_BillExist)
+        //{
+        dt = new DataTable();
+        //Get Return Data From Return Table
+        dt = objBltbl_JobWork11.Get_Return_Data_ByCusID(objtbl_JobWork1);
+        if (dt.Rows.Count > 0)
+        {
+            txt_TANNumber.Text = dt.Rows[0]["TAN"].ToString();
+            DataTable JobName_Table = objBltbl_JobWork11.GetJobName();
+            DataTable Updated_dt = dt.Clone();
+            Updated_dt.Clear();
+            foreach (DataColumn col in Updated_dt.Columns)
+            {
+                if (col.ColumnName == "JobName")
+                    col.DataType = typeof(string);
+            }
+
+            foreach (DataRow importRow in dt.Rows)
+            {
+                Updated_dt.ImportRow(importRow);
+            }
+            Updated_dt.AcceptChanges();
+
+            foreach (DataRow row in Updated_dt.Rows)
+            {
+                String JobNameID = row["JobName"].ToString();
+                DataRow[] JobName_row = JobName_Table.Select("JobNameID='" + JobNameID + "'");
+
+                if (JobName_row[0].ItemArray[2].ToString() == "DOWNLOAD 16A")
+                    row["JobName"] = "Form 16";
+                else if (JobName_row[0].ItemArray[2].ToString() == "TRACES DEFAULT")
+                    row["JobName"] = "Default";
+                else
+                    row["JobName"] = JobName_row[0].ItemArray[2].ToString();
+                //row.SetField("JobName", );
+            }
+            //Bind To Gridview
+            gdv_SelectJob.DataSource = Updated_dt;
+            gdv_SelectJob.DataBind();
+        }
+        else
+        {
+            txt_CustomerNameprnt.Text = "";
+            txt_CustomerNameprnt.Focus();
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "Show();", "alert('No Record Found for the Customer in the Selected Year')", true);
+        }
+
+        Session["gdv_SelectJob"] = dt;
+    }
+
+    protected void txt_TANNumber_TextChanged(object sender, EventArgs e)
+    {
+        //get the Customer ID
+        string Customer_Name = txt_CustomerNameprnt.Text;
+        objtbl_JobWork1.TAN = txt_TANNumber.Text;
+        objtbl_JobWork1.FirmName = txt_FirmText.Text;
+        int Cust_ID = objBltbl_JobWork11.Get_CustIDByTAN(objtbl_JobWork1);
+        Session["Cust_Id"] = Cust_ID;
+
+        //get All the Record Form Returns_Copy
+        objtbl_JobWork1.CusID = Cust_ID;
+        objtbl_JobWork1.Cust_ID = Cust_ID;
+        //String[] tempDate = txt_FY.Text.Trim().Split('-');
+        String[] tempDate = ViewState["FY"].ToString().Split('-');
+        objtbl_JobWork1.FinancialYear = tempDate[0] + "-20" + tempDate[1];
+        //Get the Existence of Record in the Bill Table
+        bool Is_BillExist = objBltbl_JobWork11.Check_Existence_of_Bill(objtbl_JobWork1);
+        //if (Is_BillExist)
+        //{
+        dt = new DataTable();
+        //Get Return Data From Return Table
+        dt = objBltbl_JobWork11.Get_Return_Data_ByCusID(objtbl_JobWork1);
+        if (dt.Rows.Count > 0)
+        {
+            txt_CustomerNameprnt.Text = dt.Rows[0]["AccName"].ToString();
+        }
+        getBillData();
+    }
+
+    //Function to Calculate Total Amount
+    public void Get_TotalAmount(string Amount)
+    {
+
+        Total_Amount = Total_Amount + Convert.ToDouble(Amount);
+        //bind The Total of Total Amount and Total Upload Fees
+        string Total_Amt = String.Format("{0:f2}", Convert.ToInt32(Total_Amount));
+        txttotal.Text = Total_Amt;
+
+    }
+    //Function to Calculate Total Upload Fees
+    public void Get_Total_UploadFees(string Upload_Fees)
+    {
+        Total_UploadFees = Total_UploadFees + Convert.ToDouble(Upload_Fees);
+        string Total_UpldFees = String.Format("{0:f2}", Convert.ToInt32(Total_UploadFees));
+        txtuploadfee.Text = Total_UpldFees;
+    }
+    //Show Records in Service Tax And Upload Fees
+    //protected void drp_BillNoPrnt_SelectedIndexChanged(object sender, EventArgs e)
+    //{
+    //    string BillNo = drp_BillNoPrnt.SelectedValue;
+    //    Session["BillNo"] = BillNo;
+    //    objtbl_JobWork.BillNo = Convert.ToInt32(BillNo);
+    //    DataTable dtb = new DataTable();
+    //    dtb = objBltbl_JobWork.GetReturnUploadfeeBill(objtbl_JobWork);
+    //    txtServicetex.Text = dtb.Rows[0]["ServiceTax"].ToString() + ".00";
+    //    //txtuploadfee.Text = dtb.Rows[0]["UploadFee"].ToString()+".00";
+    //    string isduerec = dtb.Rows[0]["IsDue"].ToString();
+    //    if (isduerec.ToString() == "N")
+    //    {
+    //        lblIsDue.Text = "Un Paid";
+    //        lblIsDue.ForeColor = System.Drawing.Color.Red;
+    //        lblIsDue.Font.Size = FontUnit.Large;
+    //    }
+    //    else
+    //    {
+    //        lblIsDue.Text = "Paid";
+    //        lblIsDue.ForeColor = System.Drawing.Color.Green;
+    //        lblIsDue.Font.Size = FontUnit.Large;
+    //    }
+    //    string Name = txt_CustomerNameprnt.Text;
+    //    objtbl_JobWork.AccName = Name;
+    //    Int32 getBillNo = Convert.ToInt32(Session["BillNo"]);
+    //    objtbl_JobWork.BillNo = getBillNo;
+    //    Session["getbillno"] = getBillNo;
+    //    int RetNo = objBltbl_JobWork.GetRetNo(objtbl_JobWork);
+    //    objtbl_JobWork.RetNo = RetNo;
+    //    Session["RetNo"] = RetNo;
+    //    DataTable dtsum = objBltbl_JobWork.GetSumofBilAmt(objtbl_JobWork);
+    //    txttotal.Text = dtsum.Rows[0]["TotlaBillAmt"].ToString() + ".00";
+    //    double amttotal = Convert.ToDouble(txttotal.Text);
+    //    objtbl_JobWork.Total = amttotal;
+    //    //int success = objBltbl_JobWork.GetUpdtUplFee(objtbl_JobWork);
+    //    //int totsuccess = objBltbl_JobWork.GetAmountTotal(objtbl_JobWork);
+    //    txttotal.Enabled = false;
+    //    //DataTable dtsumupload = objBltbl_JobWork.GetSumofUpload(objtbl_JobWork);
+    //    //txtuploadfee.Text = dtsumupload.Rows[0]["UploadFee"].ToString() + ".00";
+    //    //double grndttle = Convert.ToDouble(txtuploadfee.Text) + Convert.ToDouble(txttotal.Text);
+    //    double grndttle = Convert.ToDouble(txttotal.Text);
+    //    //txtgrandtotal.Text = Convert.ToString(grndttle);
+    //    objtbl_JobWork.GrandTotal = txtgrandtotal.Text;
+    //    //int grdtotsuccess = objBltbl_JobWork.GetGrndTot(objtbl_JobWork);
+    //    DataTable dt = new DataTable();
+    //    dt = objBltbl_JobWork.GetReturnNoByBill(objtbl_JobWork);
+    //    grdPrintRecords.DataSource = dt;
+    //    grdPrintRecords.DataBind();
+    //    //ModalPopupExtender1.Visible = true;
+    //}
+    //Clear Value in Print Control
+    protected void btn_NewPrnt_Click(object sender, EventArgs e)
+    {
+        foreach (Control controls in Pnl_Print.Controls)
+        {
+            if (controls is TextBox)
+            {
+                TextBox txt = (TextBox)controls;
+                txt.Text = "";
+            }
+            if (controls is DropDownList)
+            {
+                DropDownList drp = (DropDownList)controls;
+                drp.ClearSelection();
+            }
+        }
+        //drp_BillNoPrnt.Items.Clear();
+        //drp_BillNoPrnt.Items.Insert(0, new ListItem("---Select---", "0"));
+        txttotal.Text = "0.00";
+        txtServicetex.Text = "0.00";
+        txtuploadfee.Text = "0.00";
+        txtgrandtotal.Text = "0.00";
+        lblIsDue.Visible = false;
+        Bind_Empty_Print_GridView();
+        Pnl_PrintBillFirst.Attributes.Add("style", "display:none");
+        Pnl_Print.Attributes.Remove("style");
+    }
+    //Cancel Click Print Panel
+    protected void btn_CancelPrnt_Click(object sender, EventArgs e)
+    {
+        Pnl_Print.Attributes.Add("style", "display:none");
+    }
+
+    //close Print Panel
+    protected void Img_PrintBill_Click(object sender, ImageClickEventArgs e)
+    {
+        Pnl_Print.Attributes.Add("style", "display:none");
+
+    }
+
+    //Edit Record in Print Panel
+    protected void btn_EditPrnt_Click(object sender, EventArgs e)
+    {
+        //Enable Date Field
+        txt_DatePrnt.Attributes.Remove("style");
+        txt_DatePrnt.ReadOnly = false;
+        //Disable Fields
+        btn_SavePrnt.Attributes.Add("style", "display:none");
+        btn_PrintPrnt.Attributes.Add("style", "display:none");
+        //Create New Field
+        btn_EditPrnt.Visible = false;
+        btn_SaveAndPrint.Visible = true;
+
+        Pnl_PrintBillFirst.Attributes.Add("style", "display:none");
+        Pnl_Print.Attributes.Remove("style");
+    }
+
+    //Function to Upload the Save Interface of the Bill
+    public void Upload_Save_Interface()
+    {
+
+        //Disable the Other Fields
+        txt_DatePrnt.Attributes.Add("style", "background-color:#E0E0E0");
+        txttotal.Attributes.Add("style", "background-color:#E0E0E0;text-align:right");
+        txttotal.Enabled = false;
+        txtServicetex.Attributes.Add("style", "background-color:#E0E0E0;text-align:right");
+        txtServicetex.Enabled = false;
+        txtuploadfee.Attributes.Add("style", "background-color:#E0E0E0;text-align:right");
+        txtuploadfee.Enabled = false;
+        txtgrandtotal.Attributes.Add("style", "background-color:#E0E0E0;text-align:right");
+        txtgrandtotal.Enabled = false;
+        txt_OutOfPocketExpense.Attributes.Add("style", "text-align:right");
+
+
+    }
+    //Update PrintGrid Coloum Update(GrandTotal,UploadCharge)
+    protected void grdPrintRecords_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+        if (grdPrintRecords.Rows.Count != 0)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+
+            }
+        }
+
+    }
+
+    //save VType GrandTotal(Amount) in Voucher Table 
+    protected void btn_SavePrnt_Click(object sender, EventArgs e)
+    {
+        TimeSpan timeout = TimeSpan.FromMinutes(1);
+        DBtbl_Module.ArrayIndex = 0;
+        DBtbl_Module.Previous_RecordNo = 0;
+        DBtbl_Module.lst_Query = new List<string>();
+        DBtbl_Module.lst_Field = new Dictionary<string, int>();
+        DBtbl_Module.Previous_Table = "";
+
+
+        //Create Voucher Table 
+        DataTable dt_Voucher = new DataTable();
+        DataTable dt_Main_Bill = new DataTable();
+        DataTable dt_JobWise_Bill = new DataTable();
+
+
+
+        //Get Customer ID Field
+        string Customer_Name = txt_CustomerNameprnt.Text;
+        objtbl_JobWork1.AccName = Customer_Name;
+        int Cust_ID = objBltbl_JobWork11.Get_CustID(objtbl_JobWork1);
+
+        //Get Return Data From Return Table
+        objtbl_JobWork1.CusID = Cust_ID;
+        objtbl_JobWork1.FirmName = txt_FirmText.Text;
+        dt = new DataTable();
+
+        //Set Date
+        //String[] tempDate = txt_FY.Text.Trim().Split('-');
+        String[] tempDate = ViewState["FY"].ToString().Split('-');
+        objtbl_JobWork1.FinancialYear = tempDate[0] + "-20" + tempDate[1];
+
+        dt = objBltbl_JobWork11.Get_Return_Data_ByCusID(objtbl_JobWork1);
+        int count = grdPrintRecords.Rows.Count;
+
+        //Create parameters
+        //Bill No
+        objtbl_JobWork1.Cust_ID = Cust_ID;
+        objtbl_JobWork1.Firm_ID = Convert.ToInt32(dt.Rows[0]["FirmID"]);
+        int Bill_No = objBltbl_JobWork11.Generate_BillNo_FirmWise(objtbl_JobWork1);
+        objtbl_JobWork1.Bill_No = Bill_No;
+
+        //Service Tax Field
+        Double Service_Tax = Convert.ToDouble(txtServicetex.Text);
+        objtbl_JobWork1.ServiceTex = Service_Tax;
+        //Upload Charges Field
+        Double Upload_Charges = Convert.ToDouble(txtuploadfee.Text);
+        objtbl_JobWork1.UploadFee = Upload_Charges;
+        //Out Of Pocket Expense Field
+        Double Out_Of_Pocket_Expense = Convert.ToDouble(txt_OutOfPocketExpense.Text);
+        objtbl_JobWork1.Out_of_Pocket_Expense = Out_Of_Pocket_Expense;
+        //Remarks Field
+        string Remark = txt_Remarks.Text;
+        objtbl_JobWork1.Remarks = Remark;
+        //Whether Mail Sent Field
+        string Whether_Mail_Sent = "N";
+        objtbl_JobWork1.Whether_Mail_Sent = Whether_Mail_Sent;
+        //VoucherID Field
+
+        int Voucher_ID = 0;
+        objtbl_JobWork1.Voucher_ID = Voucher_ID;
+
+        //Customer ID Field
+
+        int Customer_ID = Cust_ID;
+        objtbl_JobWork1.Cust_ID = Customer_ID;
+
+        //Firm ID Field
+        int Firm_ID = Convert.ToInt32(dt.Rows[0]["FirmID"]);
+        objtbl_JobWork1.Firm_ID = Firm_ID;
+
+        //VAT Field
+        int VAT = 0;
+        objtbl_JobWork1.VAT = VAT;
+
+        //Total_Amount
+        Double Total_Amount = Convert.ToDouble(txtgrandtotal.Text);
+        objtbl_JobWork1.Total_Amt = Total_Amount;
+
+        //Check Existence of Main Bill
+        bool Is_MainBillExist = objBltbl_JobWork11.Check_Existence_of_MainBill(objtbl_JobWork1);
+
+        //Create Main Bill Table 
+        objtbl_System_Config.Table_Name = "tbl_Main_Bill";
+        dt_Main_Bill = objBltbl_System_Config.Get_Column_Name_With_DataType(objtbl_System_Config);
+        dt_Main_Bill.Columns.Remove(dt_Main_Bill.Columns[0]);
+        dt_Main_Bill.TableName = "tbl_Main_Bill";
+        dt_Main_Bill.Columns.Add("Page_ID", typeof(string));
+        dt_Main_Bill.Columns.Add("Page_SubModule_ID", typeof(string));
+
+        DataRow dr_MainBill = dt_Main_Bill.NewRow();
+        //Bill No Row
+        dr_MainBill["Bill_No"] = Bill_No;
+        objtbl_JobWork1.Bill_No = Bill_No;
+        //Service Tax Row
+        dr_MainBill["Service_Tax"] = Service_Tax;
+        //Total_Upload_Charges Row
+        dr_MainBill["Total_Upload_Charges"] = Upload_Charges;
+        //Out_of_Pocket_Expense Row
+        dr_MainBill["Out_of_Pocket_Expense"] = Out_Of_Pocket_Expense;
+        //Remarks Row
+        dr_MainBill["Remarks"] = Remark;
+        //Whether_Mail_Sent Row
+        dr_MainBill["Whether_Mail_Sent"] = Whether_Mail_Sent;
+        //Voucher_ID Row
+        dr_MainBill["Voucher_ID"] = Voucher_ID;
+        //Cust_ID Row
+        dr_MainBill["Cust_ID"] = Cust_ID;
+        //Firm_ID Row
+        dr_MainBill["Firm_ID"] = Firm_ID;
+        //VAT Row
+        dr_MainBill["VAT"] = VAT;
+        //Total_Amount
+        dr_MainBill["Total_Amount"] = Total_Amount;
+        //Page_ID
+        dr_MainBill["Page_ID"] = "503";
+        //Page_SubModule_ID
+        dr_MainBill["Page_SubModule_ID"] = "19";
+        dr_MainBill["DateOfDeposit"] = txt_DatePrnt.Text;
+
+        //Add the Row  to the Main Datatable
+        dt_Main_Bill.Rows.Add(dr_MainBill);
+        dt_Main_Bill.AcceptChanges();
+
+        //Insert the main Table Record
+        DataSet ds_Main = new DataSet();
+        ds_Main.Tables.Add(dt_Main_Bill);
+        //Insert the Record
+        objBltbl_Vouchers.Insert_DataTable(ds_Main, "VS");
+
+        //Get ID_Admin
+        objtbl_JobWork1.Firm_ID = Firm_ID;
+        objtbl_JobWork1.Cust_ID = Cust_ID;
+        objtbl_JobWork1.Bill_No = Bill_No;
+        int Selected_IDAdmin = objBltbl_JobWork11.Get_ID_Admin_For_Voucher(objtbl_JobWork1);
+
+        //Create Voucher Table
+        //Create string Array Of Voucher Detail
+        string[] arr_Voucher_field = new string[] { txt_DatePrnt.Text, Bill_No.ToString(), txt_FirmText.Text };
+        objtbl_System_Config.Table_Name = "tbl_Vouchers";
+        dt_Voucher = objBltbl_System_Config.Get_Column_Name_With_DataType(objtbl_System_Config);
+        dt_Voucher.Columns.Remove(dt_Voucher.Columns[0]);
+        dt_Voucher.TableName = "tbl_Vouchers";
+        //Add New Datarow 
+        DataRow dr_Voucher = dt_Voucher.NewRow();
+        //Voucher Date Field
+        //string strNewDateFormat=
+        dr_Voucher["Voucher_Date"] = arr_Voucher_field[0].ToString();
+        //Voucher BillNo Field
+        dr_Voucher["Bill_No"] = Convert.ToInt32(arr_Voucher_field[1]);
+        //Voucher Receipt Field 
+        dr_Voucher["Receipt_ID"] = 0;
+        //Voucher Name_Of_Firm
+        dr_Voucher["Name_Of_Firm"] = arr_Voucher_field[2].ToString();
+        dr_Voucher["ID_Admin"] = Selected_IDAdmin;
+
+        //Add the Row to the Voucher Table
+        dt_Voucher.Rows.Add(dr_Voucher);
+        dt_Voucher.AcceptChanges();
+
+        //Add Rows to the Job Bill Wise
+        objtbl_System_Config.Table_Name = "tbl_Bill_JobWise";
+        dt_JobWise_Bill = objBltbl_System_Config.Get_Column_Name_With_DataType(objtbl_System_Config);
+        dt_JobWise_Bill.TableName = "tbl_Bill_JobWise";
+        //dt_JobWise_Bill.Columns.Add("Page_ID", typeof(string));
+        //dt_JobWise_Bill.Columns.Add("Page_SubModule_ID", typeof(string));
+        List<int> lstJob_ID = new List<int>();
+        lstJob_ID = (List<int>)ViewState["SelectedJob"];
+        DataTable dt_ByJob = new DataTable();
+        dt_ByJob = dt.Clone();
+        dt_ByJob.Clear();
+        //following lines of loop code are commented by Ankush on 13-04-16 as was giving error
+        foreach (int JobID in lstJob_ID)
+        {
+
+            DataRow[] dr = dt.Select("Job_ID=" + JobID + "");
+
+            foreach (DataRow row in dr)
+            {
+                dt_ByJob.ImportRow(row);
+            }
+
+        }
+
+
+        for (int i = 0; i < count; i++)
+        {
+            //Create Parameters
+
+            //Bill ID Field
+            int Bill_ID = objBltbl_JobWork11.Get_BillID(objtbl_JobWork1);
+            objtbl_JobWork1.Bill_ID = Bill_ID;
+            //Date Field
+            string Date = txt_DatePrnt.Text;
+            //Job ID Field
+            int Job_ID = Convert.ToInt32(dt_ByJob.Rows[i]["Job_ID"]);
+
+            //Upload Charges Field
+            //Label lbl_UploadFee = (Label)grdPrintRecords.Rows[i].FindControl("lbl_UploadFees");
+            TextBox lbl_UploadFee = (TextBox)grdPrintRecords.Rows[i].FindControl("lbl_UploadFees");
+            Double Upload_Charges_JobWise = Convert.ToDouble(lbl_UploadFee.Text);
+            //Amount Field
+            TextBox txt_Amount = (TextBox)grdPrintRecords.Rows[i].FindControl("txtBillAmt");
+            Double Amount = Convert.ToDouble(txt_Amount.Text);
+            //Entries Field
+            int Entries = 0;
+            //following lines of loop code are commented by Ankush on 13-04-16 as was giving error
+            if (dt_ByJob.Rows[i]["No_of_Entries"].ToString() != null && dt_ByJob.Rows[i]["No_of_Entries"].ToString() != "")
+            {
+                Entries = Convert.ToInt32(dt_ByJob.Rows[i]["No_of_Entries"]);
+            }
+
+            //Payment_Received_ID Field
+
+            int Payment_Received_ID = Convert.ToInt32(dt.Rows[i]["PaymentID"]);
+            //Fy
+            string FY = dt.Rows[i]["FY"].ToString();
+            //Quarter
+            string Quarter = dt.Rows[i]["Quarter"].ToString();
+            //Return Type
+            String RetType = dt.Rows[i]["RetType"].ToString();
+            //Create Datatable For Bill JobWise 
+
+            DataRow dr_JobWise_Bill = dt_JobWise_Bill.NewRow();
+            //Bill ID Row
+            dr_JobWise_Bill["Bill_ID"] = Bill_ID;
+            dr_JobWise_Bill["Date"] = Date;
+            dr_JobWise_Bill["Job_ID"] = Job_ID;
+            dr_JobWise_Bill["Upload_Charges"] = Upload_Charges_JobWise;
+            dr_JobWise_Bill["Amount"] = Amount;
+            dr_JobWise_Bill["No_of_Entries"] = Entries;
+            dr_JobWise_Bill["Payment_Received_ID"] = Payment_Received_ID;
+            dr_JobWise_Bill["FY"] = FY;
+            dr_JobWise_Bill["Quarter"] = Quarter;
+            dr_JobWise_Bill["Form_Type"] = RetType;
+            dr_JobWise_Bill["Bill_MainID"] = Bill_ID;
+            ////Page_ID
+            //dr_JobWise_Bill["Page_ID"] = "503";
+            ////Page_SubModule_ID
+            //dr_JobWise_Bill["Page_SubModule_ID"] = "19";
+            dr_JobWise_Bill["ID_Admin"] = Selected_IDAdmin;
+            //Add Rows to the Table
+            dt_JobWise_Bill.Rows.Add(dr_JobWise_Bill);
+            dt_JobWise_Bill.AcceptChanges();
+
+
+
+        }
+
+
+        //Create Voucher Detail Table
+        string[] arr_Voucher_Detail_Fields = new string[8];
+        objtbl_System_Config.Table_Name = "tbl_Voucher_Details";
+        dt_Voucher_Details_prnt = objBltbl_System_Config.Get_Column_Name_With_DataType(objtbl_System_Config);
+        dt_Voucher_Details_prnt.Columns.Remove(dt_Voucher_Details_prnt.Columns[0]);
+        dt_Voucher_Details_prnt.Columns.Remove(dt_Voucher_Details_prnt.Columns[0]);
+        dt_Voucher_Details_prnt.TableName = "tbl_Voucher_Details";
+        int k = 0;
+        int Service_ID = 0;
+        int Upload_Charges_ID = 0;
+        int Out_Of_Pocket_Expense_ID = 0;
+        int Professional_Charges = 0;
+        if (txt_FirmText.Text == "VatasInfosys-JALANDHAR")
+        {
+            Professional_Charges = 2178;
+            Service_ID = 2167;
+            Upload_Charges_ID = 2172;
+            Out_Of_Pocket_Expense_ID = 2173;
+        }
+        else if (txt_FirmText.Text == "VatasInfotech-JALANDHAR")
+        {
+            Professional_Charges = 2171;
+            Service_ID = 2168;
+            Upload_Charges_ID = 2169;
+            Out_Of_Pocket_Expense_ID = 2170;
+        }
+
+        for (int i = 0; i < 5; i++)
+        {
+
+            if (i == 0)
+            {
+                k = i + 1;
+                arr_Voucher_Detail_Fields[0] = Customer_ID.ToString();
+                arr_Voucher_Detail_Fields[1] = "Bill No:" + Bill_No.ToString();
+                arr_Voucher_Detail_Fields[2] = "D";
+                arr_Voucher_Detail_Fields[3] = txtgrandtotal.Text;
+                arr_Voucher_Detail_Fields[4] = k.ToString();
+                arr_Voucher_Detail_Fields[5] = "19";
+
+
+            }
+            else if (i == 1)
+            {
+                k = i + 1;
+                arr_Voucher_Detail_Fields[0] = Professional_Charges.ToString();
+                arr_Voucher_Detail_Fields[1] = "Bill No:" + Bill_No.ToString();
+                arr_Voucher_Detail_Fields[2] = "C";
+                arr_Voucher_Detail_Fields[3] = txttotal.Text;
+                arr_Voucher_Detail_Fields[4] = k.ToString();
+                arr_Voucher_Detail_Fields[5] = "19";
+
+            }
+            else if (i == 2)
+            {
+                k = i + 1;
+                arr_Voucher_Detail_Fields[0] = Service_ID.ToString();
+                arr_Voucher_Detail_Fields[1] = "Bill No:" + Bill_No.ToString();
+                arr_Voucher_Detail_Fields[2] = "C";
+                arr_Voucher_Detail_Fields[3] = txtServicetex.Text;
+                arr_Voucher_Detail_Fields[4] = k.ToString();
+                arr_Voucher_Detail_Fields[5] = "19";
+
+            }
+            else if (i == 3)
+            {
+                k = i + 1;
+                arr_Voucher_Detail_Fields[0] = Upload_Charges_ID.ToString();
+                arr_Voucher_Detail_Fields[1] = "Bill No:" + Bill_No.ToString();
+                arr_Voucher_Detail_Fields[2] = "C";
+                arr_Voucher_Detail_Fields[3] = txtuploadfee.Text;
+                arr_Voucher_Detail_Fields[4] = k.ToString();
+                arr_Voucher_Detail_Fields[5] = "19";
+
+            }
+            else if (i == 4)
+            {
+                k = i + 1;
+                arr_Voucher_Detail_Fields[0] = Out_Of_Pocket_Expense_ID.ToString();
+                arr_Voucher_Detail_Fields[1] = "Bill No:" + Bill_No.ToString();
+                arr_Voucher_Detail_Fields[2] = "C";
+                arr_Voucher_Detail_Fields[3] = txt_OutOfPocketExpense.Text;
+                arr_Voucher_Detail_Fields[4] = k.ToString();
+                arr_Voucher_Detail_Fields[5] = "19";
+
+            }
+
+
+            DataRow dr_Voucher_Details = dt_Voucher_Details_prnt.NewRow();
+
+            //Add Acc_ID in the Row
+            dr_Voucher_Details["Acc_ID"] = Convert.ToInt32(arr_Voucher_Detail_Fields[0]);
+            //Add Narration in the Row 
+            dr_Voucher_Details["Narration"] = arr_Voucher_Detail_Fields[1].ToString();
+            //Add Debit Amount in the Row
+            string Debit_Credit = arr_Voucher_Detail_Fields[2].ToString();
+            dr_Voucher_Details["Debit_Credit"] = Debit_Credit;
+            if (Debit_Credit == "D")
+            {
+                dr_Voucher_Details["Debit_Amount"] = arr_Voucher_Detail_Fields[3].ToString();
+                dr_Voucher_Details["Amount"] = Convert.ToDouble(arr_Voucher_Detail_Fields[3]);
+
+            }
+            else if (Debit_Credit == "C")
+            {
+                dr_Voucher_Details["Credit_Amount"] = arr_Voucher_Detail_Fields[3].ToString();
+                dr_Voucher_Details["Amount"] = Convert.ToDouble(arr_Voucher_Detail_Fields[3]) * -1;
+            }
+
+            // Add Voucher Detail id in the Row
+            dr_Voucher_Details["Voucher_DetailID"] = Convert.ToInt32(arr_Voucher_Detail_Fields[4]);
+            //Add Enabled Field  in the Row
+            dr_Voucher_Details["Enabled"] = "false";
+            dr_Voucher_Details["V_Type"] = arr_Voucher_Detail_Fields[5].ToString();
+            dr_Voucher_Details["ID_Admin"] = Selected_IDAdmin;
+            dt_Voucher_Details_prnt.Rows.Add(dr_Voucher_Details);
+            dt_Voucher_Details_prnt.AcceptChanges();
+
+        }
+        //Create DataSet of Voucher
+        DataSet ds = new DataSet();
+        //ds.Tables.Add(dt_Main_Bill);
+        ds.Tables.Add(dt_JobWise_Bill);
+        ds.Tables.Add(dt_Voucher);
+        ds.Tables.Add(dt_Voucher_Details_prnt);
+        int sumObject;
+        sumObject = Convert.ToInt32(dt_Voucher_Details_prnt.Compute("Sum(Amount)", ""));
+        if (sumObject == 0)
+        {
+            //Insert the Record
+            //objBltbl_Vouchers.Insert_DataTable(ds, "VS");
+            objBltbl_JobWork11.Import_Data_From_Server(ds);
+            //Get the Job Id and Update the Bill Id in Return Table
+
+            foreach (int JobID in lstJob_ID)
+            {
+
+                //Get the Bill ID  by JobID
+                objtbl_JobWork1.Job_ID = JobID;
+                int Bill_ID = objBltbl_JobWork11.Get_BillID_By_JobID(objtbl_JobWork1);
+                objtbl_JobWork1.Bill_ID = Bill_ID;
+                //Update The Bill Id in the Return Table according to job id
+                objBltbl_JobWork11.Update_BillID_ByJobID(objtbl_JobWork1);
+
+            }
+            Pnl_PrintBillFirst.Attributes.Add("style", "display:none");
+            Pnl_Print.Attributes.Remove("style");
+            ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Bill Saved Successfully !');", true);
+
+        }
+        else
+        {
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", "alert('Voucher Amount is not Valid,Bill cannot be saved!');", true);
+        }
+        
+    }
+
+    protected void txtuploadfee_TextChanged(object sender, EventArgs e)
+    {
+        ////string BillNo = drp_BillNoPrnt.SelectedValue;
+        //DataTable dtb = new DataTable();
+        //objtbl_JobWork.BillNo = Convert.ToInt32(BillNo);
+        //double upd_UploadFee = Convert.ToDouble(txtuploadfee.Text);
+        //double upd_ServiceTax = Convert.ToDouble(txtServicetex.Text);
+        //objtbl_JobWork.ServiceTex = upd_ServiceTax;
+        //objtbl_JobWork.UploadFee = upd_UploadFee;
+        //dtb = objBltbl_JobWork.GetReturnUploadfeeBill(objtbl_JobWork);
+        //int success = objBltbl_JobWork.UpdateUploadService(objtbl_JobWork);
+        //Pnl_Print.Attributes.Add("style", "display:inline");
+    }
+    //int getRowCount = 0;
+
+    //update Prnitgrid Amount and Uploadcharges
+    protected void grdPrintRecords_RowCommand(object sender, GridViewCommandEventArgs e)
+    {
+        //if (e.CommandName == "uploadfee")
+        //{
+        //    DataTable dt = new DataTable();
+        //    int index = Convert.ToInt32(e.CommandArgument);
+        //    string Name = txt_CustomerNameprnt.Text;
+        //    objtbl_JobWork.AccName = Name;
+        //    Int32 getBillNo = Convert.ToInt32(Session["BillNo"]);
+        //    objtbl_JobWork.BillNo = getBillNo;
+        //    DataTable dtvb = new DataTable();            
+        //    dtvb = objBltbl_JobWork.GetReturnNoByBill(objtbl_JobWork);
+        //    Int32 retno = Convert.ToInt32(dtvb.Rows[index]["RetNo"]);            
+        //    objtbl_JobWork.RetNo = retno;
+        //    GridViewRow gvRow = grdPrintRecords.Rows[index];
+        //    //Int32 txttotal = Convert.ToInt32(Session["total"]);
+        //    //objtbl_JobWork.Total =Convert.ToDouble(txttotal);
+        //    TextBox txtUploadFee = (TextBox)gvRow.FindControl("txtUploadFee");           
+        //    TextBox txtbillamt = (TextBox)gvRow.FindControl("txtBillAmt");
+        //    objtbl_JobWork.UploadFee = Convert.ToDouble(txtUploadFee.Text);
+        //    objtbl_JobWork.Amount = Convert.ToDouble(txtbillamt.Text);
+        //    int success = objBltbl_JobWork.GetUpdteAmt(objtbl_JobWork);
+        //    int usuccess = objBltbl_JobWork.GetUpdtUplFee(objtbl_JobWork);
+        //    //dt = objBltbl_JobWork.GetUpdteAmt(objtbl_JobWork);
+        //    //DataTable dtsum = objBltbl_JobWork.GetSumofBilAmt(objtbl_JobWork);
+        //    //txttotal.Text = dtsum.Rows[0]["TotlaBillAmt"].ToString() + ".00";
+        //    //txttotal.Enabled = false;
+        //}
+        //else
+        //{
+
+        //}
+    }
+
+    protected void txtUploadFee_TextChanged(object sender, EventArgs e)
+    {
+        try
+        {
+            GridViewRow row = ((GridViewRow)((TextBox)sender).NamingContainer);
+            string x = grdPrintRecords.DataKeys[row.RowIndex].Value.ToString();
+            TextBox txtDateFrom = (TextBox)row.FindControl("txtUploadFee");
+            TextBox txtDateTo = (TextBox)row.FindControl("txtBillAmt");
+        }
+        catch (Exception ex)
+        {
+            Console.Write(ex.Message);
+        }
+    }
+    //function to Bind The Empty Print Grid
+    public void Bind_Empty_Print_GridView()
+    {
+        DataTable dt = new DataTable();
+        DataColumn dc_JobNo = new DataColumn("Job_ID", typeof(int));
+
+        dt.Columns.Add(dc_JobNo);
+        //DataColumn dc_RetNo = new DataColumn("RetType", typeof(int));
+        //dt.Columns.Add(dc_RetNo);
+        DataColumn dc_FY = new DataColumn("FY", typeof(int));
+        dt.Columns.Add(dc_FY);
+        DataColumn dc_Quarter = new DataColumn("Quarter", typeof(int));
+        dt.Columns.Add(dc_Quarter);
+
+        DataColumn dc_Entries = new DataColumn("No_of_Entries", typeof(int));
+        dt.Columns.Add(dc_Entries);
+        DataColumn dc_UploadCharges = new DataColumn("UploadFee", typeof(Double));
+        dt.Columns.Add(dc_UploadCharges);
+        DataColumn dc_Amount = new DataColumn("ReturnAmount", typeof(double));
+        dt.Columns.Add(dc_Amount);
+
+        DataColumn dc_RetType = new DataColumn("RetType", typeof(double));
+        dt.Columns.Add(dc_RetType);
+        DataColumn dc_OC = new DataColumn("OC", typeof(double));
+        dt.Columns.Add(dc_OC);
+        DataColumn dc_JobNo2 = new DataColumn("JobNo", typeof(double));
+        dt.Columns.Add(dc_JobNo2);
+
+
+        DataRow dr = dt.NewRow();
+        dt.Rows.Add(dr);
+        dt.AcceptChanges();
+        grdPrintRecords.DataSource = dt;
+        grdPrintRecords.DataBind();
+    }
+    //Event to Calculate Total Amount when changed Amount in the TextBox
+    protected void txtBillAmt_TextChanged(object sender, EventArgs e)
+    {
+        //Double Total_Amount = 0.00;
+        //Double Service_Tax = Convert.ToDouble(txtServicetex.Text);
+        //Double Upload_Fees = Convert.ToDouble(txtuploadfee.Text);
+        //Double Out_Of_Expense = Convert.ToDouble(txt_OutOfPocketExpense.Text);
+        //foreach (GridViewRow rows in grdPrintRecords.Rows)
+        //{
+        //    TextBox txt_Amt = (TextBox)rows.FindControl("txtBillAmt");
+        //    int Num = 0;
+        //    bool isNum = Int32.TryParse(txt_Amt.Text, out Num);
+        //    if (isNum)
+        //    {
+        //        txt_Amt.Text = string.Format("{0:f2}", Convert.ToInt32(txt_Amt.Text));
+        //    }
+
+        //    Total_Amount = Total_Amount + Convert.ToDouble(txt_Amt.Text);
+        //}
+        //string Tot_amt = String.Format("{0:f2}", Convert.ToInt32(Total_Amount));
+        //txttotal.Text = Tot_amt;
+        //txtgrandtotal.Text = Get_Grand_Total1(Total_Amount.ToString(), Service_Tax.ToString(), Upload_Fees.ToString(), Out_Of_Expense.ToString());
+        //Pnl_PrintBillFirst.Attributes.Add("style", "display:none");
+        //Pnl_Print.Attributes.Remove("style");
+
+
+        Double Total_Amount = 0.00;
+        Double Service_Tax = Convert.ToDouble(txtServicetex.Text);
+        Double Upload_Fees = Convert.ToDouble(txtuploadfee.Text);
+        Double Out_Of_Expense = Convert.ToDouble(txt_OutOfPocketExpense.Text);
+
+        Upload_Fees = 0;
+        foreach (GridViewRow rows in grdPrintRecords.Rows)
+        {
+            TextBox txt_Amt = (TextBox)rows.FindControl("txtBillAmt");
+            TextBox txt_AmtUploadFee = (TextBox)rows.FindControl("lbl_UploadFees");
+
+            int Num = 0;
+            bool isNum = Int32.TryParse(txt_Amt.Text, out Num);
+            bool isNum2 = Int32.TryParse(txt_AmtUploadFee.Text, out Num);
+            if (isNum)
+            {
+                txt_Amt.Text = string.Format("{0:f2}", Convert.ToInt32(txt_Amt.Text));
+            }
+            if (isNum2)
+            {
+                txt_AmtUploadFee.Text = string.Format("{0:f2}", Convert.ToInt32(txt_AmtUploadFee.Text));
+            }
+
+            Total_Amount = Total_Amount + Convert.ToDouble(txt_Amt.Text);
+            Upload_Fees += Convert.ToDouble(txt_AmtUploadFee.Text);
+        }
+        txtuploadfee.Text = Upload_Fees.ToString();
+        string Tot_amt = String.Format("{0:f2}", Convert.ToInt32(Total_Amount));
+        txttotal.Text = Tot_amt;
+        txtgrandtotal.Text = Get_Grand_Total1(Total_Amount.ToString(), Service_Tax.ToString(), Upload_Fees.ToString(), Out_Of_Expense.ToString());
+        Pnl_PrintBillFirst.Attributes.Add("style", "display:none");
+        Pnl_Print.Attributes.Remove("style");
+    }
+
+    //Event to Claculate GrandTotal on Changing TotalAmount
+    protected void txttotal_TextChanged(object sender, EventArgs e)
+    {
+
+        Double Service_Tax = Convert.ToDouble(txtServicetex.Text);
+        Double Upload_Fees = Convert.ToDouble(txtuploadfee.Text);
+        Double Out_Of_Expense = Convert.ToDouble(txt_OutOfPocketExpense.Text);
+
+
+        int Num = 0;
+        bool isNum = Int32.TryParse(txttotal.Text, out Num);
+        if (isNum)
+        {
+            txttotal.Text = string.Format("{0:f2}", Convert.ToInt32(txttotal.Text));
+        }
+
+
+
+        string Tot_amt = txttotal.Text;
+
+        txtgrandtotal.Text = Get_Grand_Total1(Tot_amt, Service_Tax.ToString(), Upload_Fees.ToString(), Out_Of_Expense.ToString());
+
+    }
+    //Event to Claculate GrandTotal on Changing Service Tax
+    protected void txtServicetex_TextChanged(object sender, EventArgs e)
+    {
+        Double Tot_amt = Convert.ToDouble(txttotal.Text);
+        Double Upload_Fees = Convert.ToDouble(txtuploadfee.Text);
+        Double Out_Of_Expense = Convert.ToDouble(txt_OutOfPocketExpense.Text);
+
+
+        int Num = 0;
+        bool isNum = Int32.TryParse(txtServicetex.Text, out Num);
+        if (isNum)
+        {
+            txtServicetex.Text = string.Format("{0:f2}", Convert.ToInt32(txtServicetex.Text));
+        }
+
+
+
+        string Service_Tax = txtServicetex.Text;
+
+        txtgrandtotal.Text = Get_Grand_Total1(Tot_amt.ToString(), Service_Tax.ToString(), Upload_Fees.ToString(), Out_Of_Expense.ToString());
+    }
+    //Event to Claculate GrandTotal on Changing Upload Fee
+    protected void txtuploadfee_TextChanged1(object sender, EventArgs e)
+    {
+        Double Tot_amt = Convert.ToDouble(txttotal.Text);
+        Double Service_Tax = Convert.ToDouble(txtServicetex.Text);
+
+        Double Out_Of_Expense = Convert.ToDouble(txt_OutOfPocketExpense.Text);
+
+
+        int Num = 0;
+        bool isNum = Int32.TryParse(txtuploadfee.Text, out Num);
+        if (isNum)
+        {
+            txtuploadfee.Text = string.Format("{0:f2}", Convert.ToInt32(txtuploadfee.Text));
+        }
+
+
+
+        string Upload_Fees = txtuploadfee.Text;
+
+        txtgrandtotal.Text = Get_Grand_Total1(Tot_amt.ToString(), Service_Tax.ToString(), Upload_Fees.ToString(), Out_Of_Expense.ToString());
+    }
+    //Event to Claculate GrandTotal on Changing Out of Pocket Expense
+    protected void txt_OutOfPocketExpense_TextChanged(object sender, EventArgs e)
+    {
+        Double Tot_amt = Convert.ToDouble(txttotal.Text);
+        Double Service_Tax = Convert.ToDouble(txtServicetex.Text);
+        Double Upload_Fees = Convert.ToDouble(txtuploadfee.Text);
+
+
+
+        int Num = 0;
+        bool isNum = Int32.TryParse(txt_OutOfPocketExpense.Text, out Num);
+        if (isNum)
+        {
+            txt_OutOfPocketExpense.Text = string.Format("{0:f2}", Convert.ToInt32(txt_OutOfPocketExpense.Text));
+        }
+
+
+
+        string Out_Of_Expense = txt_OutOfPocketExpense.Text;
+
+        txtgrandtotal.Text = Get_Grand_Total1(Tot_amt.ToString(), Service_Tax.ToString(), Upload_Fees.ToString(), Out_Of_Expense.ToString());
+        Pnl_PrintBillFirst.Attributes.Add("style", "display:none");
+        Pnl_Print.Attributes.Remove("style");
+
+    }
+
+    protected void btn_PrintPrnt_Click(object sender, EventArgs e)
+    {
+        Create_Bill_ToPrint();
+        Pnl_PrintBillFirst.Attributes.Add("style", "display:none");
+        Pnl_Print.Attributes.Remove("style");
+    }
+    protected void btn_SaveAndPrint_Click(object sender, EventArgs e)
+    {
+        //Get The Data From the 
+        string AccName = lbl_SelectedCustomerName.Text;
+        objtbl_JobWork1.AccName = AccName;
+
+        //Get The Updatable Data of Bill
+        dt = new DataTable();
+        dt = objBltbl_JobWork11.Get_Data_ByCusName(objtbl_JobWork1);
+        //Get the Match
+        bool Is_Match = Is_Bill_Matched(dt);
+        if (!Is_Match)
+        {
+            Create_Bill_To_Match();
+            if (dt.Rows.Count != 0)
+            {
+                Create_Previous_BillReport(dt);
+            }
+            // string Attachemnt1 = Session["Current_Bill"].ToString();
+            //string Attachment2 = Session["Previous_Bill"].ToString();
+            //SendEmail(Attachemnt1, Attachment2);
+            Update_Bills();
+        }
+        else
+        {
+            Update_Bills();
+        }
+        Pnl_PrintBillFirst.Attributes.Add("style", "display:none");
+        Pnl_Print.Attributes.Remove("style");
+        string Message_Edit_UnSuccess = obj_Service.Get_Message("btn_SaveAndPrint1", "503", "18");
+        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", "alert('" + Message_Edit_UnSuccess + "');", true);
+
+    }
+    //Function to Update Bills
+    public void Update_Bills()
+    {
+        int count = grdPrintRecords.Rows.Count;
+        string Customer_Name = lbl_SelectedCustomerName.Text;
+        objtbl_JobWork1.AccName = Customer_Name;
+        int Cust_ID = objBltbl_JobWork11.Get_CustID(objtbl_JobWork1);
+        objtbl_JobWork1.Cust_ID = Cust_ID;
+        for (int i = 0; i < count; i++)
+        {
+            //Date
+            int Bill_NoMain = Convert.ToInt32(ViewState["BillNo"]);
+            objtbl_JobWork1.Bill_No = Bill_NoMain;
+            int ID_AdminMain = objBltbl_JobWork11.Get_ID_AdminMain(objtbl_JobWork1);
+            objtbl_JobWork1.Bill_ID = ID_AdminMain;
+            int ID_AdminJobWise = Convert.ToInt32(ViewState["ID_Admin"]);
+            objtbl_JobWork1.ID_AdminJobWise = ID_AdminJobWise;
+            string Date = lbl_Date.Text;
+            Label lbl_JobNo = (Label)grdPrintRecords.Rows[i].FindControl("lbl_JobNo");
+            //JobID
+            int Job_ID = Convert.ToInt32(lbl_JobNo.Text);
+
+            //Amount
+            TextBox txt_Amount = (TextBox)grdPrintRecords.Rows[i].FindControl("txtBillAmt");
+            Double Amount = Convert.ToDouble(txt_Amount.Text);
+            TextBox lbl_UploadFee = (TextBox)grdPrintRecords.Rows[i].FindControl("lbl_UploadFees");
+            Double Upload_Charges_JobWise = Convert.ToDouble(lbl_UploadFee.Text);
+
+            //Out of Pocket Expense;
+            string Out_Of_Pocket_Expenses = txt_OutOfPocketExpense.Text;
+            //Remarks
+            string Remarks = txt_Remarks.Text;
+            //Total_Amount
+            Double Total_Amount = Convert.ToDouble(txtgrandtotal.Text);
+            //Service Tax
+            Double ServiceTax = Convert.ToDouble(txtServicetex.Text);
+            //Upload Fees
+            Double Upload_Fee = Convert.ToDouble(txtuploadfee.Text);
+            //Create Parameters
+            objtbl_JobWork1.Date = Date;
+            objtbl_JobWork1.Amount = Amount;
+            objtbl_JobWork1.Job_ID = Job_ID;
+            objtbl_JobWork1.Service_Tax = ServiceTax;
+            objtbl_JobWork1.Upload_Charges = Upload_Fee;
+            objtbl_JobWork1.UploadFee = Upload_Charges_JobWise;
+            objtbl_JobWork1.Total_Amt = Total_Amount;
+            objtbl_JobWork1.Out_of_Pocket_Expense = Convert.ToDouble(Out_Of_Pocket_Expenses);
+            objtbl_JobWork1.Remarks = Remarks;
+            int success = objBltbl_JobWork11.Update_Main_Bill_Record(objtbl_JobWork1);
+
+
+            objBltbl_JobWork11.Update_JobWise_Bill(objtbl_JobWork1);
+
+
+
+
+        }
+
+        //Create Voucher Table
+        //Get Customer ID Field
+
+
+        //Get Return Data From Return Table
+        objtbl_JobWork1.CusID = Cust_ID;
+        objtbl_JobWork1.FirmName = txt_FirmText.Text;
+        dt = new DataTable();
+
+        //Set the Financial year
+        //Set Date 
+        //String[] tempDate = txt_FY.Text.Trim().Split('-');
+        String Today_Date = DateTime.Now.Year.ToString();
+        Today_Date = Today_Date + "-" + (Convert.ToInt64(Today_Date) + 1).ToString(); ;
+        String[] tempDate;
+        try
+        {
+            tempDate = ViewState["FY"].ToString().Split('-');
+            Today_Date = tempDate[0] + "-20" + tempDate[1];
+        }
+        catch { }
+
+        objtbl_JobWork1.FinancialYear = Today_Date;
+
+        dt = objBltbl_JobWork11.Get_Return_Data_ByCusID(objtbl_JobWork1);
+
+        //Create parameters
+        //Bill No
+        objtbl_JobWork1.Cust_ID = Cust_ID;
+        //objtbl_JobWork1.Firm_ID = Convert.ToInt32(dt.Rows[0]["FirmID"]);
+        //int Bill_No = objBltbl_JobWork11.Generate_BillNo_FirmWise(objtbl_JobWork1);
+        int Bill_No = Convert.ToInt32(ViewState["BillNo"]);
+        objtbl_JobWork1.Bill_No = Bill_No;
+
+        int Voucher_ID = 0;
+        objtbl_JobWork1.Voucher_ID = Voucher_ID;
+
+        //Customer ID Field
+
+        int Customer_ID = Cust_ID;
+        objtbl_JobWork1.Cust_ID = Customer_ID;
+        //Create Parameters
+
+        //get ID_Admin to Update the Voucher
+        objtbl_JobWork1.Name_of_Firm = txt_FirmText.Text;
+        objtbl_JobWork1.Date = lbl_Date.Text;
+        objtbl_JobWork1.Cust_ID = Cust_ID;
+        objtbl_JobWork1.Bill_No = Bill_No;
+        int ID_Admin = objBltbl_JobWork11.Get_Voucher_IDAdmin(objtbl_JobWork1);
+        //int ID_Admin = Convert.ToInt32(ViewState["ID_Admin"]);
+        objtbl_JobWork1.ID_Admin = ID_Admin;
+
+
+
+        //Create Voucher Detail Table
+        objtbl_Vouchers.Voucher_Date = lbl_Date.Text;
+        objtbl_Vouchers.Bill_No = Bill_No;
+        objtbl_Vouchers.Receipt_No = 0;
+        objtbl_Vouchers.Name_of_Frim = txt_FirmText.Text;
+        objtbl_Vouchers.ID_Admin = ID_Admin;
+        int sucVouch = objBltbl_Vouchers.Update_Voucher_IDAdmin(objtbl_Vouchers);
+        string[] arr_Voucher_Detail_Fields = new string[8];
+        objtbl_System_Config.Table_Name = "tbl_Voucher_Details";
+        dt_Voucher_Details_prnt = objBltbl_System_Config.Get_Column_Name_With_DataType(objtbl_System_Config);
+        dt_Voucher_Details_prnt.Columns.Remove(dt_Voucher_Details_prnt.Columns[0]);
+        dt_Voucher_Details_prnt.Columns.Remove(dt_Voucher_Details_prnt.Columns[0]);
+        dt_Voucher_Details_prnt.TableName = "tbl_Voucher_Details";
+        int k = 0;
+        int Service_ID = 0;
+        int Upload_Charges_ID = 0;
+        int Out_Of_Pocket_Expense_ID = 0;
+        int Professional_Charges = 0;
+        if (txt_FirmText.Text == "VatasInfosys-JALANDHAR")
+        {
+            Professional_Charges = 2178;
+            Service_ID = 2167;
+            Upload_Charges_ID = 2172;
+            Out_Of_Pocket_Expense_ID = 2173;
+        }
+        else if (txt_FirmText.Text == "VatasInfotech-JALANDHAR")
+        {
+            Professional_Charges = 2171;
+            Service_ID = 2168;
+            Upload_Charges_ID = 2169;
+            Out_Of_Pocket_Expense_ID = 2170;
+        }
+
+        for (int i = 0; i < 5; i++)
+        {
+
+            if (i == 0)
+            {
+                k = i + 1;
+                arr_Voucher_Detail_Fields[0] = Customer_ID.ToString();
+                arr_Voucher_Detail_Fields[1] = "Bill No:" + Bill_No.ToString();
+                arr_Voucher_Detail_Fields[2] = "D";
+                arr_Voucher_Detail_Fields[3] = txtgrandtotal.Text;
+                arr_Voucher_Detail_Fields[4] = k.ToString();
+                arr_Voucher_Detail_Fields[5] = "19";
+
+
+            }
+            else if (i == 1)
+            {
+                k = i + 1;
+                arr_Voucher_Detail_Fields[0] = Professional_Charges.ToString();
+                arr_Voucher_Detail_Fields[1] = "Bill No:" + Bill_No.ToString();
+                arr_Voucher_Detail_Fields[2] = "C";
+                arr_Voucher_Detail_Fields[3] = txttotal.Text;
+                arr_Voucher_Detail_Fields[4] = k.ToString();
+                arr_Voucher_Detail_Fields[5] = "19";
+
+            }
+            else if (i == 2)
+            {
+                k = i + 1;
+                arr_Voucher_Detail_Fields[0] = Service_ID.ToString();
+                arr_Voucher_Detail_Fields[1] = "Bill No:" + Bill_No.ToString();
+                arr_Voucher_Detail_Fields[2] = "C";
+                arr_Voucher_Detail_Fields[3] = txtServicetex.Text;
+                arr_Voucher_Detail_Fields[4] = k.ToString();
+                arr_Voucher_Detail_Fields[5] = "19";
+
+            }
+            else if (i == 3)
+            {
+                k = i + 1;
+                arr_Voucher_Detail_Fields[0] = Upload_Charges_ID.ToString();
+                arr_Voucher_Detail_Fields[1] = "Bill No:" + Bill_No.ToString();
+                arr_Voucher_Detail_Fields[2] = "C";
+                arr_Voucher_Detail_Fields[3] = txtuploadfee.Text;
+                arr_Voucher_Detail_Fields[4] = k.ToString();
+                arr_Voucher_Detail_Fields[5] = "19";
+
+            }
+            else if (i == 4)
+            {
+                k = i + 1;
+                arr_Voucher_Detail_Fields[0] = Out_Of_Pocket_Expense_ID.ToString();
+                arr_Voucher_Detail_Fields[1] = "Bill No:" + Bill_No.ToString();
+                arr_Voucher_Detail_Fields[2] = "C";
+                arr_Voucher_Detail_Fields[3] = txt_OutOfPocketExpense.Text;
+                arr_Voucher_Detail_Fields[4] = k.ToString();
+                arr_Voucher_Detail_Fields[5] = "19";
+
+            }
+
+
+            DataRow dr_Voucher_Details = dt_Voucher_Details_prnt.NewRow();
+
+            //Add Acc_ID in the Row
+            dr_Voucher_Details["Acc_ID"] = Convert.ToInt32(arr_Voucher_Detail_Fields[0]);
+            //Add Narration in the Row 
+            dr_Voucher_Details["Narration"] = arr_Voucher_Detail_Fields[1].ToString();
+            //Add Debit Amount in the Row
+            string Debit_Credit = arr_Voucher_Detail_Fields[2].ToString();
+            dr_Voucher_Details["Debit_Credit"] = Debit_Credit;
+            if (Debit_Credit == "D")
+            {
+                dr_Voucher_Details["Debit_Amount"] = arr_Voucher_Detail_Fields[3].ToString();
+                dr_Voucher_Details["Amount"] = Convert.ToDouble(arr_Voucher_Detail_Fields[3]);
+
+            }
+            else if (Debit_Credit == "C")
+            {
+                dr_Voucher_Details["Credit_Amount"] = arr_Voucher_Detail_Fields[3].ToString();
+                dr_Voucher_Details["Amount"] = Convert.ToDouble(arr_Voucher_Detail_Fields[3]) * -1;
+            }
+
+            // Add Voucher Detail id in the Row
+            dr_Voucher_Details["Voucher_DetailID"] = Convert.ToInt32(arr_Voucher_Detail_Fields[4]);
+            //Add Enabled Field  in the Row
+            dr_Voucher_Details["Enabled"] = "false";
+            dr_Voucher_Details["V_Type"] = arr_Voucher_Detail_Fields[5].ToString();
+
+            dt_Voucher_Details_prnt.Rows.Add(dr_Voucher_Details);
+            dt_Voucher_Details_prnt.AcceptChanges();
+
+        }
+        //Update Voucher_Details By_IDAdmin
+        //foreach (DataRow rowDetails in dt_Voucher_Details_prnt.Rows)
+        //{
+        objtbl_Vouchers.Acc_ID = Convert.ToInt32(dt_Voucher_Details_prnt.Rows[0]["Acc_ID"]);
+        objtbl_Vouchers.Narration = dt_Voucher_Details_prnt.Rows[0]["Narration"].ToString();
+        objtbl_Vouchers.Amount = dt_Voucher_Details_prnt.Rows[0]["Amount"].ToString();
+        objtbl_Vouchers.Debit_Amount = dt_Voucher_Details_prnt.Rows[0]["Debit_Amount"].ToString();
+        objtbl_Vouchers.Credit_Amount = dt_Voucher_Details_prnt.Rows[0]["Credit_Amount"].ToString();
+        objtbl_Vouchers.Flag = dt_Voucher_Details_prnt.Rows[0]["Debit_Credit"].ToString();
+        objtbl_Vouchers.Voucher_SubDetailID = Convert.ToInt32(dt_Voucher_Details_prnt.Rows[0]["Voucher_DetailID"]);
+        objtbl_Vouchers.ID_Admin = ID_Admin;
+        int sucVouchDet = objBltbl_Vouchers.Update_Voucher_Details_ID_Admin(objtbl_Vouchers);
+
+        Create_Bill_ToPrint();
+    }
+
+    //Function to Match the Bill If Changed
+    public bool Is_Bill_Matched(DataTable dt_PreviousBill)
+    {
+        // Get the Count
+        int count = dt_PreviousBill.Rows.Count;
+        bool Is_Matched = false;
+        //Match the Data
+        for (int i = 0; i < count; i++)
+        {
+            string Amount_Table = dt_PreviousBill.Rows[i]["Amount"].ToString();
+            string Amount_Edit = txttotal.Text;
+            string Out_of_Expense_Table = dt_PreviousBill.Rows[i]["Out_of_Pocket_Expense"].ToString();
+            string Out_of_Expense_Edit = txt_OutOfPocketExpense.Text;
+            if (Amount_Table == Amount_Edit && Out_of_Expense_Table == Out_of_Expense_Edit)
+            {
+                Is_Matched = true;
+            }
+            else
+            {
+                Is_Matched = false;
+            }
+
+        }
+        return Is_Matched;
+
+    }
+    //Functio to Create Bill
+    public void Create_Bill_ToPrint()
+    {
+        //pass pameters to the Crystal Report
+
+        //Create Parameters For Crystal Reports
+        string Dated = txt_DatePrnt.Text.ToString();
+        string Name = txt_CustomerNameprnt.Text;
+        string Sub_Total = txttotal.Text;
+        string Service_Tax = txtServicetex.Text;
+        string Upload_Fee = txtuploadfee.Text;
+        string Grand_Total = txtgrandtotal.Text;
+        string Other_Out_Of_Pocket_Expenses = txt_OutOfPocketExpense.Text;
+        //get the Firm ID
+        objtbl_Firm1.NameOfFirm = (txt_FirmText.Text != "") ? txt_FirmText.Text : ((Session["FirmName"] == null) ? "" : Session["FirmName"].ToString());
+        int Firm_ID = objBltbl_Firm11.GetFirmId(objtbl_Firm1);
+        objtbl_JobWork1.Firm_ID = Firm_ID;
+
+        //Current FY:
+        string str_FY = "";
+        string[] arrDated = System.Text.RegularExpressions.Regex.Split(Dated, "/");
+        string strYr = Dated.Substring(Dated.LastIndexOf("/") + 1);
+        if (Convert.ToInt32(arrDated[1]) < 4)
+            str_FY = ((Convert.ToInt32(strYr) - 1) + "-" + strYr.Substring(0, 2));      //str_FY = ((Convert.ToInt32(strYr) - 1) + "-" + strYr);
+        else
+            str_FY = (strYr + "-" + (Convert.ToInt32(strYr) + 1).ToString().Substring(2));      //str_FY = (strYr + "-" + (Convert.ToInt32(strYr) + 1));
+
+
+        //Get The Bill No
+        int Cust_ID = Convert.ToInt32(Session["Cust_Id"]);
+        objtbl_JobWork1.Cust_ID = Cust_ID;
+        int Bill_No = objBltbl_JobWork11.Get_BillNo_By_CustomerID(objtbl_JobWork1);
+        if (ViewState["BillNo"] != null)
+            Bill_No = Convert.ToInt32(ViewState["BillNo"]);
+        //int Bill_No = objBltbl_JobWork11.Generate_BillNo_FirmWise(objtbl_JobWork1);
+        //int Bill_No = objBltbl_JobWork11.Generate_BillNo_FirmWise(objtbl_JobWork1);
+        //Check the Bill No
+        if (Bill_No == 0)
+        {
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "Show();", "alert('Save Bill Before Printing')", true);
+            return;
+        }
+
+        //Get the Data Jobwise From Bill table.
+        DataTable dt_BillJobWise = new DataTable();
+        objtbl_JobWork1.Bill_No = Bill_No;
+        //Get Bill ID By BillNo
+        int Bill_ID = objBltbl_JobWork11.Get_BillID_By_BillNo(objtbl_JobWork1);
+
+        objtbl_JobWork1.Bill_ID = Bill_ID;
+        dt_BillJobWise = objBltbl_JobWork11.Get_Data_JobWise(objtbl_JobWork1);
+        string FormNo = string.Empty;
+        string Quarter = string.Empty;
+        string Particulars = string.Empty;
+        int count = dt_BillJobWise.Rows.Count;
+        for (int i = 0; i < count; i++)
+        {
+            FormNo = dt_BillJobWise.Rows[i]["Form_Type"].ToString();
+            if (FormNo == "Form24Q")
+            {
+                FormNo = "24Q";
+            }
+            else if (FormNo == "Form26Q")
+            {
+                FormNo = "26Q";
+            }
+            else if (FormNo == "Form27Q")
+            {
+                FormNo = "27Q";
+            }
+            else if (FormNo == "Form27EQ")
+            {
+                FormNo = "27EQ";
+            }
+            Quarter = dt_BillJobWise.Rows[i]["QuaterName"].ToString();
+            Quarter = Quarter.Replace("-", "");
+            Particulars = Particulars + " Form" + FormNo + " " + Quarter + ",";
+
+        }
+        if (Particulars != "")
+        {
+            Particulars = Particulars.Remove(Particulars.Length - 1);
+        }
+
+        //Get The String of the GrandTotal
+        string GrandTotal_InWords = string.Empty;
+        Double Grand_Tot = Convert.ToDouble(Grand_Total);
+        int GrandTotal_Innumber = Convert.ToInt32(Grand_Tot);
+        GrandTotal_InWords = "(Rupees " + NumberToWordsConvertor.NumberToText(GrandTotal_Innumber) + " Only)";
+
+
+        //Create Report Document and Laod Crystal Report in it
+        ReportDocument reportDoc = new ReportDocument();
+        //Load the Report According to the Firm Selected
+        string Report = string.Empty;
+        string Bill_Name = string.Empty;
+        if (lbl_SelectedFirm.Text == "VatasInfosys-JALANDHAR")
+        {
+            Report = "~/Crystal Report/Bills.rpt";
+            Bill_Name = "Bill_VatasInfosys";
+        }
+        else if (lbl_SelectedFirm.Text == "VatasInfotech-JALANDHAR")
+        {
+            Report = "~/Crystal Report/BillsVatasInfotech.rpt";
+            Bill_Name = "Bill_VatasInfotech";
+        }
+        else if (lbl_SelectedFirm.Text == "BMC-JALANDHAR")
+        {
+            Report = "~/Crystal Report/BillsBMC.rpt";
+            Bill_Name = "Bill_BMC";
+        }
+        reportDoc.Load(Server.MapPath(Report));
+        reportDoc.SetDatabaseLogon("sa", "sql,.12345");
+        Response.Buffer = false;
+        // Clear the response content and headers
+        Response.ClearContent();
+        //Response.ClearHeaders();
+
+        reportDoc.SetParameterValue("Dated", Dated);
+        reportDoc.SetParameterValue("Bill No", (Bill_No.ToString() + "/" + str_FY));
+        reportDoc.SetParameterValue("Name", Name);
+        reportDoc.SetParameterValue("Sub Total", Sub_Total);
+        reportDoc.SetParameterValue("Service Tax", Service_Tax);
+        reportDoc.SetParameterValue("Upload Fee", Upload_Fee);
+        reportDoc.SetParameterValue("Grand Total", Grand_Total);
+        reportDoc.SetParameterValue("Particulars", Particulars);
+        reportDoc.SetParameterValue("GrandTotal_InWords", GrandTotal_InWords);
+        reportDoc.SetParameterValue("Other_Out_Of_Pocket_ Expenses", Other_Out_Of_Pocket_Expenses);
+
+        //  string name = Server.MapPath("~/PDF_Bill/Bill.pdf");
+        // reportDoc.PrintToPrinter(1, false, 0, 0);
+
+        reportDoc.ExportToHttpResponse(ExportFormatType.PortableDocFormat, Response, true, Bill_Name);
+    }
+    //Function to Create Current Bill Copy to match
+    public void Create_Bill_To_Match()
+    {
+        //pass pameters to the Crystal Report
+
+        //Create Parameters For Crystal Reports
+        string Dated = txt_DatePrnt.Text.ToString();
+        string Name = txt_CustomerNameprnt.Text;
+        string Sub_Total = txttotal.Text;
+        string Service_Tax = txtServicetex.Text;
+        string Upload_Fee = txtuploadfee.Text;
+        string Grand_Total = txtgrandtotal.Text;
+        string Other_Out_Of_Pocket_Expenses = txt_OutOfPocketExpense.Text;
+        //Get FirmId
+        objtbl_Firm1.NameOfFirm = txt_FirmText.Text;
+        int Firm_ID = objBltbl_Firm11.GetFirmId(objtbl_Firm1);
+        //Get The Bill No
+        int Cust_ID = Convert.ToInt32(Session["Cust_Id"]);
+        objtbl_JobWork1.Cust_ID = Cust_ID;
+        int Bill_No = objBltbl_JobWork11.Get_BillNo_By_CustomerID(objtbl_JobWork1);
+        //Get the Data Jobwise From Bill table.
+        DataTable dt_BillJobWise = new DataTable();
+        objtbl_JobWork1.Firm_ID = Firm_ID;
+        objtbl_JobWork1.Bill_No = Bill_No;
+        //Get Bill ID By BillNo
+        //int Bill_ID = objBltbl_JobWork11.Get_BillID_By_BillNo(objtbl_JobWork1);
+        int Bill_ID = Convert.ToInt32(Session["Selected_IDAdmin"]);
+        objtbl_JobWork1.Bill_ID = Bill_ID;
+        dt_BillJobWise = objBltbl_JobWork11.Get_Data_JobWise(objtbl_JobWork1);
+        string FormNo = string.Empty;
+        string Quarter = string.Empty;
+        string Particulars = string.Empty;
+        int count = dt_BillJobWise.Rows.Count;
+        for (int i = 0; i < count; i++)
+        {
+            FormNo = dt_BillJobWise.Rows[i]["Form_Type"].ToString();
+            Quarter = dt_BillJobWise.Rows[i]["QuaterName"].ToString();
+            Quarter = Quarter.Replace("-", "");
+            Particulars = Particulars + "Form" + FormNo + " " + Quarter + ",";
+
+        }
+        if (Particulars != "")
+        {
+            Particulars = Particulars.Remove(Particulars.Length - 1);
+        }
+
+        //Get The String of the GrandTotal
+        string GrandTotal_InWords = string.Empty;
+        Double Grand_Tot = Convert.ToDouble(Grand_Total);
+        int GrandTotal_Innumber = Convert.ToInt32(Grand_Tot);
+        GrandTotal_InWords = "(Rupees " + NumberToWordsConvertor.NumberToText(GrandTotal_Innumber) + " Only)";
+
+
+        //Create Report Document and Laod Crystal Report in it
+        ReportDocument reportDoc = new ReportDocument();
+        //Load the Report According to the Firm Selected
+        string Report = string.Empty;
+        string Bill_Name = string.Empty;
+        if (lbl_SelectedFirm.Text == "VatasInfosys-JALANDHAR")
+        {
+            Report = "~/Crystal Report/Bills.rpt";
+            Bill_Name = "Bill_VatasInfosys";
+        }
+        else if (lbl_SelectedFirm.Text == "VatasInfotech-JALANDHAR")
+        {
+            Report = "~/Crystal Report/BillsVatasInfotech.rpt";
+            Bill_Name = "Bill_VatasInfotech";
+        }
+        else if (lbl_SelectedFirm.Text == "BMC-JALANDHAR")
+        {
+            Report = "~/Crystal Report/BillsBMC.rpt";
+            Bill_Name = "Bill_BMC";
+        }
+        reportDoc.Load(Server.MapPath(Report));
+        reportDoc.SetDatabaseLogon("sa", "sql,.12345");
+        Response.Buffer = false;
+        // Clear the response content and headers
+        Response.ClearContent();
+        Response.ClearHeaders();
+
+        reportDoc.SetParameterValue("Dated", Dated);
+        reportDoc.SetParameterValue("Bill No", Bill_No);
+        reportDoc.SetParameterValue("Name", Name);
+        reportDoc.SetParameterValue("Sub Total", Sub_Total);
+        reportDoc.SetParameterValue("Service Tax", Service_Tax);
+        reportDoc.SetParameterValue("Upload Fee", Upload_Fee);
+        reportDoc.SetParameterValue("Grand Total", Grand_Total);
+        reportDoc.SetParameterValue("Particulars", Particulars);
+        reportDoc.SetParameterValue("GrandTotal_InWords", GrandTotal_InWords);
+        reportDoc.SetParameterValue("Other_Out_Of_Pocket_ Expenses", Other_Out_Of_Pocket_Expenses);
+        string name = string.Empty;
+        if (lbl_SelectedFirm.Text == "VatasInfosys-JALANDHAR")
+        {
+            name = Server.MapPath("~/PDF_PreviousBill/Bill_Current_VatasInfosys.pdf");
+        }
+        else if (lbl_SelectedFirm.Text == "VatasInfotech-JALANDHAR")
+        {
+            name = Server.MapPath("~/PDF_PreviousBill/Bill_Current_VatasInfotech.pdf");
+        }
+        else if (lbl_SelectedFirm.Text == "BMC-JALANDHAR")
+        {
+            name = Server.MapPath("~/PDF_PreviousBill/Bill_Current_BMC.pdf");
+        }
+
+        Session["Current_Bill"] = name;
+        reportDoc.ExportToDisk(ExportFormatType.PortableDocFormat, name);
+        //reportDoc.ExportToHttpResponse(ExportFormatType.PortableDocFormat, Response, false, name);
+    }
+    //Create Previous Bill Report
+    public void Create_Previous_BillReport(DataTable dt_PreviousBill)
+    {
+        string Dated = dt_PreviousBill.Rows[0]["Date"].ToString();
+        string Name = txt_CustomerNameprnt.Text;
+        string Sub_Total = dt_PreviousBill.Rows[0]["Total_Amount"].ToString();
+        string Service_Tex = dt_PreviousBill.Rows[0]["Service_Tax"].ToString();
+        string Upload_Fee = dt_PreviousBill.Rows[0]["Total_Upload_Charges"].ToString();
+        string Out_of_Expense_Table = dt_PreviousBill.Rows[0]["Out_of_Pocket_Expense"].ToString();
+
+        //Get Grand Total
+        Double Total_Amount = Convert.ToDouble(Sub_Total);
+        Double Service_Tax = Convert.ToDouble(Service_Tex);
+        Double Upld_Fees = Convert.ToDouble(Upload_Fee);
+        Double Out_Of_Expense = Convert.ToDouble(Out_of_Expense_Table);
+        string Grand_Total = Get_Grand_Total1(Total_Amount.ToString(), Service_Tax.ToString(), Upld_Fees.ToString(), Out_Of_Expense.ToString());
+
+
+        //Get The Bill No
+        int Cust_ID = Convert.ToInt32(Session["Cust_Id"]);
+        objtbl_JobWork1.Cust_ID = Cust_ID;
+        int Bill_No = objBltbl_JobWork11.Get_BillNo_By_CustomerID(objtbl_JobWork1);
+        //Get the Data Jobwise From Bill table.
+        DataTable dt_BillJobWise = new DataTable();
+        objtbl_JobWork1.Bill_No = Bill_No;
+        //Get Bill ID By BillNo
+        int Bill_ID = objBltbl_JobWork11.Get_BillID_By_BillNo(objtbl_JobWork1);
+        objtbl_JobWork1.Bill_ID = Bill_ID;
+        dt_BillJobWise = objBltbl_JobWork11.Get_Data_JobWise(objtbl_JobWork1);
+        string FormNo = string.Empty;
+        string Quarter = string.Empty;
+        string Particulars = string.Empty;
+        int count = dt_BillJobWise.Rows.Count;
+        for (int i = 0; i < count; i++)
+        {
+            FormNo = dt_BillJobWise.Rows[i]["Form_Type"].ToString();
+            Quarter = dt_BillJobWise.Rows[i]["QuaterName"].ToString();
+            Quarter = Quarter.Replace("-", "");
+            Particulars = Particulars + "Form" + FormNo + " " + Quarter + ",";
+
+        }
+        if (Particulars != "")
+        {
+            Particulars = Particulars.Remove(Particulars.Length - 1);
+        }
+
+        //Get The String of the GrandTotal
+        string GrandTotal_InWords = string.Empty;
+        Double Grand_Tot = Convert.ToDouble(Grand_Total);
+        int GrandTotal_Innumber = Convert.ToInt32(Grand_Tot);
+        GrandTotal_InWords = "(Rupees " + NumberToWordsConvertor.NumberToText(GrandTotal_Innumber) + " Only)";
+
+
+        //Create Report Document and Laod Crystal Report in it
+        ReportDocument reportDoc = new ReportDocument();
+        //Load the Report According to the Firm Selected
+        string Report = string.Empty;
+        string Bill_Name = string.Empty;
+        if (lbl_SelectedFirm.Text == "VatasInfosys-JALANDHAR")
+        {
+            Report = "~/Crystal Report/Bills.rpt";
+            Bill_Name = "Bill_VatasInfosys";
+        }
+        else if (lbl_SelectedFirm.Text == "VatasInfotech-JALANDHAR")
+        {
+            Report = "~/Crystal Report/BillsVatasInfotech.rpt";
+            Bill_Name = "Bill_VatasInfotech";
+        }
+        else if (lbl_SelectedFirm.Text == "BMC-JALANDHAR")
+        {
+            Report = "~/Crystal Report/BillsBMC.rpt";
+            Bill_Name = "Bill_BMC";
+        }
+        reportDoc.Load(Server.MapPath(Report));
+        reportDoc.SetDatabaseLogon("sa", "sql,.12345");
+        Response.Buffer = false;
+        // Clear the response content and headers
+        Response.ClearContent();
+        Response.ClearHeaders();
+
+        reportDoc.SetParameterValue("Dated", Dated);
+        reportDoc.SetParameterValue("Bill No", Bill_No);
+        reportDoc.SetParameterValue("Name", Name);
+        reportDoc.SetParameterValue("Sub Total", Sub_Total);
+        reportDoc.SetParameterValue("Service Tax", Service_Tax);
+        reportDoc.SetParameterValue("Upload Fee", Upload_Fee);
+        reportDoc.SetParameterValue("Grand Total", Grand_Total);
+        reportDoc.SetParameterValue("Particulars", Particulars);
+        reportDoc.SetParameterValue("GrandTotal_InWords", GrandTotal_InWords);
+        reportDoc.SetParameterValue("Other_Out_Of_Pocket_ Expenses", Out_of_Expense_Table);
+
+        string name = string.Empty;
+        if (lbl_SelectedFirm.Text == "VatasInfosys-JALANDHAR")
+        {
+            name = Server.MapPath("~/PDF_PreviousBill/Bill_Previous_VatasInfosys.pdf");
+        }
+        else if (lbl_SelectedFirm.Text == "VatasInfotech-JALANDHAR")
+        {
+            name = Server.MapPath("~/PDF_PreviousBill/Bill_Previous_VatasInfotech.pdf");
+        }
+        else if (lbl_SelectedFirm.Text == "BMC-JALANDHAR")
+        {
+            name = Server.MapPath("~/PDF_PreviousBill/Bill_Previous_BMC.pdf");
+        }
+        Session["Previous_Bill"] = name;
+        reportDoc.ExportToDisk(ExportFormatType.PortableDocFormat, name);
+        //reportDoc.ExportToHttpResponse(ExportFormatType.PortableDocFormat, Response,true, name);
+    }
+
+    //Create Function To Send Email of Bills
+    public void SendEmail(string Attachment1, string Attachment2)
+    {
+        //Create Parameters
+        string To = "harnekdeveloper@gmail.com";
+        string From = "harnekdeveloper@gmail.com";
+        string Subject = "Vatas Infosys New Bill Generated";
+        string Body = "Plesae Find the attachment of Both the Bills i.e Previous Bill and Current Bill which are having some discripancy between them.";
+        bool IS_BodyHtml = true;
+        //ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + Active_Link + "');", true);
+        MailMessage mail = new MailMessage();
+        //Mail To
+        mail.To.Add(To);
+        //Mail From
+        mail.From = new MailAddress(From);
+        //Mail Subject
+        mail.Subject = Subject;
+        //Mail Attachments
+        mail.Attachments.Add(new Attachment(Attachment1));
+        mail.Attachments.Add(new Attachment(Attachment2));
+        //Mail Email Body
+        mail.Body = Body;
+        //Mail Is Body Html
+        mail.IsBodyHtml = IS_BodyHtml;
+
+        //Set the Credentials For Sending Emails;
+        SmtpClient smtp = new SmtpClient();
+        smtp.Host = "smtp.gmail.com"; //Or Your SMTP Server Address
+        smtp.Credentials = new System.Net.NetworkCredential
+             ("infosysv@gmail.com", "vatas123");
+        //Or your Smtp Email ID and Password
+        smtp.EnableSsl = true;
+        smtp.Send(mail);
+        //Consume the Send Email For Webservice
+        //obj_Service.SendEmail(Attachment1, Attachment2, From, To, Subject, Body, IS_BodyHtml);
+    }
+
+    //Function to search the Record
+    protected void btn_Search_Click(object sender, EventArgs e)
+    {
+        Pnl_Select_Bill.Attributes.Remove("style");
+        string AccName = txt_CustomerNameprnt.Text;
+        objtbl_JobWork1.AccName = AccName;
+        int Cust_ID = objBltbl_JobWork11.Get_CustID(objtbl_JobWork1);
+        //string Date = txt_Date_Search.Text;
+        //string BillNo = txt_BillNo.Text;
+        string NameOfFirm = txt_FirmText.Text;
+
+
+
+        objtbl_JobWork1.Cust_ID = Cust_ID;
+        //objtbl_JobWork1.Date = Date;
+
+        //objtbl_JobWork1.BillNo_search = BillNo;
+        objtbl_JobWork1.FirmName = NameOfFirm;
+        DataTable dt = new DataTable();
+        dt = objBltbl_JobWork11.Get_SearchBill(objtbl_JobWork1);
+        Pnl_Search_Bill.Visible = false;
+        Pnl_Print.Visible = false;
+        grd_SelectBill.DataSource = dt;
+        grd_SelectBill.DataBind();
+        mdl_SelectBill.Show();
+
+
+    }
+    protected void grd_SelectBill_RowCommand(object sender, GridViewCommandEventArgs e)
+    {
+        if (e.CommandName == "S")
+        {
+            FlagBack = "S";
+            //Close the Select Bill panel
+            Pnl_Select_Bill.Attributes.Add("style", "display:none");
+            Pnl_Print.Attributes.Remove("style");
+            Pnl_Print.Visible = true;
+            //Get Admin ID
+            string[] arrArgs = System.Text.RegularExpressions.Regex.Split(e.CommandArgument.ToString(), "~");
+            //int ID_Admin = Convert.ToInt32(e.CommandArgument);
+            int ID_Admin = Convert.ToInt32(arrArgs[1]);
+            int Bill_ID = Convert.ToInt32(arrArgs[0]);
+            ViewState["ID_Admin"] = ID_Admin;
+            Session["Selected_IDAdmin"] = ID_Admin;
+            objtbl_JobWork1.ID_Admin = Bill_ID;
+            dt = objBltbl_JobWork11.Get_Bill_Data_By_ID_Admin(objtbl_JobWork1);
+            //DataTable dt_grid = (DataTable)grd_SelectBill.DataSource;
+            //DataRow[] rowdata = dt_grid.Select("ID_Admin=" + ID_Admin + "");
+            //int Bill_No = Convert.ToInt32(rowdata[0]["Bill_No"]);
+            GridViewRow row = (GridViewRow)(((ImageButton)e.CommandSource).NamingContainer);
+            Label lbl_BillNo = (Label)row.FindControl("lbl_Bill_No");
+
+            int Bill_No = Convert.ToInt32(lbl_BillNo.Text);
+            ViewState["BillNo"] = Bill_No;
+            //Session["Table"] = dt;
+            grdPrintRecords.DataSource = dt;
+            grdPrintRecords.DataBind();
+
+            //Bind Other Fields
+
+            //bind Upload fee and Amount Field
+            int count = dt.Rows.Count;
+            string Job_ID = string.Empty;
+            for (int j = 0; j < count; j++)
+            {
+
+                Job_ID = Job_ID + dt.Rows[j]["SerialNo_By_Job_Firm"].ToString() + ",";
+
+                TextBox lbl_UploadFee = (TextBox)grdPrintRecords.Rows[j].FindControl("lbl_UploadFees");
+                lbl_UploadFee.Text = dt.Rows[j]["Upload_Charges"].ToString();
+                TextBox txt_Amount = (TextBox)grdPrintRecords.Rows[j].FindControl("txtBillAmt");
+                txt_Amount.Text = dt.Rows[j]["Amount"].ToString();
+            }
+            Job_ID = Job_ID.Remove(Job_ID.Length - 1, 1);
+            lbl_SelectedFirm.Text = dt.Rows[0]["NameOfFirm"].ToString();
+            lbl_SelectedJobNo.Text = Job_ID;
+            lbl_SelectedCustomerName.Text = dt.Rows[0]["AccName"].ToString();
+            lbl_Date.Text = dt.Rows[0]["Date"].ToString();
+            txt_CustomerNameprnt.Text = dt.Rows[0]["AccName"].ToString();
+
+            txttotal.Text = dt.AsEnumerable().Sum(x => x.Field<decimal>("Amount")).ToString();
+            txtServicetex.Text = dt.Rows[0]["Service_Tax"].ToString();
+            txtuploadfee.Text = dt.Rows[0]["Total_Upload_Charges"].ToString();
+            txt_OutOfPocketExpense.Text = dt.Rows[0]["Out_of_Pocket_Expense"].ToString();
+            txt_Remarks.Text = dt.Rows[0]["Remarks"].ToString();
+
+            //Get Grand Total
+            Double Total_Amount = Convert.ToDouble(txttotal.Text);
+            Double Service_Tax = Convert.ToDouble(txtServicetex.Text);
+            Double Upld_Fees = Convert.ToDouble(txtuploadfee.Text);
+            Double Out_Of_Expense = Convert.ToDouble(txt_OutOfPocketExpense.Text);
+            txtgrandtotal.Text = Get_Grand_Total1(Total_Amount.ToString(), Service_Tax.ToString(), Upld_Fees.ToString(), Out_Of_Expense.ToString());
+        }
+    }
+    protected void btn_SearchBill_Click(object sender, EventArgs e)
+    {
+        // Pnl_Search_Bill.Attributes.Remove("style");
+
+        string AccName = txt_CustomerNameprnt.Text;
+        objtbl_JobWork1.AccName = AccName;
+        int Cust_ID = objBltbl_JobWork11.Get_CustID(objtbl_JobWork1);
+        //string Date = txt_Date_Search.Text;
+        //string BillNo = txt_BillNo.Text;
+        string NameOfFirm = txt_FirmText.Text;
+
+        objtbl_JobWork1.Cust_ID = Cust_ID;
+        //objtbl_JobWork1.Date = Date;
+
+        //objtbl_JobWork1.BillNo_search = BillNo;
+        objtbl_JobWork1.FirmName = txt_FirmText.Text;
+        DataTable dt = new DataTable();
+        dt = objBltbl_JobWork11.Get_SearchBill(objtbl_JobWork1);
+        Pnl_Search_Bill.Visible = false;
+        Pnl_Print.Visible = false;
+        grd_SelectBill.DataSource = dt;
+        grd_SelectBill.DataBind();
+        Pnl_Select_Bill.Attributes.Remove("style");
+        Pnl_PrintBillFirst.Attributes.Add("style", "display:none");
+    }
+    protected void txt_JobID_TextChanged(object sender, EventArgs e)
+    {
+        //Get Customer ID according to the Customer Name Selected
+        int Job_No = Convert.ToInt32(txt_JobID.Text);
+        objtbl_JobWork1.RetNo = Job_No;
+        objtbl_JobWork1.Job_ID = Job_No;
+        int Cust_ID = objBltbl_JobWork11.GetCustomerID(objtbl_JobWork1);
+        Session["Cust_Id"] = Cust_ID;
+        objtbl_JobWork1.CusID = Cust_ID;
+        objtbl_JobWork1.Cust_ID = Cust_ID;
+        objtbl_JobWork1.FirmName = txt_FirmText.Text;
+        //Get the Existence of Record in the Bill Table
+        bool Is_BillExist = objBltbl_JobWork11.Check_Existence_of_Bill(objtbl_JobWork1);
+        dt = new DataTable();
+        if (!Is_BillExist)
+        {
+            //Get Return Data From Return Table
+            dt = objBltbl_JobWork11.Get_Return_Data_ByJobID(objtbl_JobWork1);
+            //Session["Table"] = dt;
+            if (dt.Rows.Count != 0)
+            {
+                txt_CustomerNameprnt.Text = dt.Rows[0]["AccName"].ToString();
+                //bind the Firm Name And Date()
+                txt_FirmText.Text = dt.Rows[0]["NameOfFirm"].ToString();
+                txt_DatePrnt.Text = DateTime.Now.ToString("dd/MM/yyyy");
+                //Bind the Gridview With Record
+                grdPrintRecords.DataSource = dt;
+                grdPrintRecords.DataBind();
+            }
+            //Get the Upload Fees
+            DataTable dt_UploadFees = new DataTable();
+            string Field_Name = string.Empty;
+            int count = grdPrintRecords.Rows.Count;
+
+            for (int i = 0; i < count; i++)
+            {
+
+                int No_of_Entries = Convert.ToInt32(dt.Rows[i]["No_of_Entries"]);
+                if (No_of_Entries <= 100)
+                {
+                    Field_Name = "Upto_100";
+                }
+                else if (No_of_Entries > 100 && No_of_Entries <= 1000)
+                {
+                    Field_Name = "MoreThan_100";
+                }
+                else if (No_of_Entries > 1000)
+                {
+                    Field_Name = "MoreThan_1000";
+                }
+                objtbl_JobWork1.FieldName = Field_Name;
+                dt_UploadFees = objBltbl_JobWork11.Get_Upload_Fees_ByCusID(objtbl_JobWork1);
+                string Upload_Fees = dt_UploadFees.Rows[0][0].ToString();
+                Label lbl_UploadFee = (Label)grdPrintRecords.Rows[i].FindControl("lbl_UploadFees");
+                lbl_UploadFee.Text = Upload_Fees;
+                Get_Total_UploadFees(Upload_Fees);
+
+
+            }
+            //Get The Amount Calculated
+            DataTable dt_Amount = new DataTable();
+
+            for (int j = 0; j < count; j++)
+            {
+                int No_of_Entries = Convert.ToInt32(dt.Rows[j]["No_of_Entries"]);
+                if (No_of_Entries <= 100)
+                {
+                    Field_Name = "Min_Fees";
+                }
+                else if (No_of_Entries > 100)
+                {
+                    Field_Name = "Rate_Greater_Than_100";
+                }
+                objtbl_JobWork1.FieldName = Field_Name;
+                dt_Amount = objBltbl_JobWork11.Get_Calculated_Amount(objtbl_JobWork1);
+                string Amount = dt_Amount.Rows[0][0].ToString();
+                TextBox txt_Amount = (TextBox)grdPrintRecords.Rows[j].FindControl("txtBillAmt");
+                txt_Amount.Text = Amount;
+                Get_TotalAmount(Amount);
+
+            }
+            //Get Grand Total
+            Double Total_Amount = Convert.ToDouble(txttotal.Text);
+            Double Service_Tax = Convert.ToDouble(txtServicetex.Text);
+            Double Upld_Fees = Convert.ToDouble(txtuploadfee.Text);
+            Double Out_Of_Expense = Convert.ToDouble(txt_OutOfPocketExpense.Text);
+            txtgrandtotal.Text = Get_Grand_Total1(Total_Amount.ToString(), Service_Tax.ToString(), Upld_Fees.ToString(), Out_Of_Expense.ToString());
+        }
+        else
+        {
+
+            dt = objBltbl_JobWork11.Get_Bill_Data(objtbl_JobWork1);
+            //Session["Table"] = dt;
+            grdPrintRecords.DataSource = dt;
+            grdPrintRecords.DataBind();
+
+            //Bind Other Fields
+
+            //bind Upload fee and Amount Field
+            int count = dt.Rows.Count;
+            for (int j = 0; j < count; j++)
+            {
+                txt_CustomerNameprnt.Text = dt.Rows[j]["AccName"].ToString();
+                txt_FirmText.Text = dt.Rows[j]["NameOfFirm"].ToString();
+                txt_DatePrnt.Text = dt.Rows[j]["Date"].ToString();
+
+                Label lbl_UploadFee = (Label)grdPrintRecords.Rows[j].FindControl("lbl_UploadFees");
+                lbl_UploadFee.Text = dt.Rows[j]["Upload_Charges"].ToString();
+                TextBox txt_Amount = (TextBox)grdPrintRecords.Rows[j].FindControl("txtBillAmt");
+                txt_Amount.Text = dt.Rows[j]["Amount"].ToString();
+            }
+            txttotal.Text = dt.Rows[0]["Total_Amount"].ToString();
+            txtServicetex.Text = dt.Rows[0]["Service_Tax"].ToString();
+            txtuploadfee.Text = dt.Rows[0]["Total_Upload_Charges"].ToString();
+            txt_OutOfPocketExpense.Text = dt.Rows[0]["Out_of_Pocket_Expense"].ToString();
+            txt_Remarks.Text = dt.Rows[0]["Remarks"].ToString();
+
+            //Get Grand Total
+            Double Total_Amount = Convert.ToDouble(txttotal.Text);
+            Double Service_Tax = Convert.ToDouble(txtServicetex.Text);
+            Double Upld_Fees = Convert.ToDouble(txtuploadfee.Text);
+            Double Out_Of_Expense = Convert.ToDouble(txt_OutOfPocketExpense.Text);
+            txtgrandtotal.Text = Get_Grand_Total1(Total_Amount.ToString(), Service_Tax.ToString(), Upld_Fees.ToString(), Out_Of_Expense.ToString());
+
+            // Bind_Empty_Print_GridView();
+        }
+    }
+    protected void txt_FirmText_TextChanged(object sender, EventArgs e)
+    {
+        auto_prntCustName.ContextKey = Get_Query_Conditionally2(466, 110, "AccName") + "!" + Popup_ControlID + "!" + txt_CustomerNameprnt.ID + "!" + txt_FirmText.Text;
+        txt_JobID_AutoCompleteExtender.ContextKey = Get_Query_Conditionally2(477, 9, "Job_ID") + "!" + Popup_ControlID + "!" + txt_JobID.ID + "!" + txt_FirmText.Text;
+    }
+    public void Load_Interface_By_Role(int RoleID, string SubModule_Name)
+    {
+        //Create Parameters
+        objtbl_Interface_By_Role.Role_ID = RoleID;
+        objtbl_Interface_By_Role.Page_Name = "JobWork";
+        objtbl_Interface_By_Role.SubModule_Name = SubModule_Name;
+        dt = new DataTable();
+        dt = objBltbl_Interface_By_Role.Get_Interface_By_Role(objtbl_Interface_By_Role);
+        foreach (DataRow rows in dt.Rows)
+        {
+            int Control_ID = Convert.ToInt32(rows["Control_ID"]);
+            objtbl_Interface_By_Role.Control_ID = Control_ID;
+            string Visible = rows["Visible"].ToString();
+            string Enable = rows["Enable"].ToString();
+            string ControlID_In_Page = objBltbl_Interface_By_Role.Get_ControlID_In_Page(objtbl_Interface_By_Role);
+            Control cb = maindiv;
+            Find_Control_From_Page(cb, ControlID_In_Page, Visible, Enable);
+
+
+        }
+
+    }
+    protected void grdPrintRecords_DataBound(object sender, EventArgs e)
+    {
+
+
+    }
+    //Function to get generate the Query for filling the autocomplete list.
+    public string getQuery(int QueryID, int TableID, string FieldName, AutoCompleteExtender autoComplete_Name)
+    {
+        objtbl_JobWork.QueryID = QueryID;
+        objtbl_JobWork.TableID = TableID;
+        objtbl_JobWork.FieldName = FieldName;
+        //objtbl_JobWork.FieldValue = FieldValue;
+        objtbl_JobWork.count = Convert.ToInt32(autoComplete_Name.CompletionSetCount);
+        string strQuery = objBltbl_JobWork.CreateQuery(objtbl_JobWork) + "!" + FieldName;
+        return strQuery;
+    }
+
+    //Function to get generate the Query for filling the autocomplete list for TAN
+    public string getQueryTAN(int QueryID, int TableID, string FieldName, AutoCompleteExtender autoComplete_Name)
+    {
+        BALVatasETDS.TANMaster.tbl_TANMaster objtbl_TANMaster = new BALVatasETDS.TANMaster.tbl_TANMaster();
+        BALVatasETDS.TANMaster.Bltbl_TANMaster objBltbl_TANMaster = new BALVatasETDS.TANMaster.Bltbl_TANMaster(strConnectionString, strConnName);
+        objtbl_TANMaster.QueryID = QueryID;
+        objtbl_TANMaster.TableID = TableID;
+        objtbl_TANMaster.FieldName = FieldName;
+        objDBtbl_Module = new DBtbl_Module(strConnectionString, strConnName);
+
+        objtbl_TANMaster.Count = 5;
+        //objtbl_TANMaster.FieldName = "TAN";
+        //objtbl_JobWork.FieldValue = FieldValue;
+        objtbl_JobWork.count = Convert.ToInt32(autoComplete_Name.CompletionSetCount);
+        string strQuery = objBltbl_TANMaster.CreateQuery(objtbl_TANMaster) + "!" + FieldName;
+        return strQuery;
+    }
+
+    public string Get_Query_Conditionally2(int QueryID, int TableID, string FieldName)
+    {
+
+        objtbl_JobWork1.QueryID = QueryID;
+        objtbl_JobWork1.TableID = TableID;
+
+        //objtbl_JobWork.FieldValue = FieldValue;
+        //objtbl_JobWork1.count = Convert.ToInt32(autoComplete_Name.CompletionSetCount);
+        string strQuery = objBltbl_JobWork11.Get_Query(objtbl_JobWork1) + "!" + FieldName;
+        return strQuery;
+
+    }
+    //Function To Iterate Through the List of Controls Available and Find the Control
+    public void Find_Control_From_Page(Control ccb, string ControlID_In_Page, string Visible, string Enable)
+    {
+        foreach (Control ctrl in ccb.Controls)
+        {
+            if (ctrl.ID != null)
+            {
+                if (ctrl is UpdatePanel)
+                {
+                    foreach (Control control in ctrl.Controls[0].Controls)
+                    {
+                        if (control is Panel)
+                        {
+                            foreach (Control child_control in control.Controls)
+                            {
+                                if (child_control is Button)
+                                {
+                                    if (ControlID_In_Page == child_control.ID.ToString())
+                                    {
+                                        Button btn = (Button)child_control;
+                                        if (Visible == "Y")
+                                        {
+                                            btn.Visible = true;
+                                        }
+                                        else
+                                        {
+                                            btn.Visible = false;
+                                        }
+                                        if (Enable == "Y")
+                                        {
+                                            btn.Enabled = true;
+                                        }
+                                        else
+                                        {
+                                            btn.Enabled = false;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        else
+                        {
+                            if (control is Button)
+                            {
+                                if (ControlID_In_Page == control.ID.ToString())
+                                {
+                                    Button btn = (Button)control;
+                                    if (Visible == "Y")
+                                    {
+                                        btn.Visible = true;
+                                    }
+                                    else
+                                    {
+                                        btn.Visible = false;
+                                    }
+                                    if (Enable == "Y")
+                                    {
+                                        btn.Enabled = true;
+                                    }
+                                    else
+                                    {
+                                        btn.Enabled = false;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    if (ctrl is Button)
+                    {
+                        if (ControlID_In_Page == ctrl.ID.ToString())
+                        {
+                            Button btn = (Button)ctrl;
+                            if (Visible == "Y")
+                            {
+                                btn.Visible = true;
+                            }
+                            else
+                            {
+                                btn.Visible = false;
+                            }
+                            if (Enable == "Y")
+                            {
+                                btn.Enabled = true;
+                            }
+                            else
+                            {
+                                btn.Enabled = false;
+                            }
+                        }
+                    }
+                }
+
+
+
+                Find_Control_From_Page(ctrl, ControlID_In_Page, Visible, Enable);
+            }
+
+
+        }
+
+    }
+    protected void btn_Bill_Back_To_Ledger_Click(object sender, EventArgs e)
+    {
+        int ID_Admin = Convert.ToInt32(Session["ID_Admin"]);
+        string From_date = Request.QueryString["FromDate"].ToString(); ;
+        string To_Date = Request.QueryString["ToDate"].ToString(); ;
+        string Previous_date = Request.QueryString["PreviousDate"].ToString();
+        string Name_of_Firm = Request.QueryString["AccName"].ToString();
+        string AccName = Request.QueryString["Nameoffirm"].ToString();
+        string FY = Request.QueryString["FY"].ToString();
+
+        //string Path = "http://localhost:1348/Admin/Main.aspx?ProjectName=VS&Type=ledgerReturn&Page=Ledger&Page_Link=Legder.aspx?menu=Ledger&SubModule=Ledger&ID_Admin=" + ID_Admin + "&FromDate=" + From_date + "&ToDate=" + To_Date + "&PreviousDate=" + Previous_date + "&AccName=" + AccName + "&Nameoffirm=" + Name_of_Firm + "&FY=" + FY + "";
+
+        //Response.Redirect(Path);
+
+
+        string path = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority);
+        string Host = HttpContext.Current.Request.Url.DnsSafeHost.ToString();
+
+        string Project_Name = "Admin";
+
+        objtbl_PathManagement.Host = Host;
+        objtbl_PathManagement.Path_Name = Project_Name;
+        string LivePath = string.Empty;
+        DataTable dt_Path = objBltbl_PathManagement.Get_Path(objtbl_PathManagement);
+        if (dt_Path.Rows.Count != 0)
+        {
+            LivePath = dt_Path.Rows[0]["Path"].ToString();
+        }
+        //string path = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority);
+        Response.Redirect(@"" + LivePath + "/Main.aspx?ProjectName=VS&Type=ledgerReturn&Page=Ledger&Page_Link=Legder.aspx?menu=Ledger&SubModule=Ledger&ID_Admin=" + ID_Admin + "&FromDate=" + From_date + "&ToDate=" + To_Date + "&PreviousDate=" + Previous_date + "&AccName=" + AccName + "&Nameoffirm=" + Name_of_Firm + "&FY=" + FY + "");
+
+        //Response.Redirect(Path);
+    }
+    protected void btn_Submit_Click(object sender, EventArgs e)
+    {
+        txt_Date_Selected.Text = txt_DatePrnt.Text;
+        txt_Date_Selected.Attributes.Add("style", "background-color:#E0E0E0");
+        txt_Date_Selected.Enabled = false;
+
+        txt_Firm_Selected.Text = txt_FirmText.Text;
+        txt_Firm_Selected.Enabled = false;
+        txt_Firm_Selected.Attributes.Add("style", "background-color:#E0E0E0");
+
+        txt_CustomerName_Selected.Text = txt_CustomerNameprnt.Text;
+        txt_CustomerName_Selected.Enabled = false;
+        txt_CustomerName_Selected.Attributes.Add("style", "background-color:#E0E0E0");
+        Pnl_PrintBillFirst.Attributes.Add("style", "display:none");
+        Pnl_SelectJob.Attributes.Remove("style");
+        FlagBack = "A";
+
+
+
+    }
+    protected void btn_BackToPrev1_Click(object sender, EventArgs e)
+    {
+        if (FlagBack != "S")
+        {
+            Pnl_PrintBillFirst.Attributes.Add("style", "display:none");
+            Pnl_SelectJob.Attributes.Remove("style");
+            Pnl_Print.Attributes.Add("style", "display:none");
+        }
+        else
+        {
+            Pnl_PrintBillFirst.Attributes.Add("style", "display:none");
+            Pnl_Print.Attributes.Add("style", "display:none");
+            Pnl_SelectJob.Attributes.Add("style", "display:none");
+            Pnl_Select_Bill.Attributes.Remove("style");
+        }
+    }
+    protected void grdPrintRecords_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
+    }
+    protected void btn_SubmitJob_Click(object sender, EventArgs e)
+    {
+        int Count = 0;
+        // Find the CheckBox Control From GridView
+        string[] arr_param = new string[gdv_SelectJob.Rows.Count];
+        DataTable GridTable = (DataTable)Session["gdv_SelectJob"];
+        DataColumn dc = new DataColumn("Checked", typeof(String));
+        if (GridTable.Columns.Contains("Checked") == true)
+            GridTable.Columns.Remove("Checked");
+
+        GridTable.Columns.Add(dc);
+        foreach (GridViewRow grdrow in gdv_SelectJob.Rows)
+        {
+            CheckBox chk_selectJob = (CheckBox)grdrow.FindControl("chk_To_Selected_Bills");
+            String rowId = gdv_SelectJob.DataKeys[grdrow.RowIndex].Value.ToString();
+            if (chk_selectJob.Checked == true)
+            {
+                arr_param[Count] = "Y";
+                DataRow[] row = GridTable.Select("Job_ID='" + rowId + "'");
+                foreach (DataRow dtr in row)
+                {
+                    dtr["Checked"] = "Y";
+                }
+            }
+            else
+            {
+                arr_param[Count] = "N";
+            }
+            Count = Count + 1;
+        }
+
+        if (arr_param.Contains("Y"))
+        {
+            DataTable dt_ByJob = new DataTable();
+            //Select the Data According to the Job No selected
+            //Get Customer ID according to the Customer Name Selected
+            string Customer_Name = txt_CustomerNameprnt.Text;
+            objtbl_JobWork1.AccName = Customer_Name;
+            objtbl_JobWork1.FirmName = txt_FirmText.Text;
+            //String[] tempDate = txt_FY.Text.Trim().Split('-');
+            String[] tempDate = ViewState["FY"].ToString().Split('-');
+            objtbl_JobWork1.FinancialYear = tempDate[0] + "-20" + tempDate[1];
+            int Cust_ID = objBltbl_JobWork11.Get_CustID(objtbl_JobWork1);
+            Session["Cust_Id"] = Cust_ID;
+            objtbl_JobWork1.CusID = Cust_ID;
+            objtbl_JobWork1.Cust_ID = Cust_ID;
+
+            dt = new DataTable();
+
+            //Create the List of JobNo Selected
+            List<int> lstJob_ID = new List<int>();
+            DataRow[] SelectedRows = GridTable.Select("Checked='Y'");
+            foreach (DataRow Sel_row in SelectedRows)
+            {
+                int JobId = Convert.ToInt32(Sel_row["Job_ID"].ToString());
+                lstJob_ID.Add(JobId);
+                ViewState["SelectedJob"] = lstJob_ID;
+            }
+
+            //foreach (GridViewRow row in gdv_SelectJob.Rows)
+            //{
+            //    CheckBox chk_Selected_JobNo = (CheckBox)row.FindControl("chk_To_Selected_Bills");
+            //    if (chk_Selected_JobNo.Checked == true)
+            //    {
+            //        // Job ID at Column 1
+            //        //get the Job Number 
+            //        String temp = row.Cells[1].Text; //
+            //        int Job_ID = Convert.ToInt32(row.Cells[2].Text);
+            //        lstJob_ID.Add(Job_ID);
+            //        ViewState["SelectedJob"] = lstJob_ID;
+            //    }
+            //}
+            //Get the Existence of Record in the Bill Table
+            objtbl_JobWork1.Job_ID = lstJob_ID[0];
+            bool Is_BillExist = objBltbl_JobWork11.Check_Existence_of_Bill(objtbl_JobWork1);
+            //Get Return Data From Return Table
+            dt = objBltbl_JobWork11.Get_Return_Data_ByCusID(objtbl_JobWork1);
+            if (!Is_BillExist)
+            {
+                //Session["Table"] = dt;
+                if (dt.Rows.Count != 0)
+                {
+                    //bind the Firm Name And Date()
+                    txt_JobID.Text = dt.Rows[0]["Job_ID"].ToString();
+                    txt_FirmText.Text = dt.Rows[0]["NameOfFirm"].ToString();
+                    txt_DatePrnt.Text = DateTime.Now.ToString("dd/MM/yyyy");
+
+                    //Filter the Data According to the JobID Selected
+
+                    dt_ByJob = dt.Clone();
+                    dt_ByJob.Clear();
+                    foreach (int JobID in lstJob_ID)
+                    {
+
+                        DataRow[] dr = dt.Select("Job_ID=" + JobID + "");
+
+                        foreach (DataRow row in dr)
+                        {
+                            dt_ByJob.ImportRow(row);
+                        }
+
+                    }
+                    //Bind the Gridview With Record
+                    grdPrintRecords.DataSource = dt_ByJob;
+                    grdPrintRecords.DataBind();
+                }
+                //Get the Upload Fees
+                DataTable dt_UploadFees = new DataTable();
+                string Field_Name = string.Empty;
+                int count = grdPrintRecords.Rows.Count;
+                int No_of_Entries = 0;
+                for (int i = 0; i < count; i++)
+                {
+                    if (dt_ByJob.Rows[i]["No_of_Entries"].ToString() != null && dt_ByJob.Rows[i]["No_of_Entries"].ToString() != "")
+                    {
+
+                        No_of_Entries = Convert.ToInt32(dt_ByJob.Rows[i]["No_of_Entries"]);
+                    }
+                    if (No_of_Entries <= 100)
+                    {
+                        Field_Name = "Upto_100";
+                    }
+                    else if (No_of_Entries > 100 && No_of_Entries <= 1000)
+                    {
+                        Field_Name = "MoreThan_100";
+                    }
+                    else if (No_of_Entries > 1000)
+                    {
+                        Field_Name = "MoreThan_1000";
+                    }
+                    objtbl_JobWork1.FieldName = Field_Name;
+                    dt_UploadFees = objBltbl_JobWork11.Get_Upload_Fees_ByCusID(objtbl_JobWork1);
+                    string Upload_Fees = dt_UploadFees.Rows[0][0].ToString();
+                    TextBox lbl_UploadFee = (TextBox)grdPrintRecords.Rows[i].FindControl("lbl_UploadFees");
+                    //Label lbl_UploadFee = (Label)grdPrintRecords.Rows[i].FindControl("lbl_UploadFees");
+                    lbl_UploadFee.Text = Upload_Fees;
+                    Get_Total_UploadFees(Upload_Fees);
+
+
+                }
+                //Get The Amount Calculated
+                DataTable dt_Amount = new DataTable();
+
+                for (int j = 0; j < count; j++)
+                {
+                    if (dt_ByJob.Rows[j]["No_of_Entries"].ToString() != null && dt_ByJob.Rows[j]["No_of_Entries"].ToString() != "")
+                    {
+
+                        No_of_Entries = Convert.ToInt32(dt_ByJob.Rows[j]["No_of_Entries"]);
+                    }
+                    if (No_of_Entries <= 100)
+                    {
+                        Field_Name = "Min_Fees";
+                    }
+                    else if (No_of_Entries > 100)
+                    {
+                        Field_Name = "Rate_Greater_Than_100";
+                    }
+                    objtbl_JobWork1.FieldName = Field_Name;
+                    dt_Amount = objBltbl_JobWork11.Get_Calculated_Amount(objtbl_JobWork1);
+                    string Amount = dt_Amount.Rows[0][0].ToString();
+                    TextBox txt_Amount = (TextBox)grdPrintRecords.Rows[j].FindControl("txtBillAmt");
+                    txt_Amount.Text = Amount;
+                    Get_TotalAmount(Amount);
+
+                }
+                //Get Grand Total
+                Double Total_Amount = Convert.ToDouble(txttotal.Text);
+                Double Service_Tax = Convert.ToDouble(txtServicetex.Text);
+                Double Upld_Fees = Convert.ToDouble(txtuploadfee.Text);
+                Double Out_Of_Expense = Convert.ToDouble(txt_OutOfPocketExpense.Text);
+                txtgrandtotal.Text = Get_Grand_Total1(Total_Amount.ToString(), Service_Tax.ToString(), Upld_Fees.ToString(), Out_Of_Expense.ToString());
+            }
+            else
+            {
+
+                dt = objBltbl_JobWork11.Get_Bill_Data(objtbl_JobWork1);
+                //Filter the Data According to the JobID Selected
+                //DataTable dt_ByJob = new DataTable();
+                dt_ByJob = dt.Clone();
+                dt_ByJob.Clear();
+                foreach (int JobID in lstJob_ID)
+                {
+
+                    DataRow[] dr = dt.Select("Job_ID=" + JobID + "");
+
+                    foreach (DataRow row in dr)
+                    {
+                        dt_ByJob.ImportRow(row);
+                    }
+
+                }
+                //Session["Table"] = dt;
+                grdPrintRecords.DataSource = dt_ByJob;
+                grdPrintRecords.DataBind();
+
+                //Bind Other Fields
+
+                //bind Upload fee and Amount Field
+                int count = dt.Rows.Count;
+                string Job_ID = string.Empty;
+                for (int j = 0; j < count; j++)
+                {
+                    Job_ID = Job_ID + dt_ByJob.Rows[j]["Job_ID"].ToString() + ",";
+
+                    //Label lbl_UploadFee = (Label)grdPrintRecords.Rows[j].FindControl("lbl_UploadFees");
+                    TextBox lbl_UploadFee = (TextBox)grdPrintRecords.Rows[j].FindControl("lbl_UploadFees");
+                    lbl_UploadFee.Text = dt_ByJob.Rows[j]["Upload_Charges"].ToString();
+                    TextBox txt_Amount = (TextBox)grdPrintRecords.Rows[j].FindControl("txtBillAmt");
+                    txt_Amount.Text = dt_ByJob.Rows[j]["Amount"].ToString();
+                }
+                Job_ID = Job_ID.Remove(Job_ID.Length - 1, 1);
+                txt_JobID.Text = Job_ID;
+                txt_FirmText.Text = dt_ByJob.Rows[0]["NameOfFirm"].ToString();
+                txt_DatePrnt.Text = dt_ByJob.Rows[0]["Date"].ToString();
+                txttotal.Text = dt_ByJob.Rows[0]["Amount"].ToString();
+                txtServicetex.Text = dt_ByJob.Rows[0]["Service_Tax"].ToString();
+                txtuploadfee.Text = dt_ByJob.Rows[0]["Total_Upload_Charges"].ToString();
+                txt_OutOfPocketExpense.Text = dt_ByJob.Rows[0]["Out_of_Pocket_Expense"].ToString();
+                txt_Remarks.Text = dt_ByJob.Rows[0]["Remarks"].ToString();
+
+                //Get Grand Total
+                Double Total_Amount = Convert.ToDouble(txttotal.Text);
+                Double Service_Tax = Convert.ToDouble(txtServicetex.Text);
+                Double Upld_Fees = Convert.ToDouble(txtuploadfee.Text);
+                Double Out_Of_Expense = Convert.ToDouble(txt_OutOfPocketExpense.Text);
+                txtgrandtotal.Text = Get_Grand_Total1(Total_Amount.ToString(), Service_Tax.ToString(), Upld_Fees.ToString(), Out_Of_Expense.ToString());
+
+                // Bind_Empty_Print_GridView();
+            }
+            //set values in the next screen and activate the next screen
+            lbl_Date.Text = txt_DatePrnt.Text;
+            lbl_Date.Attributes.Add("style", "background-color:#E0E0E0");
+            lbl_SelectedFirm.Text = txt_FirmText.Text;
+            lbl_SelectedFirm.Attributes.Add("style", "background-color:#E0E0E0");
+            lbl_SelectedJobNo.Text = txt_JobID.Text;
+            lbl_SelectedJobNo.Attributes.Add("style", "background-color:#E0E0E0");
+            lbl_SelectedCustomerName.Text = txt_CustomerNameprnt.Text;
+            lbl_SelectedCustomerName.Attributes.Add("style", "background-color:#E0E0E0");
+            Pnl_PrintBillFirst.Attributes.Add("style", "display:none");
+            Pnl_SelectJob.Attributes.Add("style", "display:none");
+            Pnl_Print.Attributes.Remove("style");
+
+        }
+        else
+        {
+            Pnl_PrintBillFirst.Attributes.Add("style", "display:none");
+            Pnl_SelectJob.Attributes.Remove("style");
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", "alert('Please Select Job!');", true);
+
+        }
+
+
+
+
+
+    }
+
+    //Click Event of Back Job Button
+    protected void btn_BackJob_Click(object sender, EventArgs e)
+    {
+        Pnl_PrintBillFirst.Attributes.Remove("style");
+        Pnl_SelectJob.Attributes.Add("style", "display:none");
+        txt_FirmText.Text = "";
+        txt_CustomerNameprnt.Text = "";
+    }
+    //Function To Get Error_Message
+    [System.Web.Services.WebMethod()]
+    public static string Fire_Error_Message(string PrefixText, string ContextKey)
+    {
+        //Create the Object of the Search List Service Method
+        string result = string.Empty;
+        SearchList objlst = new SearchList();
+        string[] Message = objlst.Get_Error_List(ContextKey, PrefixText);
+        result = Message[0].ToString() + Message[1].ToString() + Message[2].ToString() + Message[3].ToString() + Message[4].ToString() + Message[5].ToString() + Message[6].ToString();
+        return result;
+    }
+
+    protected void chk_To_Selected_Bills_CheckedChanged(object sender, EventArgs e)
+    {
+        txt_Date_Selected.Text = txt_DatePrnt.Text;
+        txt_Date_Selected.Attributes.Add("style", "background-color:#E0E0E0");
+        txt_Date_Selected.Enabled = false;
+
+        txt_Firm_Selected.Text = txt_FirmText.Text;
+        txt_Firm_Selected.Enabled = false;
+        txt_Firm_Selected.Attributes.Add("style", "background-color:#E0E0E0");
+
+        txt_CustomerName_Selected.Text = txt_CustomerNameprnt.Text;
+        txt_CustomerName_Selected.Enabled = false;
+        txt_CustomerName_Selected.Attributes.Add("style", "background-color:#E0E0E0");
+        Pnl_PrintBillFirst.Attributes.Add("style", "display:none");
+        Pnl_SelectJob.Attributes.Remove("style");
+    }
+    #endregion
+
+
+
+
+    protected void btn_CloseSearch_Click(object sender, ImageClickEventArgs e)
+    {
+        Pnl_PrintBillFirst.Attributes.Remove("style");
+        Pnl_Select_Bill.Attributes.Add("style", "display:none");
+    }
+    protected void drp_FinancialYear_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        if (drp_FinancialYear.SelectedIndex != 0 && drp_FinancialYear.SelectedIndex != -1)
+            txt_FY.Text = drp_FinancialYear.SelectedValue.ToString().Trim().Remove(5, 2);
+        ViewState["FY"] = txt_FY.Text;
+    }
+
+    protected void txtTAN_TextChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    public void BindFinancialYearCombo()
+    {
+        DateTime dt = DateTime.Now;
+        drp_FinancialYear.Items.Clear();
+        int year = Convert.ToInt32(dt.Year);
+        for (int i = 2004; i < year + 1; i++)
+        {
+            int j = i + 1;
+            drp_FinancialYear.Items.Add(i + "-" + j);
+        }
+        drp_FinancialYear.Items.Insert(0, new ListItem("---Select---", "0"));
+        List<string> listItems = drp_FinancialYear.Items.Cast<ListItem>().Select(item => item.Text).ToList();
+        listItems.Sort((a, b) => string.Compare(b, a));
+        drp_FinancialYear.DataSource = listItems;
+        drp_FinancialYear.DataBind();
+    }
+    protected void lbl_UploadFees_TextChanged(object sender, EventArgs e)
+    {
+        //Double Total_Amount = 0.00;
+        ////Get The Service Tax Amount
+        //Double Service_Tax = Convert.ToDouble(txtServicetex.Text);
+        //Double Upload_Fees = 0.00;
+        //Double Out_Of_Expense = Convert.ToDouble(txt_OutOfPocketExpense.Text);
+        //foreach (GridViewRow rows in grdPrintRecords.Rows)
+        //{
+        //    //Getting the UploadFees
+        //    TextBox UploadFees = (TextBox)rows.FindControl("lbl_UploadFees");
+        //    TextBox txt_Amt = (TextBox)rows.FindControl("txtBillAmt");
+        //    int Num = 0;
+        //    bool isNum = Int32.TryParse(UploadFees.Text, out Num);
+        //    bool ISNUM = Int32.TryParse(txt_Amt.Text, out Num);
+        //    if (isNum)
+        //    {
+        //        UploadFees.Text = string.Format("{0:f2}", Convert.ToInt32(UploadFees.Text));
+        //    }
+        //    if (ISNUM)
+        //    {
+        //        txt_Amt.Text = string.Format("{0:f2}", Convert.ToInt32(txt_Amt.Text));
+        //    }
+        //    txtuploadfee.Text = UploadFees.Text;
+        //    Total_Amount = Total_Amount + Convert.ToDouble(txt_Amt.Text);
+        //}
+        //string Tot_amt = String.Format("{0:f2}", Convert.ToInt32(Total_Amount));
+        //txttotal.Text = Tot_amt;
+
+        //Upload_Fees = Convert.ToDouble(txtuploadfee.Text);
+        //txtgrandtotal.Text = Get_Grand_Total1(Total_Amount.ToString(), Service_Tax.ToString(), Upload_Fees.ToString(), Out_Of_Expense.ToString());
+        //Pnl_PrintBillFirst.Attributes.Add("style", "display:none");
+        //Pnl_Print.Attributes.Remove("style");
+
+
+        Double Total_Amount = 0.00;
+        Double Service_Tax = Convert.ToDouble(txtServicetex.Text);
+        Double Upload_Fees = Convert.ToDouble(txtuploadfee.Text);
+        Double Out_Of_Expense = Convert.ToDouble(txt_OutOfPocketExpense.Text);
+
+        Upload_Fees = 0;
+        foreach (GridViewRow rows in grdPrintRecords.Rows)
+        {
+            TextBox txt_Amt = (TextBox)rows.FindControl("txtBillAmt");
+            TextBox txt_AmtUploadFee = (TextBox)rows.FindControl("lbl_UploadFees");
+
+            int Num = 0;
+            bool isNum = Int32.TryParse(txt_Amt.Text, out Num);
+            bool isNum2 = Int32.TryParse(txt_AmtUploadFee.Text, out Num);
+            if (isNum)
+            {
+                txt_Amt.Text = string.Format("{0:f2}", Convert.ToInt32(txt_Amt.Text));
+            }
+            if (isNum2)
+            {
+                txt_AmtUploadFee.Text = string.Format("{0:f2}", Convert.ToInt32(txt_AmtUploadFee.Text));
+            }
+
+            Total_Amount = Total_Amount + Convert.ToDouble(txt_Amt.Text);
+            Upload_Fees += Convert.ToDouble(txt_AmtUploadFee.Text);
+        }
+        txtuploadfee.Text = Upload_Fees.ToString();
+        string Tot_amt = String.Format("{0:f2}", Convert.ToInt32(Total_Amount));
+        txttotal.Text = Tot_amt;
+        txtgrandtotal.Text = Get_Grand_Total1(Total_Amount.ToString(), Service_Tax.ToString(), Upload_Fees.ToString(), Out_Of_Expense.ToString());
+        Pnl_PrintBillFirst.Attributes.Add("style", "display:none");
+        Pnl_Print.Attributes.Remove("style");
+    }
+}

@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap>
+
+  <!--<siteMapNode url="Presentation/Main.aspx" title="Main" description="Main">-->
+
+  <siteMapNode url="selectPrj.aspx" title="Home"  description="Income Tax Return" >
+    <siteMapNode url="Presentation/E-FileYourself.aspx" title="E-FileYourself" description="E-FileYourself">
+      <siteMapNode url="Presentation/UploadForm16.aspx" title="UploadForm16" description="UploadForm16"/>
+      <siteMapNode url="Presentation/UploadForm16B.aspx" title="UploadForm16 PartB" description="UploadForm16 PartB"/>
+    </siteMapNode>
+    <siteMapNode url="Presentation/E-FileCA.aspx" title="E-FileCA" description="E-FileCA">
+      <siteMapNode url="Presentation/QuerySupport.aspx" title="Query Support" description="Query Support"/>
+    </siteMapNode>
+	  <siteMapNode url="Presentation/itr1.aspx" title="Multiple E-FILING" description="Multiple E-FILING">
+		  <siteMapNode url="Presentation/Main.aspx" title="List of Assessees"  description="List of Assessee">
+			  <siteMapNode url="Presentation/Main.aspx?rid=1" title="Select Assessee" description="Assessee Select">
+				  <siteMapNode url="Presentation/Salary.aspx?vtype=106" title="Income Tax" description="Income Tax">
+					  <siteMapNode url="Presentation/Salary.aspx?vtype=40" title="Salary" description="Salary"/>
+					  <siteMapNode url="Presentation/Salary.aspx?vtype=42" title="House Property" description="House Property"/>
+					  <siteMapNode url="Presentation/Salary.aspx?vtype=44" title="Other Sources" description="Other Sources"/>
+					  <siteMapNode url="Presentation/Salary.aspx?vtype=46" title="Deductions Under Chapter VI-A" description="Deductions Under Chapter VI-A"/>
+					  <siteMapNode url="Presentation/Salary.aspx?vtype=104" title="Tax Paid" description="Tax Paid"/>
+					  <siteMapNode url="Presentation/Salary.aspx?vtype=49" title="Tax Calculations" description="Tax Calculations"/>
+					  <siteMapNode url="Presentation/XMLRestore.aspx" title="Generate XML" description="Generate XML"/>
+					  <siteMapNode url="Presentation/SignatoryDetails.aspx" title="Verify/Submit ITR" description="Verify/Submit ITR"/>
+				  </siteMapNode>
+				  <siteMapNode url="Presentation/ChangePwd.aspx" title="Change password" description="Change Password"/>
+			  </siteMapNode>
+		  </siteMapNode>
+	  </siteMapNode>
+     
+ 
+      <!--<siteMapNode url="Presentation/Individual.aspx" title="Individual" description="Individual"/>
+      <siteMapNode url="Presentation/HUF.aspx" title="Hindu Undivided Family" description="Hindu Undivided Family"/>
+      <siteMapNode url="Presentation/AOP.aspx" title="Association of Persons" description="Association of Persons"/>
+      <siteMapNode url="Presentation/Company.aspx" title="Company" description="Company"/>
+      <siteMapNode url="Presentation/partnership.aspx" title="Partnership" description="Partnership"/>
+      <siteMapNode url="Presentation/TANMaster.aspx" title="TAN Master" description="TAN Master"/>
+      <siteMapNode url="" title="Assessee Select" description="Assessee">
+        <siteMapNode url="Presentation/Salary.aspx?vtype=40" title="Salary" description="Salary">
+       
+        </siteMapNode>-->
+    
+        <!--<siteMapNode url="Presentation/Salary.aspx?vtype=3001" title="Challan Details" description="Challan Details">
+          <siteMapNode url="Presentation/lstGrids.aspx?vtype=3001" title="View Details" description="View Details"/>
+        </siteMapNode>-->
+        <!--<siteMapNode url="Presentation/Salary.aspx?vtype=3002" title="Deductee Details" description="Deductee Details"/>
+        <siteMapNode url="Presentation/Salary.aspx?vtype=3004" title="Import From Excel" description="Import From Excel"/>
+        <siteMapNode url="Presentation/Income_statement.aspx" title="Income Computation" description="Income Computation"/>
+        <siteMapNode url="Presentation/Salary.aspx?vtype=90" title="FBT Details" description="FBT Details"/>
+        <siteMapNode url="Presentation/Salary.aspx?vtype=91" title="Tax Deposit" description="Tax Deposit"/>
+        <siteMapNode url="Presentation/Salary.aspx?vtype=62" title="Balance Sheet" description="Balance Sheet"/>
+        <siteMapNode url="Presentation/Salary.aspx?vtype=64" title="Description Chart" description="Description Chart"/>
+        <siteMapNode url="Presentation/Salary.aspx?vtype=41" title="Business/Profession" description="Business/Profession"/>
+        <siteMapNode url="Presentation/Salary.aspx?vtype=43" title="Capital Gain" description="Capital Gain"/>
+        <siteMapNode url="Presentation/Salary.aspx?vtype=73" title="Deductions U/S 80C" description="Deductions U/S 80C"/>
+        <siteMapNode url="Presentation/Salary.aspx?vtype=48" title="Exemptions" description="Exemptions"/>
+        <siteMapNode url="Presentation/Salary.aspx?vtype=51" title="Clubbing of Income" description="Clubbing of Income"/>
+        <siteMapNode url="Presentation/Salary.aspx?vtype=67" title="Dividend Distribution Tax" description="Dividend Distribution Tax"/>
+        <siteMapNode url="Presentation/Salary.aspx?VType=5001" title="Service Tax" description="Service Tax"/>
+        <siteMapNode url="Presentation/Salary.aspx?vtype=84" title="AIR Statement" description="AIR Statement"/>
+        <siteMapNode url="Presentation/BankMaster.aspx" title="Bank Master" description="Bank Master"/>
+        <siteMapNode url="Presentation/EmployerMaster.aspx" title="Employee Master" description="Employee Master"/>
+        <siteMapNode url="Presentation/BusinessMaster.aspx" title="Business Master" description="Business Master"/>
+        <siteMapNode url="Presentation/Tax Consultant Master.aspx" title="Tax Consultant Master" description="Tax Consultant Master"/>
+        <siteMapNode url="Presentation/AuditorMaster.aspx" title="Auditor Master" description="Auditor Master"/>
+        <siteMapNode url="Presentation/AssetMaster.aspx" title="AssetMaster" description="AssestMaster"/>-->
+      <!--</siteMapNode>-->
+	  <siteMapNode url="Services.aspx" title="Services"  description="Services" />
+	  <siteMapNode url="AboutUs.aspx" title="AboutUs"  description="AboutUs" >
+		  <siteMapNode url="news.aspx" title="LatestNews"  description="LatestNews" />
+		  <siteMapNode url="Terms_Conditions.aspx" title="Terms and Conditions" description="Terms and Conditions"/>
+		  <siteMapNode url="PrivacyPolicy.aspx" title="Privacy and Plocy" description="PrivacyPolicy.aspx"/>
+		  </siteMapNode>
+	  <siteMapNode url="ContactUsNew.aspx" title="ContactUs"  description="ContactUs" />
+    <siteMapNode url="guidehub.aspx" title="Guide Hub"  description="GuideHub" />
+  </siteMapNode>
+</siteMap>

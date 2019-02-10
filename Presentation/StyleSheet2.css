@@ -1,0 +1,265 @@
+﻿/*********** BUTTON *************/
+.cbdb-menu_new li {
+	display: block;
+	float: left;
+	line-height: 35px;
+	list-style:none;
+	 margin: 1px;
+    padding: 0;
+  
+    
+	
+	
+}
+.cbdb-menu_new li a {
+	/* This generators the gradient on top of the solid color */
+	color: #000000;
+	background-color:white;
+
+	background:transparent;
+	display: block;	
+	font:  15px "open-sans,sans-serif;		
+	outline:none;
+	padding: 5px 15px;
+	text-decoration: none;
+	/*text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);*/
+
+	/*box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.65);
+	-moz-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.65);
+	-webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.65);*/
+	
+	border-bottom:1px solid black;
+	margin-bottom:10px;
+		
+
+	
+
+	
+}
+
+.cbdb-menu_new li:first-child a
+{
+    border-bottom:none; 
+     
+}
+
+.border_bot
+{
+     border-bottom:none;  
+     background-color:White;  
+     border-left: 1px solid white;
+  border-right: 1px solid white;
+}
+.cbdb-menu_new li a:hover
+{
+     /*font-weight:bold;*/
+     
+     
+ }
+
+
+	/*.cbdb-menu_new li a:active {
+		background-image: -webkit-gradient(
+			linear,
+			left bottom,
+			left top,
+			color-stop(0,rgba(255,255,255,.5)),
+			color-stop(.1,rgba(255,255,255,.2)),
+			color-stop(.85, rgba(0,0,0,.2)),
+			color-stop(100, rgba(0,0,0,.4))
+		);
+		background-image: -moz-linear-gradient(
+			center bottom,
+			rgba(255,255,255,.5) 0%,
+			rgba(255,255,255,.2) 10%,
+			rgba(0,0,0,.2) 85%,
+			rgba(0,0,0,.4) 100%
+		);
+	}*/
+	
+	
+.cbdb-menu_new li ul, .cbdb-menu ul li  {
+	width: auto;
+	
+}
+		/*for displaying submenu*/
+	.cbdb-menu li ul
+	{
+	    display:none;
+	
+	}
+	.cbdb-menu li ul
+	{
+	    
+	   margin-left:-10px;
+	    
+	    
+	}
+	/*
+	.cbdb-menu li ul {
+	display: block;
+	padding:0px;
+	position:absolute;
+	left:0px;
+	z-index:2001;
+	
+	
+
+	
+}*/
+.cbdb-menu li ul a {
+	
+	padding-bottom:5px;
+	
+	
+	/*background-image: -webkit-gradient(
+		linear,
+		left top,
+		left bottom,
+		color-stop(0, rgba(255,255,255,.5)),
+		color-stop(1, rgba(0,0,0,.1))
+	);
+	background-image: -moz-linear-gradient(
+		center top,
+		rgba(255,255,255,.5) 0%,
+		rgba(0,0,0,.1) 100%
+	);
+	color: #f4f4f4; /* IE */
+	/*color: rgba(255, 255, 255, 0.8);*/
+	
+
+	color: #5c92fa!important;
+	background-color:#c1dbfa !important;
+	opacity:0.9;
+	float:left;
+	margin-top:5px;
+	margin-left:0px;
+	text-shadow:none;
+	font:18px;
+	font-weight:normal;
+	margin-top:10px;
+	
+	
+	
+}
+.cbdb-menu li ul a:hover
+{
+    font-weight:bold;
+    
+    
+}
+
+/*.cbdb-menu ul a:hover {
+	background-color: #5c92fa!important;
+	color: #FFFFFF !important;
+*/
+	
+	
+	
+
+}
+.submenu
+{
+    float:left;
+}
+.mainmenu
+{
+}
+/* Dark Text */
+.cbdb-menu li a.dark {
+	color: #333; /* IE */
+	color: rgba(0, 0, 0, 0.8);
+	text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.4);
+}
+/*********** COLORS *************/
+/* Create your own class for your own colors */
+.red {
+	background: #B80202;
+	border: #B80202 1px solid
+}
+	.red:hover, .red:focus{
+		background-color:#e30606
+	}
+.green {
+	background: #46c431;
+	border: #46c431 1px solid
+}
+	.green:hover,.green:focus {
+		background-color:#44e329
+	}
+.yellow {
+	background: #D9CE1C;
+	border: #D9CE1C 1px solid
+}
+	.yellow:hover,.yellow:focus {
+		background-color:#eee117
+	}
+.cyan {
+	background: #23c6de;
+	border: #23c6de 1px solid
+}
+	.cyan:hover,.cyan:focus {
+		background-color:#18d8f4
+	}
+.blue {
+	background: #3271d9;
+	border: #3271d9 1px solid;
+
+
+}
+/*.blue:active
+{background-color:#377ef2;
+}*/
+	/*.blue:hover,.blue:focus {
+		background-color:#377ef2
+	}*/
+/*container for submenu nishu6/4/2015*/
+.dropdown {
+width: auto;
+left: 0;
+color: #333;
+padding: 0;
+margin: 0;
+display: none;
+position: absolute;
+top: 100%;
+border: 1px solid #bbb;
+border-top: none;
+border-radius: 0 0 3px 3px;
+box-shadow: 0 6px 6px rgba(0,0,0,.175);
+}
+inner {
+text-align: center;
+padding: 20px;
+margin: 0;
+background-color: #e4e7ea;
+white-space: nowrap;
+font-size: 13px;
+line-height: 1.35;
+}
+.active
+{
+    background-color:#cccccc;
+  /*  height:35px;*/
+    border-bottom:none;
+    border-top:1px solid black;
+}
+/*.blue:visited
+{
+    background-color:Red;
+}*/
+a:visited
+{
+    
+}
+a:active
+{
+  
+    border:none;
+    
+}
+.selected
+{
+   
+    color:White;
+}

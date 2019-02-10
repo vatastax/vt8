@@ -1,0 +1,50 @@
+<root>
+  <ITRETURN:ITR xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ITRForm="http://incometaxindiaefiling.gov.in/master" xmlns:ITR4SFORM="http://incometaxindiaefiling.gov.in/ITR4S" xmlns:ITRETURN="http://incometaxindiaefiling.gov.in/main">
+    <ITR4SFORM:ITR4S>
+      <ITRForm:CreationInfo>
+        <ITRForm:SWVersionNo>1</ITRForm:SWVersionNo>
+        <ITRForm:SWCreatedBy>SW10000641</ITRForm:SWCreatedBy>
+        <ITRForm:XMLCreatedBy>SW10000641</ITRForm:XMLCreatedBy>
+        <ITRForm:XMLCreationDate>2016-07-08</ITRForm:XMLCreationDate>
+        <ITRForm:IntermediaryCity>Jalandhar</ITRForm:IntermediaryCity>
+        <ITRForm:Digest>-</ITRForm:Digest>
+      </ITRForm:CreationInfo>
+      <ITRForm:Form_ITR4S>
+        <ITRForm:FormName>ITR-4S</ITRForm:FormName>
+        <ITRForm:Description>For Indl having Income From Presemptive Business</ITRForm:Description>
+        <ITRForm:AssessmentYear>2016</ITRForm:AssessmentYear>
+        <ITRForm:SchemaVer>Ver1.0</ITRForm:SchemaVer>
+        <ITRForm:FormVer>Ver1.0</ITRForm:FormVer>
+      </ITRForm:Form_ITR4S>
+      <ITRForm:PersonalInfo>
+        <ITRForm:AssesseeName>
+          <ITRForm:FirstName>akaka</ITRForm:FirstName>
+          <ITRForm:SurNameOrOrgName>asdasda</ITRForm:SurNameOrOrgName>
+        </ITRForm:AssesseeName>
+        <ITRForm:PAN>KHKPT4321A</ITRForm:PAN>
+        <ITRForm:Address>
+          <ITRForm:ResidenceNo>11212</ITRForm:ResidenceNo>
+          <ITRForm:LocalityOrArea>asda</ITRForm:LocalityOrArea>
+          <ITRForm:CityOrTownOrDistrict>ads</ITRForm:CityOrTownOrDistrict>
+          <ITRForm:StateCode>26</ITRForm:StateCode>
+          <ITRForm:CountryCode>91</ITRForm:CountryCode>
+          <ITRForm:PinCode>144001</ITRForm:PinCode>
+          <ITRForm:MobileNo>9812313123</ITRForm:MobileNo>
+          <ITRForm:EmailAddress>asdsadss@asdsa.com</ITRForm:EmailAddress>
+        </ITRForm:Address>
+        <ITRForm:DOB>1999-01-01</ITRForm:DOB>
+        <ITRForm:Gender>M</ITRForm:Gender>
+        <ITRForm:Status>I</ITRForm:Status>
+        <ITRForm:AadhaarCardFlg>N</ITRForm:AadhaarCardFlg>
+      </ITRForm:PersonalInfo>
+      <ITRForm:FilingStatus>
+        <ITRForm:ResidentialStatus>RES</ITRForm:ResidentialStatus>
+      </ITRForm:FilingStatus>
+      <ITRForm:Verification>
+        <ITRForm:Declaration>
+          <ITRForm:FatherName>asdad</ITRForm:FatherName>
+        </ITRForm:Declaration>
+      </ITRForm:Verification>
+    </ITR4SFORM:ITR4S>
+  </ITRETURN:ITR>
+</root>

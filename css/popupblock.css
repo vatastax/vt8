@@ -1,0 +1,76 @@
+﻿
+
+    .modal-backdrop {
+           
+           display: none;
+       }
+       .modal {
+           width: 350px;
+           top: 10%;
+           left:25%;
+           z-index: 1020;
+           background-color: #FFF;
+           border-radius: 6px;
+           display: none;
+       }
+       .modal-header {
+           background-color:#3C3839;
+           color: #FFF;
+           border-top-right-radius: 5px;
+           border-top-left-radius: 5px;
+       }
+       .modal-header h3 
+       {
+           color:White;
+           margin: 0;
+           text-align:Left;
+             font-size: 20px;
+           line-height: 10px;
+           
+       }
+       .modal-header h2 .close-modal {
+           float: right;
+           text-decoration: none;
+           color: #FFF;
+           margin-top:-15px;
+       }
+       .modal-footer 
+       {
+           
+           background-color: #F1F1F1;
+           padding: 0 10px 0 10px;
+           line-height: 40px;
+           text-align: right;
+           border-bottom-right-radius: 5px;
+           border-bottom-left-radius: 5px;
+           border-top: solid 1px #CCC;
+       }
+       .modal-body {
+           
+           border-style: solid;
+           border-top: none;
+           border-color: rgb(60, 56, 57);
+           
+       }
+    </style>
+     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script>
+        $(function () {
+            modalPosition();
+            $(window).resize(function () {
+                modalPosition();
+            });
+            $('#btn_open').click(function (e) {
+                $('.modal, .modal-backdrop').fadeIn('fast');
+                e.preventDefault();
+            });
+            $('.close-modal').click(function (e) {
+                $('.modal, .modal-backdrop').fadeOut('fast');
+            });
+        });
+        function modalPosition() {
+            var width = $('.modal').width();
+            var pageWidth = $(window).width();
+            var x = (pageWidth / 2) - (width / 2);
+            $('.modal').css({ left: x + "px" });
+        }

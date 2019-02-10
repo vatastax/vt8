@@ -1,0 +1,112 @@
+x86^Windows 7^6.1^Service Pack 1^1.8.0_91-b15^Cp1252
+STARTING FORMAT VALIDATION
+The part added gets called returns true for value Vatas eTDS
+BATCH VALIDATION STARTED
+isFinYrGrtrthn:- true
+i am in enelnlenlemp namer
+................ 3
+................ 3
+Validating Challan 1
+Validating Challan For Batch Number2
+Value of forCSIfile  :: true
+ cinmandatory
+No of challan from csi file :: 16
+TanNameFromTxtFile ::  LIFE INSURANCE CORP. OF INDIA   TanNameFromCSIFile :: LIFE INSURANCE CORP. OF INDIA
+TanFromTxtFile ::  JLDL00368E   TanFromCSIFile  :: JLDL00368E
+ STARTING DEDUTEE VALIDATION FOR CHALLAN 1
+Validating Challan 2
+Validating Challan For Batch Number2
+Value of forCSIfile  :: true
+ cinmandatory
+No of challan from csi file :: 16
+TanNameFromTxtFile ::  LIFE INSURANCE CORP. OF INDIA   TanNameFromCSIFile :: LIFE INSURANCE CORP. OF INDIA
+TanFromTxtFile ::  JLDL00368E   TanFromCSIFile  :: JLDL00368E
+ STARTING DEDUTEE VALIDATION FOR CHALLAN 2
+Validating Challan 3
+Validating Challan For Batch Number2
+Value of forCSIfile  :: true
+ cinmandatory
+No of challan from csi file :: 16
+TanNameFromTxtFile ::  LIFE INSURANCE CORP. OF INDIA   TanNameFromCSIFile :: LIFE INSURANCE CORP. OF INDIA
+TanFromTxtFile ::  JLDL00368E   TanFromCSIFile  :: JLDL00368E
+ STARTING DEDUTEE VALIDATION FOR CHALLAN 3
+Validating Challan 4
+Validating Challan For Batch Number2
+Value of forCSIfile  :: true
+ cinmandatory
+No of challan from csi file :: 16
+TanNameFromTxtFile ::  LIFE INSURANCE CORP. OF INDIA   TanNameFromCSIFile :: LIFE INSURANCE CORP. OF INDIA
+TanFromTxtFile ::  JLDL00368E   TanFromCSIFile  :: JLDL00368E
+ STARTING DEDUTEE VALIDATION FOR CHALLAN 4
+Validating Challan 5
+Validating Challan For Batch Number2
+Value of forCSIfile  :: true
+ cinmandatory
+No of challan from csi file :: 16
+TanNameFromTxtFile ::  LIFE INSURANCE CORP. OF INDIA   TanNameFromCSIFile :: LIFE INSURANCE CORP. OF INDIA
+TanFromTxtFile ::  JLDL00368E   TanFromCSIFile  :: JLDL00368E
+ STARTING DEDUTEE VALIDATION FOR CHALLAN 5
+Validating Challan 6
+Validating Challan For Batch Number2
+Value of forCSIfile  :: true
+ cinmandatory
+No of challan from csi file :: 16
+TanNameFromTxtFile ::  LIFE INSURANCE CORP. OF INDIA   TanNameFromCSIFile :: LIFE INSURANCE CORP. OF INDIA
+TanFromTxtFile ::  JLDL00368E   TanFromCSIFile  :: JLDL00368E
+ STARTING DEDUTEE VALIDATION FOR CHALLAN 6
+Validating Challan 7
+Validating Challan For Batch Number2
+Value of forCSIfile  :: true
+ cinmandatory
+No of challan from csi file :: 16
+TanNameFromTxtFile ::  LIFE INSURANCE CORP. OF INDIA   TanNameFromCSIFile :: LIFE INSURANCE CORP. OF INDIA
+TanFromTxtFile ::  JLDL00368E   TanFromCSIFile  :: JLDL00368E
+ STARTING DEDUTEE VALIDATION FOR CHALLAN 7
+Validating Challan 8
+Validating Challan For Batch Number2
+Value of forCSIfile  :: true
+ cinmandatory
+No of challan from csi file :: 16
+TanNameFromTxtFile ::  LIFE INSURANCE CORP. OF INDIA   TanNameFromCSIFile :: LIFE INSURANCE CORP. OF INDIA
+TanFromTxtFile ::  JLDL00368E   TanFromCSIFile  :: JLDL00368E
+ STARTING DEDUTEE VALIDATION FOR CHALLAN 8
+ END OF :::BIFERCATING CHALAN AND TV AND CIN CHECKINGSat Jul 16 18:58:23 IST 2016
+END OF FORMAT VALIDATION
+Field validation is successfull now starting hash validation
+BEFORE HASHING CALLED::::::Sat Jul 16 18:58:23 IST 2016
+START # 16-07-2016 18:58:24.379
+ Original file object created and file exist
+tempFileName String cretaed ::  //192.168.1.200/etds_files/RETURN/REGULAR/JULY 2016/16-07-2016/1775/1775_temp.fvu
+ brtTemp object created for temp file
+String line created 
+isAppendForNextLine (Inside if condition ) :: 1
+ After appending line 1^63^FVU 5.1^00000000000000000000^SAM 1.0^00000000000000000000^16071618582453849094
+f.close()
+f = null
+brTemp.flush()
+brTemp.close()
+brTemp = null;
+END # 16-07-2016 18:58:24.413
+Original file is deleted
+Temp file renamed
+In processCINFile method
+the challan count is 16
+the cinFileLevelHC no. is00000000000005629061
+AFTER HASHING CALLED::::Sat Jul 16 18:58:24 IST 2016
+Return Hash Code = 0
+Hash Validation is sucessfull now started generating file
+Inside generateStatisticFile Method 
+FileGenerator.java ParseString() method is called 
+FileGenerator.java ParseString() method is returning 
+FileGenerator.java createStatisticFileString() method is called
+ Entering writeStatisticFile() Method Sat Jul 16 18:58:24 IST 2016
+ Exiting writeStatisticFile() Method Sat Jul 16 18:58:24 IST 2016
+FileGenerator.java createStatisticFileString() method is returning
+Statistics file is created
+ BARCODE :- 16071618582453849094
+Inside generateForm27A
+ Entering writePdfFile() Method Sat Jul 16 18:58:24 IST 2016
+ Exiting writePdfFile() Method Sat Jul 16 18:58:24 IST 2016
+pdf generatedtrue
+END TIME : Sat Jul 16 18:58:25 IST 2016
+the text error file path is \\192.168.1.200\etds_files\RETURN\REGULAR\JULY 2016\16-07-2016\1775

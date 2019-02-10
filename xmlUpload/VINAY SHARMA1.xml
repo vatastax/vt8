@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ITRETURN:ITR xmlns:ITRETURN="http://incometaxindiaefiling.gov.in/main" xmlns:ITR4SFORM="http://incometaxindiaefiling.gov.in/ITR4S" xmlns:ITRForm="http://incometaxindiaefiling.gov.in/master" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<ITR4SFORM:ITR4S>
+		<ITRForm:CreationInfo>
+			<ITRForm:SWVersionNo>R1</ITRForm:SWVersionNo>
+			<ITRForm:SWCreatedBy>SW10000002</ITRForm:SWCreatedBy>
+			<ITRForm:XMLCreatedBy>SW10000002</ITRForm:XMLCreatedBy>
+			<ITRForm:XMLCreationDate>2016-05-19</ITRForm:XMLCreationDate>
+			<ITRForm:IntermediaryCity>Delhi</ITRForm:IntermediaryCity>
+			<ITRForm:Digest>VdqoyymosiRBC97n6Y6QoKubHdCx13C9rqNjTHOeUI8=</ITRForm:Digest>
+		</ITRForm:CreationInfo>
+		<ITRForm:Form_ITR4S>
+			<ITRForm:FormName>ITR-4S</ITRForm:FormName>
+			<ITRForm:Description>For Indl having Income From Presemptive Business</ITRForm:Description>
+			<ITRForm:AssessmentYear>2015</ITRForm:AssessmentYear>
+			<ITRForm:SchemaVer>Ver1.0</ITRForm:SchemaVer>
+			<ITRForm:FormVer>Ver1.0</ITRForm:FormVer>
+		</ITRForm:Form_ITR4S>
+		<ITRForm:PersonalInfo>
+			<ITRForm:AssesseeName>
+				<ITRForm:FirstName>VINAY1</ITRForm:FirstName>
+				
+				<ITRForm:SurNameOrOrgName>KUMAR</ITRForm:SurNameOrOrgName>
+				
+			</ITRForm:AssesseeName>
+			<ITRForm:PAN>AEMPK7060H</ITRForm:PAN>
+			<ITRForm:Address>
+				<ITRForm:ResidenceNo>189</ITRForm:ResidenceNo>
+				
+				
+				<ITRForm:LocalityOrArea>SHIV VIHAR</ITRForm:LocalityOrArea>
+				<ITRForm:CityOrTownOrDistrict>JALANDHAR</ITRForm:CityOrTownOrDistrict>
+				<ITRForm:StateCode>26</ITRForm:StateCode>
+				<ITRForm:CountryCode>91</ITRForm:CountryCode>
+				<ITRForm:PinCode>144001</ITRForm:PinCode>
+				
+				<ITRForm:MobileNo>9041440888</ITRForm:MobileNo>
+				
+				<ITRForm:EmailAddress>vinay4041@gmail.com</ITRForm:EmailAddress>
+				
+			</ITRForm:Address>
+			<ITRForm:DOB>1961-05-05</ITRForm:DOB>
+
+			<ITRForm:Gender>M</ITRForm:Gender>
+			<ITRForm:Status>I</ITRForm:Status>
+			
+			
+		</ITRForm:PersonalInfo>
+		<ITRForm:FilingStatus>
+			
+			<ITRForm:ReturnFileSec>12</ITRForm:ReturnFileSec>
+			
+			
+			
+			<ITRForm:ReturnType>O</ITRForm:ReturnType>
+			
+			
+			<ITRForm:ResidentialStatus>RES</ITRForm:ResidentialStatus>
+			<ITRForm:TaxStatus>TR</ITRForm:TaxStatus>
+			
+			
+			<ITRForm:PortugeseCC5A>N</ITRForm:PortugeseCC5A>
+			
+			
+		</ITRForm:FilingStatus>
+		<ITRForm:ITR4S_IncomeDeductions>
+			<ITRForm:IncomeFromBusinessProf>9100</ITRForm:IncomeFromBusinessProf>
+			<ITRForm:IncomeFromSal>375600</ITRForm:IncomeFromSal>
+			
+			<ITRForm:TotalIncomeOfHP>0</ITRForm:TotalIncomeOfHP>
+			<ITRForm:IncomeOthSrc>56917</ITRForm:IncomeOthSrc>
+			<ITRForm:GrossTotIncome>441617</ITRForm:GrossTotIncome>
+			<ITRForm:UsrDeductUndChapVIA>
+				<ITRForm:Section80C>150000</ITRForm:Section80C>
+				<ITRForm:Section80CCC>0</ITRForm:Section80CCC>
+				<ITRForm:Section80CCDEmployeeOrSE>0</ITRForm:Section80CCDEmployeeOrSE>
+				<ITRForm:Section80CCDEmployer>0</ITRForm:Section80CCDEmployer>
+				<ITRForm:Section80D>11099</ITRForm:Section80D>
+				<ITRForm:Section80DD>0</ITRForm:Section80DD>
+				<ITRForm:Section80DDB>0</ITRForm:Section80DDB>
+				<ITRForm:Section80E>0</ITRForm:Section80E>
+				<ITRForm:Section80EE>0</ITRForm:Section80EE>
+				<ITRForm:Section80G>0</ITRForm:Section80G>
+				<ITRForm:Section80GG>0</ITRForm:Section80GG>
+				
+				<ITRForm:Section80GGC>0</ITRForm:Section80GGC>
+				<ITRForm:Section80U>0</ITRForm:Section80U>
+				<ITRForm:Section80RRB>0</ITRForm:Section80RRB>
+				<ITRForm:Section80QQB>0</ITRForm:Section80QQB>
+				
+				
+				
+				
+				
+				
+				<ITRForm:Section80CCG>0</ITRForm:Section80CCG>
+				<ITRForm:Section80TTA>6784</ITRForm:Section80TTA>
+				<ITRForm:TotalChapVIADeductions>167883</ITRForm:TotalChapVIADeductions>
+			</ITRForm:UsrDeductUndChapVIA>
+			<ITRForm:DeductUndChapVIA>
+				<ITRForm:Section80C>150000</ITRForm:Section80C>
+				<ITRForm:Section80CCC>0</ITRForm:Section80CCC>
+				<ITRForm:Section80CCDEmployeeOrSE>0</ITRForm:Section80CCDEmployeeOrSE>
+				<ITRForm:Section80CCDEmployer>0</ITRForm:Section80CCDEmployer>
+				<ITRForm:Section80D>11099</ITRForm:Section80D>
+				<ITRForm:Section80DD>0</ITRForm:Section80DD>
+				<ITRForm:Section80DDB>0</ITRForm:Section80DDB>
+				<ITRForm:Section80E>0</ITRForm:Section80E>
+				<ITRForm:Section80EE>0</ITRForm:Section80EE>
+				<ITRForm:Section80G>0</ITRForm:Section80G>
+				<ITRForm:Section80GG>0</ITRForm:Section80GG>
+				
+				<ITRForm:Section80GGC>0</ITRForm:Section80GGC>
+				<ITRForm:Section80U>0</ITRForm:Section80U>
+				<ITRForm:Section80RRB>0</ITRForm:Section80RRB>
+				<ITRForm:Section80QQB>0</ITRForm:Section80QQB>
+				
+				
+				
+				
+				
+				
+				<ITRForm:Section80CCG>0</ITRForm:Section80CCG>
+				<ITRForm:Section80TTA>6784</ITRForm:Section80TTA>
+				<ITRForm:TotalChapVIADeductions>167883</ITRForm:TotalChapVIADeductions>
+			</ITRForm:DeductUndChapVIA>
+			<ITRForm:TotalIncome>273730</ITRForm:TotalIncome>
+		</ITRForm:ITR4S_IncomeDeductions>
+		<ITRForm:ITR4S_TaxComputation>
+			<ITRForm:TotalTaxPayable>2373</ITRForm:TotalTaxPayable>
+			<ITRForm:Rebate87A>2000</ITRForm:Rebate87A>
+			<ITRForm:TaxPayableOnRebate>373</ITRForm:TaxPayableOnRebate>
+			<ITRForm:SurchargeOnAboveCrore>0</ITRForm:SurchargeOnAboveCrore>
+			<ITRForm:EducationCess>11</ITRForm:EducationCess>
+			<ITRForm:GrossTaxLiability>384</ITRForm:GrossTaxLiability>
+			<ITRForm:Section89>0</ITRForm:Section89>
+			<ITRForm:NetTaxLiability>384</ITRForm:NetTaxLiability>
+			<ITRForm:TotalIntrstPay>0</ITRForm:TotalIntrstPay>
+			<ITRForm:IntrstPay>
+				<ITRForm:IntrstPayUs234A>0</ITRForm:IntrstPayUs234A>
+				<ITRForm:IntrstPayUs234B>0</ITRForm:IntrstPayUs234B>
+				<ITRForm:IntrstPayUs234C>0</ITRForm:IntrstPayUs234C>
+				
+			</ITRForm:IntrstPay>
+			<ITRForm:TotTaxPlusIntrstPay>384</ITRForm:TotTaxPlusIntrstPay>
+		</ITRForm:ITR4S_TaxComputation>
+		<ITRForm:TaxPaid>
+			<ITRForm:TaxesPaid>
+				<ITRForm:AdvanceTax>0</ITRForm:AdvanceTax>
+				<ITRForm:TDS>1155</ITRForm:TDS>
+				<ITRForm:TCS>3215</ITRForm:TCS>
+				<ITRForm:SelfAssessmentTax>0</ITRForm:SelfAssessmentTax>
+				<ITRForm:TotalTaxesPaid>4370</ITRForm:TotalTaxesPaid>
+			</ITRForm:TaxesPaid>
+			<ITRForm:BalTaxPayable>0</ITRForm:BalTaxPayable>
+		</ITRForm:TaxPaid>
+		<ITRForm:Refund>
+			<ITRForm:RefundDue>3990</ITRForm:RefundDue>
+		      <ITRForm:BankAccountDtls>
+		         <ITRForm:PriBankDetails>
+		        	<ITRForm:IFSCCode>IOBA0000411</ITRForm:IFSCCode>
+					<ITRForm:BankName>Indian Overseas Bank</ITRForm:BankName>
+					<ITRForm:BankAccountNo>041101000012900</ITRForm:BankAccountNo>
+					<ITRForm:BankAccountType>SAV</ITRForm:BankAccountType>
+		         </ITRForm:PriBankDetails>
+		         
+		         <ITRForm:BankAccounts>1</ITRForm:BankAccounts>
+		      </ITRForm:BankAccountDtls>
+		</ITRForm:Refund>
+		
+		<ITR4SFORM:TaxExmpIntInc>143175</ITR4SFORM:TaxExmpIntInc>
+		<ITRForm:Verification>
+			<ITRForm:Declaration>
+				<ITRForm:AssesseeVerName>VINAY1 KUMAR</ITRForm:AssesseeVerName>
+				<ITRForm:FatherName>LATE SH. HARBANS LAL</ITRForm:FatherName>
+				<ITRForm:AssesseeVerPAN>AEMPK7060H</ITRForm:AssesseeVerPAN>
+			</ITRForm:Declaration>
+			<ITRForm:Place>JALANDHAR</ITRForm:Place>
+			<ITRForm:Date>2016-03-23</ITRForm:Date>
+		</ITRForm:Verification>
+		
+		<ITRForm:NatOfBus>
+			<ITRForm:Business>
+				<ITRForm:Code>1001</ITRForm:Code>
+				
+			</ITRForm:Business>
+			
+			
+		</ITRForm:NatOfBus>
+		<ITRForm:ScheduleBPForITR4S>
+			<ITRForm:PersumptiveInc44AD>
+				<ITRForm:GrsTrnOverOrReceipt>102000</ITRForm:GrsTrnOverOrReceipt>
+				<ITRForm:TotPersumptiveInc44AD>9100</ITRForm:TotPersumptiveInc44AD>
+			</ITRForm:PersumptiveInc44AD>
+			<ITRForm:PersumptiveInc44AE>
+
+				<ITRForm:TotPersumInc44AE>0</ITRForm:TotPersumInc44AE>
+			</ITRForm:PersumptiveInc44AE>
+			<ITRForm:IncChargeableUnderBus>9100</ITRForm:IncChargeableUnderBus>
+			<ITRForm:NoBooksOfAccBS>
+				<ITRForm:TotSundryDbtAmt>0</ITRForm:TotSundryDbtAmt>
+				<ITRForm:TotSundryCrdAmt>0</ITRForm:TotSundryCrdAmt>
+				<ITRForm:TotStkInTradAmt>0</ITRForm:TotStkInTradAmt>
+				<ITRForm:CashBalAmt>0</ITRForm:CashBalAmt>
+			</ITRForm:NoBooksOfAccBS>
+		</ITRForm:ScheduleBPForITR4S>
+		
+		<ITRForm:ScheduleTCS>
+			<ITRForm:TCS>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>JLDS04009F</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>SINGH FULJIT </ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				<ITRForm:TotalTCS>524</ITRForm:TotalTCS>
+				<ITRForm:AmtTCSClaimedThisYear>524</ITRForm:AmtTCSClaimedThisYear>
+				
+			</ITRForm:TCS>
+<ITRForm:TCS>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>JLDS04010G</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>SINGH AVTAR</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				<ITRForm:TotalTCS>535</ITRForm:TotalTCS>
+				<ITRForm:AmtTCSClaimedThisYear>535</ITRForm:AmtTCSClaimedThisYear>
+				
+			</ITRForm:TCS>
+<ITRForm:TCS>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>AAAA32332A</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>adad</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				<ITRForm:TotalTCS>345</ITRForm:TotalTCS>
+				<ITRForm:AmtTCSClaimedThisYear>345</ITRForm:AmtTCSClaimedThisYear>
+				
+			</ITRForm:TCS>
+<ITRForm:TCS>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>BBBB12345Q</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>yyyy</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				<ITRForm:TotalTCS>900</ITRForm:TotalTCS>
+				<ITRForm:AmtTCSClaimedThisYear>900</ITRForm:AmtTCSClaimedThisYear>
+				
+			</ITRForm:TCS>
+<ITRForm:TCS>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>UUUU77777Y</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>uuuu</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				<ITRForm:TotalTCS>233</ITRForm:TotalTCS>
+				<ITRForm:AmtTCSClaimedThisYear>233</ITRForm:AmtTCSClaimedThisYear>
+				
+			</ITRForm:TCS>
+<ITRForm:TCS>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>DDDD43434E</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>mnj</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				<ITRForm:TotalTCS>678</ITRForm:TotalTCS>
+				<ITRForm:AmtTCSClaimedThisYear>678</ITRForm:AmtTCSClaimedThisYear>
+				
+			</ITRForm:TCS>
+			<ITRForm:TotalSchTCS>3215</ITRForm:TotalSchTCS>
+		</ITRForm:ScheduleTCS>
+		
+		<ITRForm:TDSonOthThanSals>
+			<ITRForm:TDSonOthThanSal>
+				<ITRForm:EmployerOrDeductorOrCollectDetl>
+					<ITRForm:TAN>JLDI00290D</ITRForm:TAN>
+					<ITRForm:EmployerOrDeductorOrCollecterName>INDIAN OVERSEAS BANK</ITRForm:EmployerOrDeductorOrCollecterName>
+				</ITRForm:EmployerOrDeductorOrCollectDetl>
+				
+				<ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+				<ITRForm:TotTDSOnAmtPaid>1155</ITRForm:TotTDSOnAmtPaid>
+				<ITRForm:ClaimOutOfTotTDSOnAmtPaid>1155</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+				
+			</ITRForm:TDSonOthThanSal>
+			<ITRForm:TotalTDSonOthThanSals>1155</ITRForm:TotalTDSonOthThanSals>
+		</ITRForm:TDSonOthThanSals>
+		
+		<ITRForm:TotalHeavyVehcl>0</ITRForm:TotalHeavyVehcl>
+	</ITR4SFORM:ITR4S>
+</ITRETURN:ITR>

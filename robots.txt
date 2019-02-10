@@ -1,0 +1,4 @@
+User-Agent: *
+Allow:/Default.aspx/
+Disallow:/bin/
+Disallow:/Presentation/

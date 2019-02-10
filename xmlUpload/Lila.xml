@@ -1,0 +1,237 @@
+<ITRETURN:ITR xmlns:ITRETURN="http://incometaxindiaefiling.gov.in/main" xmlns:ITR1FORM="http://incometaxindiaefiling.gov.in/ITR1" xmlns:ITRForm="http://incometaxindiaefiling.gov.in/master" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <ITR1FORM:ITR1>
+    <ITRForm:CreationInfo>
+			<ITRForm:SWVersionNo>1.0</ITRForm:SWVersionNo>
+			<ITRForm:SWCreatedBy>SW10000002</ITRForm:SWCreatedBy>
+			<ITRForm:XMLCreatedBy>SW10000002</ITRForm:XMLCreatedBy>
+			<ITRForm:XMLCreationDate>2015-06-27</ITRForm:XMLCreationDate>
+			<ITRForm:IntermediaryCity>Delhi</ITRForm:IntermediaryCity>
+			<ITRForm:Digest>h5jD7H7KFHUnWtd8IDr31WsTyGxAw3DoaUSSoxOjHf4=</ITRForm:Digest>
+		</ITRForm:CreationInfo>
+		<ITRForm:Form_ITR1>
+			<ITRForm:FormName>ITR-1</ITRForm:FormName>
+			<ITRForm:Description>For Indls having Income from Salary, Pension, family pension and Interest</ITRForm:Description>
+			<ITRForm:AssessmentYear>2015</ITRForm:AssessmentYear>
+			<ITRForm:SchemaVer>Ver1.0</ITRForm:SchemaVer>
+			<ITRForm:FormVer>Ver1.0</ITRForm:FormVer>
+		</ITRForm:Form_ITR1>
+    <ITRForm:PersonalInfo>
+    
+      <ITRForm:AssesseeName>
+        <ITRForm:FirstName>Lila</ITRForm:FirstName>
+        
+        <ITRForm:SurNameOrOrgName>Krishan</ITRForm:SurNameOrOrgName>
+       </ITRForm:AssesseeName>
+      <ITRForm:PAN>AGSPK0000Q</ITRForm:PAN>
+      <ITRForm:Address>
+        <ITRForm:ResidenceNo>WG 468 A</ITRForm:ResidenceNo>
+        
+        
+        <ITRForm:LocalityOrArea>Siraj GAnj</ITRForm:LocalityOrArea>
+        <ITRForm:CityOrTownOrDistrict>Jalandhar</ITRForm:CityOrTownOrDistrict>
+        <ITRForm:StateCode>26</ITRForm:StateCode>
+        <ITRForm:CountryCode>91</ITRForm:CountryCode>
+        <ITRForm:PinCode>144001</ITRForm:PinCode>
+        
+        <ITRForm:MobileNo>9872464385</ITRForm:MobileNo>
+        
+        <ITRForm:EmailAddress>itrreturns@vatasinfotech.com</ITRForm:EmailAddress>
+       </ITRForm:Address>
+      <ITRForm:DOB>1944-12-01</ITRForm:DOB>
+      <ITRForm:EmployerCategory>OTH</ITRForm:EmployerCategory>
+      <ITRForm:Gender>M</ITRForm:Gender>
+      <ITRForm:Status>I</ITRForm:Status>
+      <ITRForm:AadhaarCardFlg>N</ITRForm:AadhaarCardFlg>
+	  
+    </ITRForm:PersonalInfo>
+    <ITRForm:FilingStatus>
+      
+      <ITRForm:ReturnFileSec>11</ITRForm:ReturnFileSec>
+      
+      
+      
+      <ITRForm:ReturnType>O</ITRForm:ReturnType>
+      
+      
+      <ITRForm:ResidentialStatus>RES</ITRForm:ResidentialStatus>
+      <ITRForm:TaxStatus>TR</ITRForm:TaxStatus>
+      <ITRForm:PortugeseCC5A>N</ITRForm:PortugeseCC5A>
+	   
+	   
+    </ITRForm:FilingStatus>
+    <ITRForm:ITR1_IncomeDeductions>
+      <ITRForm:IncomeFromSal>174201</ITRForm:IncomeFromSal>
+      
+      <ITRForm:TotalIncomeOfHP>0</ITRForm:TotalIncomeOfHP>
+      <ITRForm:IncomeOthSrc>101650</ITRForm:IncomeOthSrc>
+      <ITRForm:GrossTotIncome>275851</ITRForm:GrossTotIncome>
+      <ITRForm:UsrDeductUndChapVIA>
+        <ITRForm:Section80C>0</ITRForm:Section80C>
+        <ITRForm:Section80CCC>0</ITRForm:Section80CCC>
+        <ITRForm:Section80CCDEmployeeOrSE>0</ITRForm:Section80CCDEmployeeOrSE>
+        <ITRForm:Section80CCDEmployer>0</ITRForm:Section80CCDEmployer>
+        <ITRForm:Section80D>0</ITRForm:Section80D>
+        <ITRForm:Section80DD>0</ITRForm:Section80DD>
+        <ITRForm:Section80DDB>0</ITRForm:Section80DDB>
+        <ITRForm:Section80E>0</ITRForm:Section80E>
+		<ITRForm:Section80EE>0</ITRForm:Section80EE>
+        <ITRForm:Section80G>0</ITRForm:Section80G>
+        <ITRForm:Section80GG>0</ITRForm:Section80GG>
+        <ITRForm:Section80GGA>0</ITRForm:Section80GGA>
+        <ITRForm:Section80GGC>0</ITRForm:Section80GGC>
+        <ITRForm:Section80U>0</ITRForm:Section80U>
+        <ITRForm:Section80RRB>0</ITRForm:Section80RRB>
+        <ITRForm:Section80QQB>0</ITRForm:Section80QQB>
+        <ITRForm:Section80CCG>0</ITRForm:Section80CCG>
+        <ITRForm:Section80TTA>0</ITRForm:Section80TTA>
+        <ITRForm:TotalChapVIADeductions>0</ITRForm:TotalChapVIADeductions>
+      </ITRForm:UsrDeductUndChapVIA>
+      <ITRForm:DeductUndChapVIA>
+        <ITRForm:Section80C>0</ITRForm:Section80C>
+        <ITRForm:Section80CCC>0</ITRForm:Section80CCC>
+        <ITRForm:Section80CCDEmployeeOrSE>0</ITRForm:Section80CCDEmployeeOrSE>
+        <ITRForm:Section80CCDEmployer>0</ITRForm:Section80CCDEmployer>
+        <ITRForm:Section80D>0</ITRForm:Section80D>
+        <ITRForm:Section80DD>0</ITRForm:Section80DD>
+        <ITRForm:Section80DDB>0</ITRForm:Section80DDB>
+        <ITRForm:Section80E>0</ITRForm:Section80E>
+		<ITRForm:Section80EE>0</ITRForm:Section80EE>
+        <ITRForm:Section80G>0</ITRForm:Section80G>
+        <ITRForm:Section80GG>0</ITRForm:Section80GG>
+        <ITRForm:Section80GGA>0</ITRForm:Section80GGA>
+        <ITRForm:Section80GGC>0</ITRForm:Section80GGC>
+        <ITRForm:Section80U>0</ITRForm:Section80U>
+        <ITRForm:Section80RRB>0</ITRForm:Section80RRB>
+        <ITRForm:Section80QQB>0</ITRForm:Section80QQB>
+        <ITRForm:Section80CCG>0</ITRForm:Section80CCG>
+        <ITRForm:Section80TTA>0</ITRForm:Section80TTA>
+        <ITRForm:TotalChapVIADeductions>0</ITRForm:TotalChapVIADeductions>
+      </ITRForm:DeductUndChapVIA>
+      <ITRForm:TotalIncome>275850</ITRForm:TotalIncome>
+    </ITRForm:ITR1_IncomeDeductions>
+    <ITRForm:ITR1_TaxComputation>
+      <ITRForm:TotalTaxPayable>0</ITRForm:TotalTaxPayable>
+	  <ITRForm:Rebate87A>0</ITRForm:Rebate87A>
+	  <ITRForm:TaxPayableOnRebate>0</ITRForm:TaxPayableOnRebate>
+      <ITRForm:SurchargeOnAboveCrore>0</ITRForm:SurchargeOnAboveCrore>
+      <ITRForm:EducationCess>0</ITRForm:EducationCess>
+      <ITRForm:GrossTaxLiability>0</ITRForm:GrossTaxLiability>
+      <ITRForm:Section89>0</ITRForm:Section89>
+      <ITRForm:NetTaxLiability>0</ITRForm:NetTaxLiability>
+      <ITRForm:TotalIntrstPay>0</ITRForm:TotalIntrstPay>
+      <ITRForm:IntrstPay>
+        <ITRForm:IntrstPayUs234A>0</ITRForm:IntrstPayUs234A>
+        <ITRForm:IntrstPayUs234B>0</ITRForm:IntrstPayUs234B>
+        <ITRForm:IntrstPayUs234C>0</ITRForm:IntrstPayUs234C>
+       </ITRForm:IntrstPay>
+      <ITRForm:TotTaxPlusIntrstPay>0</ITRForm:TotTaxPlusIntrstPay>
+    </ITRForm:ITR1_TaxComputation>
+    <ITRForm:TaxPaid>
+      <ITRForm:TaxesPaid>
+        <ITRForm:AdvanceTax>0</ITRForm:AdvanceTax>
+        <ITRForm:TDS>3368</ITRForm:TDS>
+        
+        <ITRForm:SelfAssessmentTax>0</ITRForm:SelfAssessmentTax>
+        <ITRForm:TotalTaxesPaid>3368</ITRForm:TotalTaxesPaid>
+      </ITRForm:TaxesPaid>
+      <ITRForm:BalTaxPayable>0</ITRForm:BalTaxPayable>
+    </ITRForm:TaxPaid>
+    <ITRForm:Refund>
+      <ITRForm:RefundDue>3370</ITRForm:RefundDue>
+      <ITRForm:BankAccountDtls>
+         <ITRForm:PriBankDetails>
+        	<ITRForm:IFSCCode>PUNB0351200</ITRForm:IFSCCode>
+			<ITRForm:BankName>Punjab National Bank</ITRForm:BankName>
+			<ITRForm:BankAccountNo>3512000300058722</ITRForm:BankAccountNo>
+			<ITRForm:BankAccountType>SAV</ITRForm:BankAccountType>
+         </ITRForm:PriBankDetails>
+         <ITRForm:AddtnlBankDetails>
+            <ITRForm:IFSCCode>PUNB0222100</ITRForm:IFSCCode>
+			<ITRForm:BankName>Punjab National Bank</ITRForm:BankName>
+			<ITRForm:BankAccountNo>2221000100059611</ITRForm:BankAccountNo>
+			<ITRForm:BankAccountType>SAV</ITRForm:BankAccountType>
+         </ITRForm:AddtnlBankDetails>
+<ITRForm:AddtnlBankDetails>
+            <ITRForm:IFSCCode>BARB0JULLUN</ITRForm:IFSCCode>
+			<ITRForm:BankName>Bank of Baroda</ITRForm:BankName>
+			<ITRForm:BankAccountNo>2099101008252</ITRForm:BankAccountNo>
+			<ITRForm:BankAccountType>SAV</ITRForm:BankAccountType>
+         </ITRForm:AddtnlBankDetails>
+<ITRForm:AddtnlBankDetails>
+            <ITRForm:IFSCCode>CNRB0002099</ITRForm:IFSCCode>
+			<ITRForm:BankName>Canara Bank</ITRForm:BankName>
+			<ITRForm:BankAccountNo>20991010082252</ITRForm:BankAccountNo>
+			<ITRForm:BankAccountType>SAV</ITRForm:BankAccountType>
+         </ITRForm:AddtnlBankDetails>
+<ITRForm:AddtnlBankDetails>
+            <ITRForm:IFSCCode>CLBL0000013</ITRForm:IFSCCode>
+			<ITRForm:BankName>Capital Local Area Bank Ltd</ITRForm:BankName>
+			<ITRForm:BankAccountNo>013200000970</ITRForm:BankAccountNo>
+			<ITRForm:BankAccountType>SAV</ITRForm:BankAccountType>
+         </ITRForm:AddtnlBankDetails>
+         <ITRForm:BankAccounts>5</ITRForm:BankAccounts>
+      </ITRForm:BankAccountDtls>
+    </ITRForm:Refund>
+    
+    
+    <ITRForm:TDSonOthThanSals>
+      <ITRForm:TDSonOthThanSal>
+        <ITRForm:EmployerOrDeductorOrCollectDetl>
+          <ITRForm:TAN>JLDP00021A</ITRForm:TAN>
+          <ITRForm:EmployerOrDeductorOrCollecterName>Punjab National Bank</ITRForm:EmployerOrDeductorOrCollecterName>
+        </ITRForm:EmployerOrDeductorOrCollectDetl>
+        
+        <ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+        <ITRForm:TotTDSOnAmtPaid>924</ITRForm:TotTDSOnAmtPaid>
+        <ITRForm:ClaimOutOfTotTDSOnAmtPaid>924</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+		
+      </ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+        <ITRForm:EmployerOrDeductorOrCollectDetl>
+          <ITRForm:TAN>JLDP00021A</ITRForm:TAN>
+          <ITRForm:EmployerOrDeductorOrCollecterName>Punjab National Bank</ITRForm:EmployerOrDeductorOrCollecterName>
+        </ITRForm:EmployerOrDeductorOrCollectDetl>
+        
+        <ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+        <ITRForm:TotTDSOnAmtPaid>898</ITRForm:TotTDSOnAmtPaid>
+        <ITRForm:ClaimOutOfTotTDSOnAmtPaid>898</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+		
+      </ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+        <ITRForm:EmployerOrDeductorOrCollectDetl>
+          <ITRForm:TAN>JLDP00021A</ITRForm:TAN>
+          <ITRForm:EmployerOrDeductorOrCollecterName>Punjab National Bank</ITRForm:EmployerOrDeductorOrCollecterName>
+        </ITRForm:EmployerOrDeductorOrCollectDetl>
+        
+        <ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+        <ITRForm:TotTDSOnAmtPaid>769</ITRForm:TotTDSOnAmtPaid>
+        <ITRForm:ClaimOutOfTotTDSOnAmtPaid>769</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+		
+      </ITRForm:TDSonOthThanSal>
+<ITRForm:TDSonOthThanSal>
+        <ITRForm:EmployerOrDeductorOrCollectDetl>
+          <ITRForm:TAN>JLDP00021A</ITRForm:TAN>
+          <ITRForm:EmployerOrDeductorOrCollecterName>Punjab National Bank</ITRForm:EmployerOrDeductorOrCollecterName>
+        </ITRForm:EmployerOrDeductorOrCollectDetl>
+        
+        <ITRForm:DeductedYr>2014</ITRForm:DeductedYr>
+        <ITRForm:TotTDSOnAmtPaid>777</ITRForm:TotTDSOnAmtPaid>
+        <ITRForm:ClaimOutOfTotTDSOnAmtPaid>777</ITRForm:ClaimOutOfTotTDSOnAmtPaid>
+		
+      </ITRForm:TDSonOthThanSal>
+       <ITRForm:TotalTDSonOthThanSals>3368</ITRForm:TotalTDSonOthThanSals>
+    </ITRForm:TDSonOthThanSals>
+    
+    
+    <ITRForm:Verification>
+      <ITRForm:Declaration>
+        <ITRForm:AssesseeVerName>Lila Krishan</ITRForm:AssesseeVerName>
+        <ITRForm:FatherName>Sh. Bhagwan Dass</ITRForm:FatherName>
+        <ITRForm:AssesseeVerPAN>AGSPK0000Q</ITRForm:AssesseeVerPAN>
+      </ITRForm:Declaration>
+      <ITRForm:Place>Jalandhar</ITRForm:Place>
+      <ITRForm:Date>2015-06-27</ITRForm:Date>
+    </ITRForm:Verification>
+    
+  </ITR1FORM:ITR1>
+</ITRETURN:ITR>

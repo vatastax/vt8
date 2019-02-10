@@ -1,0 +1,19 @@
+﻿/*
+@import url("StaticStylesheet/default.css");
+@import url("StaticStylesheet/component.css");
+@import url("StaticStylesheet/StyleSheet.css");
+@import url("StaticStylesheet/StyleSheet2.css");
+@import url("StaticStylesheet/default.css");
+@import url("StaticStylesheet/buttonstyle.css");
+
+
+@import url("Stylesheet/buttonstyle.css");
+@import url("Stylesheet/Main.css");
+@import url("Stylesheet/StyleSheet.css");
+@import url("Stylesheet/StyleSheet2.css");
+@import url("Stylesheet/VSStyle.css");
+*/
+
+@import url("../bootstrap/css/bootstrap.css");
+@import url("../foundation-5.5.0/css/foundation.css");
+@import url("../StaticStylesheet/StyleSheet.css");

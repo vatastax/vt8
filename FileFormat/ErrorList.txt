@@ -1,0 +1,15 @@
+<html>
+	<body>
+<table cellspacing="0" cellpadding="0" border="0" style="border-width:1px;border-style:solid;border-collapse:collapse;">
+	<tr>
+		<th>Field</th><th>Row No</th><th>Message</th>
+	</tr><tr>
+		<td>PAN Column</td><td>Row No:- 21</td><td>PAN AALA74445H is invalid. </td>
+	</tr><tr>
+		<td>Amount of Payment Column</td><td>Row No:- 23</td><td>Amount of Payment is empty,please fill. </td>
+	</tr><tr>
+		<td>Date Column</td><td>Row No:- 12</td><td>Date is empty,please fill. </td>
+	</tr>
+</table>
+</html>
+	</body>

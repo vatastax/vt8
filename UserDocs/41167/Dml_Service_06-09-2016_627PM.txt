@@ -1,0 +1,134 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Data;
+using System.Data.Odbc;
+using System.Configuration;
+using System.Transactions;
+using System.Data.SqlClient;
+using ClosedXML.Excel;
+using Microsoft.SqlServer;
+using System.Web.Services;
+using System.IO;
+using System.Net.Mail;
+using BALVatasETDS.ProcessHistoryofJob;
+using System.ServiceModel.Activation;
+using BALVatasETDS.Error_Box;
+
+using DML.ServiceReference1;
+
+namespace DML
+{
+    public class Service
+    {
+        public Service()
+        {
+
+        }
+
+        //Main Function
+        public void Main(ServiceReference1.TDS objTDS)
+        {
+            ServiceReference1.ServiceClient s1 = new ServiceClient("IService");
+            string Action = objTDS.Action;
+            if (Action == "Save")
+            {
+                s1.Save(objTDS);
+            }
+            else if (Action == "Edit")
+            {
+                s1.Edit(objTDS);
+            }
+            else if (Action == "SaveTable")
+            {
+                s1.SaveTable(objTDS);
+            }
+            else if (Action == "Send Email")
+            {
+                s1.SendEmail(objTDS);
+            }
+            else if (Action == "Update_Process")
+            {
+                s1.Update_Process(objTDS);
+            }
+            else if (Action == "Insert_ProcessFO")
+            {
+                s1.Insert_ProcessFO(objTDS);
+            }
+            else if (Action == "Insert_ProcessBO")
+            {
+                s1.Insert_ProcessBO(objTDS);
+            }
+            else if (Action == "Insert_ProcessAss")
+            {
+                s1.Insert_ProcessAss(objTDS);
+            }
+            else if (Action == "Edit_ProcessAss")
+            {
+                s1.Edit_ProcessAss(objTDS);
+            }
+            else if (Action == "Update_ReturnStatus")
+            {
+                s1.Update_ReturnStatus(objTDS);
+            }
+            else if (Action == "Update_StatusComp")
+            {
+                s1.Update_StatusComp(objTDS);
+            }
+            else if (Action == "Update_CompletedReturnStatus")
+            {
+                s1.Update_CompletedReturnStatus(objTDS);
+            }
+            else if (Action == "SendToOperator")
+            {
+                s1.SendToOperator(objTDS);
+            }
+            else if (Action == "Save_Def1")
+            {
+                s1.Save_Def1(objTDS);
+            }
+            else if (Action == "update_dermo")
+            {
+                s1.Update_Demo(objTDS);
+            }
+        }
+
+        //Function to Send Email
+        public void SendEmail(TDS objTDS)
+        {
+            //Create Parameters
+            string To = objTDS.To;
+            string From = objTDS.From;
+            string Subject = objTDS.Subject;
+            string Attachment1 = objTDS.Attachment1;
+            string Attachment2 = objTDS.Attachment2;
+            string EmailBody = objTDS.EmailBody;
+            bool IsBodyHtml = objTDS.IsBodyHtml;
+            MailMessage mail = new MailMessage();
+            //Mail To
+            mail.To.Add(To);
+            //Mail From
+            mail.From = new MailAddress(From);
+            //Mail Subject
+            mail.Subject = Subject;
+            //Mail Attachments
+            mail.Attachments.Add(new Attachment(Attachment1));
+            //mail.Attachments.Add(new Attachment(Attachment2));
+            //Mail Email Body
+            mail.Body = EmailBody;
+            //Mail Is Body Html
+            mail.IsBodyHtml = IsBodyHtml;
+
+            //Set the Credentials For Sending Emails;
+            SmtpClient smtp = new SmtpClient();
+            smtp.Host = "smtp.gmail.com"; //Or Your SMTP Server Address
+            smtp.Credentials = new System.Net.NetworkCredential
+                 ("infosysv@gmail.com", "vatas123");
+            //Or your Smtp Email ID and Password
+            smtp.EnableSsl = true;
+            smtp.Send(mail);
+        }
+
+    }
+}

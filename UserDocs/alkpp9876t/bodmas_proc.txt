@@ -1,0 +1,308 @@
+USE [vatastax_dev]
+GO
+/****** Object:  StoredProcedure [dbo].[proc_BODMAS]    Script Date: 02/04/2016 2:11:48 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+ALTER PROCEDURE [dbo].[proc_BODMAS]
+	-- Add the parameters for the stored procedure here
+	@constIDString nvarchar(max),
+	@MainString nvarchar(max),
+	@NameID nvarchar(50),
+	@MainID nvarchar(50),
+	@AY nvarchar(50),
+	@subConstID nvarchar(50),
+	@ITRType nvarchar(50)
+AS
+BEGIN
+	SET NOCOUNT ON;	
+	set @constIDString = REPLACE(@constIDString,'=','')	
+	--To clear else values for the corresponding constantIDs:
+	Declare @tmpTble_Clear table(id int identity, val nvarchar(max))
+	Declare @tmpTble_Clear2 table(id int identity, val nvarchar(max))
+	print 'main id in proc_bodmas'
+	print @constIDString
+	--Declare @MainString nvarchar(max)
+	--set @MainString = 'IIF( -16 > 4  ,  ''1523227(1523225)'' ,  ''1523228(1523226)'')'
+	set @MainString = REPLACE(REPLACE(@MainString, 'IIF(',''),'''','')
+
+	insert into @tmpTble_Clear Select Replace(SplitChar,')','') From SplitChar(@MainString, ',')
+	delete from @tmpTble_Clear where val = '' or id=1
+	Declare @tmpVal2 nvarchar(100)
+	declare @entity nvarchar(500)
+	declare @subConstID_tmp nvarchar(50)
+	declare @Vtype nvarchar(500)
+	declare @cur_cnt int
+	set @cur_cnt = 0
+
+	set @entity = 0
+	Declare @cnt int
+	set @cnt = 1
+	declare @tmpTbl_SubConstID Table(indx int identity,val nvarchar(50))						
+	declare @row_cnt int
+
+	--Declare curSplit cursor for
+	--select val from @tmpTble_Clear
+	--Open curSplit
+	--fetch next from curSplit into @tmpVal2
+	--while(@@FETCH_STATUS = 0)
+	--Begin
+	
+	--	if LEFT(LTRIM(RTRIM(@tmpVal2)),3)!='IIF'
+	--	Begin
+	--		insert into @tmpTble_Clear2 Select SplitChar From SplitChar(@tmpVal2, '{')
+	--		--select val from @tmpTble_Clear2 where id=@cnt
+			
+			
+	--		select @entity = (select val from @tmpTble_Clear2 where id=@cnt)
+			
+	--		insert into @tmpTbl_SubConstID(val) Select SplitChar From SplitChar(@entity, '_')
+	--		select @row_cnt = count(*) from @tmpTbl_SubConstID
+			
+	--		if @row_cnt > 1
+	--		Begin
+	--			--select indx,val as '@tmpTbl_SubConstID val' from @tmpTbl_SubConstID
+	--			select @entity = val from @tmpTbl_SubConstID where indx = (select top(1) indx from @tmpTbl_SubConstID order by indx asc)
+	--			select @subConstID_tmp = val from @tmpTbl_SubConstID where indx = (select top(1) indx from @tmpTbl_SubConstID order by indx desc)
+				
+	--			if @subConstID_tmp = @entity
+	--				set @subConstID_tmp = 0
+	--			if exists(select * from StoreTrans where NameID = @NameID and AY = @AY and ConstantID = @entity and SubConstID = @subConstID_tmp)
+	--			begin				
+	--				update StoreTrans set Col3 = '0' where NameID = @NameID and AY = @AY and ConstantID = @entity and SubConstID = @subConstID_tmp
+	--			end
+	--			else
+	--			Begin
+	--				Declare @gridIndx nvarchar(50), @ComboItemNo nvarchar(500), @gRowNo nvarchar(50)
+	--				select @VType = VType from dbMain.dbo.ScreenSettings where GridIndex = (Select C6 from dbMain.dbo.T00 where C1 = @entity and C21 = @AY and ReturnType = @ITRType)
+	--				Select @ComboItemNo = C5, @gRowNo = C7 from dbMain.dbo.T00 where C1 = @entity and C21 = @AY and ReturnType = @ITRType
+					
+	--				exec procInsertStoreTransMainNEW @NameID, @VType, @AY, @MainID, 0, @entity, @subConstID_tmp, @gridIndx,@ComboItemNo, @gRowNo, 1, 0
+	--			End
+	--			set @cur_cnt = @cur_cnt + 1
+	--		End
+	--		else
+	--		Begin
+	--			update StoreTrans set Col3 = '0' where NameID = @NameID and AY = @AY and ConstantID = (select val from @tmpTble_Clear2 where id=@cnt)
+	--		End
+	--		delete from @tmpTble_Clear2
+	--		delete from @tmpTbl_SubConstID
+	--		set @cnt = @cnt + 2
+			
+	--	end
+	--fetch next from curSplit into @tmpVal2
+	--End
+	--close curSplit
+	--deallocate curSplit	
+
+	Declare @eqn nvarchar(max)
+	Declare @Result decimal
+	Declare @tmpVal nvarchar(max)
+	Declare @concStr nvarchar(max)
+
+	set @concStr = ''
+
+	Declare @tmpTable Table(id int identity, val nvarchar(max))
+	Declare @tmpTable2 Table(id int identity, val nvarchar(max))
+	
+	Declare @cntCur int
+	set @cntCur = 0
+	insert into @tmpTable select * from SplitChar(@constIDString,'{')
+	--select LTRIM(RTRIM(Replace(val,')',''))) from @tmpTable where id=2
+	Declare @ttmp nvarchar(500)
+	select @ttmp= val from @tmpTable where id=2
+	
+	Declare CurSplit Cursor Local for
+	select * from SplitChar((select LTRIM(RTRIM(Replace(val,'}',''))) from @tmpTable where id=2),' ')
+	open curSplit
+	fetch next from curSplit into @tmpVal
+	while (@@FETCH_STATUS = 0)
+	Begin
+	
+		if @tmpVal != '+' and @tmpVal != '-' and @tmpVal != '*' and @tmpVal != '/' and @tmpVal != '(' and @tmpVal != ')'
+		Begin
+			Declare @tmp nvarchar(50)
+			Declare @tmpTbl_SubConstID2 Table(indx int identity, val nvarchar(500))
+			delete from @tmpTbl_SubConstID2
+			
+			insert into @tmpTbl_SubConstID2(val) Select SplitChar From SplitChar(@tmpVal, '_')
+			--Select indx, val as 'abc -xyz' From @tmpTbl_SubConstID2
+			select @row_cnt = count(*) from @tmpTbl_SubConstID2
+			
+			if @row_cnt > 1
+			Begin
+				
+				set @tmpVal = ''
+				select @tmpVal = val from @tmpTbl_SubConstID2 where indx = (select top(1) indx from @tmpTbl_SubConstID2 order by indx asc)
+				select @subConstID_tmp = val from @tmpTbl_SubConstID2 where indx = (select top(1) indx from @tmpTbl_SubConstID2 order by indx desc)				
+
+				if @subConstID_tmp = @tmpVal
+					set @subConstID_tmp = 0
+				--if LEFT(@tmp,1) != '$'
+				set @tmp='0'
+					select @tmp = Col3 from StoreTrans where ConstantID = @tmpVal and NameID = @NameID and AY = @AY and MainID = @MainID and SubConstID = @subConstID_tmp
+				--else
+				--	set @tmp = REPLACE(@tmp,'$','')
+			End
+			else
+			Begin
+				
+				set @tmp='0'
+				if LEFT(@tmpVal,1) != '$'
+					select @tmp = Col3 from StoreTrans where ConstantID = @tmpVal and NameID = @NameID and AY = @AY and MainID = @MainID and SubConstID = 0	
+				else
+					set @tmp = REPLACE(@tmpVal,'$','')					
+			End
+
+			set @cntCur = @cntCur + 1
+			
+			insert into @tmpTable2 values(@tmp)
+			if @tmp is null
+				set @tmp = 0	
+			set @concStr = @concStr + @tmp
+			
+		End
+		else
+		Begin
+			if @tmpVal is not null
+				set @concStr = @concStr + @tmpVal
+		End
+			--insert into @tmpTable2 values(@tmpVal)
+
+		fetch next from curSplit into @tmpVal
+	End
+	close curSplit
+	deallocate curSplit
+	set @concStr = REPLACE(@concStr,'+-','-')
+	set @concStr = REPLACE(@concStr,'--','+')
+	set @concStr = REPLACE(@concStr,'-+','-')
+	set @concStr = REPLACE(@concStr,'++','+')
+	
+
+	Declare @sql_Query nvarchar(max)
+	Declare @result_amt nvarchar(1000)
+	
+	Set @sql_Query = 'select @result_amt = ''' + @concStr + ''''
+	print '@concStr'
+	print @concStr
+	print @sql_Query
+	--if @result_amt is not null
+	declare @result_amt_tmp decimal
+
+	EXEC sp_executesql @sql_Query, N'@result_amt nvarchar(1000) OUTPUT',@result_amt OUTPUT;
+	if @result_amt like '%[+,-]%'
+	Begin
+		Set @sql_Query = 'select @result_amt_tmp = ' + @concStr + ''
+		EXEC sp_executesql @sql_Query, N'@result_amt_tmp decimal OUTPUT',@result_amt_tmp OUTPUT;
+		set @result_amt = cast(@result_amt_tmp as nvarchar(1000))
+	End
+			
+	Declare @constID_tmp nvarchar(50)
+	select @constID_tmp = (select val from @tmpTable where id=1)
+
+	--if @entity = 0
+	--Begin
+	
+	declare @cntConst int
+	Declare @tmpTbl_ConstID Table(id int identity, val nvarchar(500))
+	insert into @tmpTbl_ConstID select SplitChar from SplitChar(@constID_tmp,'_')
+	select @cntConst = (select count(*) from @tmpTbl_ConstID)
+	print 'in bodmas'
+	print @cntConst
+	if @cntConst > 1
+	Begin
+	
+		select @entity =  (select val from @tmpTbl_ConstID where id=1)
+		select @subConstID_tmp =  (select val from @tmpTbl_ConstID where id=2)
+		if @subConstID_tmp = @entity
+			set @subConstID_tmp = 0
+		if @result_amt is null
+			set @result_amt = '0'
+		print '@subConstID_tmp'
+		print @entity
+		print @subConstID_tmp
+		print @result_amt
+		print @NameID
+		print @MainID
+		print @AY
+		if exists(select * from StoreTrans where ConstantID = @entity and SubConstID = @subConstID_tmp and NameID = @NameID and MainID = @MainID and AY = @AY)
+		Begin
+			update storetrans set Col3 = @result_amt where ConstantID = @entity and SubConstID = @subConstID_tmp and NameID = @NameID and MainID = @MainID and AY = @AY-- and SubConstID= @subConstID
+			print 'updated'
+		End
+		else
+			exec procInsertStoreTransMainNEW_Short @NameID, @AY, @MainID, @result_amt, @entity, @subConstID_tmp
+
+		-- For running the T4 instructions from T4 C45 column:
+		Declare @eqnNext nvarchar(max)
+		select @eqnNext = C45 from dbMain.dbo.T4 where C2 = @entity and C1 = @subConstID_tmp and C40 = @AY
+
+		Declare @gIndex nvarchar(50)
+		--Declare @Vtype nvarchar(50)
+		set @eqnNext = null
+		if @eqnNext is not null
+		Begin	
+			
+			select @Vtype = VType from dbMain.dbo.ScreenSettings where GridIndex = (select C6 from dbMain.dbo.T00 where C1 = @entity)
+			exec procShowCalculation @NameID, @MainID, @Vtype, @AY, @subConstID_tmp, -2, @ITRType, 0,''	
+		End
+		
+		Declare @tmpTbl_ConstID_Tmp Table(id int identity, val nvarchar(500))
+		insert into @tmpTbl_ConstID_Tmp select SplitChar from SplitChar(@constID_tmp,'_')
+		select @entity = (select val from @tmpTbl_ConstID_Tmp where id = 1)
+		
+		--exec procCalculation @entity, @AY, @MainID, @Vtype, @NameID, @gIndex, 0, -1, 1, 1, 0, '31-08-2015', 0
+		--exec procCalculation 1523228, '2015-2016', 1982092012, 15043, 1982092012, 14044, 0, -1, 1, 1, 0, '31/08/2015', 0
+		--delete from storetrans
+	End
+	else
+	Begin
+
+	select @constID_tmp = REPLACE(@constID_tmp, RIGHT(@constID_tmp,CHARINDEX('_',REVERSE(@constID_tmp))),'')
+	if @subConstID_tmp = @constID_tmp
+		set @subConstID_tmp = 0
+		if @result_amt is null
+			set @result_amt = '0'
+		print '@constID_tmp'
+		print @constID_tmp
+		if exists(select * from StoreTrans where ConstantID = @constID_tmp and NameID = @NameID and MainID = @MainID and AY = @AY)
+		begin
+			update storetrans set Col3 = @result_amt where ConstantID = @constID_tmp and NameID = @NameID and MainID = @MainID and AY = @AY --and SubConstID= LTRIM(RTRIM(@subConstID))
+			
+		end
+		else
+		begin
+			exec procInsertStoreTransMainNEW_Short @NameID, @AY, @MainID, @result_amt, @constID_tmp, @subConstID
+		end
+	End
+	--End
+	--else
+	--Begin
+	--print '@entity = 1'
+	--print @entity
+	--print @subConstID_tmp
+	
+	--	if exists(select * from StoreTrans where ConstantID = @entity and SubConstID = @subConstID_tmp and NameID = @NameID and MainID = @MainID and AY = @AY)
+	--		update storetrans set Col3 = @result_amt where ConstantID = @entity and SubConstID = @subConstID_tmp and NameID = @NameID and MainID = @MainID and AY = @AY
+	--	else
+	--		exec procInsertStoreTransMainNEW_Short @NameID, @AY, @MainID, @result_amt, @entity, @subConstID_tmp
+	--End
+
+	delete from @tmpTable
+	delete from @tmpTable2
+	delete from @tmpTbl_SubConstID
+	delete from @tmpTble_Clear
+	delete from @tmpTble_Clear2
+	set @entity = 0
+	set @subConstID_tmp=0
+
+END
+--delete from StoreTrans where NameID !='1982162860'
+--select constantID,col3,subconstID from storetrans where NameID !='1982162860' and constantID in(1523225,1523226,1523227,1523228)
+--select IIF(( 0 + 0 )<( 11 - 0 ) ,  '1522962{ 1523342 + 1523350 }'  ,  '1522962{ 1522959 - 1522960 }')

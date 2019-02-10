@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ITRETURN:ITR xmlns:ITRETURN="http://incometaxindiaefiling.gov.in/main" xmlns:ITR1FORM="http://incometaxindiaefiling.gov.in/ITR1" xmlns:ITRForm="http://incometaxindiaefiling.gov.in/master" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <ITR1FORM:ITR1>
+    <ITRForm:CreationInfo>
+			<ITRForm:SWVersionNo>1.0</ITRForm:SWVersionNo>
+			<ITRForm:SWCreatedBy>SW10000002</ITRForm:SWCreatedBy>
+			<ITRForm:XMLCreatedBy>SW10000002</ITRForm:XMLCreatedBy>
+			<ITRForm:XMLCreationDate>2015-07-02</ITRForm:XMLCreationDate>
+			<ITRForm:IntermediaryCity>Delhi</ITRForm:IntermediaryCity>
+			<ITRForm:Digest>FG27ssmFZGYwc53KKio1xtxEWtg5NBMWg0xyMWoOaHE=</ITRForm:Digest>
+		</ITRForm:CreationInfo>
+		<ITRForm:Form_ITR1>
+			<ITRForm:FormName>ITR-1</ITRForm:FormName>
+			<ITRForm:Description>For Indls having Income from Salary, Pension, family pension and Interest</ITRForm:Description>
+			<ITRForm:AssessmentYear>2015</ITRForm:AssessmentYear>
+			<ITRForm:SchemaVer>Ver1.0</ITRForm:SchemaVer>
+			<ITRForm:FormVer>Ver1.0</ITRForm:FormVer>
+		</ITRForm:Form_ITR1>
+    <ITRForm:PersonalInfo>
+    
+      <ITRForm:AssesseeName>
+        <ITRForm:FirstName>RAM1</ITRForm:FirstName>
+        <ITRForm:MiddleName>DASS</ITRForm:MiddleName>
+        <ITRForm:SurNameOrOrgName>SOOD</ITRForm:SurNameOrOrgName>
+       </ITRForm:AssesseeName>
+      <ITRForm:PAN>AHBPS9999Q</ITRForm:PAN>
+      <ITRForm:Address>
+        <ITRForm:ResidenceNo>185</ITRForm:ResidenceNo>
+        
+        <ITRForm:RoadOrStreet>Near Verka Milk Plant</ITRForm:RoadOrStreet>
+        <ITRForm:LocalityOrArea>Guru Amardass Nagar</ITRForm:LocalityOrArea>
+        <ITRForm:CityOrTownOrDistrict>Jalandhar</ITRForm:CityOrTownOrDistrict>
+        <ITRForm:StateCode>26</ITRForm:StateCode>
+        <ITRForm:CountryCode>91</ITRForm:CountryCode>
+        <ITRForm:PinCode>144008</ITRForm:PinCode>
+        
+        <ITRForm:MobileNo>9780037498</ITRForm:MobileNo>
+        
+        <ITRForm:EmailAddress>itrreturns@vatasinfotech.com</ITRForm:EmailAddress>
+       </ITRForm:Address>
+      <ITRForm:DOB>1955-01-07</ITRForm:DOB>
+      <ITRForm:EmployerCategory>OTH</ITRForm:EmployerCategory>
+      <ITRForm:Gender>M</ITRForm:Gender>
+      <ITRForm:Status>I</ITRForm:Status>
+      <ITRForm:AadhaarCardFlg>Y</ITRForm:AadhaarCardFlg>
+	  <ITRForm:AadhaarCardNo>320171337433</ITRForm:AadhaarCardNo>
+    </ITRForm:PersonalInfo>
+    <ITRForm:FilingStatus>
+      
+      <ITRForm:ReturnFileSec>11</ITRForm:ReturnFileSec>
+      
+      
+      
+      <ITRForm:ReturnType>O</ITRForm:ReturnType>
+      
+      
+      <ITRForm:ResidentialStatus>RES</ITRForm:ResidentialStatus>
+      <ITRForm:TaxStatus>TR</ITRForm:TaxStatus>
+      <ITRForm:PortugeseCC5A>N</ITRForm:PortugeseCC5A>
+	   
+	   
+    </ITRForm:FilingStatus>
+    <ITRForm:ITR1_IncomeDeductions>
+      <ITRForm:IncomeFromSal>529811</ITRForm:IncomeFromSal>
+      
+      <ITRForm:TotalIncomeOfHP>0</ITRForm:TotalIncomeOfHP>
+      <ITRForm:IncomeOthSrc>0</ITRForm:IncomeOthSrc>
+      <ITRForm:GrossTotIncome>529811</ITRForm:GrossTotIncome>
+      <ITRForm:UsrDeductUndChapVIA>
+        <ITRForm:Section80C>200660</ITRForm:Section80C>
+        <ITRForm:Section80CCC>0</ITRForm:Section80CCC>
+        <ITRForm:Section80CCDEmployeeOrSE>0</ITRForm:Section80CCDEmployeeOrSE>
+        <ITRForm:Section80CCDEmployer>0</ITRForm:Section80CCDEmployer>
+        <ITRForm:Section80D>0</ITRForm:Section80D>
+        <ITRForm:Section80DD>0</ITRForm:Section80DD>
+        <ITRForm:Section80DDB>0</ITRForm:Section80DDB>
+        <ITRForm:Section80E>0</ITRForm:Section80E>
+		<ITRForm:Section80EE>0</ITRForm:Section80EE>
+        <ITRForm:Section80G>0</ITRForm:Section80G>
+        <ITRForm:Section80GG>0</ITRForm:Section80GG>
+        <ITRForm:Section80GGA>0</ITRForm:Section80GGA>
+        <ITRForm:Section80GGC>0</ITRForm:Section80GGC>
+        <ITRForm:Section80U>0</ITRForm:Section80U>
+        <ITRForm:Section80RRB>0</ITRForm:Section80RRB>
+        <ITRForm:Section80QQB>0</ITRForm:Section80QQB>
+        <ITRForm:Section80CCG>0</ITRForm:Section80CCG>
+        <ITRForm:Section80TTA>0</ITRForm:Section80TTA>
+        <ITRForm:TotalChapVIADeductions>200660</ITRForm:TotalChapVIADeductions>
+      </ITRForm:UsrDeductUndChapVIA>
+      <ITRForm:DeductUndChapVIA>
+        <ITRForm:Section80C>150000</ITRForm:Section80C>
+        <ITRForm:Section80CCC>0</ITRForm:Section80CCC>
+        <ITRForm:Section80CCDEmployeeOrSE>0</ITRForm:Section80CCDEmployeeOrSE>
+        <ITRForm:Section80CCDEmployer>0</ITRForm:Section80CCDEmployer>
+        <ITRForm:Section80D>0</ITRForm:Section80D>
+        <ITRForm:Section80DD>0</ITRForm:Section80DD>
+        <ITRForm:Section80DDB>0</ITRForm:Section80DDB>
+        <ITRForm:Section80E>0</ITRForm:Section80E>
+		<ITRForm:Section80EE>0</ITRForm:Section80EE>
+        <ITRForm:Section80G>0</ITRForm:Section80G>
+        <ITRForm:Section80GG>0</ITRForm:Section80GG>
+        <ITRForm:Section80GGA>0</ITRForm:Section80GGA>
+        <ITRForm:Section80GGC>0</ITRForm:Section80GGC>
+        <ITRForm:Section80U>0</ITRForm:Section80U>
+        <ITRForm:Section80RRB>0</ITRForm:Section80RRB>
+        <ITRForm:Section80QQB>0</ITRForm:Section80QQB>
+        <ITRForm:Section80CCG>0</ITRForm:Section80CCG>
+        <ITRForm:Section80TTA>0</ITRForm:Section80TTA>
+        <ITRForm:TotalChapVIADeductions>150000</ITRForm:TotalChapVIADeductions>
+      </ITRForm:DeductUndChapVIA>
+      <ITRForm:TotalIncome>379810</ITRForm:TotalIncome>
+    </ITRForm:ITR1_IncomeDeductions>
+    <ITRForm:ITR1_TaxComputation>
+      <ITRForm:TotalTaxPayable>7981</ITRForm:TotalTaxPayable>
+	  <ITRForm:Rebate87A>2000</ITRForm:Rebate87A>
+	  <ITRForm:TaxPayableOnRebate>5981</ITRForm:TaxPayableOnRebate>
+      <ITRForm:SurchargeOnAboveCrore>0</ITRForm:SurchargeOnAboveCrore>
+      <ITRForm:EducationCess>179</ITRForm:EducationCess>
+      <ITRForm:GrossTaxLiability>6160</ITRForm:GrossTaxLiability>
+      <ITRForm:Section89>0</ITRForm:Section89>
+      <ITRForm:NetTaxLiability>6160</ITRForm:NetTaxLiability>
+      <ITRForm:TotalIntrstPay>0</ITRForm:TotalIntrstPay>
+      <ITRForm:IntrstPay>
+        <ITRForm:IntrstPayUs234A>0</ITRForm:IntrstPayUs234A>
+        <ITRForm:IntrstPayUs234B>0</ITRForm:IntrstPayUs234B>
+        <ITRForm:IntrstPayUs234C>0</ITRForm:IntrstPayUs234C>
+       </ITRForm:IntrstPay>
+      <ITRForm:TotTaxPlusIntrstPay>6160</ITRForm:TotTaxPlusIntrstPay>
+    </ITRForm:ITR1_TaxComputation>
+    <ITRForm:TaxPaid>
+      <ITRForm:TaxesPaid>
+        <ITRForm:AdvanceTax>0</ITRForm:AdvanceTax>
+        <ITRForm:TDS>20600</ITRForm:TDS>
+        
+        <ITRForm:SelfAssessmentTax>0</ITRForm:SelfAssessmentTax>
+        <ITRForm:TotalTaxesPaid>20600</ITRForm:TotalTaxesPaid>
+      </ITRForm:TaxesPaid>
+      <ITRForm:BalTaxPayable>0</ITRForm:BalTaxPayable>
+    </ITRForm:TaxPaid>
+    <ITRForm:Refund>
+      <ITRForm:RefundDue>14440</ITRForm:RefundDue>
+      <ITRForm:BankAccountDtls>
+         <ITRForm:PriBankDetails>
+        	<ITRForm:IFSCCode>PUNB0484400</ITRForm:IFSCCode>
+			<ITRForm:BankName>Punjab National Bank</ITRForm:BankName>
+			<ITRForm:BankAccountNo>4844888188881640</ITRForm:BankAccountNo>
+			<ITRForm:BankAccountType>SAV</ITRForm:BankAccountType>
+         </ITRForm:PriBankDetails>
+         
+         <ITRForm:BankAccounts>1</ITRForm:BankAccounts>
+      </ITRForm:BankAccountDtls>
+    </ITRForm:Refund>
+    
+    <ITRForm:TDSonSalaries>
+      <ITRForm:TDSonSalary>
+        <ITRForm:EmployerOrDeductorOrCollectDetl>
+          <ITRForm:TAN>JLDC01063G</ITRForm:TAN>
+          <ITRForm:EmployerOrDeductorOrCollecterName>ASSISTANT DIRECTOR (E)</ITRForm:EmployerOrDeductorOrCollecterName>
+        </ITRForm:EmployerOrDeductorOrCollectDetl>
+        <ITRForm:IncChrgSal>529811</ITRForm:IncChrgSal>
+        <ITRForm:TotalTDSSal>20600</ITRForm:TotalTDSSal>
+      </ITRForm:TDSonSalary>
+      <ITRForm:TotalTDSonSalaries>20600</ITRForm:TotalTDSonSalaries>
+    </ITRForm:TDSonSalaries>
+    
+    
+    
+    <ITRForm:Verification>
+      <ITRForm:Declaration>
+        <ITRForm:AssesseeVerName>RAM DASS SOOD</ITRForm:AssesseeVerName>
+        <ITRForm:FatherName>Late. Sh RAM SARUP SOOD</ITRForm:FatherName>
+        <ITRForm:AssesseeVerPAN>AHBPS9999Q</ITRForm:AssesseeVerPAN>
+      </ITRForm:Declaration>
+      <ITRForm:Place>Jalandhar</ITRForm:Place>
+      <ITRForm:Date>2015-07-01</ITRForm:Date>
+    </ITRForm:Verification>
+    
+  </ITR1FORM:ITR1>
+</ITRETURN:ITR>

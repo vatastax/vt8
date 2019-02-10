@@ -1,0 +1,51 @@
+1.redesign header done
+2.redesign side menu done
+3.set the salary page color done
+2.change style of grid in main page done
+
+
+Date-26/5/2016 1:28pm
+
+resolution of salary page done
+set main page
+
+//date 27-5-2016
+
+popup box on tax detail page /background gray done
+change color scheme done
+submit page 
+change assesee popup done
+logout
+changepassword color e14658 done
+copyright 2016
+remove radius done
+
+
+alert msg should be dynamic(mago sir 27/5/2016)
+
+
+28/5/2016
+
+AssesseeSelect page
+
+ "no previous detail" if grid is having no data.(ankush sir)
+
+"view previous retun " should not appear in case of no previous detail(ankush sir)
+
+bacground of heading title should have blue
+
+all linkbuttons have green color
+
+fontsize of tab is 18px
+
+formatting of computation sheet
+
+popup on float grid (background blur and border)
+
+advantax float grid (watermark date in gray color)
+changepassword (consistency)
+challanpdf
+
+
+
+
